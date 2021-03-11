@@ -4,6 +4,10 @@ Documentation templates and build tools
 
 This repo includes documentation and tools for building RISC-V specification documents using Asciidoc
 
+When you clone this repo, you have the file structure on your machine that you need for creating pdfs from asciidoc, along with example files that demonstrate how to handle the use cases that we have encountered.
+
+This is a work in progress, so please let us know if you have questions.
+
 ## Asciidoc needs Asciidoctor
 
 - To author in Asciidoc, you must install Asciidoctor.
@@ -119,12 +123,7 @@ Install syntax highlighting gems as follows (for Windows, append the string --so
 gem install coderay
 gem install rouge
 gem install pygments
-```
-
-## Optional, additional font
-
-
-https://octicons.github.com/
+``` 
 
 
 ## Asciidoc headers
@@ -140,33 +139,22 @@ NOTE: The headers are already in the template files. The only changes you normal
 - In the first line, add `[[file_name]]` and in the second line, use a double "==" to indicate a topic heading, add some content, and save the file with an `.adoc` file extension.
 - In the header file, add `include::filename.adoc` and save it.
 
-NOTE: Blank lines are not allowed in the headers.
+NOTE: Blank lines are not allowed in between the `include::filename.adoc` files.
 
-- You have the option of using one long file or adding files using includes like the following:
-
-```
-include::copyright.adoc[]
-include::intro.adoc[]
-include::requirements.adoc[]
-```
-
-## Build static documentation only
+## HTML build
 
 To build content from just Asciidoc files on your own machine:
 
-- CD into the directory that contains your adoc files.
-- If some files reference other files, the build usually runs from the directory that contains the  the adoc file with headers.
-
-- For html output, use the command line to run:
+- CD into the directory that contains your `.adoc` files.
 
 ```
-asciidoctor filename.adoc
+asciidoctor any_file_name.adoc
 ```
 
 For pdf output using the YAML file customizations:
 
 ```
-asciidoctor-pdf book_template.adoc -a pdf-style#resources/themes/risc-v_spec-pdf.yml -a pdf-fontsdir#resources/fonts
+asciidoctor-pdf book_header.adoc -a pdf-style#resources/themes/risc-v_spec-pdf.yml -a pdf-fontsdir=resources/fonts
 ```
 
 ## Asciidoc/asciidoctor documentation
