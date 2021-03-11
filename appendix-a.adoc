@@ -1,0 +1,78 @@
+:numbered!:
+[appendix]
+== Terminology
+
+AIA:: xxx
+
+ALU:: Arithmetic Logical Unit
+
+ASIC:: Application-Specific Integrated Circuit
+
+ASM:: xxx
+
+AT:: xxx
+
+BF::
+
+CPU Cache:: Many CPUs three kinds of caches to speed up data retrieval: an instruction cache for executable instruction fetch, a data cache for data store and fetch, and a translation lookaside buffer (TLB) for virtual-to-physical address translation for executable instructions and data.
+
+CMOS:: Complementary Metal Oxide Semiconductor
+
+DRAM:: Dynamic Random Access Memory
+
+eDRAM:: Embedded DRAM
+
+ELEN:: Element length
+
+GE:: Gate Equivalent
+
+IC:: Integrated Circuit
+
+IIRC:: xxx
+
+IMSIC:: (Instruction Memory Set ? ?)
+
+ISA:: Instruction Set Architecture
+
+MCM:: Multi-chip Module
+
+MMU:: Memory Management Unit
+
+NAND:: Not-and
+
+NOR:: Logical NOR, known as Pierce's Equivalent, Quine's Dagger, the ampcheck (from the Greek for "cutting both ways"),  joint denial, or neither-nor, operates on two logical values, typically from two propositions, that produces a value of true if and only if both operands are false. In other words, it produces a value of false if and only if at least one operand is true.
+
+PLIC:: Progressive Lossless Image Coding
+
+PMD:: xxx
+
+PTE:: Page Table Entry
+
+PTEP:: xxx
+
+PUD:: xxx
+
+QEMU:: xxx
+
+RV::
+
+Rocket:: xxx
+
+SFENCE:: Orders processor execution relative to all memory stores prior to the SFENCE instruction. The processor ensures that every store prior to SFENCE is globally visible before any store after SFENCE becomes globally visible. The SFENCE instruction is ordered with respect to memory stores, other SFENCE instructions, MFENCE instructions, and any serializing instructions (such as the CPUID instruction). It is not ordered with respect to memory loads or the LFENCE instruction.
+
+SFENCE.VMA:: (instruction wrapper?)
+
+SoC:: (System on Chip?)
+
+SRAM:: Static Random Access Memory
+
+TLB:: Translation Lookaside Buffer; enhances speed in retrieving a value by storing a memory address.
+
+VM:: Virtual Machine
+
+VMA:: (..Virtual Memory Allocation ??)
+
+ZBT:: Zero Bus Turnaround
+
+ZFew::
+

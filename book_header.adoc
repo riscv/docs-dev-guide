@@ -1,0 +1,54 @@
+[[risc-v-doc-planing]]
+= RISC-V Documentation Template
+:description: A working temaplate for RISC-V documentation in asciidoc
+:company: RISC-V.org
+:revdate: 03/2021
+:revnumber: 0.01
+:revremark: Pre-release version
+:url-riscv: http://riscv.org
+:doctype: book
+//:doctype: report
+:sectnums:
+// Settings:
+:experimental:
+:reproducible:
+:icons: font
+:lang: en
+:listing-caption: Listing
+:toc: left
+:toclevels: 4
+:source-highlighter: pygments
+ifdef::backend-pdf[]
+:source-highlighter: coderay
+endif::[]
+:title-logo-image: image:images/risc-v_logo.png[pdfwidth=2.25in,align=center]
+:data-uri:
+:appendix-caption: Appendix
+:stem: latexmath
+:footnote:
+:xrefstyle: short
+//requested unicode symbols
+:le: &#8804;
+//less than or equal
+:ge: &#8805;
+//greater than or equal
+:ne: &#8800;
+//not equal to
+:approx: &#8776;
+//numerical approximation
+:inf: &#8734;
+//infinity
+:mtw: &#68;
+//mathematical w
+:rarr: &#8658;
+//rightwards double arrow
+
+This document demonstrates the use of asciidoc for RISC-V specifications, with the goal of capturing information that will result in effective and efficient collaboration througout the community.
+
+//include::colophon.adoc[]
+include::intro.adoc[]
+incldue::install-tools.adoc[]
+include::build-doc.adoc[]
+include::appendix-a.adoc[]
+include::appendix-b.adoc[]
+include::index.adoc[]

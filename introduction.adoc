@@ -1,0 +1,15 @@
+[[introduction]]
+== Introduction
+
+Asciidoc is the most feature-rich of the popular lightweight markup languages based on markdown. It is gaining wider adoption and there is an asciidoc working group.
+
+It’s helpful to think of asciidoc as Markdown grown up. People in tech often have impulses to re-invent this idea, which comes from wanting to use Markdown and then realizing that Markdown has serious limitations with respect to formatting. As appealing as that idea can be, it is inherently flawed. Publishing, like music, can have simple forms, but when fully featured is quite complex. Everyone who has attempted to build upon Markdown to create a simple and feature-rich publishing solution faces the same reality.
+
+Most of the markup that you will need is simple, and much is similar to what you use for git-flavored Markdown.
+
+That said, RISC-V specifications, do require many advanced features. These templates are here to allow you to jump in with a hands-on approach and build the example pdf.
+
+Because asciidoc is gaining in popularity, there are opportunities contributors to this spec might want to view what Dan Allen, who supports asciidoc/asciidoctor, is currently doing.
+
+The graphical elements--those for the various diagrams--add the most complexity. Even as we are using wavedrom to simplify the creation of accurate svgs for register diagrams, it’s impossible to eliminate some inherent complexity.
+

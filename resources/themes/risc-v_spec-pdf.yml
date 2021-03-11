@@ -286,18 +286,18 @@ footer:
   # content: '{company}'
   # * {page-count}
   # * {page-number}
-  #center: 
-    #content: '{document-title}'
+  center: 
+    content: '{page-number}'
   # * {document-subtitle}
   # * {chapter-title}
   # * {section-title}
   # * {section-or-chapter-title}
-  recto:
+  # recto:
     #columns: "<50% =0% >50%"
     right:
-      #content: '{page-number}'
+      content: '{document-title} | {revdate}'
       #content: '{section-or-chapter-title} | {page-number}'
-      content: '{document-title} | {page-number}'
+      #content: '{document-title} | {page-number}'
       #center: '{page-number}'
       #content: '{revdate}'
   verso:
