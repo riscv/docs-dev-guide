@@ -44,7 +44,7 @@ source HOME/.bash_profile
 rm -f HOME/.gemrc
 ```
 
-## Mac--use Ruby on Mac
+## Mac--use RVM on Mac
 
 
 When using RVM, you can switch between the system-wide Ruby and RVM-managed Ruby using these two commands:
@@ -128,7 +128,9 @@ gem install pygments
 
 ## Asciidoc headers
 
-Most of the information in the book headers for RISC-V asciidoc content contain information that relates to the fully functional pdf build.
+Most of the information in the book headers for RISC-V asciidoc content contain information that relates to the fully functional pdf build that enables, among other things, numbered headings, a TOC, running headers and footers, footnotes at chapter ends, custom fonts, admonitions, an index, and an optional colophon. 
+
+For shorter documents, you have the option of using a report header.
 
 NOTE: The headers are already in the template files. The only changes you normally need to make are to add chapter-sized sections in using the syntax `include::filename.adoc[]` in the order by which you want them to appear.
 
@@ -143,19 +145,22 @@ NOTE: Blank lines are not allowed in between the `include::filename.adoc` files.
 
 ## HTML build
 
-To build content from just Asciidoc files on your own machine:
+As soon as you have installed asciidoctor , you can build content from any .adoc file on your own machine:
 
 - CD into the directory that contains your `.adoc` files.
 
 ```
 asciidoctor any_file_name.adoc
 ```
+This generates a file named `any_file_name.html`.
 
-For pdf output using the YAML file customizations:
+For pdf output, cd into this cloned directory and use this command:
 
 ```
 asciidoctor-pdf book_header.adoc -a pdf-style#resources/themes/risc-v_spec-pdf.yml -a pdf-fontsdir=resources/fonts
 ```
+
+This generates a file named `book_header.pdf`. 
 
 ## Asciidoc/asciidoctor documentation
 

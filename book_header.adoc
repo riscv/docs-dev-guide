@@ -47,8 +47,6 @@ This document demonstrates the use of asciidoc for RISC-V specifications, with t
 
 //include::colophon.adoc[]
 include::intro.adoc[]
-incldue::install-tools.adoc[]
-include::build-doc.adoc[]
+incldue::a_few_basics.adoc[]
 include::appendix-a.adoc[]
-include::appendix-b.adoc[]
 include::index.adoc[]

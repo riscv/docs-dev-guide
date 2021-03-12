@@ -1,0 +1,87 @@
+[[a_few_basics]]
+== A few basics
+
+While the
+
+[[headers]]
+=== Headers
+
+In asciidoc you cannot jump directly from a Head 1 to a Head 3 or 4. Your headers must appear in sequence from Head 1 to Head 2, and onward. If you skip over a header in the sequence, asciidoctor throws an error.
+
+```adoc
+= Title head
+
+== Head 1
+
+=== Head 2
+
+=== Head 3
+
+==== Head 4
+```
+
+= Title head
+
+== Head 1
+
+=== Head 2
+
+=== Head 3
+
+==== Head 4
+
+[[doodlebugs]]
+=== Doodlebugs
+
+Harharhar.
+
+
+
+[[asciidoc_tables]]
+=== Asciidoc tables
+
+Asciidoc makes standard tables easy and also supports the creation of complex tables.
+
+AsciiDoc tables can also be created directly from CSV data. Just set the format block attribute to csv and insert CSV data inside the block delimiters directly:
+
+```csv
+[%header,format=csv]
+|===
+Artist,Track,Genre
+Baauer,Harlem Shake,Hip Hop
+The Lumineers,Ho Hey,Folk Rock
+|===
+```
+
+The above renders as follows:
+
+[%header,format=csv]
+|===
+Artist,Track,Genre
+Baauer,Harlem Shake,Hip Hop
+The Lumineers,Ho Hey,Folk Rock
+|===
+
+
+Here is an additional example of what can be done with tables:
+
+```csv
+[cols="e,m,^,>s",width="25%"]
+|============================
+|1 >s|2 |3 |4
+^|5 2.2+^.^|6 .3+<.>m|7
+^|8
+|9 2+>|10
+|============================
+```
+
+Which renders as follows:
+
+[cols="e,m,^,>s",width="25%"]
+|============================
+|1 >s|2 |3 |4
+^|5 2.2+^.^|6 .3+<.>m|7
+^|8
+|9 2+>|10
+|============================
+
