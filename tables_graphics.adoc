@@ -1,0 +1,76 @@
+[tables_graphics]
+== Tables and graphics
+
+
+Asciidoc makes standard tables easy and also supports the creation of complex tables.
+
+AsciiDoc tables can also be created directly from CSV data. Just set the format block attribute to csv and insert CSV data inside the block delimiters directly:
+
+```csv
+[%header,format=csv]
+|===
+Artist,Track,Genre
+Baauer,Harlem Shake,Hip Hop
+The Lumineers,Ho Hey,Folk Rock
+|===
+```
+
+The above renders as follows:
+
+[%header,format=csv]
+|===
+Artist,Track,Genre
+Baauer,Harlem Shake,Hip Hop
+The Lumineers,Ho Hey,Folk Rock
+|===
+
+
+Here is an additional example of what can be done with tables:
+
+```csv
+[cols="e,m,^,>s",width="25%"]
+|============================
+|1 >s|2 |3 |4
+^|5 2.2+^.^|6 .3+<.>m|7
+^|8
+|9 2+>|10
+|============================
+```
+
+Which renders as follows:
+
+[cols="e,m,^,>s",width="25%"]
+|============================
+|1 >s|2 |3 |4
+^|5 2.2+^.^|6 .3+<.>m|7
+^|8
+|9 2+>|10
+|============================
+
+An encoding table:
+
+[#proposed-16bit-encodings-1]
+.proposed 16-bit encodings-1
+[width="100%",options=header]
+|===
+|15 |14 |13 |12 |11 |10 |9 |8 |7 |6 |5 |4 |3 |2 |1 |0 |instruction
+3+|100|1|0|0|0 2+|field|0 |0 2+|00 | field 2+|00|mnemonic1
+3+|100|1|0|0 3+|field|bit|1 3+|field 2+|00|mnemonic2
+3+|110|1|0|0 3+|field|1 |0 3+|field 2+|00|mnemonic3
+17+|This row spans the whole table
+3+|100|1|1|1 8+|    field        2+| 00  | mnemonic4
+|===
+
+
+=== Images
+
+The graphical elements--those for the various diagrams--add the most complexity. Even as we are using wavedrom to simplify the creation of accurate svgs for register diagrams, it’s impossible to eliminate some inherent complexity.
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,20 @@
+[colophon]
+= Preface
+
+This document demonstrates the use of asciidoc for RISC-V specifications, with the goal of capturing information that will result in effective and efficient collaboration througout the community.
+
+Asciidoc is the most feature-rich of the popular lightweight markup languages based on markdown. Most of the markup that you will need is simple, and much is similar to what you use for git-flavored Markdown.
+
+It’s helpful to think of asciidoc as https://docs.asciidoctor.org/asciidoc/latest/asciidoc-vs-markdown/[Markdown grown up]. People in tech often have impulses to re-invent it with a brand new lightweight markup language of their own. As appealing as that idea can be, it is inherently flawed. Publishing, like music, can have simple forms, but when fully featured is quite complex. Everyone who has attempted to build upon Markdown to create a simple and feature-rich publishing solution faces the same reality.
+
+RISC-V specifications require the use of asciidoc/asciidoctor advanced publishing features. These templates are here to allow you to jump in with a hands-on approach and build the example pdf.
+
+Because asciidoc is gaining in popularity, there are opportunities contributors to their specification while it is still being developeed. You might want to view what Dan Allen, who supports asciidoc/asciidoctor, is currently doing.
+
+Asciidoc is gaining wider adoption. Feel free to find out about the working group, the specification under development, the various plugins, and ways in which asciidoc is in use.
+
+
+[copyright]
+.Copyright and licensure
+
+Copyright and license information can go here.

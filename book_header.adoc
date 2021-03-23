@@ -21,8 +21,11 @@
 ifdef::backend-pdf[]
 :source-highlighter: coderay
 endif::[]
-:title-logo-image: image:images/risc-v_logo.png[pdfwidth=2.25in,align=center]
+:title-logo-image: image:images/risc-v_logo.png[pdfwidth=3.25in,align=center]
 :data-uri:
+:hide-uri-scheme:
+:preface-title: Preamble
+:colophon:
 :appendix-caption: Appendix
 :stem: latexmath
 :footnote:
@@ -43,10 +46,11 @@ endif::[]
 :rarr: &#8658;
 //rightwards double arrow
 
-This document demonstrates the use of asciidoc for RISC-V specifications, with the goal of capturing information that will result in effective and efficient collaboration througout the community.
+This is the preamble, which can contain
 
-//include::colophon.adoc[]
-include::intro.adoc[]
-incldue::a_few_basics.adoc[]
+include::colophon.adoc[]
+//include::overview.adoc[]
+include::a_few_basics.adoc[]
+include::tables_graphics.adoc[]
 include::appendix-a.adoc[]
 include::index.adoc[]

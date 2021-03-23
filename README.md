@@ -44,7 +44,7 @@ source HOME/.bash_profile
 rm -f HOME/.gemrc
 ```
 
-## Mac--use RVM on Mac
+## Mac—use RVM on Mac
 
 
 When using RVM, you can switch between the system-wide Ruby and RVM-managed Ruby using these two commands:
@@ -81,7 +81,7 @@ If you see the Asciidoctor version information printed in the terminal, then you
 asciidcotor filename.adoc
 ```
 
-## Windows--install Ruby with RVM
+## Windows—install Ruby with RVM
 
 - For Windows, use: http://rubyinstaller.org/
 
@@ -91,7 +91,7 @@ NOTE: During the Windows install, click in the installer to:
 - add paths
 - add tdtk
 
-## Windows--add the Asciidoctor gem
+## Windows—add the Asciidoctor gem
 
 - Navigate to the following url
 
@@ -104,7 +104,7 @@ https://rubygems.org/gems/asciidoctor/
 - In Powershell, use the following command to install the Asciidoctor gem:
 
 ```
- gem install asciidoctor <path-to-dowloaded-gem>
+gem install asciidoctor <path-to-dowloaded-gem>
 ```
 
 ## Both Win and Mac, for pdf's
@@ -125,7 +125,6 @@ gem install rouge
 gem install pygments
 ``` 
 
-
 ## Asciidoc headers
 
 Most of the information in the book headers for RISC-V asciidoc content contain information that relates to the fully functional pdf build that enables, among other things, numbered headings, a TOC, running headers and footers, footnotes at chapter ends, custom fonts, admonitions, an index, and an optional colophon. 
@@ -138,14 +137,16 @@ NOTE: The headers are already in the template files. The only changes you normal
 
 - In your text editor, create a new file.
 - Assign a name and save with the .adoc extension.
-- In the first line, add `[[file_name]]` and in the second line, use a double "==" to indicate a topic heading, add some content, and save the file with an `.adoc` file extension.
-- In the header file, add `include::filename.adoc` and save it.
+- In the first line, add `[file_name]` (using a meaningful string for the filename) and in the second line, use a double "==" to indicate a topic heading, add some content, and save the file with an `.adoc` file extension.
+- In the header file, add `include::file_name.adoc` and save it.
 
-NOTE: Blank lines are not allowed in between the `include::filename.adoc` files.
+NOTE: Blank lines are not allowed in between the `include::file_name.adoc` files.
 
 ## HTML build
 
-As soon as you have installed asciidoctor , you can build content from any .adoc file on your own machine:
+Building in HTML is a good way to check that your content under development builds properly. 
+
+As soon as you have installed asciidoctor, you can build HTML content from any `.adoc` file on your own machine:
 
 - CD into the directory that contains your `.adoc` files.
 
@@ -162,12 +163,30 @@ asciidoctor-pdf book_header.adoc -a pdf-style#resources/themes/risc-v_spec-pdf.y
 
 This generates a file named `book_header.pdf`. 
 
+For your own content, change the name of the header file to a meaningful file name.
+
 ## Asciidoc/asciidoctor documentation
 
-- Asciidoc/asciidoctor writers' guide: https://asciidoctor.org/docs/asciidoc-writers-guide/
+* Asciidoc/asciidoctor writers' guide: https://asciidoctor.org/docs/asciidoc-writers-guide/
+* Asciidoc quick reference: http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
+* Asciidoctor user manual: http://asciidoctor.org/docs/user-manual/
 
 
-- Asciidoc quick reference: http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
+## Conversion
 
+All conversions require cleanup.
 
-- Asciidoctor user manual: http://asciidoctor.org/docs/user-manual/
+The most relaible converter from LaTeX to asciidoc that I have found is pandoc:
+
+https://pandoc.org/getting-started.html
+
+After installing pandoc on your machine, you can begin the conversion using the following pattern:
+
+```cmd
+pandoc source_file.tex destination_file.adoc
+```
+
+After that first step, you must open the file using a text editor with a good asciidoc linter and clean it up.
+
+While pandoc does a reasonably good job, there are always documentation nits that must be addressed.
+

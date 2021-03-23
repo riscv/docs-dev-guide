@@ -1,7 +1,24 @@
 [[a_few_basics]]
 == A few basics
 
-While the
+Asciidoc is fully documented, and its documentation is actively maintained. This document contains some information on asciidoc markup to get you started.
+
+For details and additional options:
+
+ * Asciidoc/asciidoctor writers' guide: https://asciidoctor.org/docs/asciidoc-writers-guide/
+ * Asciidoc quick reference: http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
+ * Asciidoctor user manual: http://asciidoctor.org/docs/user-manual/
+
+In addition, you have the option of asking questions:
+
+*
+
+
+
+Each title page and colophon section must begin with a single `=`. which means that indicating a Head1 requires `==`.
+
+
+
 
 [[headers]]
 === Headers
@@ -9,79 +26,38 @@ While the
 In asciidoc you cannot jump directly from a Head 1 to a Head 3 or 4. Your headers must appear in sequence from Head 1 to Head 2, and onward. If you skip over a header in the sequence, asciidoctor throws an error.
 
 ```adoc
-= Title head
+= Title head (book or report title)
 
-== Head 1
+== Head 1 (chapter title)
 
-=== Head 2
+=== Head 2 (section title)
 
-=== Head 3
+=== Head 3 (subsection)
 
-==== Head 4
+==== Head 4 (sub-subsection)
 ```
 
-= Title head
-
-== Head 1
-
-=== Head 2
-
-=== Head 3
-
-==== Head 4
-
-[[doodlebugs]]
-=== Doodlebugs
-
-Harharhar.
+[code-blocks]
+=== Code Blocks
 
 
+[source,python]
+----
+[source,python]
+\----
+mono-spaced code block
+add a1,a2,a3; # do an ADD
+\----
+----
 
-[[asciidoc_tables]]
-=== Asciidoc tables
-
-Asciidoc makes standard tables easy and also supports the creation of complex tables.
-
-AsciiDoc tables can also be created directly from CSV data. Just set the format block attribute to csv and insert CSV data inside the block delimiters directly:
-
-```csv
-[%header,format=csv]
-|===
-Artist,Track,Genre
-Baauer,Harlem Shake,Hip Hop
-The Lumineers,Ho Hey,Folk Rock
-|===
-```
-
-The above renders as follows:
-
-[%header,format=csv]
-|===
-Artist,Track,Genre
-Baauer,Harlem Shake,Hip Hop
-The Lumineers,Ho Hey,Folk Rock
-|===
+=== Hyperlinks and cross references
 
 
-Here is an additional example of what can be done with tables:
 
-```csv
-[cols="e,m,^,>s",width="25%"]
-|============================
-|1 >s|2 |3 |4
-^|5 2.2+^.^|6 .3+<.>m|7
-^|8
-|9 2+>|10
-|============================
-```
 
-Which renders as follows:
 
-[cols="e,m,^,>s",width="25%"]
-|============================
-|1 >s|2 |3 |4
-^|5 2.2+^.^|6 .3+<.>m|7
-^|8
-|9 2+>|10
-|============================
+
+
+
+
 

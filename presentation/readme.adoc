@@ -1,0 +1,11 @@
+[readme]
+= Reveal.js presentations using asciidoc
+
+When using the asciidoc toolchain, you have the option of enabling Reveal.js presentations written in asciidoc.
+
+For some uses, this can save you time. Some traning departments make use of Reveal.js presentations to support rapidly changing needs in dynamic environments.
+
+==
+
+https://docs.asciidoctor.org/reveal.js-converter/latest/converter/features/#basic-presentation-with-speaker-notes
+

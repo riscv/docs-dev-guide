@@ -8,15 +8,17 @@ ALU:: Arithmetic Logical Unit
 
 ASIC:: Application-Specific Integrated Circuit
 
-ASM:: xxx
-
 AT:: xxx
+
+Atomic Layer Deposition:: A layer-by-layer process that results in the deposition of thin films one atomic layer at a time in a highly controlled manner.
 
 BF::
 
 CPU Cache:: Many CPUs three kinds of caches to speed up data retrieval: an instruction cache for executable instruction fetch, a data cache for data store and fetch, and a translation lookaside buffer (TLB) for virtual-to-physical address translation for executable instructions and data.
 
 CMOS:: Complementary Metal Oxide Semiconductor
+
+Chemical Vapor Deposition:: A chemical deposition process in which the wafer is exposed to one or more volatile precursors, which react and/or decompose on the substrate surface to produce the desired film.
 
 DRAM:: Dynamic Random Access Memory
 
@@ -28,7 +30,9 @@ GE:: Gate Equivalent
 
 IC:: Integrated Circuit
 
-IIRC:: xxx
+IRC::  The IRC https://tools.ietf.org/html/rfc2812[Internet Relay Chat] protocol is for use with text based conferencing; the simplest client being any socket program capable of connecting to the server.
+
+IIRC:: The International Integrated Reporting Council (IIRC) (previously the International Integrated Reporting Committee). was formed in August 2010 and aims to create a globally accepted framework for a process that results in communications by an organisation about value creation over time.
 
 IMSIC:: (Instruction Memory Set ? ?)
 
@@ -42,9 +46,9 @@ NAND:: Not-and
 
 NOR:: Logical NOR, known as Pierce's Equivalent, Quine's Dagger, the ampcheck (from the Greek for "cutting both ways"),  joint denial, or neither-nor, operates on two logical values, typically from two propositions, that produces a value of true if and only if both operands are false. In other words, it produces a value of false if and only if at least one operand is true.
 
-PLIC:: Progressive Lossless Image Coding
+Photolithography:: In microprocessor maufacturing, a process of using light to transfer a geometric pattern from a photomask (also called an optical mask) pattern parts to a photosensitive substrate on a thin film (substrate or wafer). The process can also make use of chemical photoresist on the substrate.
 
-PMD:: xxx
+PLIC:: Progressive Lossless Image Coding
 
 PTE:: Page Table Entry
 
@@ -52,11 +56,11 @@ PTEP:: xxx
 
 PUD:: xxx
 
-QEMU:: xxx
+QEMU:: QEMU (Quick EMUlator) is a free and open-source emulator and virtualizer that can perform hardware virtualization.
 
-RV::
+RV:: Reliability verification is a category of physical verification that helps ensure the robustness of a design by considering the context of schematic and layout information to perform user-definable checks against various electrical and physical design rules that reduce susceptibility to premature or catastrophic electrical failures, usually over time.
 
-Rocket:: xxx
+Rocket:: Parameterized SoC generator written in Chisel, designed to helps tune the design under different performance, power, area constraints, and diverse technology nodes.
 
 SFENCE:: Orders processor execution relative to all memory stores prior to the SFENCE instruction. The processor ensures that every store prior to SFENCE is globally visible before any store after SFENCE becomes globally visible. The SFENCE instruction is ordered with respect to memory stores, other SFENCE instructions, MFENCE instructions, and any serializing instructions (such as the CPUID instruction). It is not ordered with respect to memory loads or the LFENCE instruction.
 
