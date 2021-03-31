@@ -110,7 +110,7 @@ gem install asciidoctor <path-to-dowloaded-gem>
 Install the asciidoctor-pdf gem, which is needed for pdf rendering:
 
 ```
-gem install asciidoctor-pdf --pre --source http://rubygems.org
+gem install asciidoctor-pdf 
 ```
 
 ## Add syntax highlighting gems for Asciidoc output
