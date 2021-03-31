@@ -9,35 +9,43 @@ For details and additional options:
  * Asciidoc quick reference: http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
  * Asciidoctor user manual: http://asciidoctor.org/docs/user-manual/
 
-In addition, you have the option of asking questions:
+In addition, you have the option of asking questions in the asciidoctor discussion list:
 
-*
+As is true of any complex process, asciidoc/asciidoctor has some quirks. Please be certain to make use of these templates because they provide you with files that will result in fully featured pdf output.
 
+Best practice is to test the pdf build frequently to ensure that you have not accidentally introduced something that breaks the build.
 
-
-Each title page and colophon section must begin with a single `=`. which means that indicating a Head1 requires `==`.
-
-
+WARNING: PDFs require the use of Ruby 2.7.2.
 
 
-[[headers]]
 === Headers
 
-In asciidoc you cannot jump directly from a Head 1 to a Head 3 or 4. Your headers must appear in sequence from Head 1 to Head 2, and onward. If you skip over a header in the sequence, asciidoctor throws an error.
+In asciidoc you cannot jump directly from a Head 1 to a Head 3 or 4. Your headers must appear in numerical sequence from Head 1 to Head 2, and onward. If you skip over a header in the sequence, asciidoctor throws an error.
 
 ```adoc
 = Title head (book or report title)
 
-== Head 1 (chapter title)
+[colophon]
+= Colophon head (in frontmatter, used for preface)
 
-=== Head 2 (section title)
+[[chapter_title]]
+== Head 1 (chapter)
 
-=== Head 3 (subsection)
+=== Head 2 (section)
 
-==== Head 4 (sub-subsection)
+==== Head 3 (subsection)
+
+===== Head 4 (sub-subsection)
+
+[appendix]
+== Appendix title
+
+[index]
+Index
 ```
 
-[code-blocks]
+NOTE: Settings in the header file trigger auto-generation of Appendix prefixes and of the Index (among other things).
+
 === Code Blocks
 
 
@@ -50,14 +58,131 @@ add a1,a2,a3; # do an ADD
 \----
 ----
 
+alternate:
+
+```adoc
+\```python
+\----
+mono-spaced code block
+add a1,a2,a3; # do an ADD
+\----
+\```
+```
+
+
 === Hyperlinks and cross references
 
 
+blah blah
 
 
+=== Admonitions and sidebars
 
 
+Block admonition:
+
+```adoc
+[IMPORTANT]
+.Feeding the Werewolves
+====
+While werewolves are hardy community members, keep in mind the following dietary concerns:
+
+. They are allergic to cinnamon.
+. More than two glasses of orange juice in 24 hours makes them howl in harmony with alarms and sirens.
+. Celery makes them sad.
+====
+```
+
+Sidebar:
+
+```adoc
+.AsciiDoc history
+****
+AsciiDoc was first released in Nov 2002 by Stuart Rackham.
+It was designed from the start to be a shorthand syntax
+for producing professional documents like DocBook and LaTeX.
+****
+```
 
 
+https://github.com/asciidoctor/asciidoctor-pdf/blob/master/docs/theming-guide.adoc#key-prefix-admonition-icon
 
+
+Alternate admonitions are available: https://github.com/jessedoyle/prawn-icon/tree/master/data/fonts
+
+
+=== Stem content
+
+The `:stem: latexmath` setting works for HTML output from asciidoc, however, it doesn't yet work for asciidoctor-pdf output.
+
+As a workaround, you will need to create image files rendered equations and import the images for pdfs.
+
+```adoc
+[stem]
+++++
+sqrt(4) = 2
+++++
+```
+
+[stem]
+++++
+sqrt(4) = 2
+++++
+
+It looks like there is not much need for actual equations in the specifications. Rather, there is a set of specific unicode characters that are used:
+
+```adoc
+&#8804; //less than or equal
+&#8805; //greater than or equal, also &gt;
+&#8800; //not equal to
+&#8776; //numerical approximation
+&#8734; //infinity
+&#68; //mathematical D
+&#119856; //mathmatical w
+&#8658; //rightwards double arrow
+```
+Best practice is to use the unicode:
+
+&#8804;,  &#8805;, &#8800;,  &#8776;, &#8734;,  &#68;, &#8658;,
+
+
+Asciidoctor PDF currently only supports decimal character references. See https://github.com/asciidoctor/asciidoctor-pdf/issues/486
+
+Hexadecimal unicode looks like it has problems in the pdf. This is gnarley.
+
+Updates ti asciidoctor-pdf: https://github.com/asciidoctor/asciidoctor-pdf
+
+
+==== Asciidoctor Mathematical
+
+Asciidoctor Mathematical is an extension for Asciidoctor that provides alternate processing of STEM blocks and inline macros. After the document has been parsed, the extension locates each asciimath, latexmath, and stem block and inline macro, converts the expression to an image, and replaces the expression with an image. It uses Mathematical to render the LaTeX notation as an image. If the expression is AsciiMath, it first uses AsciiMath gem to convert to LaTeX. Conversion then proceeds as normal.
+
+Asciidoctor Mathematical is a Ruby gem that uses native extensions. It has a few system prerequisites which limit installation to Linux and macOS. Please refer to the installation section in the Asciidoctor Mathematical README to learn how to install it.
+
+Once Asciidoctor Mathematical is installed, you can enable it when invoking Asciidoctor PDF using the -r flag:
+
+```cmd
+$ asciidoctor-pdf -r asciidoctor-mathematical sample.adoc
+```
+
+To get started, first create a Gemfile in the root of your project. In that file, declare the gem source, the asciidoctor-pdf gem, and the prawn-table gem (plus any other development gems you want to use).
+
+Gemfile
+
+source 'https://rubygems.org'
+```cmd
+gem 'asciidoctor-pdf'
+gem 'prawn-table', github: 'prawnpdf/prawn-table'
+```
+You can then install the gems into your project using the bundle command:
+
+```.cmd
+$ bundle config set --local path .bundle/gems && bundle
+```
+Since you’re using Bundler to manage the gems, you’ll need to prefix all commands with bundle exec. For example:
+
+```cmd
+$ bundle exec asciidoctor-pdf -v
+```
+Thus, to any command present in the following sections, be sure to include this prefix.
 

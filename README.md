@@ -1,12 +1,10 @@
 # Docs templates and build process
 
-Documentation templates and build tools
+This repo contains documentation templates and information on build tools for the asciidoctor toolchain, for building professional quality pdfs of RISC-V specification documents using Asciidoc/asciidcotor.
 
-This repo includes documentation and tools for building RISC-V specification documents using Asciidoc
+When you clone this repo, you have the file structure on your machine that you need for creating professional quality pdfs from asciidoc, along with example files that demonstrate how to handle the use cases that we have encountered.
 
-When you clone this repo, you have the file structure on your machine that you need for creating pdfs from asciidoc, along with example files that demonstrate how to handle the use cases that we have encountered.
-
-This is a work in progress, so please let us know if you have questions.
+This is a work in progress, and the tools can change, so please let us know if you run into problems and/or have questions.
 
 ## Asciidoc needs Asciidoctor
 
@@ -24,10 +22,10 @@ RVM is essential for creating pdfs because the pdf build requires Ruby version 2
 
 RVM is a Ruby installation and version manager. RVM works by installing Ruby inside your home directory and manages the environment variables to allow you to switch between the system-wide Ruby and any Ruby installed using RVM.
 
-- Install RVM along with the latest version of Ruby:
+- Install the RVM along with the latest version of Ruby (https://rvm.io/rvm/install):
 
 ```
-\curl -#L https://get.rvm.io | bash -s stable --autolibs#3 --ruby
+\curl -sSL https://get.rvm.io | bash -s stable --ruby
 ```
 
 RVM will download and build the Ruby language, install RubyGems along with several essential gems and configure your PATH environment variable.

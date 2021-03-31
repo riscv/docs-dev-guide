@@ -1,5 +1,6 @@
-[[risc-v-doc-planing]]
+[[riscv-doc-template]]
 = RISC-V Documentation Template
+:stem: latexmath
 :description: A working temaplate for RISC-V documentation in asciidoc
 :company: RISC-V.org
 :revdate: 03/2021
@@ -8,45 +9,33 @@
 :url-riscv: http://riscv.org
 :doctype: book
 //:doctype: report
-:sectnums:
+:preface-title: Preamble
+:colophon:
+:appendix-caption: Appendix
+:imagesdir: images
+:title-logo-image: image:risc-v_logo.png[pdfwidth=3.25in,align=center]
+//:back-cover-image: image:/home/template_images/bckcover.pdf[]
 // Settings:
 :experimental:
 :reproducible:
-:icons: font
+//:icons: font
 :lang: en
 :listing-caption: Listing
+:sectnums:
 :toc: left
 :toclevels: 4
 :source-highlighter: pygments
 ifdef::backend-pdf[]
 :source-highlighter: coderay
 endif::[]
-:title-logo-image: image:images/risc-v_logo.png[pdfwidth=3.25in,align=center]
 :data-uri:
 :hide-uri-scheme:
-:preface-title: Preamble
-:colophon:
-:appendix-caption: Appendix
-:stem: latexmath
+:stem:
 :footnote:
 :xrefstyle: short
-//requested unicode symbols
-:le: &#8804;
-//less than or equal
-:ge: &#8805;
-//greater than or equal
-:ne: &#8800;
-//not equal to
-:approx: &#8776;
-//numerical approximation
-:inf: &#8734;
-//infinity
-:mtw: &#68;
-//mathematical w
-:rarr: &#8658;
-//rightwards double arrow
 
-This is the preamble, which can contain
+
+This is the preamble, which can contain copyright information.
 
 include::colophon.adoc[]
 //include::overview.adoc[]
