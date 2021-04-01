@@ -8,14 +8,15 @@ Asciidoc makes standard tables easy and also supports the creation of complex ta
 
 AsciiDoc tables can also be created directly from CSV data. Just set the format block attribute to CSV and insert CSV data inside the block delimiters directly:
 
-```adoc
+[source,adoc]
+----
 [%header,format=csv]
 |===
 Artist,Track,Genre
 Baauer,Harlem Shake,Hip Hop
 The Lumineers,Ho Hey,Folk Rock
 |===
-```
+----
 
 The above renders as follows:
 
@@ -29,7 +30,8 @@ The Lumineers,Ho Hey,Folk Rock
 
 Here is an additional example of what can be done with tables:
 
-```adoc
+[source,adoc]
+----
 [cols="e,m,^,>s",width="25%"]
 |============================
 |1 >s|2 |3 |4
@@ -37,7 +39,7 @@ Here is an additional example of what can be done with tables:
 ^|8
 |9 2+>|10
 |============================
-```
+----
 
 Which renders as follows:
 
@@ -53,9 +55,10 @@ Code for a numbered encoding table with link target.
 
 NOTE: Annotations have been added to the code to illustrate their use.
 
-```adoc
-[#proposed-16bit-encodings-1] (1)
-.proposed 16-bit encodings-1   (2)
+[source,adoc]
+----
+[#proposed-16bit-encodings-1]  <1>
+.proposed 16-bit encodings-1    <2>
 [width="100%",options=header]
 |===
 |15 |14 |13 |12 |11 |10 |9 |8 |7 |6 |5 |4 |3 |2 |1 |0 |instruction
@@ -65,7 +68,7 @@ NOTE: Annotations have been added to the code to illustrate their use.
 17+|This row spans the whole table
 3+|100|1|1|1 8+|    field        2+| 00  | mnemonic4
 |===
-```
+----
 . Link target.
 . Numbered table title.
 

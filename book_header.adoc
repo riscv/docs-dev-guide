@@ -37,7 +37,7 @@ endif::[]
 :xrefstyle: short
 
 
-This is the preamble, which can contain copyright information.
+This is the preamble, which can contain copyright information. For this book example, I am here mentioning that I have copied information directly from several Web sites that are hosted by asciidoctor.org and devoted to providing Asciidoc/Asciidoctor documentation. Graphics used are either explicitly avilabble for free, are property of RISC-V, or were created using Wavedrom.
 
 include::colophon.adoc[]
 //include::overview.adoc[]
