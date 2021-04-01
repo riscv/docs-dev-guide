@@ -6,7 +6,7 @@ Asciidoc makes standard tables easy and also supports the creation of complex ta
 
 === Some table examples
 
-AsciiDoc tables can also be created directly from CSV data. Just set the format block attribute to csv and insert CSV data inside the block delimiters directly:
+AsciiDoc tables can also be created directly from CSV data. Just set the format block attribute to CSV and insert CSV data inside the block delimiters directly:
 
 ```adoc
 [%header,format=csv]
@@ -81,22 +81,10 @@ NOTE: Annotations have been added to the code to illustrate their use.
 3+|100|1|1|1 8+|    field        2+| 00  | mnemonic4
 |===
 
-=== Handling images
-
-The graphical elements--those for the various diagrams--add the most complexity. Even as we are using wavedrom to simplify the creation of accurate svgs for register diagrams, it’s impossible to eliminate some inherent complexity.
-
-While asciidoc can render graphics in all popular formats, by far the highest quality graphics rendering is from .svg format.
-
-For some graphical elements, RISC-V specicifcations can make use of https://wavedrom.com/[Wavedrom diagrams].
-
-A build that incorprates building of Wavedrom diagrams is under development. The build will support making use of the git repo as the single source of truth for a specification.
-
-Until the automation has been developed ans tested, the code for the wavedrom diagrams should be maintained in the repsitory and the filename for the svg output should have the same name (with the svg extension).
-
 === Unicode symbols
 
 
-For pdf, some unicode symbols are buggy. There are some workarounds. I noticed the need for a mthematical w and because its encoding uses an integer that is in the 5+ digit catagory it doesn't work.
+For pdf, some unicode symbols are buggy. There are some workarounds. I noticed the need for a mathematical _w_ and because its encoding uses an integer that is in the 5+ digit category it doesn't work.
 
 Here are a few unicode examples from https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references:
 
@@ -145,4 +133,22 @@ sym,num,name
 &#8921;,8921,ggg not working
 &#8617;,8617,hookleftarrow not working
 |===
+
+=== Graphics
+
+While asciidoc can render graphics in all popular formats, by far the highest quality graphics rendering is from .svg format.
+
+https://wavedrom.com/[Wavedrom sequence diagrams] are essential to the RISC-V specifications.
+
+[#wavedrom_example]
+.A wavedrom example
+image::wavedrom-example.svg[wavedrom_example]
+
+https://asciidoctor.org/docs/asciidoctor-diagram/#image-output-location[Asciidocdoctor-pdf] enables automation of diagrams from scripts, including Wavedrom.
+
+Even as we are using wavedrom to simplify the creation of accurate svgs for register diagrams, the graphical elements--those for the various diagrams--add complexity to the build.
+
+A build that incorporates building of Wavedrom diagrams is under development. The build will support making use of the git repo as the single source of truth for a specification.
+
+Until the automation has been developed ans tested, the code for the wavedrom diagrams should be maintained in the repository and the filename for the SVG output should have the same name (with the SVG extension).
 

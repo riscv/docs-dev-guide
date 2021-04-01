@@ -49,7 +49,7 @@ NOTE: Settings in the header file trigger auto-generation of Appendix prefixes a
 === Code Blocks
 
 
-[source,python]
+[source,adoc]
 ----
 [source,python]
 \----
@@ -58,16 +58,11 @@ add a1,a2,a3; # do an ADD
 \----
 ----
 
-alternate:
-
-```adoc
-\```python
-\----
+[source,python]
+----
 mono-spaced code block
 add a1,a2,a3; # do an ADD
-\----
-\```
-```
+----
 
 
 === Hyperlinks and cross references
@@ -76,39 +71,8 @@ add a1,a2,a3; # do an ADD
 blah blah
 
 
-=== Admonitions and sidebars
 
 
-Block admonition:
-
-```adoc
-[IMPORTANT]
-.Feeding the Werewolves
-====
-While werewolves are hardy community members, keep in mind the following dietary concerns:
-
-. They are allergic to cinnamon.
-. More than two glasses of orange juice in 24 hours makes them howl in harmony with alarms and sirens.
-. Celery makes them sad.
-====
-```
-
-Sidebar:
-
-```adoc
-.AsciiDoc history
-****
-AsciiDoc was first released in Nov 2002 by Stuart Rackham.
-It was designed from the start to be a shorthand syntax
-for producing professional documents like DocBook and LaTeX.
-****
-```
-
-
-https://github.com/asciidoctor/asciidoctor-pdf/blob/master/docs/theming-guide.adoc#key-prefix-admonition-icon
-
-
-Alternate admonitions are available: https://github.com/jessedoyle/prawn-icon/tree/master/data/fonts
 
 
 === Stem content

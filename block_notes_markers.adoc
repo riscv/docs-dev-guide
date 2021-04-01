@@ -1,0 +1,209 @@
+[[blocks_notes_markers]]
+== Blocks, notes and markers
+
+RISC-V specifications are notable for their extended commentaries that explain the thinking behind various important aspects of the technologies.
+
+In most cases, contributors should make use of admonition blocks for their commentaries.
+
+
+=== Blocks
+
+Asciidoctor allows for many types of blocks, as documented at https://docs.asciidoctor.org/asciidoc/latest/blocks/.
+
+Sidebars might be a good solution for some content in the specifications.
+
+[source,adoc]
+----
+Text in your document.
+
+****
+This is content in a sidebar block.
+
+image::name.png[]
+
+This is more content in the sidebar block.
+****
+----
+
+Sidebar:
+
+```adoc
+.AsciiDoc history
+****
+AsciiDoc was first released in Nov 2002 by Stuart Rackham.
+It was designed from the start to be a shorthand syntax
+for producing professional documents like DocBook and LaTeX.
+****
+```
+
+.AsciiDoc history
+****
+AsciiDoc was first released in Nov 2002 by Stuart Rackham.
+It was designed from the start to be a shorthand syntax
+for producing professional documents like DocBook and LaTeX.
+****
+
+
+=== Admonition blocks
+
+Five kinds of standard admonition blocks are available in asciidoc and these can be mapped to either default or custom icons.
+
+[source,adoc]
+----
+[NOTE]
+====
+This is an example of an admonition block.
+
+Unlike an admonition paragraph, it may contain any AsciiDoc content.
+The style can be any one of the admonition labels:
+
+* NOTE
+* TIP
+* WARNING
+* CAUTION
+* IMPORTANT
+====
+----
+
+This renders as:
+
+[NOTE]
+====
+This is an example of an admonition block.
+
+Unlike an admonition paragraph, it may contain any AsciiDoc content.
+The style can be any one of the admonition labels:
+
+* NOTE
+* TIP
+* WARNING
+* CAUTION
+* IMPORTANT
+====
+
+For a single paragraph admonition, simply use a double colon:
+
+[source,adoc]
+----
+NOTE:: Note content.
+----
+
+which renders as:
+
+NOTE:: Note content.
+
+
+Block admonition:
+
+[source,adoc]
+----
+[IMPORTANT]
+.Feeding the Werewolves
+====
+While werewolves are hardy community members, keep in mind the following dietary concerns:
+
+. They are allergic to cinnamon.
+. More than two glasses of orange juice in 24 hours makes them howl in harmony with alarms and sirens.
+. Celery makes them sad.
+====
+----
+
+
+https://github.com/asciidoctor/asciidoctor-pdf/blob/master/docs/theming-guide.adoc#key-prefix-admonition-icon
+
+
+Alternate admonitions are available at: https://github.com/jessedoyle/prawn-icon/tree/master/data/fonts
+
+
+=== Footnotes
+
+Asciidoc has a limitation in that footnotes appear at the end of each chapter. Asciidoctor does not support footnotes appearing at the bottom of each page.
+
+You can add footnotes to your presentation using the footnote macro (`footnote\:[]`). If you plan to reference a footnote more than once, use the footnote macro with a target (`footnote\:id[]`).
+
+[source,adoc]
+----
+The hail-and-rainbow protocol can be initiated at three levels:
+
+. doublefootnote:[The double hail-and-rainbow level makes my toes tingle.]
+. tertiary
+. apocalyptic
+
+A bold statement!footnote:disclaimer[Opinions are my own.]
+
+Another outrageous statement.footnote:disclaimer[]
+----
+
+Renders as:
+
+The hail-and-rainbow protocol can be initiated at three levels:
+
+. doublefootnote:[The double hail-and-rainbow level makes my toes tingle.]
+. tertiary
+. apocalyptic
+
+A bold statement!footnote:disclaimer[Opinions are my own.]
+
+Another outrageous statement.footnote:disclaimer[]
+
+=== Index markers
+
+There are two types of index terms in AsciiDoc:
+
+*A flow index term.* appears in the flow of text (i.e., a visible term) and in the index. This type of index term can only be used to define a primary entry:
+
+[source,adoc]
+----
+indexterm2:[<primary>] or ((<primary>))
+----
+
+*A concealed index term.* a group of index terms that appear only in the index. This type of index term can be used to define a primary entry as well as optional secondary and tertiary entries:
+
+[source,adoc]
+----
+indexterm:[<primary>, <secondary>, <tertiary>
+----
+
+--or--
+
+[source,adoc]
+----
+(((<primary>, <secondary>, <tertiary>)))
+----
+
+
+[source,adoc]
+----
+The Lady of the Lake, her arm clad in the purest shimmering samite,
+held aloft Excalibur from the bosom of the water,
+signifying by divine providence that I, ((Arthur)), (1)
+was to carry Excalibur (((Sword, Broadsword, Excalibur))). (2)
+That is why I am your king. Shut up! Will you shut up?!
+Burn her anyway! I'm not a witch.
+Look, my liege! We found them.
+
+indexterm2:[Lancelot] was one of the Knights of the Round Table. (3)
+indexterm:[knight, Knight of the Round Table, Lancelot] (4)
+----
+
+. The double parenthesis form adds a primary index term and includes the term in the generated output.
+. The triple parenthesis form allows for an optional second and third index term and does not include the terms in the generated output (i.e., concealed index term).
+. The inline macro indexterm2:[primary] is equivalent to the double parenthesis form.
+. The inline macro indexterm:[primary, secondary, tertiary] is equivalent to the triple parenthesis form.
+
+If you’re defining a concealed index term (i.e., the indexterm macro), and one of the terms contains a comma, you must surround that segment in double quotes so the comma is treated as content. For example:
+
+[source,adoc]
+----
+I, King Arthur.
+indexterm:[knight, "Arthur, King"]
+----
+
+--or--
+
+[source,adoc]
+----
+I, King Arthur.
+(((knight, "Arthur, King")))
+----
+
