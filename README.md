@@ -120,7 +120,7 @@ Install syntax highlighting gems as follows (for Windows, append the string --so
 ```
 gem install coderay
 gem install rouge
-gem install pygments
+gem install pygments.rb
 ``` 
 
 ## Asciidoc headers
@@ -174,7 +174,7 @@ For your own content, change the name of the header file to a meaningful file na
 
 All conversions require cleanup.
 
-The most relaible converter from LaTeX to asciidoc that I have found is pandoc:
+The most reliable converter from LaTeX to asciidoc that I have found is pandoc:
 
 https://pandoc.org/getting-started.html
 

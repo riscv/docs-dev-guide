@@ -89,8 +89,9 @@ While asciidoc can render graphics in all popular formats, by far the highest qu
 
 For some graphical elements, RISC-V specicifcations can make use of https://wavedrom.com/[Wavedrom diagrams].
 
-A tutaorial on creating
+A build that incorprates building of Wavedrom diagrams is under development. The build will support making use of the git repo as the single source of truth for a specification.
 
+Until the automation has been developed ans tested, the code for the wavedrom diagrams should be maintained in the repsitory and the filename for the svg output should have the same name (with the svg extension).
 
 === Unicode symbols
 
@@ -99,7 +100,7 @@ For pdf, some unicode symbols are buggy. There are some workarounds. I noticed t
 
 Here are a few unicode examples from https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references:
 
-AS an example, &#9830; is encoded as follows:
+As an example, &#9830; is encoded as follows:
 
 ```unicode
 &#9830;
@@ -115,23 +116,33 @@ sym,num,name
 &#x0077;,0077,w
 &#8756;,8756,therefore
 &#9839;,9839,sharp
-&#9084;,9084,angzarr not working
-&#8921;,8921,ggg not working
 &#1096;,1096,shcy
 &#982;,982,piv varpi
 &#969;,969,omega
 &#8472;,8472,weierp wp
-&#8617;,8617,hookleftarrow not working
 &#8721;,8721,sum
 &#8734;,8734,infin
 &#8747;,8747,integral
+&#8800;,8800,not equal to
 &#8804;,8804,le
 &#8805;,8805,ge
+&#8776;,8776,numerical approximation
+&#68;,68,mathematical D?
+&#8658;,8658,rightwards double arrow
 |===
 
-The fact that some unicode doesn't work is connected to prawn and not to asciidoctor-pdf. The workaround makes use of the fact that it's possible to map fonts to numbers for which you don't need to makeuse of the existing unicode mapping.
+The fact that some unicode doesn't work is connected to prawn, which is used by asciidoctor-pdf, and not to asciidoctor-pdf itself. The workaround makes use of the fact that it's possible to map fonts to numbers for which you don't need to makeuse of the existing unicode mapping.
 
-Use _w_ possibly.
+If a mathematical _w_ is important, we can implement the workaround until fixes are implemented.
 
 
+[#unicode-not-working]
+.Unicode identified as not working
+[width="100%",options=header,format=csv]
+|===
+sym,num,name
+&#9084;,9084,angzarr not working
+&#8921;,8921,ggg not working
+&#8617;,8617,hookleftarrow not working
+|===
 

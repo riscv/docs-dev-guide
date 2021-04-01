@@ -131,20 +131,6 @@ sqrt(4) = 2
 
 It looks like there is not much need for actual equations in the specifications. Rather, there is a set of specific unicode characters that are used:
 
-```adoc
-&#8804; //less than or equal
-&#8805; //greater than or equal, also &gt;
-&#8800; //not equal to
-&#8776; //numerical approximation
-&#8734; //infinity
-&#68; //mathematical D
-&#119856; //mathmatical w
-&#8658; //rightwards double arrow
-```
-Best practice is to use the unicode:
-
-&#8804;,  &#8805;, &#8800;,  &#8776;, &#8734;,  &#68;, &#8658;,
-
 
 Asciidoctor PDF currently only supports decimal character references. See https://github.com/asciidoctor/asciidoctor-pdf/issues/486
 
