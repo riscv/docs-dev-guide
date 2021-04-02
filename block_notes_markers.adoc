@@ -88,15 +88,15 @@ For a single paragraph admonition, simply use a double colon:
 
 [source,adoc]
 ----
-NOTE:: Note content.
+NOTE: Note content.
 ----
 
 which renders as:
 
-NOTE:: Note content.
+NOTE: Note content.
 
 
-Block admonition:
+Another example of an admonition block:
 
 [source,adoc]
 ----
@@ -126,8 +126,34 @@ While werewolves are hardy community members, keep in mind the following dietary
 
 https://github.com/asciidoctor/asciidoctor-pdf/blob/master/docs/theming-guide.adoc#key-prefix-admonition-icon
 
+The default admonition icons don't look right for RISK-V specification, and alternate icons and colors have been set in risc-v_spec-pdf.yml.  and will be considered.
 
-Alternate admonition icons are available at: https://github.com/jessedoyle/prawn-icon/tree/master/data/fonts
+Current icons, edited to tone down color:
+
+NOTE: note
+
+TIP: tip
+
+WARNING: warning
+
+CAUTION: caution
+
+IMPORTANT: important
+
+
+[#custom-color-icons]
+.Customized colors for icons
+[width="100%",options=header,format=csv]
+|===
+Icon,default,customized
+NOTE,19407c,6489b3
+TIP,111111,535a63
+WARNING,bf6900,9c4d4b
+CAUTION,bf3400,c99a2c
+IMPORTANT,bf0000,b58f5b
+|===
+
+
 
 
 === Footnotes

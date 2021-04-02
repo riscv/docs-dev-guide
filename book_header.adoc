@@ -3,7 +3,7 @@
 :stem: latexmath
 :description: A working temaplate for RISC-V documentation in asciidoc
 :company: RISC-V.org
-:revdate: 03/2021
+:revdate: 04/2021
 :revnumber: 0.01
 :revremark: Pre-release version
 :url-riscv: http://riscv.org
@@ -20,7 +20,7 @@
 // Settings:
 :experimental:
 :reproducible:
-//:icons: font
+:icons: font
 :lang: en
 :listing-caption: Listing
 :sectnums:

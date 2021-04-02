@@ -141,11 +141,11 @@ sym,num,name
 
 While asciidoc can render graphics in all popular formats, by far the highest quality graphics rendering is from .svg format.
 
-https://wavedrom.com/[Wavedrom sequence diagrams] are essential to the RISC-V specifications.
+https://wavedrom.com/[Wavedrom sequence diagrams] are essential to the RISC-V specifications and outputto svg.
 
 [#wavedrom_example]
 .A wavedrom example
-image::wavedrom-example.svg[wavedrom_example]
+image::wavedrom/wavedrom-example.svg[wavedrom_example]
 
 https://asciidoctor.org/docs/asciidoctor-diagram/#image-output-location[Asciidocdoctor-pdf] enables automation of diagrams from scripts, including Wavedrom.
 

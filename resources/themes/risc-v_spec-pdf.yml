@@ -154,11 +154,21 @@ admonition:
   column_rule_color: $base_border_color
   column_rule_width: $base_border_width
   padding: [0, $horizontal_rhythm, 0, $horizontal_rhythm]
-  #icon:
-  #  tip:
-  #    name: fa-lightbulb-o
-  #    stroke_color: 111111
-  #    size: 24
+  icon:
+    tip:
+      name: comments-o
+      stroke_color: 535a63
+      size: 24
+    important:
+      name: hand-pointer-o
+      stroke_color: b58f5b
+    note: 
+      name: pencil-square-o
+      stroke_color: 6489b3
+    warning:
+      stroke_color: 9c4d4b
+    caution: 
+      stroke_color: c99a2c
   label:
     text_transform: uppercase
     font_style: bold
