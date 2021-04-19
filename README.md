@@ -2,11 +2,13 @@
 
 This repo contains documentation templates and information on build tools for the asciidoctor toolchain, for building professional quality pdfs of RISC-V specification documents using Asciidoc/asciidcotor.
 
+We have documented both Mac and Windows installs--please scroll down to find Windows. If you are a contirbutor and need assistance, please contact us.
+
 When you clone this repo, you have the file structure on your machine that you need for creating professional quality pdfs from asciidoc, along with example files that demonstrate how to handle the use cases that we have encountered.
 
 This is a work in progress, and the tools can change, so please let us know if you run into problems and/or have questions.
 
-## Asciidoc needs Asciidoctor
+## To perform a build, asciidoc needs Asciidoctor
 
 - To author in Asciidoc, you must install Asciidoctor.
 
@@ -115,7 +117,7 @@ gem install asciidoctor-pdf
 
 ## Add syntax highlighting gems for Asciidoc output
 
-Install syntax highlighting gems as follows (for Windows, append the string --source http://rubygems.org to each command):
+Install syntax highlighting gems as follows (for Windows, append the string `--source http://rubygems.org` to each command):
 
 ```
 gem install coderay

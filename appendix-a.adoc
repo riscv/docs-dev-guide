@@ -1,7 +1,14 @@
 [appendix]
 == Terminology
 
+ABI:: Application binary interface. Absctracts and interface for applications to not need to know what lies beneath it in S or M modes.
+//(This definition contains ambiguities for people who are not familiar with where S and M modes operate).
+
+AEE:: Application execution environment--the environment, from bare metal to full operating system, in which an application runs.
+
 AIA:: xxx
+
+AIS 31:: Information Security service for Europe and the global finance industry (for bank cards), written by BSI.
 
 ALU:: Arithmetic Logical Unit
 
@@ -11,11 +18,15 @@ AT:: xxx
 
 Atomic Layer Deposition:: A layer-by-layer process that results in the deposition of thin films one atomic layer at a time in a highly controlled manner.
 
-BF::
+BF:: Brian Float
+
+BFLOAT16:: Brain float 16 bit--a vector	(V) extension, https://en.wikipedia.org/wiki/Bfloat16_floating-point_format.
+
+BSI:: German Federal Information Security service.
 
 CPU Cache:: Many CPUs three kinds of caches to speed up data retrieval: an instruction cache for executable instruction fetch, a data cache for data store and fetch, and a translation lookaside buffer (TLB) for virtual-to-physical address translation for executable instructions and data.
 
-CMOS:: Complementary Metal Oxide Semiconductor
+CMOS:: Complementary Metal Oxide Semiconductor.
 
 Chemical Vapor Deposition:: A chemical deposition process in which the wafer is exposed to one or more volatile precursors, which react and/or decompose on the substrate surface to produce the desired film.
 
@@ -26,6 +37,8 @@ eDRAM:: Embedded DRAM
 ELEN:: Element length
 
 GE:: Gate Equivalent
+
+Hart:: HARdware Thread--at machine-mode level each hart is a real hardware thread, either one hart per core without hardware multithreading, or multiple harts per core with hardware multithreading, and 'hart' represents the hardware resource. It is possible to emulate harts in software, for example, privileged execution environments can multiplex lesser-privileged harts onto physical hardware using timer interrupts. Note that co-operative multithreading within the same privilege level is not a compliant implementation. Across all implementation choices, we retain the concept of a hart as a resource abstraction representing an independently advancing RISC-V execution context within a RISC-V execution environment.
 
 IC:: Integrated Circuit
 
@@ -41,17 +54,24 @@ MCM:: Multi-chip Module
 
 MMU:: Memory Management Unit
 
-NAND:: Not-and
+NAND:: Not-and.
+
+NIST:: Keeps the standard time for America, defines 1 inch, and also cryptographic standards.
+
 
 NOR:: Logical NOR, known as Pierce's Equivalent, Quine's Dagger, the ampcheck (from the Greek for "cutting both ways"),  joint denial, or neither-nor, operates on two logical values, typically from two propositions, that produces a value of true if and only if both operands are false. In other words, it produces a value of false if and only if at least one operand is true.
 
 Photolithography:: In microprocessor maufacturing, a process of using light to transfer a geometric pattern from a photomask (also called an optical mask) pattern parts to a photosensitive substrate on a thin film (substrate or wafer). The process can also make use of chemical photoresist on the substrate.
 
-PLIC:: Progressive Lossless Image Coding
+PLIC:: Progressive Lossless Image Coding.
+
+PQC:: Post-Quantum Cryptography, due to replace RSA and ECC in NIST cryptography [PQC] as well as military [NSA].
 
 PTE:: Page Table Entry
 
 PTEP:: xxx
+
+PTG.2:: A physical random number generator class defined in AIS 31 / CC.
 
 PUD:: xxx
 
@@ -65,7 +85,9 @@ SFENCE:: Orders processor execution relative to all memory stores prior to the S
 
 SFENCE.VMA:: (instruction wrapper?)
 
-SoC:: (System on Chip?)
+SoC:: System on Chip.
+
+SP 800 90B:: Used in military & USGOV random security evaluations, written by NIST.
 
 SRAM:: Static Random Access Memory
 
@@ -75,7 +97,9 @@ VM:: Virtual Machine
 
 VMA:: (..Virtual Memory Allocation ??)
 
+XLEN:: Register width--etymology involves reference to mathematical `X` and abbreviation of the word "length."
+
 ZBT:: Zero Bus Turnaround
 
-ZFew::
+ZFew:: xxxx
 

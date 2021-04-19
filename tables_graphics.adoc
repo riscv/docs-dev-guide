@@ -141,7 +141,7 @@ sym,num,name
 
 While asciidoc can render graphics in all popular formats, by far the highest quality graphics rendering is from .svg format.
 
-https://wavedrom.com/[Wavedrom sequence diagrams] are essential to the RISC-V specifications and outputto svg.
+https://wavedrom.com/[Wavedrom sequence diagrams] are essential to the RISC-V specifications. We are in the process of phasing in an automated process for incorporating Wavedrom diagrams into the professional quality pdf output so please stay tuned.
 
 [#wavedrom_example]
 .A wavedrom example
@@ -154,4 +154,85 @@ Even as we are using wavedrom to simplify the creation of accurate svgs for regi
 A build that incorporates building of Wavedrom diagrams is under development. The build will support making use of the git repo as the single source of truth for a specification.
 
 Until the automation has been developed ans tested, the code for the wavedrom diagrams should be maintained in the repository and the filename for the SVG output should have the same name (with the SVG extension).
+
+
+==== Diagram types available
+
+Asciidoctor supports numerous diagram types:
+
+
+
+Simple ditaa diagrams:
+
+[source,adoc]
+----
+[ditaa,target="image-example",svg]
+....
+
+                   +-------------+
+                   | Asciidoctor |-------+
+                   |   diagram   |       |
+                   +-------------+       | SVG out
+                       ^                 |
+                       | ditaa in        |
+                       |                 v
+ +--------+   +--------+----+    /---------------\
+ |        | --+ Asciidoctor +--> |               |
+ |  Text  |   +-------------+    |   Beautiful   |
+ |Document|   |   !magic!   |    |    Output     |
+ |     {d}|   |             |    |               |
+ +---+----+   +-------------+    \---------------/
+     :                                   ^
+     |          Lots of work             |
+     +-----------------------------------+
+....
+----
+
+Renders to:
+
+[ditaa,target="image-example",svg]
+....
+
+                   +-------------+
+                   | Asciidoctor |-------+
+                   |   diagram   |       |
+                   +-------------+       | SVG out
+                       ^                 |
+                       | ditaa in        |
+                       |                 v
+ +--------+   +--------+----+    /---------------\
+ |        | --+ Asciidoctor +--> |               |
+ |  Text  |   +-------------+    |   Beautiful   |
+ |Document|   |   !magic!   |    |    Output     |
+ |     {d}|   |             |    |               |
+ +---+----+   +-------------+    \---------------/
+     :                                   ^
+     |          Lots of work             |
+     +-----------------------------------+
+....
+
+==== Handling Wavedrom diagrams
+
+The following json-formatted script is an example that will be used to generate an svg diagram once the automated process is fully implemented.
+
+
+[source,wavedrom]
+....
+{reg:[
+    { bits:  7, name: 0x3b, attr: ['OP-32'] },
+    { bits:  5, name: 'rd' },
+    { bits:  3, name: 0x0, attr: ['ADD.UW'] },
+    { bits:  5, name: 'rs1' },
+    { bits:  5, name: 'rs2' },
+    { bits:  7, name: 0x04, attr: ['ADD.UW'] },
+]}
+....
+
+
+[#wavedrom_example2]
+.A second wavedrom example
+image::wavedrom/wavedrom-example2.svg[wavedrom_example2]
+
+
+
 
