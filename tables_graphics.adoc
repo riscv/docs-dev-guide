@@ -120,11 +120,16 @@ sym,num,name
 &#8776;,8776,numerical approximation
 &#68;,68,mathematical D?
 &#8658;,8658,rightwards double arrow
+&#88;,88,Latin Capital x
+&#967;,967,Greek x
+&#215;,215,times
+&#9745;,9745,boxed checkmark
+&#114;,114,latin small letter r
 |===
 
-The fact that some unicode doesn't work is connected to prawn, which is used by asciidoctor-pdf, and not to asciidoctor-pdf itself. The workaround makes use of the fact that it's possible to map fonts to numbers for which you don't need to makeuse of the existing unicode mapping.
+Unfortunately a better checkmark is not available for asciidoctor-pdf, because anything above four digits doesn't work. The fact that encodings for moe than four digits for HTML encoding doesn't work is connected to prawn, which is used for generating the fully functional asciidoctor-pdf, and not to asciidoctor-pdf itself. Until the newer asciidoctor build that uses a different toolchain becomes fully featured, we must use a workaround.
 
-If a mathematical _w_ is important, we can implement the workaround until fixes are implemented.
+It is possible to map fonts for better substitutes to numbers for which you don't need to make use of the existing unicode mapping should the need become a priority. For example, if a perfect mathematical _w_ is important, we can implement the workaround until the newer toolchain for the pdf build is fully featured.
 
 
 [#unicode-not-working]
@@ -135,6 +140,7 @@ sym,num,name
 &#9084;,9084,angzarr not working
 &#8921;,8921,ggg not working
 &#8617;,8617,hookleftarrow not working
+&#9083;,9083,not checkmark not working
 |===
 
 === Graphics
@@ -188,7 +194,7 @@ Simple ditaa diagrams:
 ....
 ----
 
-Renders to:
+Renders to (this feature is in process for pdf output):
 
 [ditaa,target="image-example",svg]
 ....
@@ -211,6 +217,21 @@ Renders to:
      +-----------------------------------+
 ....
 
+==== Another example
+
+[plantuml, diagram-classes, svg]
+....
+class BlockProcessor
+class DiagramBlock
+class DitaaBlock
+class PlantUmlBlock
+
+BlockProcessor <|-- DiagramBlock
+DiagramBlock <|-- DitaaBlock
+DiagramBlock <|-- PlantUmlBlock
+....
+
+
 ==== Handling Wavedrom diagrams
 
 The following json-formatted script is an example that will be used to generate an svg diagram once the automated process is fully implemented.
@@ -228,11 +249,36 @@ The following json-formatted script is an example that will be used to generate 
 ]}
 ....
 
+While it appears that there is great interest within the asciidoctor community in enabling Wavedrom diagrams, to date it is not fully integrated with asciidoctor-diagram, which looks for a wavedrom-diagram.app. The downloaded app, however, is intended for use as a manual interface for processing one diagram at a time from individual scripts.
 
 [#wavedrom_example2]
 .A second wavedrom example
 image::wavedrom/wavedrom-example2.svg[wavedrom_example2]
 
+//[wavedrom,target="wavedrom_example_3",svg]
+//....
+//{reg:[
+//    { bits:  7, name: 0x3b, attr: ['OP-32'] },
+//    { bits:  5, name: 'rd' },
+//    { bits:  3, name: 0x0, attr: ['ADD.UW'] },
+//    { bits:  5, name: 'rs1' },
+//    { bits:  5, name: 'rs2' },
+//    { bits:  7, name: 0x04, attr: ['ADD.UW'] },
+//]}
+//....
+
+[wavedrom,target="wavedrom_example_3",svg]
+....
+{reg:[
+    { bits:  7, name: 0x3b, attr: ['OP-32'] },
+    { bits:  5, name: 'rd' },
+    { bits:  3, name: 0x0, attr: ['ADD.UW'] },
+    { bits:  5, name: 'rs1' },
+    { bits:  5, name: 'rs2' },
+    { bits:  7, name: 0x04, attr: ['ADD.UW'] },
+]}
+....
 
 
+asciidoctor-pdf vs asciidoctor-web-pdf
 

@@ -1,7 +1,7 @@
 [[riscv-doc-template]]
-= RISC-V Documentation Template
+= RISC-V International Documentation Template
 :stem: latexmath
-:description: A working temaplate for RISC-V documentation in asciidoc
+:description: A working template for documenting RISC-V architecture in asciidoc
 :company: RISC-V.org
 :revdate: 04/2021
 :revnumber: 0.01
@@ -20,7 +20,10 @@
 // Settings:
 :experimental:
 :reproducible:
-// needs to be changed :wavedrom: wavedrom-editor/wavedrom-editor.app
+// needs to be changed
+:wavedrom:
+
+:imagesoutdir: images
 :icons: font
 :lang: en
 :listing-caption: Listing
@@ -38,7 +41,7 @@ endif::[]
 :xrefstyle: short
 
 
-This is the preamble, which can contain copyright information. For this book example, I am here mentioning that I have copied information directly from several Web sites that are hosted by asciidoctor.org and devoted to providing Asciidoc/Asciidoctor documentation. Graphics used are either explicitly avilabble for free, are property of RISC-V, or were created using Wavedrom.
+This is the preamble, which can contain copyright information. For this book example, I am here mentioning that I have copied information directly from several Web sites that are hosted by asciidoctor.org and devoted to providing Asciidoc/Asciidoctor documentation. Graphics used are either explicitly available for free, are property of RISC-V International, or were created using Wavedrom.
 
 include::colophon.adoc[]
 //include::overview.adoc[]

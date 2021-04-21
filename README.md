@@ -1,12 +1,14 @@
 # Docs templates and build process
 
-This repo contains documentation templates and information on build tools for the asciidoctor toolchain, for building professional quality pdfs of RISC-V specification documents using Asciidoc/asciidcotor.
+This repo contains documentation templates and information on build tools for the asciidoctor toolchain, for building professional quality pdfs of RISC-V specification documents using Asciidoc/asciidoctor.
 
-We have documented both Mac and Windows installs--please scroll down to find Windows. If you are a contirbutor and need assistance, please contact us.
+We have documented both Mac and Windows installs--please scroll down to find Windows. If you are a contributor and need assistance, please contact us.
 
 When you clone this repo, you have the file structure on your machine that you need for creating professional quality pdfs from asciidoc, along with example files that demonstrate how to handle the use cases that we have encountered.
 
 This is a work in progress, and the tools can change, so please let us know if you run into problems and/or have questions.
+
+NOTE: There are, in existence, tow seprates 
 
 ## To perform a build, asciidoc needs Asciidoctor
 
@@ -78,7 +80,7 @@ asciidoctor --version
 If you see the Asciidoctor version information printed in the terminal, then you’re already able to build html from an .adoc file using:
 
 ```
-asciidcotor filename.adoc
+asciidoctor filename.adoc
 ```
 
 ## Windows—install Ruby with RVM
@@ -104,15 +106,19 @@ https://rubygems.org/gems/asciidoctor/
 - In Powershell, use the following command to install the Asciidoctor gem:
 
 ```
-gem install asciidoctor <path-to-dowloaded-gem>
+gem install asciidoctor <path-to-downloaded-gem>
 ```
 
 ## Both Win and Mac, for pdf's
 
-Install the asciidoctor-pdf gem, which is needed for pdf rendering:
+Install the following:
+
+* the asciidoctor-pdf gem, which is needed for pdf rendering.
+* the asciidoctor-kroki gem, which is needed for diagram rendering.
 
 ```
 gem install asciidoctor-pdf 
+gem install asciidoctor-kroki
 ```
 
 ## Add syntax highlighting gems for Asciidoc output

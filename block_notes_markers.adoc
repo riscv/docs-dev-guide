@@ -108,6 +108,18 @@ which renders as:
 
 NOTE: Note content.
 
+Alternate octicons:
+
+* alert-24
+* comment-discussion-24
+* flame-24
+* info-24
+* pencil-24
+* question-24
+* sheild-24
+* squirrel-24
+* zap-24
+
 
 Another example of an admonition block:
 
@@ -139,7 +151,7 @@ While werewolves are hardy community members, keep in mind the following dietary
 
 https://github.com/asciidoctor/asciidoctor-pdf/blob/master/docs/theming-guide.adoc#key-prefix-admonition-icon
 
-The default admonition icons don't look right for RISK-V specification, and alternate icons and colors have been set in risc-v_spec-pdf.yml.  and will be considered.
+The default admonition icons don't look right for RISC-V specification, and alternate icons and colors have been set in risc-v_spec-pdf.yml.  and will be considered.
 
 Current icons, edited to tone down color:
 
