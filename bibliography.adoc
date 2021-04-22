@@ -1,17 +1,4 @@
 [[bibliography]]
 == Bibliography
 
-NOTE: This is a placeholder file. There is the potiential that this file could morph into a seprate biliography of useful information for the numerous audience types that are currently using RISC-V along with identified potential users.
-
-[BSI] https://www.bsi.bund.de/EN/TheBSI/thebsi_node.html
-[90B] https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-90B.pdf
-[AIS31] https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Zertifizierung/Interpretationen/AIS_31_Functionality_classes_for_random_number_generators_e.html
-[PQC] https://csrc.nist.gov/projects/post-quantum-cryptography
-[NSA] https://www.nsa.gov/News-Features/Feature-Stories/Article-View/Article/2394053/nsa-cybersecurity-perspectives-on-quantum-key-distribution-and-quantum-cryptogr/
-
-Information on harts:
-----
-https://people.eecs.berkeley.edu/~krste/papers/lithe-hotpar09.pdf
-https://people.eecs.berkeley.edu/~krste/papers/lithe-pldi2010.pdf
-https://people.eecs.berkeley.edu/~krste/papers/pan-phd-thesis.pdf
-----
+NOTE: This is a placeholder file while bibliography is being implemented.

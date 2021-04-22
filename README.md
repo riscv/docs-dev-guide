@@ -114,11 +114,13 @@ gem install asciidoctor <path-to-downloaded-gem>
 Install the following:
 
 * the asciidoctor-pdf gem, which is needed for pdf rendering.
-* the asciidoctor-kroki gem, which is needed for diagram rendering.
+* the asciidoctor-diagram gem, which is needed for diagram rendering.
+* the asciidoctor-bibtex gem, which is needed for auto-creation of a bibliography from citations.
 
 ```
 gem install asciidoctor-pdf 
-gem install asciidoctor-kroki
+gem install asciidoctor-diagram
+gem install asciidoctor-bibtex
 ```
 
 ## Add syntax highlighting gems for Asciidoc output
@@ -164,12 +166,14 @@ This generates a file named `any_file_name.html`.
 For pdf output, cd into this cloned directory and use this command:
 
 ```
-asciidoctor-pdf book_header.adoc -a pdf-style#resources/themes/risc-v_spec-pdf.yml -a pdf-fontsdir=resources/fonts
+asciidoctor-pdf -r asciidoctor-diagram book_header.adoc -a pdf-style#resources/themes/risc-v_spec-pdf.yml -a pdf-fontsdir=resources/fonts
 ```
 
 This generates a file named `book_header.pdf`. 
 
 For your own content, change the name of the header file to a meaningful file name.
+
+NOTE: When copying/pasting commands for the CLI on the Windows OS, check that no substitutions are being made. We have seen the '=' get replaced with a '#', causing an error message about fonts.
 
 ## Asciidoc/asciidoctor documentation
 
@@ -193,6 +197,8 @@ pandoc source_file.tex destination_file.adoc
 ```
 
 After that first step, you must open the file using a text editor with a good asciidoc linter and clean it up.
+
+You can find a list of text editors that support asciidoc authoring in the asciidoc/asciidoctor documentation: 
 
 While pandoc does a reasonably good job, there are always documentation nits that must be addressed.
 

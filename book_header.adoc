@@ -1,6 +1,5 @@
 [[riscv-doc-template]]
 = RISC-V International Documentation Template
-:stem: latexmath
 :description: A working template for documenting RISC-V architecture in asciidoc
 :company: RISC-V.org
 :revdate: 04/2021
@@ -20,9 +19,8 @@
 // Settings:
 :experimental:
 :reproducible:
-// needs to be changed
-:wavedrom:
-
+// needs to be changed? bug discussion started
+//:WaveDromEditorApp: app/wavedrom-editor.app
 :imagesoutdir: images
 :icons: font
 :lang: en
@@ -36,7 +34,7 @@ ifdef::backend-pdf[]
 endif::[]
 :data-uri:
 :hide-uri-scheme:
-:stem:
+:stem: latexmath
 :footnote:
 :xrefstyle: short
 
