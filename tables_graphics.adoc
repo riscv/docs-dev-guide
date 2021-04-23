@@ -234,9 +234,24 @@ DiagramBlock <|-- PlantUmlBlock
 
 ==== Handling Wavedrom diagrams
 
+For the time being and until wavedrom is fully operational as an extension to asciidoctor-diagram, the following workaround is required if you are making use of wavedrom diagrams in your specification:
+
+. Following guidelines available at https://wavedrom.com/, create a json-formatted script for your diagram.
+. Using a informative filename, save that script in the `images/wavedrom/diagram_scripts/` relative to your asciidoc source files.
+. Use one of the available wavedrom apps (online, downloadable, or CLI) to generate an `image.svg` file that makes use of the same filename and save it in the `/images` directory.
+. Using the following pattern, reference the `image.svg` file from the asciidoc file:
+
+[source,adoc]
+----
+[#wavedrom_example2]
+.A second wavedrom example
+image::wavedrom/wavedrom-example2.svg[wavedrom_example2]
+----
+
 The following json-formatted script is an example that will be used to generate an svg diagram once the automated process is fully implemented.
 
-
+[source,adoc]
+----
 [source,wavedrom]
 ....
 {reg:[
@@ -248,12 +263,17 @@ The following json-formatted script is an example that will be used to generate 
     { bits:  7, name: 0x04, attr: ['ADD.UW'] },
 ]}
 ....
+----
 
-While it appears that there is great interest within the asciidoctor community in enabling Wavedrom diagrams, to date it is not fully integrated with asciidoctor-diagram, which looks for a wavedrom-diagram.app. The downloaded app, however, is intended for use as a manual interface for processing one diagram at a time from individual scripts.
+
+NOTE: While it appears that there is great interest within the asciidoctor community in enabling Wavedrom diagrams, to date it is not fully integrated with asciidoctor-diagram, which looks for a wavedrom-diagram.app. The downloaded app, however, is intended for use as a manual interface for processing one diagram at a time from individual scripts. For that reason the following output is from an svg that was generated using the Wavedrom CLI.
 
 [#wavedrom_example2]
 .A second wavedrom example
 image::wavedrom/wavedrom-example2.svg[wavedrom_example2]
+
+
+
 
 //[wavedrom,target="wavedrom_example_3",svg]
 //....
@@ -267,18 +287,4 @@ image::wavedrom/wavedrom-example2.svg[wavedrom_example2]
 //]}
 //....
 
-[wavedrom,target="wavedrom_example_3",svg]
-....
-{reg:[
-    { bits:  7, name: 0x3b, attr: ['OP-32'] },
-    { bits:  5, name: 'rd' },
-    { bits:  3, name: 0x0, attr: ['ADD.UW'] },
-    { bits:  5, name: 'rs1' },
-    { bits:  5, name: 'rs2' },
-    { bits:  7, name: 0x04, attr: ['ADD.UW'] },
-]}
-....
-
-
-asciidoctor-pdf vs asciidoctor-web-pdf
 
