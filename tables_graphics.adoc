@@ -164,11 +164,11 @@ Until the automation has been developed ans tested, the code for the wavedrom di
 
 ==== Diagram types available
 
-Asciidoctor supports numerous diagram types:
+Asciidoctor supports numerous diagram types. Unfortunately while the intention is to support wavedrom diagrams, there are some bugs that prevent implementation of automated generation of them directly from asciidoc files.
 
+Once the bugs are resolved, wavedrom should work as other diagram types work.
 
-
-Simple ditaa diagrams:
+Following is source for simple ditaa diagram:
 
 [source,adoc]
 ----
@@ -194,7 +194,7 @@ Simple ditaa diagrams:
 ....
 ----
 
-Renders to (this feature is in process for pdf output):
+Which renders to:
 
 [ditaa,target="image-example",svg]
 ....
@@ -217,7 +217,24 @@ Renders to (this feature is in process for pdf output):
      +-----------------------------------+
 ....
 
-==== Another example
+Following is source for a plantuml diagram:
+
+[source,adoc]
+----
+[plantuml, diagram-classes, svg]
+....
+class BlockProcessor
+class DiagramBlock
+class DitaaBlock
+class PlantUmlBlock
+
+BlockProcessor <|-- DiagramBlock
+DiagramBlock <|-- DitaaBlock
+DiagramBlock <|-- PlantUmlBlock
+....
+----
+
+Which renders to:
 
 [plantuml, diagram-classes, svg]
 ....
@@ -250,10 +267,8 @@ image::wavedrom/wavedrom-example2.svg[wavedrom_example2]
 
 The following json-formatted script is an example that will be used to generate an svg diagram once the automated process is fully implemented.
 
-[source,adoc]
+[source,json]
 ----
-[source,wavedrom]
-....
 {reg:[
     { bits:  7, name: 0x3b, attr: ['OP-32'] },
     { bits:  5, name: 'rd' },
@@ -262,16 +277,16 @@ The following json-formatted script is an example that will be used to generate 
     { bits:  5, name: 'rs2' },
     { bits:  7, name: 0x04, attr: ['ADD.UW'] },
 ]}
-....
 ----
 
+Once the diagram file is properly referenced:
 
-NOTE: While it appears that there is great interest within the asciidoctor community in enabling Wavedrom diagrams, to date it is not fully integrated with asciidoctor-diagram, which looks for a wavedrom-diagram.app. The downloaded app, however, is intended for use as a manual interface for processing one diagram at a time from individual scripts. For that reason the following output is from an svg that was generated using the Wavedrom CLI.
 
 [#wavedrom_example2]
 .A second wavedrom example
 image::wavedrom/wavedrom-example2.svg[wavedrom_example2]
 
+NOTE: While it appears that there is great interest within the asciidoctor community in enabling Wavedrom diagrams, to date it is not fully integrated with asciidoctor-diagram, which looks for a wavedrom-diagram.app. The downloaded app, however, is intended for use as a manual interface for processing one diagram at a time from individual scripts. For that reason the following output is from an svg that was generated using the Wavedrom CLI.
 
 
 
