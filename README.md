@@ -8,15 +8,15 @@ When you clone this repo, you have the file structure on your machine that you n
 
 This is a work in progress, and the tools can change, so please let us know if you run into problems and/or have questions.
 
-NOTE: There are, in existence, tow seprates 
+NOTE: There is a separate pdf build process that uses a different toolchain.  
 
 ## To perform a build, asciidoc needs Asciidoctor
 
 - To author in Asciidoc, you must install Asciidoctor.
 
-- To install Asciidoctor, you must install Ruby.
+- For the full featured pdf that we are implementing, we use Ruby and install gems that support the features.
 
-- To create a pdf from Asciidoc, you must install asciidoctor-pdf and a few additional rubies.
+- To support building wavedrom diagrams directly from scripts contained in blocks in the asciidoc source files, we use npm to install the wavedrom-cli.
 
 ## Install Ruby on Mac
 
@@ -63,7 +63,21 @@ rvm use system
 rvm use 2.7.2
 ```
 
-## Install Asciidoctor on Mac
+ALERT: Ensure that you are using Ruby 2.7.2 for all Ruby gems that you install for the asciidoctor toolchain.
+
+
+
+## Windows—install Ruby with RVM
+
+- For Windows, use: http://rubyinstaller.org/
+
+NOTE: During the Windows install, click in the installer to:
+
+- associate the .rvm with the current version
+- add paths
+- add tdtk
+
+## Mac--install Asciidoctor
 
 - Install Asciidoctor:
 
@@ -83,16 +97,6 @@ If you see the Asciidoctor version information printed in the terminal, then you
 asciidoctor filename.adoc
 ```
 
-## Windows—install Ruby with RVM
-
-- For Windows, use: http://rubyinstaller.org/
-
-NOTE: During the Windows install, click in the installer to:
-
-- associate the .rvm with the current version
-- add paths
-- add tdtk
-
 ## Windows—add the Asciidoctor gem
 
 - Navigate to the following url
@@ -109,17 +113,19 @@ https://rubygems.org/gems/asciidoctor/
 gem install asciidoctor <path-to-downloaded-gem>
 ```
 
-## Both Win and Mac, for pdf's
+## Both Win and Mac, for pdf's and graphics
 
 Install the following:
 
 * the asciidoctor-pdf gem, which is needed for pdf rendering.
 * the asciidoctor-diagram gem, which is needed for diagram rendering.
+* the asciidoctor-wavefront gem, which is needed for wavedrom diagrams.
 * the asciidoctor-bibtex gem, which is needed for auto-creation of a bibliography from citations.
 
 ```
 gem install asciidoctor-pdf 
 gem install asciidoctor-diagram
+gem install asciidoctor-wavefront
 gem install asciidoctor-bibtex
 ```
 
@@ -132,6 +138,33 @@ gem install coderay
 gem install rouge
 gem install pygments.rb
 ``` 
+
+## Add node for and wavedrom-cli for wavedrom diagrams
+
+For Mac:
+```
+brew install node
+npm install -g wavedrom-cli
+ ```
+
+Check that wavedrom-cli is in the path (this should display the help):
+
+```
+wavedrom-cli
+```
+
+For Windows:
+
+Download the installer from https://nodejs.org/en/ and install node, then use npm to install wavedrom-cli:
+
+```
+npm install -g wavedrom-cli
+```
+Check that wavedrom-cli is in the path (this should display the help):
+
+```
+wavedrom-cli
+```
 
 ## Asciidoc headers
 
@@ -169,11 +202,11 @@ For pdf output, cd into this cloned directory and use this command:
 asciidoctor-pdf -r asciidoctor-diagram book_header.adoc -a pdf-style#resources/themes/risc-v_spec-pdf.yml -a pdf-fontsdir=resources/fonts
 ```
 
-This generates a file named `book_header.pdf`. 
+This generates a file named `book_header.pdf` that makes use of the graphics, styles, and fonts that you can see in the example.pdf. 
 
 For your own content, change the name of the header file to a meaningful file name.
 
-NOTE: When copying/pasting commands for the CLI on the Windows OS, check that no substitutions are being made. We have seen the '=' get replaced with a '#', causing an error message about fonts.
+ALERT: When copying/pasting commands for the CLI on the Windows OS, check that no substitutions are being made. We have seen the '=' get replaced with a '#', causing an error message about fonts.
 
 ## Asciidoc/asciidoctor documentation
 
@@ -184,7 +217,7 @@ NOTE: When copying/pasting commands for the CLI on the Windows OS, check that no
 
 ## Conversion
 
-All conversions require cleanup.
+Almost all conversions require some cleanup.
 
 The most reliable converter from LaTeX to asciidoc that I have found is pandoc:
 

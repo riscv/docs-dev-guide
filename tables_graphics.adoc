@@ -1,5 +1,5 @@
-[[tables_graphics]]
-== Tables and graphics
+[[tables_symbols_graphics]]
+== Table, symbols, and graphics
 
 Asciidoc makes standard tables easy and also supports the creation of complex tables.
 
@@ -51,7 +51,7 @@ Which renders as follows:
 |9 2+>|10
 |============================
 
-Code for a numbered encoding table with link target.
+Following is code for a numbered encoding table with link target.
 
 NOTE: Annotations have been added to the code to illustrate their use.
 
@@ -149,24 +149,55 @@ While asciidoc can render graphics in all popular formats, by far the highest qu
 
 https://wavedrom.com/[Wavedrom sequence diagrams] are essential to the RISC-V specifications. We are in the process of phasing in an automated process for incorporating Wavedrom diagrams into the professional quality pdf output so please stay tuned.
 
-[#wavedrom_example]
-.A wavedrom example
-image::wavedrom/wavedrom-example.svg[wavedrom_example]
-
 https://asciidoctor.org/docs/asciidoctor-diagram/#image-output-location[Asciidocdoctor-pdf] enables automation of diagrams from scripts, including Wavedrom.
 
 Even as we are using wavedrom to simplify the creation of accurate svgs for register diagrams, the graphical elements--those for the various diagrams--add complexity to the build.
 
-A build that incorporates building of Wavedrom diagrams is under development. The build will support making use of the git repo as the single source of truth for a specification.
 
-Until the automation has been developed ans tested, the code for the wavedrom diagrams should be maintained in the repository and the filename for the SVG output should have the same name (with the SVG extension).
+==== Automated diagramming
+
+The https://docs.asciidoctor.org/diagram-extension/latest/[asciidoctor-diagram extension] supports numerous diagram types including wavedrom.
+
+The requirements for building wavedrom diagrams are specified in the https://github.com/riscv/docs-templates/blob/main/README.md[docs temaplates readme].
+
+The following json-formatted script, when added within an asciidoc block with the macro indicators `[wavedrom, svg]`, will embed the diagram output into the pdf:
+
+[source,json]
+----
+{reg:[
+    { bits:  7, name: 0x3b, attr: ['OP-32'] },
+    { bits:  5, name: 'rd' },
+    { bits:  3, name: 0x0, attr: ['ADD.UW'] },
+    { bits:  5, name: 'rs1' },
+    { bits:  5, name: 'rs2' },
+    { bits:  7, name: 0x04, attr: ['ADD.UW'] },
+]}
+----
 
 
-==== Diagram types available
+NOTE: Prior bug is fixed and requirements for local build added to the https://github.com/riscv/docs-templates/blob/main/README.md[README]. Once the required node and ruby extensions are installed, the diagrams build from asciidoc blocks
 
-Asciidoctor supports numerous diagram types. Unfortunately while the intention is to support wavedrom diagrams, there are some bugs that prevent implementation of automated generation of them directly from asciidoc files.
 
-Once the bugs are resolved, wavedrom should work as other diagram types work.
+
+[wavedrom, svg]
+....
+{reg:[
+    { bits:  7, name: 0x3b, attr: ['OP-32'] },
+    { bits:  5, name: 'rd' },
+    { bits:  3, name: 0x0, attr: ['ADD.UW'] },
+    { bits:  5, name: 'rs1' },
+    { bits:  5, name: 'rs2' },
+    { bits:  7, name: 0x04, attr: ['ADD.UW'] },
+]}
+....
+
+You have the option of referencing a graphics file directly:
+
+[#wavedrom_example2]
+.A second wavedrom example
+image::wavedrom/wavedrom-example2.svg[wavedrom_example2]
+
+==== Additional diagram type examples
 
 Following is source for simple ditaa diagram:
 
@@ -248,58 +279,5 @@ DiagramBlock <|-- DitaaBlock
 DiagramBlock <|-- PlantUmlBlock
 ....
 
-
-==== Handling Wavedrom diagrams
-
-For the time being and until wavedrom is fully operational as an extension to asciidoctor-diagram, the following workaround is required if you are making use of wavedrom diagrams in your specification:
-
-. Following guidelines available at https://wavedrom.com/, create a json-formatted script for your diagram.
-. Using a informative filename, save that script in the `images/wavedrom/diagram_scripts/` relative to your asciidoc source files.
-. Use one of the available wavedrom apps (online, downloadable, or CLI) to generate an `image.svg` file that makes use of the same filename and save it in the `/images` directory.
-. Using the following pattern, reference the `image.svg` file from the asciidoc file:
-
-[source,adoc]
-----
-[#wavedrom_example2]
-.A second wavedrom example
-image::wavedrom/wavedrom-example2.svg[wavedrom_example2]
-----
-
-The following json-formatted script is an example that will be used to generate an svg diagram once the automated process is fully implemented.
-
-[source,json]
-----
-{reg:[
-    { bits:  7, name: 0x3b, attr: ['OP-32'] },
-    { bits:  5, name: 'rd' },
-    { bits:  3, name: 0x0, attr: ['ADD.UW'] },
-    { bits:  5, name: 'rs1' },
-    { bits:  5, name: 'rs2' },
-    { bits:  7, name: 0x04, attr: ['ADD.UW'] },
-]}
-----
-
-Once the diagram file is properly referenced:
-
-
-[#wavedrom_example2]
-.A second wavedrom example
-image::wavedrom/wavedrom-example2.svg[wavedrom_example2]
-
-NOTE: While it appears that there is great interest within the asciidoctor community in enabling Wavedrom diagrams, to date it is not fully integrated with asciidoctor-diagram, which looks for a wavedrom-diagram.app. The downloaded app, however, is intended for use as a manual interface for processing one diagram at a time from individual scripts. For that reason the following output is from an svg that was generated using the Wavedrom CLI.
-
-
-
-//[wavedrom,target="wavedrom_example_3",svg]
-//....
-//{reg:[
-//    { bits:  7, name: 0x3b, attr: ['OP-32'] },
-//    { bits:  5, name: 'rd' },
-//    { bits:  3, name: 0x0, attr: ['ADD.UW'] },
-//    { bits:  5, name: 'rs1' },
-//    { bits:  5, name: 'rs2' },
-//    { bits:  7, name: 0x04, attr: ['ADD.UW'] },
-//]}
-//....
 
 

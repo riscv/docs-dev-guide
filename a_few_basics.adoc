@@ -48,15 +48,19 @@ NOTE: Settings in the header file trigger auto-generation of Appendix prefixes a
 
 === Code Blocks
 
+Asciidoc/asciidoctor supports code blocks with syntax highlighting for many languages. You can use either periods or dashes to indicate code blocks, and use macros to indicate that the block contains code in the specified language, as in the following example:
+
 
 [source,adoc]
 ----
 [source,python]
-\----
+....
 mono-spaced code block
 add a1,a2,a3; # do an ADD
-\----
+....
 ----
+
+renders as follows:
 
 [source,python]
 ----
@@ -67,8 +71,9 @@ add a1,a2,a3; # do an ADD
 
 === Hyperlinks and cross references
 
+Asciidoctor recognizes hyperlinks to Web pages and shortens them for readability.
 
-blah blah
+
 
 
 
@@ -135,4 +140,6 @@ Since you’re using Bundler to manage the gems, you’ll need to prefix all com
 $ bundle exec asciidoctor-pdf -v
 ```
 Thus, to any command present in the following sections, be sure to include this prefix.
+
+
 
