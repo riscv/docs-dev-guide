@@ -1,26 +1,26 @@
 # Docs templates and build process
 
-This repo contains documentation templates and information on build tools for the asciidoctor toolchain, for building professional quality pdfs of RISC-V specification documents using Asciidoc/asciidoctor.
+This repo contains documentation templates and information on build tools for the Asciidoctor toolchain, for building professional quality pdfs of RISC-V specification documents using AsciiDoc with the Asciidoctor toolchain.
 
-We have documented both Mac and Windows installs--please scroll down to find Windows. If you are a contributor and need assistance, please contact us.
+We have documented both MacOS and Windows installs--please scroll down to find Windows. If you are a contributor and need assistance, please contact us.
 
-When you clone this repo, you have the file structure on your machine that you need for creating professional quality pdfs from asciidoc, along with example files that demonstrate how to handle the use cases that we have encountered.
+When you clone this repo, you have the file structure on your machine that you need for creating professional quality pdfs from AsciiDoc, along with example files that demonstrate how to handle the use cases that we have encountered.
 
 This is a work in progress, and the tools can change, so please let us know if you run into problems and/or have questions.
 
 NOTE: There is a separate pdf build process that uses a different toolchain.  
 
-## To perform a build, asciidoc needs Asciidoctor
+## To perform a build, AsciiDoc needs Asciidoctor
 
-- To author in Asciidoc, you must install Asciidoctor.
+- To author in AsciiDoc, you must install Asciidoctor.
 
 - For the full featured pdf that we are implementing, we use Ruby and install gems that support the features.
 
-- To support building wavedrom diagrams directly from scripts contained in blocks in the asciidoc source files, we use npm to install the wavedrom-cli.
+- To support building wavedrom diagrams directly from scripts contained in blocks in the AsciiDoc source files, we use npm to install the wavedrom-cli.
 
-## Install Ruby on Mac
+## Install Ruby on MacOS
 
-Asciidoctor's Web site recommends installing Ruby using RVM, and then Asciidoctor.
+Asciidoctor's Web site recommends first installing Ruby using RVM, and then Asciidoctor.
 
 RVM is essential for creating pdfs because the pdf build requires Ruby version 2.7.x.
 
@@ -34,19 +34,13 @@ RVM is a Ruby installation and version manager. RVM works by installing Ruby ins
 
 RVM will download and build the Ruby language, install RubyGems along with several essential gems and configure your PATH environment variable.
 
-- Source your shell configuration (only necessary in the window you used to install RVM):
-
-```
-source HOME/.bash_profile
-```
-
-- Remove your local Gem configuration, if you have one (or move it out of the way):
+After the install is finished, open a new Terminal window and remove your local Gem configuration, if you have one (or move it out of the way):
 
 ```
 rm -f HOME/.gemrc
 ```
 
-## Mac—use RVM on Mac
+## MacOS—use RVM on MacOS
 
 
 When using RVM, you can switch between the system-wide Ruby and RVM-managed Ruby using these two commands:
@@ -63,9 +57,7 @@ rvm use system
 rvm use 2.7.2
 ```
 
-ALERT: Ensure that you are using Ruby 2.7.2 for all Ruby gems that you install for the asciidoctor toolchain.
-
-
+ALERT: Ensure that you are using Ruby 2.7.2 for all Ruby gems that you install for the Asciidoctor toolchain.
 
 ## Windows—install Ruby with RVM
 
@@ -77,7 +69,9 @@ NOTE: During the Windows install, click in the installer to:
 - add paths
 - add tdtk
 
-## Mac--install Asciidoctor
+ALERT: Ensure that you are using Ruby 2.7.2 for all gems that you install for the Asciidoctor toolchain. 
+
+## MacOS--install Asciidoctor
 
 - Install Asciidoctor:
 
@@ -97,7 +91,7 @@ If you see the Asciidoctor version information printed in the terminal, then you
 asciidoctor filename.adoc
 ```
 
-## Windows—add the Asciidoctor gem
+### Windows—add the Asciidoctor gem
 
 - Navigate to the following url
 
@@ -113,7 +107,7 @@ https://rubygems.org/gems/asciidoctor/
 gem install asciidoctor <path-to-downloaded-gem>
 ```
 
-## Both Win and Mac, for pdf's and graphics
+## Both Windows and MacOS, for pdf's and graphics
 
 Install the following:
 
@@ -129,7 +123,7 @@ gem install asciidoctor-wavefront
 gem install asciidoctor-bibtex
 ```
 
-## Add syntax highlighting gems for Asciidoc output
+## Add syntax highlighting gems for AsciiDoc output
 
 Install syntax highlighting gems as follows (for Windows, append the string `--source http://rubygems.org` to each command):
 
@@ -141,7 +135,7 @@ gem install pygments.rb
 
 ## Add node for and wavedrom-cli for wavedrom diagrams
 
-For Mac:
+For MacOS:
 ```
 brew install node
 npm install -g wavedrom-cli
@@ -166,9 +160,21 @@ Check that wavedrom-cli is in the path (this should display the help):
 wavedrom-cli
 ```
 
-## Asciidoc headers
+## Add asciidoctor-bibtex for biliography
 
-Most of the information in the book headers for RISC-V asciidoc content contain information that relates to the fully functional pdf build that enables, among other things, numbered headings, a TOC, running headers and footers, footnotes at chapter ends, custom fonts, admonitions, an index, and an optional colophon. 
+The asciidoctor-bibtex gem enables creation of bibliographies using logic similar to what is available for LaTeX.
+
+Install the asciidoctor-bibtex gem:
+
+```
+gem install asciidoctor-bibtex
+```
+
+For information on how to implement citations, see the example.pdf in this repo.
+
+## AsciiDoc headers
+
+Most of the information in the book headers for RISC-V AsciiDoc content contain information that relates to the fully functional pdf build that enables, among other things, numbered headings, a TOC, running headers and footers, footnotes at chapter ends, custom fonts, admonitions, an index, and an optional colophon. 
 
 For shorter documents, you have the option of using a report header.
 
@@ -187,7 +193,7 @@ NOTE: Blank lines are not allowed in between the `include::file_name.adoc` files
 
 Building in HTML is a good way to check that your content under development builds properly. 
 
-As soon as you have installed asciidoctor, you can build HTML content from any `.adoc` file on your own machine:
+As soon as you have installed Asciidoctor, you can build HTML content from any `.adoc` file on your own machine:
 
 - CD into the directory that contains your `.adoc` files.
 
@@ -199,7 +205,7 @@ This generates a file named `any_file_name.html`.
 For pdf output, cd into this cloned directory and use this command:
 
 ```
-asciidoctor-pdf -r asciidoctor-diagram book_header.adoc -a pdf-style#resources/themes/risc-v_spec-pdf.yml -a pdf-fontsdir=resources/fonts
+asciidoctor-pdf -r asciidoctor-diagram book_header.adoc -a pdf-style=resources/themes/risc-v_spec-pdf.yml -a pdf-fontsdir=resources/fonts
 ```
 
 This generates a file named `book_header.pdf` that makes use of the graphics, styles, and fonts that you can see in the example.pdf. 
@@ -208,10 +214,10 @@ For your own content, change the name of the header file to a meaningful file na
 
 ALERT: When copying/pasting commands for the CLI on the Windows OS, check that no substitutions are being made. We have seen the '=' get replaced with a '#', causing an error message about fonts.
 
-## Asciidoc/asciidoctor documentation
+## AsciiDoc  and Asciidoctor toolchain documentation
 
-* Asciidoc/asciidoctor writers' guide: https://asciidoctor.org/docs/asciidoc-writers-guide/
-* Asciidoc quick reference: http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
+* AsciiDoc writers' guide: https://asciidoctor.org/docs/asciidoc-writers-guide/
+* AsciiDoc quick reference: http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
 * Asciidoctor user manual: http://asciidoctor.org/docs/user-manual/
 
 
@@ -219,7 +225,7 @@ ALERT: When copying/pasting commands for the CLI on the Windows OS, check that n
 
 Almost all conversions require some cleanup.
 
-The most reliable converter from LaTeX to asciidoc that I have found is pandoc:
+The most reliable converter from LaTeX to AsciiDoc that I have found is pandoc:
 
 https://pandoc.org/getting-started.html
 
@@ -229,9 +235,12 @@ After installing pandoc on your machine, you can begin the conversion using the 
 pandoc source_file.tex destination_file.adoc
 ```
 
-After that first step, you must open the file using a text editor with a good asciidoc linter and clean it up.
+After that first step, you must open the file using a text editor with a good AsciiDoc linter and clean it up.
 
-You can find a list of text editors that support asciidoc authoring in the asciidoc/asciidoctor documentation: 
+You can find a list of text editors that support AsciiDoc authoring in its documentation at https://docs.asciidoctor.org/asciidoctor/latest/tooling/, and a more comprehensive list at https://github.com/bodiam/awesome-asciidoc.
 
 While pandoc does a reasonably good job, there are always documentation nits that must be addressed.
+
+
+
 
