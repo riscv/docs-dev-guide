@@ -16,7 +16,7 @@ NOTE: There is a separate pdf build process that uses a different toolchain.
 
 - For the full featured pdf that we are implementing, we use Ruby and install gems that support the features.
 
-- To support building wavedrom diagrams directly from scripts contained in blocks in the AsciiDoc source files, we use npm to install the wavedrom-cli.
+- To support building WaveDrom diagrams directly from scripts contained in blocks in the AsciiDoc source files, we use npm to install the wavedrom-cli.
 
 ## Install Ruby on MacOS
 
@@ -113,15 +113,15 @@ Install the following:
 
 * the asciidoctor-pdf gem, which is needed for pdf rendering.
 * the asciidoctor-diagram gem, which is needed for diagram rendering.
-* the asciidoctor-wavefront gem, which is needed for wavedrom diagrams.
 * the asciidoctor-bibtex gem, which is needed for auto-creation of a bibliography from citations.
 
 ```
 gem install asciidoctor-pdf 
 gem install asciidoctor-diagram
-gem install asciidoctor-wavefront
 gem install asciidoctor-bibtex
 ```
+
+Information on making use of both diagramming and creating a bibliography and references to it, see the example.pdf in this repo.
 
 ## Add syntax highlighting gems for AsciiDoc output
 
@@ -133,9 +133,9 @@ gem install rouge
 gem install pygments.rb
 ``` 
 
-## Add node for and wavedrom-cli for Wavedrom diagrams
+## Add node and `wavedrom-cli` for WaveDrom diagrams
 
-NOTE: It appears that Oracle JDK is also required for Wavedrom diagrams to work.
+NOTE: It appears that Oracle JDK is also required for WaveDrom diagrams to work.
 
 For MacOS:
 ```
@@ -161,18 +161,6 @@ Check that wavedrom-cli is in the path (this should display the help):
 ```
 wavedrom-cli
 ```
-
-## Add asciidoctor-bibtex for biliography
-
-The asciidoctor-bibtex gem enables creation of bibliographies using logic similar to what is available for LaTeX.
-
-Install the asciidoctor-bibtex gem:
-
-```
-gem install asciidoctor-bibtex
-```
-
-For information on how to implement links to the bibliography from within the text, see the example.pdf in this repo.
 
 ## AsciiDoc book headers
 

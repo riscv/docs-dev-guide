@@ -147,18 +147,18 @@ sym,num,name
 
 While asciidoc can render graphics in all popular formats, by far the highest quality graphics rendering is from .svg format.
 
-https://wavedrom.com/[Wavedrom sequence diagrams] are essential to the RISC-V specifications. We are in the process of phasing in an automated process for incorporating Wavedrom diagrams into the professional quality pdf output so please stay tuned.
+https://wavedrom.com/[WaveDrom sequence diagrams] are essential to the RISC-V specifications. We are in the process of phasing in an automated process for incorporating WaveDrom diagrams into the professional quality pdf output so please stay tuned.
 
-https://asciidoctor.org/docs/asciidoctor-diagram/#image-output-location[Asciidocdoctor-pdf] enables automation of diagrams from scripts, including Wavedrom.
+https://asciidoctor.org/docs/asciidoctor-diagram/#image-output-location[Asciidocdoctor-pdf] enables automation of diagrams from scripts, including WaveDrom.
 
-Even as we are using wavedrom to simplify the creation of accurate svgs for register diagrams, the graphical elements--those for the various diagrams--add complexity to the build.
+Even as we are using WaveDrom to simplify the creation of accurate svgs for register diagrams, the graphical elements--those for the various diagrams--add complexity to the build.
 
 
 ==== Automated diagramming
 
-The https://docs.asciidoctor.org/diagram-extension/latest/[asciidoctor-diagram extension] supports numerous diagram types including Wavedrom diagramming (for sequence and waveform diagrams).
+The https://docs.asciidoctor.org/diagram-extension/latest/[asciidoctor-diagram extension] supports numerous diagram types including WaveDrom diagramming (for sequence and waveform diagrams).
 
-The requirements for building wavedrom diagrams are specified in the https://github.com/riscv/docs-templates/blob/main/README.md[docs temaplates readme].
+The requirements for building WaveDrom diagrams are specified in the https://github.com/riscv/docs-templates/blob/main/README.md[docs temaplates readme].
 
 The following json-formatted script, when added within an asciidoc block with the macro indicators `[wavedrom, svg]`, will embed the diagram output into the pdf:
 
