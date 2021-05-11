@@ -93,7 +93,7 @@ asciidoctor filename.adoc
 
 ### Windows—add the Asciidoctor gem
 
-- Navigate to the following url
+- Navigate to the following url:
 
 ```
 https://rubygems.org/gems/asciidoctor/
@@ -133,7 +133,9 @@ gem install rouge
 gem install pygments.rb
 ``` 
 
-## Add node for and wavedrom-cli for wavedrom diagrams
+## Add node for and wavedrom-cli for Wavedrom diagrams
+
+NOTE: It appears that Oracle JDK is also required for Wavedrom diagrams to work.
 
 For MacOS:
 ```
@@ -170,11 +172,11 @@ Install the asciidoctor-bibtex gem:
 gem install asciidoctor-bibtex
 ```
 
-For information on how to implement citations, see the example.pdf in this repo.
+For information on how to implement links to the bibliography from within the text, see the example.pdf in this repo.
 
-## AsciiDoc headers
+## AsciiDoc book headers
 
-Most of the information in the book headers for RISC-V AsciiDoc content contain information that relates to the fully functional pdf build that enables, among other things, numbered headings, a TOC, running headers and footers, footnotes at chapter ends, custom fonts, admonitions, an index, and an optional colophon. 
+Attributes in the book headers for RISC-V AsciiDoc content control aspects of the pdf build. Together with the `risc-v_spec-pdf.yml` file, they enable, among other things, numbered headings, a TOC, running headers and footers, footnotes at chapter ends, custom fonts, admonitions, an index, and an optional colophon. 
 
 For shorter documents, you have the option of using a report header.
 

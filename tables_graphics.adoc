@@ -156,7 +156,7 @@ Even as we are using wavedrom to simplify the creation of accurate svgs for regi
 
 ==== Automated diagramming
 
-The https://docs.asciidoctor.org/diagram-extension/latest/[asciidoctor-diagram extension] supports numerous diagram types including wavedrom.
+The https://docs.asciidoctor.org/diagram-extension/latest/[asciidoctor-diagram extension] supports numerous diagram types including Wavedrom diagramming (for sequence and waveform diagrams).
 
 The requirements for building wavedrom diagrams are specified in the https://github.com/riscv/docs-templates/blob/main/README.md[docs temaplates readme].
 
@@ -174,11 +174,18 @@ The following json-formatted script, when added within an asciidoc block with th
 ]}
 ----
 
+For the above to build into a diagram, with a figure title, you need to add the macro information and a figure title above the code block:
+
+[source,adoc]
+----
+.Figure title
+[wavedrom, svg]
+----
 
 NOTE: Prior bug is fixed and requirements for local build added to the https://github.com/riscv/docs-templates/blob/main/README.md[README]. Once the required node and ruby extensions are installed, the diagrams build from asciidoc blocks
 
 
-
+.Figure title
 [wavedrom, svg]
 ....
 {reg:[
@@ -194,7 +201,7 @@ NOTE: Prior bug is fixed and requirements for local build added to the https://g
 You have the option of referencing a graphics file directly:
 
 [#wavedrom_example2]
-.A second wavedrom example
+.This example is from an svg generated prior to the build
 image::wavedrom/wavedrom-example2.svg[wavedrom_example2]
 
 ==== Additional diagram type examples

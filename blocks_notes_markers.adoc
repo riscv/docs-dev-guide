@@ -1,5 +1,5 @@
 [[blocks_notes_markers]]
-== Blocks, notes and markers
+== Blocks, notes, and markers
 
 RISC-V specifications are notable for their extended commentaries that explain the thinking behind various important aspects of the technologies.
 
@@ -275,3 +275,30 @@ I, King Arthur.
 
 I, King Arthur.
 (((knight, "Arthur, King")))
+
+
+=== Bibliographic entries
+
+
+Add a link to the bibliography from within the text:
+
+```adoc
+_The Pragmatic Programmer_ <<pp>> should be required reading for all developers.
+To learn all about design patterns, refer to the book by the "`Gang of Four`" <<gof>>.
+```
+
+_The Pragmatic Programmer_ <<pp>> should be required reading for all developers.
+To learn all about design patterns, refer to the book by the "`Gang of Four`" <<gof>>.
+
+When built in the context of an AsciiDoc book with properly tagged bibliographic entries like the following example, links are created directly to those entries.
+
+
+```adoc
+[bibliography]
+== Biliography
+
+* [[[pp]]] Andy Hunt & Dave Thomas. The Pragmatic Programmer:
+From Journeyman to Master. Addison-Wesley. 1999.
+* [[[gof,gang]]] Erich Gamma, Richard Helm, Ralph Johnson & John Vlissides.
+Design Patterns: Elements of Reusable Object-Oriented Software. Addison-Wesley. 1994.
+```

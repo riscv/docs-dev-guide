@@ -38,7 +38,6 @@ endif::[]
 :footnote:
 :xrefstyle: short
 
-
 This is the preamble, which can contain copyright information. For this book example, I am here mentioning that I have copied information directly from several Web sites that are hosted by asciidoctor.org and devoted to providing Asciidoc/Asciidoctor documentation. Graphics used are either explicitly available for free, are property of RISC-V International, or were created using Wavedrom.
 
 include::colophon.adoc[]
@@ -46,6 +45,7 @@ include::colophon.adoc[]
 include::a_few_basics.adoc[]
 include::tables_graphics.adoc[]
 include::blocks_notes_markers.adoc[]
-include::appendix-a.adoc[]
-include::bibliography.adoc[]
+//please note that the index must precede the bibliography for both to work within the same book
 include::index.adoc[]
+include::bibliography.adoc[]
+
