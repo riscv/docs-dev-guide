@@ -70,8 +70,8 @@ base:
   font_size_min: $base_font_size * 0.75
   font_style: normal
   border_color: eeeeee
-  border_radius: 4
-  border_width: 0.5
+  border_radius: 3
+  border_width: 0.2
 # FIXME vertical_rhythm is weird; we should think in terms of ems
 #vertical_rhythm: $base_line_height_length * 2 / 3
 # correct line height for Computer Modern metrics (comes with built-in line height)
@@ -150,21 +150,32 @@ abstract:
     font_family: $heading_font_family
     font_size: $heading_h4_font_size
     font_style: $heading_font_style
+sidebar:
+  font-style: italic
+  background-color: f5f5fc 
+  border-color: 8d81b8
+  border-radius: 3
+  border-width: 0.2
+sidebar-title:
+  font-style: italic
+  font-color: $heading-font-color
+  font-size: 11
+  align: left
 admonition:
   column_rule_color: $base_border_color
   column_rule_width: $base_border_width
   padding: [0, $horizontal_rhythm, 0, $horizontal_rhythm]
   icon:
+    note:  
+      name: pencil-square-o
+      stroke_color: 6489b3
     tip:
       name: comments-o
-      stroke_color: 535a63
+      stroke_color: 646b74
       size: 24
     important:
       name: hand-pointer-o
       stroke_color: b58f5b
-    note: 
-      name: pencil-square-o
-      stroke_color: 6489b3
     warning:
       stroke_color: 9c4d4b
     caution: 
@@ -172,15 +183,15 @@ admonition:
   label:
     text_transform: uppercase
     font_style: bold
-blockquote:
-  font_color: $base_font_color
-  font_size: $base_font_size_large
-  border_color: $base_border_color
-  border_width: 5
+#blockquote:
+#  font_color: $base_font_color
+#  font_size: $base_font_size_large
+#  border_color: $base_border_color
+#  border_width: 2
   # FIXME disable negative padding bottom once margin collapsing is implemented
-  padding: [0, $horizontal_rhythm, $block_margin_bottom * -0.75, $horizontal_rhythm + $blockquote_border_width / 2]
-  cite_font_size: $base_font_size_small
-  cite_font_color: 51278d
+#  padding: [0, $horizontal_rhythm, $block_margin_bottom * -0.75, $horizontal_rhythm + $blockquote_border_width / 2]
+#  cite_font_size: $base_font_size_small
+#  cite_font_color: 51278d
 # code is used for source blocks (perhaps change to source or listing?)
 code:
   font_color: $base_font_color
@@ -190,10 +201,10 @@ code:
   line_height: 1.25
   # line_gap is an experimental property to control how a background color is applied to an inline block element
   line_gap: 3.8
-  background_color: f5f5f5
+  background_color: f4f4fb
   border_color: cccccc
   border_radius: $base_border_radius
-  border_width: 0.75
+  border_width: 0.2
 conum:
   font_family: M+ 1mn
   font_color: $literal_font_color
@@ -202,7 +213,7 @@ conum:
 example:
   border_color: $base_border_color
   border_radius: $base_border_radius
-  border_width: 0.75
+  border_width: 0.2
   background_color: ffffff
   # FIXME reenable padding bottom once margin collapsing is implemented
   padding: [$vertical_rhythm, $horizontal_rhythm, 0, $horizontal_rhythm]
@@ -211,19 +222,6 @@ image:
 prose:
   margin_top: $block_margin_top
   margin_bottom: $block_margin_bottom
-sidebar:
-  background_color: eeeeee
-  border_color: e1e1e1
-  border_radius: $base_border_radius
-  border_width: $base_border_width
-  # FIXME reenable padding bottom once margin collapsing is implemented
-  padding: [$vertical_rhythm, $vertical_rhythm * 1.25, 0, $vertical_rhythm * 1.25]
-  title:
-    align: center
-    font_color: $heading_font_color
-    font_family: $heading_font_family
-    font_size: $heading_h4_font_size
-    font_style: $heading_font_style
 thematic_break:
   border_color: $base_border_color
   border_style: solid

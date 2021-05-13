@@ -1,6 +1,8 @@
 [colophon]
 = Preface
 
+The following is a preface for this document and should be replaced with a preface for your document.
+
 This document demonstrates the use of Asciidoc for RISC-V specifications, with the goal of capturing information that will result in effective and efficient collaboration throughout the community.
 
 Asciidoc is the most feature-rich of the popular lightweight markup languages based on Markdown. Most of the markup that you will need is simple, and much is similar to what you use for git-flavored Markdown.

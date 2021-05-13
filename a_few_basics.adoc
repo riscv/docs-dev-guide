@@ -71,13 +71,7 @@ add a1,a2,a3; # do an ADD
 
 === Hyperlinks and cross references
 
-Asciidoctor recognizes hyperlinks to Web pages and shortens them for readability.
-
-
-
-
-
-
+Asciidoctor recognizes hyperlinks to Web pages and shortens them for readability. Cross references (links within a document) are supported by macros.
 
 
 === Stem content

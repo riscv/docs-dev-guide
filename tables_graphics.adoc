@@ -86,8 +86,7 @@ NOTE: Annotations have been added to the code to illustrate their use.
 
 === Unicode symbols
 
-
-For pdf, some unicode symbols are buggy. There are some workarounds. I noticed the need for a mathematical _w_ and because its encoding uses an integer that is in the 5+ digit category it doesn't work.
+For pdf, some unicode symbols are buggy. There are some workarounds. The asciidcotor-pdf toolchain supports most unicode up to and including four digits, and not characters that require five or more digits. I noticed the need for a mathematical _w_ and because its encoding uses an integer that is in the 5+ digit category it doesn't work.
 
 Here are a few unicode examples from https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references:
 

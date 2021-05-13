@@ -1,5 +1,5 @@
 [[blocks_notes_markers]]
-== Blocks, notes, and markers
+== Blocks, notes and markers
 
 RISC-V specifications are notable for their extended commentaries that explain the thinking behind various important aspects of the technologies.
 
@@ -10,57 +10,72 @@ In most cases, contributors should make use of admonition blocks for their comme
 
 Asciidoctor allows for many types of blocks, as documented at https://docs.asciidoctor.org/asciidoc/latest/blocks/.
 
-Sidebars might be a good solution for some content in the specifications.
+==== Sidebars
+
+Sidebars provide for a form of commentary.
 
 [source,adoc]
 ----
-Text in your document.
 
 ****
 This is content in a sidebar block.
 
-image::name.png[]
+image:example-3.svg[]
 
 This is more content in the sidebar block.
 ****
 ----
 
-Sidebar:
+This renders as follows:
+
+****
+This is content in a sidebar block.
+
+image:example-3.svg[]
+
+This is more content in the sidebar block.
+****
+
+
+You can add a title, along with any kind of content. Best practice for many of the "commentaries" in the LaTeX source that elucidate the decisionmaking process is to convert to this format with the `TIP` icon that illustrates a conversation or discussion, as in the following example:
 
 [source,adoc]
 ----
-.AsciiDoc history
+.Optional Title
 ****
-AsciiDoc was first released in Nov 2002 by Stuart Rackham.
-It was designed from the start to be a shorthand syntax
-for producing professional documents like DocBook and LaTeX.
-****
+Sidebars are used to visually separate auxiliary bits of content
+that supplement the main text.
+
+TIP: They can contain any type of content, including admonitions like this, and code examples like the following.
+
+.Source code block in a sidebar
+[source,js]
 ----
-
-Rendered:
-
-.AsciiDoc history
-****
-AsciiDoc was first released in Nov 2002 by Stuart Rackham.
-It was designed from the start to be a shorthand syntax
-for producing professional documents like DocBook and LaTeX.
+const { expect, expectCalledWith, heredoc } = require('../test/test-utils')
+----
 ****
 
-
-Code blocks
-
-[source,sail]
-----
-x(rd)
 ----
 
+The above renders as:
 
-[source,python]
+.Optional Title
+****
+Sidebars are used to visually separate auxiliary bits of content
+that supplement the main text.
+
+TIP: They can contain any type of content, including admonitions like this, and code examples like the following.
+
+.Source code block in a sidebar
+[source,js]
 ----
-
+const { expect, expectCalledWith, heredoc } = require('../test/test-utils')
 ----
+****
 
-=== Admonition blocks
+
+
+==== Admonition blocks
 
 Five kinds of standard admonition blocks are available in asciidoc and these can be mapped to either default or custom icons.
 
@@ -172,11 +187,27 @@ IMPORTANT: important
 |===
 Icon,default,customized
 NOTE,19407c,6489b3
-TIP,111111,535a63
+TIP,111111,5g27ag
 WARNING,bf6900,9c4d4b
 CAUTION,bf3400,c99a2c
 IMPORTANT,bf0000,b58f5b
 |===
+
+==== Code blocks
+
+AsciiDoc enables code blocks that support syntax highlighting.
+
+For example, preceding a block with a macro `[source,json]` enables `json` syntax highlighting:
+
+[source,json]
+----
+{
+    "weather": {
+        "city":       "Zurich",
+        "temperature":      25,
+    }
+}
+----
 
 
 === Footnotes
@@ -187,11 +218,11 @@ You can add footnotes to your presentation using the footnote macro. If you plan
 
 [source,adoc]
 ----
-The hail-and-rainbow protocol can be initiated at three levels:
+Initiate the hail-and-rainbow protocol at one of three levels:
 
-. doublefootnote:[The double hail-and-rainbow level makes my toes tingle.]
-. tertiary
-. apocalyptic
+- doublefootnote:[The double hail-and-rainbow level makes my toes tingle.]
+- tertiary
+- apocalyptic
 
 A bold statement!footnote:disclaimer[Opinions are my own.]
 
@@ -202,9 +233,9 @@ Renders as:
 
 The hail-and-rainbow protocol can be initiated at three levels:
 
-. doublefootnote:[The double hail-and-rainbow level makes my toes tingle.]
-. tertiary
-. apocalyptic
+- doublefootnote:[The double hail-and-rainbow level makes my toes tingle.]
+- tertiary
+- apocalyptic
 
 A bold statement!footnote:disclaimer[Opinions are my own.]
 
@@ -276,29 +307,35 @@ I, King Arthur.
 I, King Arthur.
 (((knight, "Arthur, King")))
 
+=== Bibliography and references
 
-=== Bibliographic entries
 
+You can add bibliographic entires to the last appendix that you use in a book document.
 
-Add a link to the bibliography from within the text:
+Text with markup that will generate links"
 
-```adoc
+[source,adoc]
+----
 _The Pragmatic Programmer_ <<pp>> should be required reading for all developers.
 To learn all about design patterns, refer to the book by the "`Gang of Four`" <<gof>>.
-```
+----
 
-_The Pragmatic Programmer_ <<pp>> should be required reading for all developers.
-To learn all about design patterns, refer to the book by the "`Gang of Four`" <<gof>>.
+Links from within text to bibliographic entries:
 
-When built in the context of an AsciiDoc book with properly tagged bibliographic entries like the following example, links are created directly to those entries.
-
-
-```adoc
+[source.adoc]
+----
 [bibliography]
-== Biliography
+== References
 
 * [[[pp]]] Andy Hunt & Dave Thomas. The Pragmatic Programmer:
 From Journeyman to Master. Addison-Wesley. 1999.
 * [[[gof,gang]]] Erich Gamma, Richard Helm, Ralph Johnson & John Vlissides.
 Design Patterns: Elements of Reusable Object-Oriented Software. Addison-Wesley. 1994.
-```
+----
+
+Text that links to bibliogpraphy:
+
+_The Pragmatic Programmer_ <<pp>> should be required reading for all developers.
+To learn all about design patterns, refer to the book by the "`Gang of Four`" <<gof>>.
+
+
