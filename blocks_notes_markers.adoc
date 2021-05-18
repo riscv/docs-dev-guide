@@ -309,10 +309,16 @@ I, King Arthur.
 
 === Bibliography and references
 
+There are two ways of handling bibliographies:
 
-You can add bibliographic entires to the last appendix that you use in a book document.
+- making manual entries to which you can create links from the text in the body of your document.
+- using automated features provided by asciidoctor-bibtex[]
 
-Text with markup that will generate links"
+You can add bibliographic entries to the last appendix that you use in a book document.
+
+==== Manual bibliogrpahy procedures
+
+Text with markup that will generate links:
 
 [source,adoc]
 ----
@@ -338,4 +344,103 @@ Text that links to bibliogpraphy:
 _The Pragmatic Programmer_ <<pp>> should be required reading for all developers.
 To learn all about design patterns, refer to the book by the "`Gang of Four`" <<gof>>.
 
+==== Automated bibliography procedures with asciidoctor-bibtex
 
+Asciidoctor-bibtex enables options that allow for establishing a single source of bibliographic entries for RISC-V specifications.
+
+WARNING: this is currently being considered and tested.
+
+This section uses information from asciidoctor-bibtex samples with attributes as follows:
+
+[source,json]
+----
+:bibtex-file: references.bib
+:bibtex-order: alphabetical
+:bibtex-style: ieee
+----
+
+WARNING: the following is not yet tested for RISC-V documentation purposes.
+
+When you run asciidoctor-bibtex as part of the build, it searches for the bibliography information first in the folder of the document header, and then in `\~/Documents`."
+
+- add author-year references using the pattern `cite:[Lane12b]` or - `citenp:[Lane12a]`.
+- add age numbers (locators) using the pattern `cite:[Lane12a(89)]` or `citenp:[Lane12a(89-93)]`.
+- add pretext using the pattern `cite:See[Lane12a(89)]`.
+
+It's possible to can include other files, which are also processed.
+
+CAUTION: To to prevent problems with other appendices, use the section template before title when you add the reference list.
+
+
+The bibliography section of the book must be set up as follows, to receive the entries during the build:
+
+[source,adoc]
+----
+== Bibliography
+
+bibliography::references.bib[ieee]
+----
+
+Multiple authors in a single citation:
+
+----
+Author-year references can use different styles such as: cite:[Lane12b] or
+citenp:[Lane12b].
+
+Page numbers can be added: cite:[Lane12b(89)] or citenp:[Lane12b(89-93)].
+
+A bit of pretext can be included too: See cite:[Lane12b(89)]
+
+----
+
+
+Multiple references in a single citation:
+----
+
+One citation can include several references, such as cite:[Lane12a,Lane12b].
+
+These can include pages and be in-text: citenp:[Lane12a(78), Lane12b(89-93)].
+
+And include pretext: See cite:[Lane12a, Lane12b(89-93)]
+
+Note: citations cannot be split over lines; each citation must be on one line.
+
+----
+
+
+Example json-formatted bibliography entries that could be stored as a single source of truth for RISC-V:
+
+[source,json]
+----
+@book{Lane12a,
+	author = {P. Lane},
+	title =	 {Book title},
+	publisher = {Publisher},
+	year =	 {2000}
+}
+
+@book{Lane12b,
+	author = {K. Mane and D. Smith},
+	title =	 {Book title},
+	publisher = {Publisher},
+	year =	 {2000}
+}
+
+@book{Anderson98,
+	editor = {J. R. Anderson and C. Lebiere},
+	title = {The Atomic Components of Thought},
+	publisher = {Lawrence Erlbaum},
+        address = {Mahwah, NJ},
+	year = {1998}
+}
+
+@article{Anderson04,
+	author = {J. R. Anderson and D. Bothell and M. D. Byrne and S. Douglass and C. Lebiere and Y. L. Qin},
+	title = {An integrated theory of the mind},
+	journal = {Psychological Review},
+	volume = {111},
+	number = {4},
+	pages = {1036--1060},
+	year = {2004}
+}
+----
