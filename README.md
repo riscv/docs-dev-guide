@@ -22,7 +22,9 @@ NOTE: There is a separate pdf build process that uses a different toolchain.
 
 Asciidoctor's Web site recommends first installing Ruby using RVM, and then Asciidoctor.
 
-RVM is essential for creating pdfs because the pdf build requires Ruby version 2.7.x.
+RVM is essential for creating pdfs because the pdf build requires Ruby version 2.7.2.
+
+NOTE: Using Ruby 2.7.0 causes an error with respect to some of the theming and using later versions also causes problems for pdf generation.
 
 RVM is a Ruby installation and version manager. RVM works by installing Ruby inside your home directory and manages the environment variables to allow you to switch between the system-wide Ruby and any Ruby installed using RVM.
 
@@ -57,7 +59,7 @@ rvm use system
 rvm use 2.7.2
 ```
 
-ALERT: Ensure that you are using Ruby 2.7.2 for all Ruby gems that you install for the Asciidoctor toolchain.
+ALERT: Ensure that you are using Ruby 2.7.2 for all Ruby gems that you install for the Asciidoctor toolchain. 
 
 ## Windows—install Ruby with RVM
 
