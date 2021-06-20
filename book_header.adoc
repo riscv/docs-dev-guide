@@ -5,6 +5,10 @@
 :revdate: 06/2021
 :revnumber: 0.01
 :revremark: Pre-release version
+//development: assume everything can change
+//stable: assume everything could change
+//frozen: of you implement this version you assume the risk that something might change because of the public review cycle  but we expect little to no change.
+//ratified: you can implement this and be assured nothing will change. if something needs to change due to an errata or enhancement, it will come out in a new extension. we do not revise extensions.
 :url-riscv: http://riscv.org
 :doctype: book
 //:doctype: report
@@ -15,7 +19,7 @@
 :title-logo-image: image:risc-v_logo.png[pdfwidth=3.25in,align=center]
 //:page-background-image: image:draft.svg[opacity=20%]
 //:title-page-background-image: none
-:back-cover-image: image:circuit.png[opacity=25%]
+:back-cover-image: image:backpage.png[opacity=25%]
 // Settings:
 :experimental:
 :reproducible:

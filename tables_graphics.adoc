@@ -101,6 +101,8 @@ As an example, &#9830; is encoded as follows:
 [width="100%",options=header,format=csv]
 |===
 sym,num,name
+&#94;,94,caret
+&#136;,136,
 &#9830;,9830,name
 &#0034;,0034,name
 &#x0077;,0077,w
@@ -182,6 +184,23 @@ For the above to build into a diagram, with a figure title, you need to add the 
 ----
 
 NOTE: Prior bug is fixed and requirements for local build added to the https://github.com/riscv/docs-templates/blob/main/README.md[README]. Once the required node and ruby extensions are installed, the diagrams build from asciidoc blocks
+
+
+[source,adoc]
+----
+Figure title
+[wavedrom, svg]
+....
+{reg:[
+    { bits:  7, name: 0x3b, attr: ['OP-32'] },
+    { bits:  5, name: 'rd' },
+    { bits:  3, name: 0x0, attr: ['ADD.UW'] },
+    { bits:  5, name: 'rs1' },
+    { bits:  5, name: 'rs2' },
+    { bits:  7, name: 0x04, attr: ['ADD.UW'] },
+]}
+....
+----
 
 
 .Figure title

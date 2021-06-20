@@ -18,23 +18,23 @@ NOTE: There is a separate pdf build process that uses a different toolchain.
 
 - To support building WaveDrom diagrams directly from scripts contained in blocks in the AsciiDoc source files, we use npm to install the wavedrom-cli.
 
+- Support for mathematical notation is not required for each and every specification, and installing both the prerequisites and the gem itself has been tricky on the Mac. Use of `brew `
+
 ## Install Ruby on MacOS
 
 Asciidoctor's Web site recommends first installing Ruby using RVM, and then Asciidoctor.
 
-RVM is essential for creating pdfs because the pdf build requires Ruby version 2.7.2.
-
-NOTE: Using Ruby 2.7.0 causes an error with respect to some of the theming and using later versions also causes problems for pdf generation.
+ALERT: RVM is essential for creating pdfs because, paradoxically, the pdf build works best using Ruby version 2.5.x rather than more recent version..
 
 RVM is a Ruby installation and version manager. RVM works by installing Ruby inside your home directory and manages the environment variables to allow you to switch between the system-wide Ruby and any Ruby installed using RVM.
 
-- Install the RVM along with the latest version of Ruby (https://rvm.io/rvm/install):
+- Install the RVM (https://rvm.io/rvm/install):
 
 ```
 \curl -sSL https://get.rvm.io | bash -s stable --ruby
 ```
 
-RVM will download and build the Ruby language, install RubyGems along with several essential gems and configure your PATH environment variable.
+RVM will download and build the Ruby language and RubyGems along with several essential gems and configure your PATH environment variable.
 
 After the install is finished, open a new Terminal window and remove your local Gem configuration, if you have one (or move it out of the way):
 
@@ -42,8 +42,14 @@ After the install is finished, open a new Terminal window and remove your local 
 rm -f HOME/.gemrc
 ```
 
-## MacOS—use RVM on MacOS
+For the purpose of the pdf build, install Ruby version 2.5.x:
 
+
+```
+rvm install ruby-2.5
+```
+
+## MacOS—use RVM on MacOS
 
 When using RVM, you can switch between the system-wide Ruby and RVM-managed Ruby using these two commands:
 
@@ -53,13 +59,13 @@ When using RVM, you can switch between the system-wide Ruby and RVM-managed Ruby
 rvm use system
 ```
 
-- Switch to RVM-managed versions 2.7.2 for use in building pdf:
+- Switch to RVM-managed versions 2.5.9 for use in building pdf:
 
 ```
-rvm use 2.7.2
+rvm use 2.5.9
 ```
 
-ALERT: Ensure that you are using Ruby 2.7.2 for all Ruby gems that you install for the Asciidoctor toolchain. 
+ALERT: Ensure that you are using Ruby 2.5.9 for all Ruby gems that you install for the Asciidoctor toolchain. 
 
 ## Windows—install Ruby with RVM
 
@@ -71,7 +77,7 @@ NOTE: During the Windows install, click in the installer to:
 - add paths
 - add tdtk
 
-ALERT: Ensure that you are using Ruby 2.7.2 for all gems that you install for the Asciidoctor toolchain. 
+ALERT: Ensure that you are using Ruby 2.5.9 for all gems that you install for the Asciidoctor toolchain. 
 
 ## MacOS--install Asciidoctor
 
@@ -109,21 +115,21 @@ https://rubygems.org/gems/asciidoctor/
 gem install asciidoctor <path-to-downloaded-gem>
 ```
 
-## Both Windows and MacOS, for pdf's and graphics
+## Both Windows and MacOS, for pdf's and bibliographies
 
 Install the following:
 
-* the asciidoctor-pdf gem, which is needed for pdf rendering.
-* the asciidoctor-diagram gem, which is needed for diagram rendering.
-* the asciidoctor-bibtex gem, which is needed for auto-creation of a bibliography from citations.
+* asciidoctor-pdf gem, which is needed for pdf rendering.
+* asciidoctor-bibtex gem, which is needed for auto-creation of a bibliography from citations.
 
 ```
 gem install asciidoctor-pdf 
-gem install asciidoctor-diagram
 gem install asciidoctor-bibtex
 ```
 
-Information on making use of both diagramming and creating a bibliography and references to it, see the example.pdf in this repo.
+Information on the markup required for use of diagramming, mathemtical nottion, and creating a bibliography with references to it, see the `example.pdf` in this repo.
+
+## 
 
 ## Add syntax highlighting gems for AsciiDoc output
 
@@ -162,6 +168,23 @@ Check that wavedrom-cli is in the path (this should display the help):
 
 ```
 wavedrom-cli
+```
+
+NOTE: For the MacOS, if you upgrade from a prior version to Big Sur, you must reinstall first the NPM and then the NPM version of the wavedrom-cli.
+
+## Intall the prerequisites for Mathematical
+
+```
+brew install pango gdk-picbuf cairo 
+```
+
+## Install gems for Wavedrom and for Mathematical
+
+Now that the prerequisites are installed, install the two additional gems:
+
+```
+gem install asciidoctor-diagram
+gem instll asciidoctor-mathematical
 ```
 
 ## AsciiDoc book headers
