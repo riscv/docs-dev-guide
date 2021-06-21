@@ -178,6 +178,8 @@ NOTE: For the MacOS, if you upgrade from a prior version to Big Sur, you must re
 brew install pango gdk-picbuf cairo 
 ```
 
+NOTE: There have been problems with getting asciidoctor-mathematical to install properly. You can find various discussions about problems and the solutions vary. It appears that after more than one MacOS update, the file permissions can cause problems. It appears that cleaning up prior versions of Ruby (while maintaining the current version installed with the Xcode developer tools), and completely removing and reinstalling RVM can resolve the problem.
+
 ## Install gems for Wavedrom and for Mathematical
 
 Now that the prerequisites are installed, install the two additional gems:
@@ -220,7 +222,7 @@ This generates a file named `any_file_name.html`.
 For pdf output, cd into this cloned directory and use this command:
 
 ```
-asciidoctor-pdf -r asciidoctor-diagram book_header.adoc -a pdf-style=resources/themes/risc-v_spec-pdf.yml -a pdf-fontsdir=resources/fonts
+asciidoctor-pdf -r asciidoctor-diagram -r asciidoctor-mathematical book_header.adoc -a pdf-style=resources/themes/risc-v_spec-pdf.yml -a pdf-fontsdir=resources/fonts
 ```
 
 This generates a file named `book_header.pdf` that makes use of the graphics, styles, and fonts that you can see in the example.pdf. 

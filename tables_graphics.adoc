@@ -304,5 +304,40 @@ DiagramBlock <|-- DitaaBlock
 DiagramBlock <|-- PlantUmlBlock
 ....
 
+=== Superscipts and other mathematical notations
+
+While not all of the RISC-V specifications make use of mathematical notations, some make frequent use of superscipts.
+
+To indicate a superscript, enclose the string for the superscript in carets as in the following example:
+
+----
+2^8^
+----
+
+Which renders as:
+
+2^8^
+
+You can indicate text in a superscript as well:
+
+----
+1234^NOTE^
+----
+
+Which renders as:
+
+1234^NOTE^
+
+You can make use of Latex notation as in the following:
+
+----
+latexmath:[$C = \alpha + \beta Y^{\gamma} + \epsilon$]
+----
+
+Which renders as:
+
+latexmath:[$C = \alpha + \beta Y^{\gamma} + \epsilon$]
+
+
 
 
