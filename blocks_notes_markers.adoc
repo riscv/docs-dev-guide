@@ -209,6 +209,64 @@ For example, preceding a block with a macro `[source,json]` enables `json` synta
 }
 ----
 
+=== Change bars
+
+Change indicators within text files are exceedlingly useful and also can be equally complex to implement. Please consider the fact that much of the software programming for Git revolves around handling various kinds of change indicators.
+
+In exploring possbile implementation of change bars for RISC-V, we have looked for a solution that is as simple as possible while maximizing value with respect to the time invested in implementing, maintaining, and using the tools and procedures.
+
+The suggested solution makes use of:
+
+- an AsciiDoc `role`.
+- modifiction of two files in the Ruby gem with code snippets (see procedure in the README for https://github.com/riscv/docs-templates).
+- Git features.
+- a few procedures associated, specifically, with Git updates.
+
+==== Indicate changes
+
+With apologies for requiring a manual step at this time, indicators for the changed lines must be inserted:
+
+[source,adoc]
+----
+[.Changed]#SELECT clause#
+
+Text without the change bar
+
+[.Changed]#Text with the change bar#
+----
+
+[.Changed]#SELECT clause#
+
+Text without the change bar
+
+[.Changed]#Text with the change bar#
+
+
+For change bars associated with headings, place the change indicator after the heading indicator and before the text, like the following:
+
+----
+== [.Changed]#SELECT clause#
+----
+
+==== Check for changed lines before a `git commit`
+
+You can double check for all changed lines just before doing a commit, using this pattern:
+
+[source,cmd]
+----
+git blame <file> | grep -n '^0\{8\} ' | cut -f1 -d:
+----
+
+This lists the line numbers of chnages within the specified file like the following:
+
+[source,cmd]
+----
+5
+38
+109
+237
+----
+
 
 === Footnotes
 
@@ -444,3 +502,8 @@ Example json-formatted bibliography entries that could be stored as a single sou
 	year = {2004}
 }
 ----
+
+
+
+
+

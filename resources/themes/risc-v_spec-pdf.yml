@@ -315,3 +315,12 @@ footer:
       content: $footer_recto_right_content
       #center: '{page-number}'
     #content: '{page-number}'
+role:
+  Changed:
+    border:
+      width: .25
+      changebar: 1
+      color: $base_font_color
+      offset: 2
+
+

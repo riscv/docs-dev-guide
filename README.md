@@ -263,7 +263,45 @@ You can find a list of text editors that support AsciiDoc authoring (with linter
 While Pandoc does a reasonably good job, there are always documentation nits that must be addressed.
 
 
+## If you want to make use of change bars
 
+To support changebars, the following has been added to the YAML stylesheet:
 
+```yml
+role:
+  Changed:
+    border:
+      width: .25
+      changebar: 1
+      color: $base_font_color
+      offset: 2
+```
+Note the changebar entry--this is used as a key to key to create the bars.
+
+To support rendering of changebars in your local build, you must modify tow files in your local gem:
+
+transform.rb line18 :
+
+```rb
+       'border_changebar' => :border_changebar,
+```
+
+text_background_and_border_renderer.rb line 38:
+
+```rb
+if (border_width = data[:border_changebar])
+        border_width = 1
+        border_color = data[:border_color]
+        prev_stroke_color = pdf.stroke_color
+        prev_line_width = pdf.line_width
+        pdf.stroke_color border_color
+        pdf.line_width border_width
+        pdf.stroke_vertical_line fragment.top + border_offset, fragment.top-height, :at => 50 - pdf.bounds.absolute_left 
+        pdf.stroke_color prev_stroke_color
+        pdf.line_width prev_line_width
+      elsif (border_width = data[:border_width])
+```
+
+At this point changebars require manual entry. An automated process in CI/CD does look possible.
 
 

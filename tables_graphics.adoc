@@ -1,8 +1,7 @@
 [[tables_symbols_graphics]]
-== Table, symbols, and graphics
+== Tables, symbols, and graphics
 
 Asciidoc makes standard tables easy and also supports the creation of complex tables.
-
 
 === Some table examples
 
@@ -328,7 +327,7 @@ Which renders as:
 
 1234^NOTE^
 
-You can make use of Latex notation as in the following:
+You can make use of LaTeX notation as in the following:
 
 ----
 latexmath:[$C = \alpha + \beta Y^{\gamma} + \epsilon$]
@@ -337,7 +336,6 @@ latexmath:[$C = \alpha + \beta Y^{\gamma} + \epsilon$]
 Which renders as:
 
 latexmath:[$C = \alpha + \beta Y^{\gamma} + \epsilon$]
-
 
 
 
