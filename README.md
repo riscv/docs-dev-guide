@@ -22,16 +22,17 @@ The Asciidoctor toolchains include ones that use:
 
 We are using the Ruby toolchain because it supports building the customizable, full-featured pdf required for RISC-V specifications.
 
-To support building WaveDrom diagrams directly from scripts contained in blocks in the AsciiDoc source files, we use npm to install the wavedrom-cli, even though we are using the Ruby toolchain.
+To support building WaveDrom diagrams directly from scripts contained in blocks in the AsciiDoc source files, we use NPM to install the wavedrom-cli, even though we are using the Ruby toolchain.
+
+NOTE: Even though NPM is required for the Wavedrom diagrams to work properly, we are *not* using the Asciidoctor NPM toolchain. 
 
 ## Install Ruby on MacOS
 
-
- installing Ruby using RVM, and then installing the Asciidoctor gem.
-
-ALERT: RVM is essential for creating pdfs because, paradoxically, the pdf build works best using Ruby version 2.5.x rather than more recent version..
+Install Ruby using RVM, and then install the Asciidoctor gem.
 
 RVM is a Ruby installation and version manager. RVM works by installing Ruby inside your home directory and manages the environment variables to allow you to switch between the system-wide Ruby and any Ruby installed using RVM.
+
+ALERT: RVM is essential for creating pdfs because, paradoxically, the pdf build works best using Ruby version 2.5.x rather than more recent version.
 
 - Install the RVM (https://rvm.io/rvm/install):
 
@@ -64,7 +65,7 @@ When using RVM, you can switch between the system-wide Ruby and RVM-managed Ruby
 rvm use system
 ```
 
-- Switch to RVM-managed versions 2.5.9 for use in building pdf:
+- Switch to RVM-managed version 2.5.9 for use in building pdf:
 
 ```cmd
 rvm use 2.5.9
@@ -147,8 +148,6 @@ gem install pygments.rb
 
 ## Add node and `wavedrom-cli` for WaveDrom diagrams
 
-NOTE: It appears that Oracle JDK is also required for WaveDrom diagrams to work.
-
 For MacOS:
 
 ```cmd
@@ -162,6 +161,8 @@ Check that wavedrom-cli is in the path (this should display the help):
 wavedrom-cli
 ```
 
+NOTE: It appears that Oracle JDK is also required for WaveDrom diagrams to work. You can find a link to the JDK below.
+
 For Windows:
 
 Download the installer from https://nodejs.org/en/ and install node, then use npm to install wavedrom-cli:
@@ -169,13 +170,13 @@ Download the installer from https://nodejs.org/en/ and install node, then use np
 ```cmd
 npm install -g wavedrom-cli
 ```
-Check that wavedrom-cli is in the path (this should display the help):
+Whether you are using Windows of MacOS, check that wavedrom-cli is in the path (this should display the help):
 
 ```cmd
 wavedrom-cli
 ```
 
-NOTE: For the MacOS, if you upgrade from a prior version to Big Sur, you must reinstall first the NPM and then the NPM version of the wavedrom-cli.
+WARNING: For the MacOS, if you upgrade from a prior version to Big Sur, you must reinstall first the NPM and then the NPM version of the wavedrom-cli.
 
 ## Install the prerequisites for asciidoctor-mathematical
 
@@ -185,7 +186,7 @@ Support for mathematical notation is not required for each and every specificati
 brew install pango gdk-picbuf cairo 
 ```
 
-NOTE: You can find various discussions about problems with getting asciidoctor-mathematical to install properly on the MacOS, and the solutions vary. It appears that after more than one MacOS update, the file permissions can cause problems. It appears that cleaning up prior versions of Ruby (while maintaining the current version installed with the Xcode developer tools), and completely removing and reinstalling RVM can resolve the problem.
+ALERT: You can find various discussions about problems with getting asciidoctor-mathematical to install properly on the MacOS, and the solutions vary. It appears that after more than one MacOS update, the file permissions can cause problems. It appears that cleaning up prior versions of Ruby (while maintaining the current version installed with the Xcode developer tools), and completely removing and reinstalling RVM can resolve the problem.
 
 ## Install gems that support Wavedrom and for Mathematical
 
@@ -196,7 +197,7 @@ gem install asciidoctor-diagram
 gem install asciidoctor-mathematical
 ```
 
-## AsciiDoc book headers
+## AsciiDoc book headers and styles
 
 Attributes in the book headers for RISC-V AsciiDoc content control aspects of the pdf build. Together with the `risc-v_spec-pdf.yml` file, they enable, among other things, numbered headings, a TOC, running headers and footers, footnotes at chapter ends, custom fonts, admonitions, an index, and an optional colophon. 
 
@@ -262,8 +263,9 @@ You can find a list of text editors that support AsciiDoc authoring (with linter
 
 While Pandoc does a reasonably good job, there are always documentation nits that must be addressed.
 
-
 ## If you want to make use of change bars
+
+The current procedure for changebars is, aditedly, a bit fiddly, but the convenience value of changebars that show up in a pdf can make them worth the effort. 
 
 To support changebars, the following has been added to the YAML stylesheet:
 
@@ -302,6 +304,12 @@ if (border_width = data[:border_changebar])
       elsif (border_width = data[:border_width])
 ```
 
-At this point changebars require manual entry. An automated process in CI/CD does look possible.
+At this point changebars require manual entry and removal. You can find documentation for how to use markup for changebars in the example.pdf. 
 
+An automated process in CI/CD does look possible.
+
+
+### Link to JDK
+
+You can find information on installing the JDK on a MacOS here: https://docs.oracle.com/en/java/javase/15/install/installation-jdk-macos.html#GUID-F575EB4A-70D3-4AB4-A20E-DBE95171AB5F
 
