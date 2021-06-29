@@ -46,9 +46,11 @@ This is the preamble, which can contain contributor information and should conta
 
 For this book example, I have copied information directly from several Web sites that are hosted by asciidoctor.org and devoted to providing Asciidoc/Asciidoctor documentation, and have authored some explanations. Graphics used are either explicitly available for free, are property of RISC-V International, or were created using Wavedrom.
 
-      This document is released under a Creative Commons Attribution 4.0 International License.
+This document is released under a Creative Commons Attribution 4.0 International License.
+
 //the colophon allows for a section after the preamble that is part of the frontmatter and therefore not assigned a page number.
 include::colophon.adoc[]
+//While some documents need several levels of introductory material, other documents only need a breif introduction.
 //include::overview.adoc[]
 include::a_few_basics.adoc[]
 include::tables_graphics.adoc[]
