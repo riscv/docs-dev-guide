@@ -183,7 +183,7 @@ WARNING: For the MacOS, if you upgrade from a prior version to Big Sur, you must
 Support for mathematical notation is not required for each and every specification, and installing both the prerequisites and the gem itself have been tricky on the Mac.
 
 ```cmd
-brew install pango gdk-picbuf cairo 
+brew install pango gdk-pixbuf cairo cmake
 ```
 
 ALERT: You can find various discussions about problems with getting asciidoctor-mathematical to install properly on the MacOS, and the solutions vary. It appears that after more than one MacOS update, the file permissions can cause problems. It appears that cleaning up prior versions of Ruby (while maintaining the current version installed with the Xcode developer tools), and completely removing and reinstalling RVM can resolve the problem.
