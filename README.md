@@ -71,9 +71,11 @@ rvm use system
 rvm use 2.5.9
 ```
 
-ALERT: Ensure that you are using Ruby 2.5.9 for all Ruby gems that you install for the Asciidoctor toolchain. 
+ALERT: Ensure that you are using the same Ruby version for all Ruby gems that you install for the Asciidoctor toolchain. 
 
 ## Windows—install Ruby with RVM
+
+NOTE: Users of Windows 10 are reporting problems with RVM. We plan to test the use of Cygwin as a workaround. Please note that if you don't need asciidoctor-mathematical for rendering of mathematical expressions, you can make use of Ruby 2.7.2. 
 
 - For Windows, use: http://rubyinstaller.org/
 
@@ -83,7 +85,7 @@ NOTE: During the Windows install, click in the installer to:
 - add paths
 - add tdtk
 
-ALERT: Ensure that you are using Ruby 2.5.9 for all gems that you install for the Asciidoctor toolchain. 
+ALERT: Ensure that you are using the same Ruby version for all gems that you install for the Asciidoctor toolchain. 
 
 ## MacOS--install Asciidoctor
 
