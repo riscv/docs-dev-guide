@@ -374,34 +374,6 @@ There are two ways of handling bibliographies:
 
 You can add bibliographic entries to the last appendix that you use in a book document.
 
-==== Manual bibliogrpahy procedures
-
-Text with markup that will generate links:
-
-[source,adoc]
-----
-_The Pragmatic Programmer_ <<pp>> should be required reading for all developers.
-To learn all about design patterns, refer to the book by the "`Gang of Four`" <<gof>>.
-----
-
-Links from within text to bibliographic entries:
-
-[source.adoc]
-----
-[bibliography]
-== References
-
-* [[[pp]]] Andy Hunt & Dave Thomas. The Pragmatic Programmer:
-From Journeyman to Master. Addison-Wesley. 1999.
-* [[[gof,gang]]] Erich Gamma, Richard Helm, Ralph Johnson & John Vlissides.
-Design Patterns: Elements of Reusable Object-Oriented Software. Addison-Wesley. 1994.
-----
-
-Text that links to bibliogpraphy:
-
-_The Pragmatic Programmer_ <<pp>> should be required reading for all developers.
-To learn all about design patterns, refer to the book by the "`Gang of Four`" <<gof>>.
-
 ==== Automated bibliography procedures with asciidoctor-bibtex
 
 Asciidoctor-bibtex enables options that allow for establishing a single source of bibliographic entries for RISC-V specifications.
@@ -410,9 +382,9 @@ WARNING: this is currently being considered and tested.
 
 This section uses information from asciidoctor-bibtex samples with attributes as follows:
 
-[source,json]
+[source,adoc]
 ----
-:bibtex-file: references.bib
+:bibtex-file: resources/references.bib
 :bibtex-order: alphabetical
 :bibtex-style: ieee
 ----
@@ -421,14 +393,13 @@ WARNING: the following is not yet tested for RISC-V documentation purposes.
 
 When you run asciidoctor-bibtex as part of the build, it searches for the bibliography information first in the folder of the document header, and then in `\~/Documents`."
 
-- add author-year references using the pattern `cite:[Lane12b]` or - `citenp:[Lane12a]`.
-- add age numbers (locators) using the pattern `cite:[Lane12a(89)]` or `citenp:[Lane12a(89-93)]`.
-- add pretext using the pattern `cite:See[Lane12a(89)]`.
+- add author-year references using the pattern `cite:[riscvtr(12)]` or - `cite:[riscvtr(12)]`.
+- add age numbers (locators) using the pattern `cite:[Kim-micro2005(45)]` or `citenp:[Kim-micro2005(45)]`.
+- add pretext using the pattern `cite:See[Kim-micro2005(45)]`.
 
 It's possible to can include other files, which are also processed.
 
 CAUTION: To to prevent problems with other appendices, use the section template before title when you add the reference list.
-
 
 The bibliography section of the book must be set up as follows, to receive the entries during the build:
 
@@ -436,8 +407,10 @@ The bibliography section of the book must be set up as follows, to receive the e
 ----
 == Bibliography
 
-bibliography::references.bib[ieee]
+bibliography::[]
 ----
+
+When using the automated option, _do not_ manually add entries to the bibliography.adoc file.
 
 Multiple authors in a single citation:
 
@@ -450,7 +423,6 @@ Page numbers can be added: cite:[Lane12b(89)] or citenp:[Lane12b(89-93)].
 A bit of pretext can be included too: See cite:[Lane12b(89)]
 
 ----
-
 
 Multiple references in a single citation:
 ----
@@ -502,6 +474,36 @@ Example json-formatted bibliography entries that could be stored as a single sou
 	year = {2004}
 }
 ----
+
+==== Manual bibliography procedures
+
+While the automated procedure and use of the RISC-V bibtex file is preferred, it is also possible to manually create and reference a bibliogprapy.
+
+Text with markup that will generate links:
+
+[source,adoc]
+----
+_The Pragmatic Programmer_ <<pp>> should be required reading for all developers.
+To learn all about design patterns, refer to the book by the "`Gang of Four`" <<gof>>.
+----
+
+Links from within text to bibliographic entries:
+
+[source.adoc]
+----
+[bibliography]
+== References
+
+* [[[pp]]] Andy Hunt & Dave Thomas. The Pragmatic Programmer:
+From Journeyman to Master. Addison-Wesley. 1999.
+* [[[gof,gang]]] Erich Gamma, Richard Helm, Ralph Johnson & John Vlissides.
+Design Patterns: Elements of Reusable Object-Oriented Software. Addison-Wesley. 1994.
+----
+
+Text that links to bibliography:
+
+_The Pragmatic Programmer_ <<pp>> should be required reading for all developers.
+To learn all about design patterns, refer to the book by the "`Gang of Four`" <<gof>>.
 
 
 

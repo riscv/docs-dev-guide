@@ -199,9 +199,29 @@ gem install asciidoctor-diagram
 gem install asciidoctor-mathematical
 ```
 
+## Add a RISC-V bibliography
+
+The `asciidoctor-bibtex` gem enables the use of bibtex directly from AsciiDoc for auto-generation of a bibliography from citations within the AsciiDoc text.
+
+To enable the use of `asciidoctor-bibtex`, install the prerequisites and the `asciidoctor-bibtex` gem:
+
+````cmd
+gem install ruby-dev
+gem install citeproc-ruby
+gem install csl-styles
+gem install asciidoctor-bibtex
+```
+
+You can then add a bibliography to your appendices and use bibtex conventions to add citations into your AsciiDoc text files. 
+
+Details of how to work with bibtex and the RISC-V bibliogrpahy are in the example.pdf file.
+
+
 ## AsciiDoc book headers and styles
 
 Attributes in the book headers for RISC-V AsciiDoc content control aspects of the pdf build. Together with the `risc-v_spec-pdf.yml` file, they enable, among other things, numbered headings, a TOC, running headers and footers, footnotes at chapter ends, custom fonts, admonitions, an index, and an optional colophon. 
+
+In addition, properties in the book header within this repo point to the `images` directory and also the `resources/riscv-spec.bib` file that contains the RISC-V `bibtex` entries for use in creating a bibliography as one of the appendices.
 
 For shorter documents, you have the option of using a report header, however, we have not yet provided branding for it.
 
@@ -256,7 +276,7 @@ https://pandoc.org/getting-started.html
 After installing Pandoc on your machine, you can begin the conversion using the following pattern:
 
 ```cmd
-pandoc source_file.tex destination_file.adoc
+pandoc source_file.tex -s -o destination_file.adoc
 ```
 
 After that first step, you must open the file using a text editor with a good AsciiDoc linter and clean it up.
