@@ -399,7 +399,12 @@ When you run asciidoctor-bibtex as part of the build, it searches for the biblio
 
 It's possible to can include other files, which are also processed.
 
-CAUTION: To to prevent problems with other appendices, use the section template before title when you add the reference list.
+[CAUTION]
+=====
+To to prevent problems with other appendices, leave keep the index as the second-to-last appendix and the bibliography as the last appendix in you list of included chapter sections within the book-header file.
+
+Citations must be contained within a single line.
+=====
 
 The bibliography section of the book must be set up as follows, to receive the entries during the build:
 
@@ -411,31 +416,6 @@ bibliography::[]
 ----
 
 When using the automated option, _do not_ manually add entries to the bibliography.adoc file.
-
-Multiple authors in a single citation:
-
-----
-Author-year references can use different styles such as: cite:[Lane12b] or
-citenp:[Lane12b].
-
-Page numbers can be added: cite:[Lane12b(89)] or citenp:[Lane12b(89-93)].
-
-A bit of pretext can be included too: See cite:[Lane12b(89)]
-
-----
-
-Multiple references in a single citation:
-----
-
-One citation can include several references, such as cite:[Lane12a,Lane12b].
-
-These can include pages and be in-text: citenp:[Lane12a(78), Lane12b(89-93)].
-
-And include pretext: See cite:[Lane12a, Lane12b(89-93)]
-
-Note: citations cannot be split over lines; each citation must be on one line.
-
-----
 
 
 Example json-formatted bibliography entries that could be stored as a single source of truth for RISC-V:
