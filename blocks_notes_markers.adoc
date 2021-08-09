@@ -376,11 +376,13 @@ You can add bibliographic entries to the last appendix that you use in a book do
 
 ==== Automated bibliography procedures with asciidoctor-bibtex
 
-Asciidoctor-bibtex enables options that allow for establishing a single source of bibliographic entries for RISC-V specifications.
+Asciidoctor-bibtex enables options that allow for establishing a single source of bibliographic entries that we can use for RISC-V specifications. As an added benefit we can make use of existing bibtex files.
 
-WARNING: this is currently being considered and tested.
+For asciidoctor-bibtex to work, please install the Ruby gems as documented in the docs-templates README file.
 
-This section uses information from asciidoctor-bibtex samples with attributes as follows:
+NOTE: This has now been tested and is the preferred procedure for adding a biliography.
+
+The doc header file in the docs-templates repo now contains the following attributes for the purpose of implementing a biliograpy using asciidoctor-bibtex:
 
 [source,adoc]
 ----
@@ -389,15 +391,38 @@ This section uses information from asciidoctor-bibtex samples with attributes as
 :bibtex-style: ieee
 ----
 
-WARNING: the following is not yet tested for RISC-V documentation purposes.
+The repo also contains the most recent version of the `riscv-spec.bib` file for asciidocotor-bibtex to use while building the bibliogrpahy.
 
-When you run asciidoctor-bibtex as part of the build, it searches for the bibliography information first in the folder of the document header, and then in `\~/Documents`."
+When you run asciidoctor-bibtex as part of the build, it searches for the bibtex file first in the folder and subfolders of the document header, and then in `\~/Documents`."
 
-- add author-year references using the pattern `cite:[riscvtr(12)]` or - `cite:[riscvtr(12)]`.
-- add age numbers (locators) using the pattern `cite:[Kim-micro2005(45)]` or `citenp:[Kim-micro2005(45)]`.
-- add pretext using the pattern `cite:See[Kim-micro2005(45)]`.
+Within your text, add author-year references using the pattern:
 
-It's possible to can include other files, which are also processed.
+[source,adoc]
+----
+ cite:[riscvtr(12)]
+----
+
+with the result, cite:[riscvtr(12)]
+
+Add age numbers (locators) using the pattern:
+
+[sorce,adoc]
+----
+cite:[Kim-micro2005(45)]
+----
+
+with the result: cite:[Kim-micro2005(45)]
+
+Add pretext using the pattern:
+
+[source,adoc]
+----
+cite:See[Kim-micro2005(45)]
+----
+
+with the result: cite:See[Kim-micro2005(45)]
+
+It's possible to include other files, which are also processed.
 
 [CAUTION]
 =====
@@ -415,10 +440,9 @@ The bibliography section of the book must be set up as follows, to receive the e
 bibliography::[]
 ----
 
-When using the automated option, _do not_ manually add entries to the bibliography.adoc file.
+WARNING: When using the automated option, _do not_ manually add entries to the `bibliography.adoc` file.
 
-
-Example json-formatted bibliography entries that could be stored as a single source of truth for RISC-V:
+Following are example json-formatted bibliographic entries:
 
 [source,json]
 ----
@@ -434,14 +458,6 @@ Example json-formatted bibliography entries that could be stored as a single sou
 	title =	 {Book title},
 	publisher = {Publisher},
 	year =	 {2000}
-}
-
-@book{Anderson98,
-	editor = {J. R. Anderson and C. Lebiere},
-	title = {The Atomic Components of Thought},
-	publisher = {Lawrence Erlbaum},
-        address = {Mahwah, NJ},
-	year = {1998}
 }
 
 @article{Anderson04,
