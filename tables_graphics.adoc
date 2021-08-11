@@ -158,7 +158,7 @@ Even as we are using WaveDrom to simplify the creation of accurate svgs for regi
 
 The https://docs.asciidoctor.org/diagram-extension/latest/[asciidoctor-diagram extension] supports numerous diagram types including WaveDrom diagramming (for sequence and waveform diagrams).
 
-The requirements for building WaveDrom diagrams are specified in the https://github.com/riscv/docs-templates/blob/main/README.md[docs temaplates readme].
+The requirements for building WaveDrom diagrams are specified in the https://github.com/riscv/docs-templates/blob/main/README.md[docs templates README].
 
 The following json-formatted script, when added within an asciidoc block with the macro indicators `[wavedrom, svg]`, will embed the diagram output into the pdf:
 
@@ -221,6 +221,44 @@ You have the option of referencing a graphics file directly:
 .This example is from an svg generated prior to the build
 image::wavedrom/wavedrom-example2.svg[wavedrom_example2]
 
+==== Graphviz
+
+There are numerous graphviz diagrams that were created for both Unpriv and Priv specifications. Asciidoctor supports automation of embedding these diagrams into the pdf.
+
+Following is an example of Graphviz diagram source:
+
+[source,adoc]
+----
+[graphviz, "dot_example", "svg"]
+....
+graph ethane {
+     C_0 -- H_0 [type=s];
+     C_0 -- H_1 [type=s];
+     C_0 -- H_2 [type=s];
+     C_0 -- C_1 [type=s];
+     C_1 -- H_3 [type=s];
+     C_1 -- H_4 [type=s];
+     C_1 -- H_5 [type=s];
+}
+....
+----
+
+This renders as:
+
+[graphviz, "dot_example", "svg"]
+....
+graph ethane {
+     C_0 -- H_0 [type=s];
+     C_0 -- H_1 [type=s];
+     C_0 -- H_2 [type=s];
+     C_0 -- C_1 [type=s];
+     C_1 -- H_3 [type=s];
+     C_1 -- H_4 [type=s];
+     C_1 -- H_5 [type=s];
+}
+....
+
+
 ==== Additional diagram type examples
 
 Following is source for simple ditaa diagram:
@@ -272,7 +310,7 @@ Which renders to:
      +-----------------------------------+
 ....
 
-Following is source for a plantuml diagram:
+Following is source for a simple plantuml diagram:
 
 [source,adoc]
 ----
@@ -302,6 +340,9 @@ BlockProcessor <|-- DiagramBlock
 DiagramBlock <|-- DitaaBlock
 DiagramBlock <|-- PlantUmlBlock
 ....
+
+NOTE: Additional diagram types are possible. Please
+
 
 === Superscipts and other mathematical notations
 
