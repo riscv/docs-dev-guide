@@ -201,11 +201,11 @@ gem install asciidoctor-mathematical
 
 ## Add a RISC-V bibliography
 
-The `asciidoctor-bibtex` gem enables the use of bibtex directly from AsciiDoc for auto-generation of a bibliography from citations within the AsciiDoc text.
+The `asciidoctor-bibtex` gem enables the use of bibtex directly from AsciiDoc for auto-generation of a bibliography from citations within the AsciiDoc text. It also allows for the use of the existing `riscv-spec.bib` file that was created for the LaTeX build.
 
 To enable the use of `asciidoctor-bibtex`, install the prerequisites and the `asciidoctor-bibtex` gem:
 
-````cmd
+```cmd
 gem install ruby-dev
 gem install citeproc-ruby
 gem install csl-styles
