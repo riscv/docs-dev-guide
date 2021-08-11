@@ -218,7 +218,7 @@ In exploring possbile implementation of change bars for RISC-V, we have looked f
 The suggested solution makes use of:
 
 - an AsciiDoc `role`.
-- modifiction of two files in the Ruby gem with code snippets (see procedure in the README for https://github.com/riscv/docs-templates).
+- modification of two files in the Ruby gem with code snippets (see procedure in the README for https://github.com/riscv/docs-templates).
 - Git features.
 - a few procedures associated, specifically, with Git updates.
 
@@ -257,7 +257,7 @@ You can double check for all changed lines just before doing a commit, using thi
 git blame <file> | grep -n '^0\{8\} ' | cut -f1 -d:
 ----
 
-This lists the line numbers of chnages within the specified file like the following:
+This lists the line numbers of changes within the specified file like the following:
 
 [source,cmd]
 ----
@@ -498,10 +498,10 @@ Design Patterns: Elements of Reusable Object-Oriented Software. Addison-Wesley. 
 
 Text that links to bibliography:
 
+[source,adoc]
+----
 _The Pragmatic Programmer_ <<pp>> should be required reading for all developers.
 To learn all about design patterns, refer to the book by the "`Gang of Four`" <<gof>>.
-
-
-
+----
 
 

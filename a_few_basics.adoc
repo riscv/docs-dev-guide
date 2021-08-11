@@ -76,6 +76,8 @@ Asciidoctor automates some linking as follows:
 * Asciidoctor recognizes hyperlinks to Web pages and shortens them for readability.
 * Asciidoctor automatically creates an anchor for every section and discrete heading.
 
+==== Hyperlinks
+
 To create highlighted links, use the pattern in the following example:
 
 [source,adoc]
@@ -85,16 +87,56 @@ https://asciidoctor.org[Asciidoctor]
 
 You can set https://docs.asciidoctor.org/asciidoc/latest/macros/link-macro-ref/[attributes for your external links]
 
+
+==== Cross references
+
 Use macros for cross references (links within a document) as in the following example:
 
 [source,adoc]
 ----
-Section <<Index markers>> describes how index markers work.
+<<Index markers>> describes how index markers work.
 ----
 
 This renders as:
 
-Section <<Index markers>> describes how index markers work.
+<<Index markers>> describes how index markers work.
+
+
+The `book_header.adoc` file in the docs-templates repo sets the `full` cross reference attribute to enable the display of captions from targets in the anchors. This allows you to set captions for tables, blocks, and illustrations. If no caption is provided, Asciidoctor defaults to the _basic_ cross reference style.
+
+To set a caption for a table or image, use the pattern as follows:
+
+[source,adoc]
+----
+The table below, <<trapcharacteristics,Characteristics of traps>> shows the characteristics of each
+kind of trap.
+----
+
+[source,adoc]
+----
+[[trapcharacteristics,Characteristics of traps]]
+.Characteristics of traps.
+[cols="<,^,^,^,^",options="header",]
+|===
+| |Contained |Requested |Invisible |Fatal
+|Execution terminates |No |Nolatexmath:[$^{1}$] |No |Yes
+|Software is oblivious |No |No |Yes |Yeslatexmath:[$^{2}$]
+|Handled by environment |No |Yes |Yes |Yes
+|===
+----
+
+The table below, <<trapcharacteristics,Characteristics of traps>> shows the characteristics of each
+kind of trap.
+
+[[trapcharacteristics,Characteristics of traps]]
+.Characteristics of traps.
+[cols="<,^,^,^,^",options="header",]
+|===
+| |Contained |Requested |Invisible |Fatal
+|Execution terminates |No |Nolatexmath:[$^{1}$] |No |Yes
+|Software is oblivious |No |No |Yes |Yeslatexmath:[$^{2}$]
+|Handled by environment |No |Yes |Yes |Yes
+|===
 
 === Stem content
 
