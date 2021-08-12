@@ -39,8 +39,8 @@
 ifdef::backend-pdf[]
 :source-highlighter: coderay
 endif::[]
-:table-caption: Data Set
-:figure-caption: Data Set
+:table-caption: Table
+:figure-caption: Figure
 :xrefstyle: full
 :chapter-refsig: Chapter
 :section-refsig: Section

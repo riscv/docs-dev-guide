@@ -138,6 +138,7 @@ sidebar-title:
   font-size: 11
   align: left
 admonition:
+  font-style: italic
   column_rule_color: $base_border_color
   column_rule_width: $base_border_width
   padding: [0, $horizontal_rhythm, 0, $horizontal_rhythm]

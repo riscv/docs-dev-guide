@@ -1,0 +1,26 @@
+An introductory phrase.
+
+.First Wavedrom import example
+[wavedrom,,svg]
+....
+{reg: [
+  {bits: 7,  name: 'opcode'},
+  {bits: 5,  name: 'rd'},
+  {bits: 3,  name: 'func3'},
+  {bits: 5,  name: 'rs1'},
+  {bits: 5,  name: 'rs2'},
+  {bits: 7,  name: 'funct7'}
+], config: {label: {right: 'z-Type'}}}
+....
+
+.Second Wavedrom import example
+[wavedrom,,svg]
+....
+{reg: [
+  {bits: 7,  name: 'opcode'},
+  {bits: 5,  name: 'rd'},
+  {bits: 3,  name: 'func3'},
+  {bits: 5,  name: 'rs1'},
+  {bits: 12, name: 'imm[11:0]', type: 3},
+], config: {label: {right: 'VV-Type'}}}
+....

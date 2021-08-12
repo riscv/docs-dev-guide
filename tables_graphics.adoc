@@ -85,9 +85,9 @@ NOTE: Annotations have been added to the code to illustrate their use.
 
 === Unicode symbols
 
-For pdf, some unicode symbols are buggy. There are some workarounds. The asciidcotor-pdf toolchain supports most unicode up to and including four digits, and not characters that require five or more digits. I noticed the need for a mathematical _w_ and because its encoding uses an integer that is in the 5+ digit category it doesn't work.
+For pdf, five-digit unicdole symbols generally don't work and some other unicode symbols are buggy. This happens because the Ruby asciidcotor-pdf toolchain makes ue of Prawn to build pdfs and it's Prawn that has the problems.
 
-Here are a few unicode examples from https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references:
+Here are a few unicode examples from https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references that might be useful:
 
 As an example, &#9830; is encoded as follows:
 
@@ -127,10 +127,7 @@ sym,num,name
 &#114;,114,latin small letter r
 |===
 
-Unfortunately a better checkmark is not available for asciidoctor-pdf, because anything above four digits doesn't work. The fact that encodings for moe than four digits for HTML encoding doesn't work is connected to prawn, which is used for generating the fully functional asciidoctor-pdf, and not to asciidoctor-pdf itself. Until the newer asciidoctor build that uses a different toolchain becomes fully featured, we must use a workaround.
-
-It is possible to map fonts for better substitutes to numbers for which you don't need to make use of the existing unicode mapping should the need become a priority. For example, if a perfect mathematical _w_ is important, we can implement the workaround until the newer toolchain for the pdf build is fully featured.
-
+For many symbols, then, we must turn to asciidoctor-mathematical. See <<Superscipts and other mathematical notations>>.
 
 [#unicode-not-working]
 .Unicode identified as not working
@@ -156,11 +153,15 @@ Even as we are using WaveDrom to simplify the creation of accurate svgs for regi
 
 ==== Automated diagramming
 
-The https://docs.asciidoctor.org/diagram-extension/latest/[asciidoctor-diagram extension] supports numerous diagram types including WaveDrom diagramming (for sequence and waveform diagrams).
+Automated diagramming isn't easy. However, it can be important because some specifications require numerous, very accurate diagrams. Please feel free to ask questions about some of the details in this section.
 
-The requirements for building WaveDrom diagrams are specified in the https://github.com/riscv/docs-templates/blob/main/README.md[docs templates README].
+The https://docs.asciidoctor.org/diagram-extension/latest/[asciidoctor-diagram extension] supports numerous diagram types, including https://wavedrom.com/[WaveDrom] diagramming for sequence and waveform diagrams, and https://graphviz.gitlab.io/[Graphviz digrams], which can be useful for illustrating software, networking, and security concepts.
 
-The following json-formatted script, when added within an asciidoc block with the macro indicators `[wavedrom, svg]`, will embed the diagram output into the pdf:
+The requirements for building WaveDrom diagrams are specified in the https://github.com/riscv/docs-templates/blob/main/README.md[docs templates README]. Graphviz does not require anything in addition to asciidoctor-diagram.
+
+==== Wavedrom
+
+The following json-formatted script, when added within an asciidoc block with the macro indicators `[wavedrom, ,svg]`, will embed the diagram output into the pdf:
 
 [source,json]
 ----
@@ -174,21 +175,29 @@ The following json-formatted script, when added within an asciidoc block with th
 ]}
 ----
 
-For the above to build into a diagram, with a figure title, you need to add the macro information and a figure title above the code block:
+[WARNING]
+====
+The macro `[wavedrom, ,svg]` has two commas and leaves a blank space as an implicit indicator to the build processor to auto-generate identifiers for the images after they are created.
+
+DO NOT make the mistake of simply using `[wavedrom,svg]`. Without the second comma, the build interprets 'svg' as a target name because it is the second value within the macro.
+
+You have the option of specifying names by using the `target` attribute as illustrated below.
+====
+
+For the above to build into a diagram that has a figure title, and a figure title and a macro the specifies the diagram type above the code block. You can add a `target` filename and, in addition, specify the image output format leave output unspecified to default to png:
 
 [source,adoc]
 ----
 .Figure title
-[wavedrom, svg]
+[wavedrom,target="file-name",svg]
 ----
 
-NOTE: Prior bug is fixed and requirements for local build added to the https://github.com/riscv/docs-templates/blob/main/README.md[README]. Once the required node and ruby extensions are installed, the diagrams build from asciidoc blocks
-
+Following are some examples of Wavedrom diagrams:
 
 [source,adoc]
 ----
-Figure title
-[wavedrom, svg]
+.Figure title
+[wavedrom,target="op-32-add.uw"]
 ....
 {reg:[
     { bits:  7, name: 0x3b, attr: ['OP-32'] },
@@ -201,10 +210,9 @@ Figure title
 ....
 ----
 
-
-.Figure title
-[wavedrom, svg]
-....
+.For this example, the output format was not specified, so it defaults to a png.
+[wavedrom,target="op-32-add.uw"]
+----
 {reg:[
     { bits:  7, name: 0x3b, attr: ['OP-32'] },
     { bits:  5, name: 'rd' },
@@ -213,13 +221,47 @@ Figure title
     { bits:  5, name: 'rs2' },
     { bits:  7, name: 0x04, attr: ['ADD.UW'] },
 ]}
+----
+
+.Wavedrom example with svg output specified
+[wavedrom,target="z-type",svg]
+....
+{reg: [
+  {bits: 7,  name: 'opcode'},
+  {bits: 5,  name: 'rd'},
+  {bits: 3,  name: 'func3'},
+  {bits: 5,  name: 'rs1'},
+  {bits: 5,  name: 'rs2'},
+  {bits: 7,  name: 'funct7'}
+], config: {label: {right: 'z-Type'}}}
 ....
 
-You have the option of referencing a graphics file directly:
+You have the option of referencing graphics files directly:
 
 [#wavedrom_example2]
-.This example is from an svg generated prior to the build
+.This example is from an svg generated prior to the build.
 image::wavedrom/wavedrom-example2.svg[wavedrom_example2]
+
+You can saving Wavedrom diagram code in AsciiDoc blocks within in AsciiDoc files and pull them into the documentation with an `include::` as in the following:
+
+[source, adoc]
+----
+include::images/wavedrom/test4wvdrm.adoc[]
+----
+
+[NOTE]
+====
+The following string is lacking macro brackets (`[]`) because adding the brackets will activate the include even though it's within a code block. Best practice for automated diagramming is to save AsciiDoc files containing properly formatted AsciiDoc blocks, each block containing the code or script for one diagram.
+[source,adoc]
+----
+include::images/wavedrom/filename.adoc
+----
+====
+//For the specifications, we are using includes:
+//include::images/wavedrom/hint-nopv_rv64i.adoc[]
+
+include::images/wavedrom/test4wvdrm.adoc[]
+//include::images/wavedrom/wvdrm_again.adoc[]
 
 ==== Graphviz
 
@@ -229,7 +271,8 @@ Following is an example of Graphviz diagram source:
 
 [source,adoc]
 ----
-[graphviz, "dot_example", "svg"]
+.Graphviz s
+[graphviz, target="ethane",svg]
 ....
 graph ethane {
      C_0 -- H_0 [type=s];
@@ -245,7 +288,8 @@ graph ethane {
 
 This renders as:
 
-[graphviz, "dot_example", "svg"]
+.Graphviz s
+[graphviz, target="ethane",svg]
 ....
 graph ethane {
      C_0 -- H_0 [type=s];
@@ -257,7 +301,6 @@ graph ethane {
      C_1 -- H_5 [type=s];
 }
 ....
-
 
 ==== Additional diagram type examples
 
@@ -341,8 +384,7 @@ DiagramBlock <|-- DitaaBlock
 DiagramBlock <|-- PlantUmlBlock
 ....
 
-NOTE: Additional diagram types are possible. Please
-
+NOTE: Additional diagram types are possible. For information on diagram types that are supported by Asciidoctor, see the https://docs.asciidoctor.org/diagram-extension/latest/[Asciidoctor-diagram documentation].
 
 === Superscipts and other mathematical notations
 
@@ -377,6 +419,5 @@ latexmath:[$C = \alpha + \beta Y^{\gamma} + \epsilon$]
 Which renders as:
 
 latexmath:[$C = \alpha + \beta Y^{\gamma} + \epsilon$]
-
 
 
