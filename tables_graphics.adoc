@@ -159,6 +159,8 @@ The https://docs.asciidoctor.org/diagram-extension/latest/[asciidoctor-diagram e
 
 The requirements for building WaveDrom diagrams are specified in the https://github.com/riscv/docs-templates/blob/main/README.md[docs templates README]. Graphviz does not require anything in addition to asciidoctor-diagram.
 
+ALERT: The build process for automated diagramming places an image file for each diagram into the `images` folder. Please do *not* check any generated image files into the git repository.
+
 ==== Wavedrom
 
 The following json-formatted script, when added within an asciidoc block with the macro indicators `[wavedrom, ,svg]`, will embed the diagram output into the pdf:

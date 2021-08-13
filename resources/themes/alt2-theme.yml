@@ -54,7 +54,7 @@ base:
   font_size_small: round($base_font_size * 0.85)
   font_size_min: $base_font_size * 0.75
   border_radius: 3
-  border_width: 0.2
+  border_width: 0.25
 vertical_rhythm: $base_line_height_length
 horizontal_rhythm: $base_line_height_length
  # QUESTION should vertical_spacing be block_spacing instead?
@@ -151,8 +151,8 @@ admonition:
       stroke_color: 646b74
       size: 24
     important:
-      name: hand-pointer-o
-      stroke_color: b58f5b
+      name: info
+      stroke_color: 5f8c8b
     warning:
       stroke_color: 9c4d4b
     caution: 
