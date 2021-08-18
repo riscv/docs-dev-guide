@@ -23,12 +23,10 @@
 // Settings:
 :experimental:
 :reproducible:
-// needs to be changed? bug discussion started
-//:WaveDromEditorApp: app/wavedrom-editor.app
 :imagesoutdir: images
 :bibtex-file: resources/riscv-spec.bib
 :bibtex-order: alphabetical
-:bibtex-style: ieee
+:bibtex-style: apa
 :icons: font
 :lang: en
 :listing-caption: Listing

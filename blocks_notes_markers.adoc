@@ -388,7 +388,7 @@ The doc header file in the docs-templates repo now contains the following attrib
 ----
 :bibtex-file: resources/references.bib
 :bibtex-order: alphabetical
-:bibtex-style: ieee
+:bibtex-style: apa
 ----
 
 The repo also contains the most recent version of the `riscv-spec.bib` file for asciidocotor-bibtex to use while building the bibliogrpahy.

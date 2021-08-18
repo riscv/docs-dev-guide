@@ -159,6 +159,8 @@ The https://docs.asciidoctor.org/diagram-extension/latest/[asciidoctor-diagram e
 
 The requirements for building WaveDrom diagrams are specified in the https://github.com/riscv/docs-templates/blob/main/README.md[docs templates README]. Graphviz does not require anything in addition to asciidoctor-diagram.
 
+NOTE: To ensure findability of graphics source files, store the files in filetype subdirectories within the `images` directory.
+
 ALERT: The build process for automated diagramming places an image file for each diagram into the `images` folder. Please do *not* check any generated image files into the git repository.
 
 ==== Wavedrom diagrams in specifications
