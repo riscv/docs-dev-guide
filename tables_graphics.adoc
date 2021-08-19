@@ -27,7 +27,7 @@ The Lumineers,Ho Hey,Folk Rock
 |===
 
 
-Here is an additional example of what can be done with tables:
+There are numerous formatting options available. While some of the property settings are cryptic, they can be quite useful. There are numerous examples availabel at https://asciidoc.org/newtables.html. Here one example of what can be done with spans alignment in tables from that page:
 
 [source,adoc]
 ----
@@ -56,7 +56,7 @@ NOTE: Annotations have been added to the code to illustrate their use.
 
 [source,adoc]
 ----
-[#proposed-16bit-encodings-1]  <1>
+[[proposed-16bit-encodings-1]  <1>
 .proposed 16-bit encodings-1    <2>
 [width="100%",options=header]
 |===
@@ -197,11 +197,10 @@ include::images/wavedrom/instruction_formats.adoc[] (1)
 .Instruction formats (3)
 image::image_placeholder.png[] (4)
 ----
-
-1. Wavedrom code for all diagrams in this illustration stored in `wavedrom` subdirectory within the `images` directory.
-2. Link target that, along with settings in the `book_header` file, enables cross references that indicate figure number and caption.
-3. Figure caption.
-4. "Invisible" placeholder needed for figure caption to display correctly.
+. Wavedrom code for all diagrams in this illustration stored in `wavedrom` subdirectory within the `images` directory.
+. Link target that, along with settings in the `book_header` file, automates the inclusion, in the text, of the figure number and caption.
+. Figure caption.
+. "Invisible" placeholder needed for figure caption to display consistently and correctly.
 
 This renders as follows:
 
@@ -271,12 +270,6 @@ You have the option of referencing graphics files directly:
 .This example is from an svg generated prior to the build.
 image::wavedrom/wavedrom-example2.svg[wavedrom_example2]
 
-You can saving Wavedrom diagram code in AsciiDoc blocks within in AsciiDoc files and pull them into the documentation with an `include::` as in the following:
-
-[source, adoc]
-----
-include::images/wavedrom/test4wvdrm.adoc[]
-----
 
 [NOTE]
 ====
@@ -286,15 +279,12 @@ The following string is lacking macro brackets (`[]`) because adding the bracket
 include::images/wavedrom/filename.adoc
 ----
 ====
-//For the specifications, we are using includes:
-//include::images/wavedrom/hint-nopv_rv64i.adoc[]
-
-include::images/wavedrom/test4wvdrm.adoc[]
-//include::images/wavedrom/wvdrm_again.adoc[]
 
 ==== Graphviz
 
 There are numerous graphviz diagrams that were created for both Unpriv and Priv specifications. Asciidoctor supports automation of embedding these diagrams into the pdf.
+
+CAUTION: Use the same procedures mentioned in <<Wavedrom diagrams in specifications>> above for storing and referencing all graphics types. The examples in this section are merely for illustrating how some Graphviz diagrams are constructed.
 
 Following is an example of Graphviz diagram source:
 
