@@ -180,6 +180,15 @@ wavedrom-cli
 
 WARNING: For the MacOS, if you upgrade from a prior version to Big Sur, you must reinstall first the NPM and then the NPM version of the wavedrom-cli.
 
+## Graphviz is used for diagrams in some appendices
+
+To support graphviz on the Mac, use brew 
+
+```cmd
+brew install graphviz
+```
+For WIndows, see https://graphviz.org/download/
+
 ## Install the prerequisites for asciidoctor-mathematical
 
 Support for mathematical notation is not required for each and every specification, and installing both the prerequisites and the gem itself have been tricky on the Mac.

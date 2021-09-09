@@ -225,7 +225,7 @@ Following are some examples of Wavedrom diagrams:
 [source,adoc]
 ----
 .Figure title
-[wavedrom,target="op-32-add.uw"]
+[wavedrom,target="op-32-add.uw",svg]
 ....
 {reg:[
     { bits:  7, name: 0x3b, attr: ['OP-32'] },
@@ -270,6 +270,8 @@ You have the option of referencing graphics files directly:
 .This example is from an svg generated prior to the build.
 image::wavedrom/wavedrom-example2.svg[wavedrom_example2]
 
+
+Wavedrom Conversion
 
 [NOTE]
 ====
@@ -318,6 +320,41 @@ graph ethane {
      C_1 -- H_3 [type=s];
      C_1 -- H_4 [type=s];
      C_1 -- H_5 [type=s];
+}
+....
+
+.An example graphviz diagram from a specification
+[graphviz,test-diagram,svg]
+....
+digraph G {
+
+splines=spline;
+pad="0.000000";
+
+
+/* the unlocked events */
+eiid0 [label="a: Ry=1", shape="none", fontsize=8, pos="1.000000,1.125000!", fixedsize="false", height="0.111111", width="0.555556"];
+eiid1 [label="c: Wx=t", shape="none", fontsize=8, pos="1.000000,0.562500!", fixedsize="false", height="0.111111", width="0.555556"];
+eiid2 [label="d: Rx=t", shape="none", fontsize=8, pos="2.500000,1.125000!", fixedsize="false", height="0.111111", width="0.555556"];
+eiid3 [label="e: Rt=$v$", shape="none", fontsize=8, pos="2.500000,0.562500!", fixedsize="false", height="0.111111", width="0.555556"];
+eiid4 [label="f: Wy=1", shape="none", fontsize=8, pos="2.500000,0.000000!", fixedsize="false", height="0.111111", width="0.555556"];
+
+/* the intra_causality_data edges */
+
+
+/* the intra_causality_control edges */
+
+/* the poi edges */
+/* the rfmap edges */
+
+
+/* The viewed-before edges */
+eiid0 -> eiid1 [label=<<font color="darkgreen">fence</font><font color="indigo">ppo</font>>, color="darkgreen:indigo", fontsize=11, penwidth="3.000000", arrowsize="0.666700"];
+eiid1 -> eiid2 [label=<<font color="red">rf</font>>, color="red", fontsize=11, penwidth="3.000000", arrowsize="0.666700"];
+eiid2 -> eiid3 [label=<<font color="indigo">addr</font><font color="indigo">ppo</font>>, color="indigo", fontsize=11, penwidth="3.000000", arrowsize="0.666700"];
+eiid2 -> eiid4 [label=<<font color="indigo">ppo</font>>, color="indigo", fontsize=11, penwidth="3.000000", arrowsize="0.666700"];
+eiid3 -> eiid4 [label=<<font color="black">po</font>>, color="black", fontsize=11, penwidth="3.000000", arrowsize="0.666700"];
+eiid4 -> eiid0 [label=<<font color="red">rf</font>>, color="red", fontsize=11, penwidth="3.000000", arrowsize="0.666700"];
 }
 ....
 
@@ -403,11 +440,11 @@ DiagramBlock <|-- DitaaBlock
 DiagramBlock <|-- PlantUmlBlock
 ....
 
-NOTE: Additional diagram types are possible. For information on diagram types that are supported by Asciidoctor, see the https://docs.asciidoctor.org/diagram-extension/latest/[Asciidoctor-diagram documentation].
+NOTE: Asciidoctor supports dditional diagram types. For information on additional diagram types, see the https://docs.asciidoctor.org/diagram-extension/latest/[Asciidoctor-diagram documentation].
 
-=== Superscipts and other mathematical notations
+=== Mathematical notations
 
-While not all of the RISC-V specifications make use of mathematical notations, some make frequent use of superscipts.
+While not all of the RISC-V specifications make use of mathematical notations, some make frequent use of superscipts and other mathematical notation..
 
 To indicate a superscript, enclose the string for the superscript in carets as in the following example:
 
