@@ -284,9 +284,61 @@ include::images/wavedrom/filename.adoc
 
 ==== Graphviz
 
-There are numerous graphviz diagrams that were created for both Unpriv and Priv specifications. Asciidoctor supports automation of embedding these diagrams into the pdf.
+The Unpriv appendices contain Graphviz diagrams with associated keys that are arranged in tables. While in the LaTeX version, the diagrams and tables are arranged side-by-side, for the AsciiDoc version;
 
-CAUTION: Use the same procedures mentioned in <<Wavedrom diagrams in specifications>> above for storing and referencing all graphics types. The examples in this section are merely for illustrating how some Graphviz diagrams are constructed.
+* each Graphviz diagram should be directly above the key table.
+* store scripts for Graphiviz diagrams in the images/graphviz directroy, as <filename>.txt
+* import the Graphviz by reference using the pattern in the following is example.
+
+[source,adoc]
+----
+.Sample litmus test
+graphviz::images/graphviz/litmus_sample.txt[align="center"]
+
+[cols="2,1"]
+_Key for sample litmus test_
+[width="60%",cols="^,<,^,<",options="header",align="center"]
+|===
+|Hart 0 | |Hart 1 |
+| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
+| |li t1,1 | |li t4,4
+|(a) |sw t1,0(s0) |(e) |sw t4,0(s0)
+| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
+| |li t2,2 | |
+|(b) |sw t2,0(s0) | |
+| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
+|(c) |lw a0,0(s0) | |
+| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
+| |li t3,3 | |li t5,5
+|(d) |sw t3,0(s0) |(f) |sw t5,0(s0)
+| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
+|===
+----
+
+.Sample litmus test
+graphviz::images/graphviz/litmus_sample.txt[align="center"]
+
+[cols="2,1"]
+_Key for sample litmus test_
+[width="60%",cols="^,<,^,<",options="header",align="center"]
+|===
+|Hart 0 | |Hart 1 |
+| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
+| |li t1,1 | |li t4,4
+|(a) |sw t1,0(s0) |(e) |sw t4,0(s0)
+| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
+| |li t2,2 | |
+|(b) |sw t2,0(s0) | |
+| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
+|(c) |lw a0,0(s0) | |
+| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
+| |li t3,3 | |li t5,5
+|(d) |sw t3,0(s0) |(f) |sw t5,0(s0)
+| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
+|===
+
+
+CAUTION: The procedures for Graphviz diagrams are similar but not identical to procedures for <<Wavedrom diagrams in specifications>>.
 
 Following is an example of Graphviz diagram source:
 
