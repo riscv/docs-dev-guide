@@ -259,7 +259,7 @@ This generates a file named `any_file_name.html`.
 For pdf output, cd into this cloned directory and use this command:
 
 ```cmd
-asciidoctor-pdf -r asciidoctor-diagram -r asciidoctor-mathematical -r asciidoctor-bibtex book_header.adoc -a pdf-style=resources/themes/risc-v_spec-pdf.yml -a pdf-fontsdir=resources/fonts
+asciidoctor-pdf -r asciidoctor-diagram -r asciidoctor-mathematical -a mathematical-format=svg -r asciidoctor-bibtex book_header.adoc -a pdf-style=resources/themes/risc-v_spec-pdf.yml -a pdf-fontsdir=resources/fonts
 ```
 
 This generates a file named `book_header.pdf` that makes use of the graphics, styles, and fonts that is identical to example.pdf. 

@@ -496,7 +496,9 @@ NOTE: Asciidoctor supports dditional diagram types. For information on additiona
 
 === Mathematical notations
 
-While not all of the RISC-V specifications make use of mathematical notations, some make frequent use of superscipts and other mathematical notation..
+WARNING: Asciidoctor-mathematical has some limitations. For inline expressions, the graphical representations appear small and they are centered virtically. In some cases where there is a single character expresssion, they unintentionally look like superscripts. For this reason, we should attempt to use any viable alternatives like simple italics or unicode (see <<Unicode symbols>>).
+
+While not all of the RISC-V specifications make use of mathematical notations, some make frequent use of specific mathematical notation.
 
 To indicate a superscript, enclose the string for the superscript in carets as in the following example:
 
