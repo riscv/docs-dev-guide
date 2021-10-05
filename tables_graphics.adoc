@@ -520,6 +520,29 @@ Which renders as:
 
 1234^NOTE^
 
+For subscripts, use tildes:
+
+----
+C~2~ H~6~
+----
+
+With the followoing result:
+
+C~2~ H~6~
+
+An example:
+----
+"`Well the H~2~O formula written on their whiteboard could be part
+of a shopping list, but I don't think the local bodega sells
+E=mc^2^,`" Lazarus replied.
+----
+
+Renders as:
+
+"Well the H~2~O formula written on their whiteboard could be part
+of a shopping list, but I don't think the local bodega sells
+E=mc^2^," Lazarus replied.
+
 You can make use of LaTeX notation as in the following:
 
 ----
@@ -529,5 +552,12 @@ latexmath:[$C = \alpha + \beta Y^{\gamma} + \epsilon$]
 Which renders as:
 
 latexmath:[$C = \alpha + \beta Y^{\gamma} + \epsilon$]
+
+[TIP]
+====
+Latexmath rendering has some limitations with respect to sizing and placement inline. This happens because of how the images for the mathemtical symbols are rendered within the build process. For this reason, please avoid using single character latexmath expresions inline and prefentially make use of unicode or superscripts and subscripts when possible.
+====
+
+
 
 
