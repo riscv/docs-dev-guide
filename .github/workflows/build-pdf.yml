@@ -55,6 +55,6 @@ jobs:
     - name: Test ruby
       run: ruby -v; gem list
     - name: Test asciidoctor
-      run: asciidoctor-pdf --version
+      run: bundle exec asciidoctor-pdf --version
     - name: Test wavedrom
       run: wavedrom-cli --version
