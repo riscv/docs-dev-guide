@@ -50,12 +50,11 @@ jobs:
         node-version: '14'
     - name: Install Node.js dependencies from package.json
       run: npm install
-
-  test:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - run: node -v; npm list
-      - run: ruby -v; gem list
-      - run: asciidoctor-pdf --version
-      - run: wavedrom-cli --version
+    - name: Test npm
+      run: node -v; npm list
+    - name: Test ruby
+      run: ruby -v; gem list
+    - name: Test asciidoctor
+      run: asciidoctor-pdf --version
+    - name: Test wavedrom
+      run: wavedrom-cli --version
