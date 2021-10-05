@@ -17,9 +17,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install Ubuntu packages
       run: |
-        sudo add-apt-repository universe
         sudo apt-get update
-        apt-get install --yes --no-install-recommends \
+        sudo apt-get install --yes --no-install-recommends \
           bison \
           build-essential \
           cmake \
