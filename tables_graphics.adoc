@@ -192,7 +192,10 @@ In the specifications, there are numerous instances in which several Wavedrom di
 
 [source,adoc]
 ----
+////
+// https://github.com/riscv/docs-templates/issues/8
 include::images/wavedrom/instruction_formats.adoc[] (1)
+////
 [[instruction-formats]] (2)
 .Instruction formats (3)
 image::image_placeholder.png[] (4)
@@ -204,7 +207,10 @@ image::image_placeholder.png[] (4)
 
 This renders as follows:
 
+////
+// https://github.com/riscv/docs-templates/issues/8
 include::images/wavedrom/instruction_formats.adoc[]
+////
 [[instruction-formats]]
 .Instruction formats
 image::image_placeholder.png[]
