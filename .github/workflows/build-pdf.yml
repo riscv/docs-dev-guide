@@ -1,0 +1,60 @@
+# This workflow installs dependencies for PDF generation, generates the PDF,
+# and uploads the PDF as an artifact.
+
+name: Document PDF Generation
+
+on:
+  push:
+    branches: [ $default-branch ]
+  pull_request:
+    branches: [ $default-branch ]
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Ubuntu packages
+      run: |
+        sudo add-apt-repository universe
+        sudo apt-get update
+        apt-get install --yes --no-install-recommends \
+          bison \
+          build-essential \
+          cmake \
+          curl \
+          flex \
+          fonts-lyx \
+          git \
+          graphviz \
+          default-jre \
+          libcairo2-dev \
+          libffi-dev \
+          libgdk-pixbuf2.0-dev \
+          libpango1.0-dev \
+          libxml2-dev \
+          make \
+          pkg-config \
+          ruby \
+          ruby-dev
+    # Ruby for asciidoctor
+    - name: Setup Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: "2.6"
+    - name: Install Ruby dependencies from Gemfile
+      run: bundle install --jobs 4 --retry 3
+    # Node.js for wavedrom
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    - name: Install Node.js dependencies from package.json
+      run: npm install
+
+  test:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - run: asciidoctor-pdf --version
