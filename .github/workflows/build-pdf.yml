@@ -38,12 +38,11 @@ jobs:
           ruby \
           ruby-dev
     # Ruby for asciidoctor
-    - name: Setup Ruby
-      uses: actions/setup-ruby@v1
+    - name: Setup Ruby and Gemfile content
+      uses: ruby/setup-ruby@v1
       with:
         ruby-version: "2.6"
-    - name: Install Ruby dependencies from Gemfile
-      run: bundle install --jobs 4 --retry 3
+        bundler-cache: true
     # Node.js for wavedrom
     - name: Setup Node.js
       uses: actions/setup-node@v2
@@ -56,4 +55,7 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     steps:
+      - run: node -v; npm list
+      - run: ruby -v; gem list
       - run: asciidoctor-pdf --version
+      - run: wavedrom-cli --version
