@@ -1,3 +1,5 @@
+[![Build Document PDF](https://github.com/riscv/docs-templates/actions/workflows/build-pdf.yml/badge.svg?branch=main)](https://github.com/riscv/docs-templates/actions/workflows/build-pdf.yml)
+
 # Docs templates and build process
 
 Performing a build from source written using AsciiDoc requires use of an Asciidoctor toolchain.
