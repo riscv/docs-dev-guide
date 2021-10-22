@@ -52,6 +52,6 @@ jobs:
     - name: Archive PDF result
       uses: actions/upload-artifact@v2
       with:
-        name: pdf
+        name: result.pdf
         path: ${{ env.PDF_RESULT }}
         retention-days: 7
