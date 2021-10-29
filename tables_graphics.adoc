@@ -165,10 +165,10 @@ ALERT: The build process for automated diagramming places an image file for each
 
 ==== Wavedrom diagrams in specifications
 
-The following json-formatted script, when added within an asciidoc block with the macro indicators `[wavedrom, ,svg]`, will embed the diagram output into the pdf:
+The following json-formatted script, when added within an asciidoc block with the macro indicators `[wavedrom, ,]`, will embed the diagram output into the pdf:
 
 [source,json]
-----
+....
 {reg:[
     { bits:  7, name: 0x3b, attr: ['OP-32'] },
     { bits:  5, name: 'rd' },
@@ -177,7 +177,7 @@ The following json-formatted script, when added within an asciidoc block with th
     { bits:  5, name: 'rs2' },
     { bits:  7, name: 0x04, attr: ['ADD.UW'] },
 ]}
-----
+....
 
 [WARNING]
 ====
@@ -188,15 +188,16 @@ DO NOT make the mistake of simply using `[wavedrom,svg]`. Without the second com
 You have the option of specifying names by using the `target` attribute as illustrated below.
 ====
 
-In the specifications, there are numerous instances in which several Wavedrom diagrams are presented as a single figure. To handle these while preserving consistency in how the build renders figure titles, we are making use of a minimalistic, white graphic that blends in with the page background. Following is the pattern of its use:
+In the specifications, there are numerous instances in which several Wavedrom diagrams are grouped and presented as a single figure. To handle these while preserving consistency in how the build renders figure titles, we are making use of a minimalistic, white graphic with the filename `image_placeholder.png` that blends in with the page background. Following is the pattern of its use:
 
 [source,adoc]
-----
+....
 include::images/wavedrom/instruction_formats.adoc[] (1)
 [[instruction-formats]] (2)
 .Instruction formats (3)
 image::image_placeholder.png[] (4)
-----
+....
+
 . Wavedrom code for all diagrams in this illustration stored in `wavedrom` subdirectory within the `images` directory.
 . Link target that, along with settings in the `book_header` file, automates the inclusion, in the text, of the figure number and caption.
 . Figure caption.
@@ -212,7 +213,9 @@ image::image_placeholder.png[]
 
 ===== Explanation
 
-For the above to build into a diagram that has a figure title, and a figure title and a macro the specifies the diagram type above the code block. You can add a `target` filename and, in addition, specify the image output format leave output unspecified to default to png:
+For the above to build into a diagram that has a figure title, and a figure title and a macro the specifies the diagram type above the code block. You can add a `target` filename and, in addition, specify the image output format or leave output unspecified to default to png.
+
+When prepended to the javascript for a Wavedrom diagram, the following creates `file-name.svg` with the legend `Figure title`:
 
 [source,adoc]
 ----
@@ -225,7 +228,7 @@ Following are some examples of Wavedrom diagrams:
 [source,adoc]
 ----
 .Figure title
-[wavedrom,target="op-32-add.uw",svg]
+[wavedrom,target="op-32-add-uw",]
 ....
 {reg:[
     { bits:  7, name: 0x3b, attr: ['OP-32'] },
@@ -239,7 +242,7 @@ Following are some examples of Wavedrom diagrams:
 ----
 
 .For this example, the output format was not specified, so it defaults to a png.
-[wavedrom,target="op-32-add.uw"]
+[wavedrom,target="op-32-add-uw"]
 ----
 {reg:[
     { bits:  7, name: 0x3b, attr: ['OP-32'] },
@@ -275,7 +278,7 @@ Wavedrom Conversion
 
 [NOTE]
 ====
-The following string is lacking macro brackets (`[]`) because adding the brackets will activate the include even though it's within a code block. Best practice for automated diagramming is to save AsciiDoc files containing properly formatted AsciiDoc blocks, each block containing the code or script for one diagram.
+The following string is lacking macro brackets (`[]`) that should appear after `filename.adoc` because adding the brackets will cause the include to activate even though it's within a code block. Best practice for automated diagramming is to save AsciiDoc files containing properly formatted AsciiDoc blocks, each block containing the code or script for either a single diagram or a group of diagrams that are presesnted together as a single figure.
 [source,adoc]
 ----
 include::images/wavedrom/filename.adoc
@@ -493,6 +496,23 @@ DiagramBlock <|-- PlantUmlBlock
 ....
 
 NOTE: Asciidoctor supports dditional diagram types. For information on additional diagram types, see the https://docs.asciidoctor.org/diagram-extension/latest/[Asciidoctor-diagram documentation].
+
+===== A mention of Bytefeild
+
+Currently the idea of making use of Bytefeild as an additional diagram type is being explored.
+
+//=== Bytefeild
+//
+//
+//.A byte field
+//[bytefield]
+//----
+//(draw-column-headers)
+//(draw-box 42)
+//(draw-gap "Whee!")
+//(draw-bottom)
+//----
+
 
 === Mathematical notations
 
