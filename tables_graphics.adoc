@@ -102,6 +102,7 @@ As an example, &#9830; is encoded as follows:
 sym,num,name
 &#94;,94,caret
 &#136;,136,
+&#8942;,8942,vdots
 &#9830;,9830,name
 &#0034;,0034,name
 &#x0077;,0077,w
@@ -191,19 +192,20 @@ You have the option of specifying names by using the `target` attribute as illus
 In the specifications, there are numerous instances in which several Wavedrom diagrams are grouped and presented as a single figure. To handle these while preserving consistency in how the build renders figure titles, we are making use of a minimalistic, white graphic with the filename `image_placeholder.png` that blends in with the page background. Following is the pattern of its use:
 
 [source,adoc]
-<<<<<<< HEAD
 ....
-=======
-----
-////
-// https://github.com/riscv/docs-templates/issues/8
->>>>>>> 5b8372975dfb04c574e0dad1125c66bd4c48b7ce
-include::images/wavedrom/instruction_formats.adoc[] (1)
-////
-[[instruction-formats]] (2)
-.Instruction formats (3)
-image::image_placeholder.png[] (4)
+include::images/wavedrom/spfloat.adoc[]
+[[spfloat]]
+.Single-Precision Floating-Point Computational Instructions
+image::image_placeholder.png[]
 ....
+
+With the following result:
+
+include::images/wavedrom/spfloat.adoc[]
+[[spfloat]]
+.Single-Precision Floating-Point Computational Instructions
+image::image_placeholder.png[]
+
 
 . Wavedrom code for all diagrams in this illustration stored in `wavedrom` subdirectory within the `images` directory.
 . Link target that, along with settings in the `book_header` file, automates the inclusion, in the text, of the figure number and caption.
@@ -212,10 +214,7 @@ image::image_placeholder.png[] (4)
 
 This renders as follows:
 
-////
-// https://github.com/riscv/docs-templates/issues/8
 include::images/wavedrom/instruction_formats.adoc[]
-////
 [[instruction-formats]]
 .Instruction formats
 image::image_placeholder.png[]

@@ -209,6 +209,55 @@ For example, preceding a block with a macro `[source,json]` enables `json` synta
 }
 ----
 
+While syntax highlighters for machine code that integrate with the Asciidoctor Ruby toolchain do leave something to be desired, the Rouge highlighter enables line numbers within the code examples.
+
+We are numbering examples as in the following:
+
+[source,adoc]
+----
+.A spinlock with fences
+[source%linenums,asm]
+....
+          sd           x1, (a1)     # Arbitrary unrelated store
+          ld           x2, (a2)     # Arbitrary unrelated load
+          li           t0, 1        # Initialize swap value.
+      again:
+          amoswap.w    t0, t0, (a0) # Attempt to acquire lock.
+          fence        r, rw        # Enforce "acquire" memory ordering
+          bnez         t0, again    # Retry if held.
+          # ...
+          # Critical section.
+          # ...
+          fence        rw, w        # Enforce "release" memory ordering
+          amoswap.w    x0, x0, (a0) # Release lock by storing 0.
+          sd           x3, (a3)     # Arbitrary unrelated store
+          ld           x4, (a4)     # Arbitrary unrelated load
+....
+----
+
+With the following result:
+
+[[spinlock_fences]]
+.A spinlock with fences
+[source%linenums,asm]
+....
+          sd           x1, (a1)     # Arbitrary unrelated store
+          ld           x2, (a2)     # Arbitrary unrelated load
+          li           t0, 1        # Initialize swap value.
+      again:
+          amoswap.w    t0, t0, (a0) # Attempt to acquire lock.
+          fence        r, rw        # Enforce "acquire" memory ordering
+          bnez         t0, again    # Retry if held.
+          # ...
+          # Critical section.
+          # ...
+          fence        rw, w        # Enforce "release" memory ordering
+          amoswap.w    x0, x0, (a0) # Release lock by storing 0.
+          sd           x3, (a3)     # Arbitrary unrelated store
+          ld           x4, (a4)     # Arbitrary unrelated load
+....
+
+
 === Change bars
 
 Change indicators within text files are exceedlingly useful and also can be equally complex to implement. Please consider the fact that much of the software programming for Git revolves around handling various kinds of change indicators.
