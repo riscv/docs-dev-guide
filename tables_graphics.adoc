@@ -182,28 +182,26 @@ The following json-formatted script, when added within an asciidoc block with th
 
 [WARNING]
 ====
-The macro `[wavedrom, ,svg]` has two commas and leaves a blank space as an implicit indicator to the build processor to auto-generate identifiers for the images after they are created.
+The macro `[wavedrom, , ]` has two commas and leaves a blank space as an implicit indicator to the build processor to auto-generate identifiers for the images after they are created. After the first comma you can insert a name as an identifier of the file that is created in the /images directory for embedding in the pdf.
 
 DO NOT make the mistake of simply using `[wavedrom,svg]`. Without the second comma, the build interprets 'svg' as a target name because it is the second value within the macro.
-
-You have the option of specifying names by using the `target` attribute as illustrated below.
 ====
 
-In the specifications, there are numerous instances in which several Wavedrom diagrams are grouped and presented as a single figure. To handle these while preserving consistency in how the build renders figure titles, we are making use of a minimalistic, white graphic with the filename `image_placeholder.png` that blends in with the page background. Following is the pattern of its use:
+In the specifications, there are numerous instances in which several Wavedrom diagrams are grouped and presented as a single figure. To handle these while preserving consistency in how the build renders figure titles, we are making use of a minimalistic, white graphic with the filename `image_placeholder.png` that blends in with the page background. Following is the pattern of its use (minus the macro indicator `[]` in the first line:
 
 [source,adoc]
 ....
-include::images/wavedrom/spfloat.adoc[]
-[[spfloat]]
-.Single-Precision Floating-Point Computational Instructions
+include::images/wavedrom/instruction_formats.adoc
+[[instruction_formats]]
+.Test for wavedrom
 image::image_placeholder.png[]
 ....
 
 With the following result:
 
-include::images/wavedrom/spfloat.adoc[]
-[[spfloat]]
-.Single-Precision Floating-Point Computational Instructions
+include::images/wavedrom/instruction_formats.adoc[]
+[[instruction_formats]]
+.Test for wavedrom
 image::image_placeholder.png[]
 
 
@@ -211,13 +209,6 @@ image::image_placeholder.png[]
 . Link target that, along with settings in the `book_header` file, automates the inclusion, in the text, of the figure number and caption.
 . Figure caption.
 . "Invisible" placeholder needed for figure caption to display consistently and correctly.
-
-This renders as follows:
-
-include::images/wavedrom/instruction_formats.adoc[]
-[[instruction-formats]]
-.Instruction formats
-image::image_placeholder.png[]
 
 
 ===== Explanation
@@ -299,8 +290,8 @@ include::images/wavedrom/filename.adoc
 The Unpriv appendices contain Graphviz diagrams with associated keys that are arranged in tables. While in the LaTeX version, the diagrams and tables are arranged side-by-side, for the AsciiDoc version;
 
 * each Graphviz diagram should be directly above the key table.
-* store scripts for Graphiviz diagrams in the images/graphviz directroy, as <filename>.txt
-* import the Graphviz by reference using the pattern in the following is example.
+* store scripts for Graphiviz diagrams in the images/graphviz directory, as <filename>.txt
+* import the Graphviz by reference using the pattern in the following example.
 
 [source,adoc]
 ----
@@ -508,7 +499,7 @@ NOTE: Asciidoctor supports dditional diagram types. For information on additiona
 
 ===== A mention of Bytefeild
 
-Currently the idea of making use of Bytefeild as an additional diagram type is being explored.
+Currently he idea of making use of Bytefeild as an additional diagram type is being explored.
 
 //=== Bytefeild
 //
@@ -525,9 +516,10 @@ Currently the idea of making use of Bytefeild as an additional diagram type is b
 
 === Mathematical notations
 
-WARNING: Asciidoctor-mathematical has some limitations. For inline expressions, the graphical representations appear small and they are centered virtically. In some cases where there is a single character expresssion, they unintentionally look like superscripts. For this reason, we should attempt to use any viable alternatives like simple italics or unicode (see <<Unicode symbols>>).
+WARNING: Asciidoctor-mathematical has some limitations. For inline expressions, the graphical representations appear small and they are centered virtically. In some cases where there is a single-character Asciidoctor-mathemtical expresssion, it unintentionally looks like a superscript. For this reason, always use viable alternatives like _italics_ or unicode (see <<Unicode symbols>>).
 
-While not all of the RISC-V specifications make use of mathematical notations, some make frequent use of specific mathematical notation.
+
+==== Superscritps and subscripts
 
 To indicate a superscript, enclose the string for the superscript in carets as in the following example:
 
@@ -571,6 +563,8 @@ Renders as:
 "Well the H~2~O formula written on their whiteboard could be part
 of a shopping list, but I don't think the local bodega sells
 E=mc^2^," Lazarus replied.
+
+==== Latexmath
 
 You can make use of LaTeX notation as in the following:
 

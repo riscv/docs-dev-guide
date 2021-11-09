@@ -150,14 +150,47 @@ gem install rouge
 gem install pygments.rb
 ``` 
 
-## Add node and `wavedrom-cli` for WaveDrom diagrams
+## Add NVM, node 15, and `wavedrom-cli` for WaveDrom diagrams
 
-For MacOS:
+For MacOS, use brew to install nvm and create an nvm directory:
 
 ```cmd
-brew install node
+brew install nvm
+mkdir ~/.nvm 
+```
+
+open either ~/.bash_profile or ~/.zshrc (for macOS Catalina or later):
+
+```cmd
+vim ~./bash.profile
+```
+
+Add the following lines to the profile:
+
+```cmd
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+```
+
+Load the profile:
+
+```cmd
+source ~/.zshrc
+```
+
+Install the most recent node, node 15, and make node 15 the version you use:
+
+```cmd
+nvm install node
+nvm install 15
+nvm use 15
+```
+
+And finally, on node 15, install wavedrom-cli:
+
+```cme
 npm install -g wavedrom-cli
- ```
+```
 
 Check that wavedrom-cli is in the path (this should display the help):
 
@@ -168,6 +201,8 @@ wavedrom-cli
 NOTE: It appears that Oracle JDK is also required for WaveDrom diagrams to work. You can find a link to the JDK below.
 
 For Windows:
+
+WARNING: We can guess that node 15 is required for Windows.
 
 Download the installer from https://nodejs.org/en/ and install node, then use npm to install wavedrom-cli:
 
@@ -261,7 +296,7 @@ This generates a file named `any_file_name.html`.
 For pdf output, cd into this cloned directory and use this command:
 
 ```cmd
-asciidoctor-pdf -r asciidoctor-diagram -r asciidoctor-mathematical -a mathematical-format=svg -r asciidoctor-bibtex book_header.adoc -a pdf-style=resources/themes/risc-v_spec-pdf.yml -a pdf-fontsdir=resources/fonts
+asciidoctor-pdf -r asciidoctor-mathematical -a mathematical-format=svg -r asciidoctor-bibtex -r asciidoctor-diagram book_header.adoc -a pdf-style=resources/themes/alt2-theme.yml -a pdf-fontsdir=resources/alt2-fonts/
 ```
 
 This generates a file named `book_header.pdf` that makes use of the graphics, styles, and fonts that is identical to example.pdf. 
@@ -339,7 +374,11 @@ if (border_width = data[:border_changebar])
 
 At this point changebars require manual entry and removal. You can find documentation for how to use markup for changebars in the example.pdf. 
 
-An automated process in CI/CD does look possible.
+Technical staff is exploring further automated processing and CI/CD.
+
+### Link to more on authoring in AsciiDoc
+
+https://docs.google.com/document/d/1fUWEM3b-lbHQRruvAw3BUOA_ND_cJD0bsijV5bESklA/edit#heading=h.vnvsmcc95mc3
 
 
 ### Link to JDK
