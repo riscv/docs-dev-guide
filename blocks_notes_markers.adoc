@@ -48,16 +48,18 @@ that supplement the main text.
 
 TIP: They can contain any type of content, including admonitions like this, and code examples like the following.
 
-.Source code block in a sidebar
+.Source code block within a sidebar
 [source,js]
-----
+/----   (1)
 const { expect, expectCalledWith, heredoc } = require('../test/test-utils')
-----
+/----  (2)
 ****
 
 ----
 
-The above renders as:
+1 and 2. Escapes are necessary to preserve this as an AsciiDoc code example.
+
+Once the escapes are removed, the above renders with both the admonition and code blocks within the sidebar:
 
 .Optional Title
 ****
@@ -72,8 +74,6 @@ TIP: They can contain any type of content, including admonitions like this, and 
 const { expect, expectCalledWith, heredoc } = require('../test/test-utils')
 ----
 ****
-
-
 
 ==== Admonition blocks
 
@@ -179,7 +179,6 @@ WARNING: warning
 CAUTION: caution
 
 IMPORTANT: important
-
 
 [#custom-color-icons]
 .Customized colors for icons
