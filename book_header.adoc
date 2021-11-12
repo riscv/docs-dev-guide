@@ -1,8 +1,8 @@
-[[riscv-doc-template]]
-= RISC-V Documentation Template
+[[riscv-authoring]]
+= Authoring and Editing RISC-V Specificaations
 :description: A working template for documenting RISC-V architecture in asciidoc
 :company: RISC-V.org
-:revdate: 06/2021
+:revdate: 11/2021
 :revnumber: 0.01
 :revremark: Pre-release version
 //development: assume everything can change
@@ -56,7 +56,7 @@ This document is released under a Creative Commons Attribution 4.0 International
 
 //the colophon allows for a section after the preamble that is part of the frontmatter and therefore not assigned a page number.
 include::colophon.adoc[]
-//While some documents need several levels of introductory material, other documents only need a breif introduction.
+//While some documents need several levels of introductory material, other documents only need a breif introduction. You can choose to have either colophon or an overview, or to have both.
 //include::overview.adoc[]
 include::a_few_basics.adoc[]
 include::tables_graphics.adoc[]
