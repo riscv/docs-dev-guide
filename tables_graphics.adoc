@@ -100,7 +100,7 @@ As an example, &#9830; is encoded as follows:
 &#9830;
 ```
 
-[#useful-unicode]
+[[useful-unicode]]
 .Useful unicode for specifications
 [width="100%",options=header,format=csv]
 |===
@@ -135,7 +135,7 @@ sym,num,name
 
 For many symbols, then, we must turn to asciidoctor-mathematical. See <<Superscipts and other mathematical notations>>.
 
-[#unicode-not-working]
+[[unicode-not-working]]
 .Unicode identified as not working
 [width="100%",options=header,format=csv]
 |===

@@ -180,7 +180,7 @@ CAUTION: caution
 
 IMPORTANT: important
 
-[#custom-color-icons]
+[[custom-color-icons]]
 .Customized colors for icons
 [width="100%",options=header,format=csv]
 |===
@@ -535,7 +535,7 @@ Links from within text to bibliographic entries:
 
 [source.adoc]
 ----
-[bibliography]
+[[bibliography]]
 == References
 
 * [[[pp]]] Andy Hunt & Dave Thomas. The Pragmatic Programmer:
