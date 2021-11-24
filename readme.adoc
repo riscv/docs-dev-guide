@@ -1,10 +1,13 @@
 = Using github actions to build a pdf
 
-This repo contains a demo that can be used for you to implement github actions to build pdfs for RISC-V documentation.
+This repo contains:
 
-The github actions requires that you maintain specific assets. The github actions build  a folder structure that contains images, fonts, themes, and other assets in the proper relative locations.
+* a demo that can be used for you to implement github actions to build pdfs for RISC-V documentation.
+* an example.pdf file that contains helpful information to assist docsumentation contribtors in their authorship.
 
-When you clone this repo, you have the file structure on your machine that you need for creating professional quality pdfs from AsciiDoc, along with example files that demonstrate how to handle the use cases that we have encountered.
+The github actions requires that you keep specific assets in the same relative location to the build files for the github actions build to work properly, because they pull in information that contains required images, fonts, themes, page formatting, bibliographic information, and other assets.
+
+When you clone this repo, you have the file structure on your machine that you need for creating professional quality pdfs from AsciiDoc, along with examples that demonstrate how to handle use cases that we have encountered.
 
 NOTE: This is a work in progress, and the tools can change, so please let us know if you run into problems and/or have questions.
 
@@ -30,7 +33,9 @@ The reason is that the look and feel of PDF output from the toolchain in use is 
 * fonts (here in /resources/fonts).
 * defaults used by Asciidoctor in Prawn.
 
-While best practice is to maintain the same relative locations for files and directories so that other contributors can easily find everything, you have the option of changing things for your group as long as the pdf output keeps the esablished look and feel.
+While best practice is _usually_ to maintain the same relative locations for files and directories so that other contributors can easily find everything, you have the option of changing things for your group and edting the github actions for your repo--as long as the pdf output keeps the esablished looks and feel.
+
+We use the modifier _usually_ because AsciiDoc is intentionally used because of its usefulness in automated environemnts.
 
 
 
