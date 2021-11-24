@@ -16,8 +16,10 @@ NOTE: This is a work in progress, and the tools can change, so please let us kno
 . Navigate to https://github.com/riscv/docs-templates/actions/workflows/build-pdf.yml[github actions] for this repo.
 . Click the _Build Document PDF_ button.
 . In the _Run workflow_ dropdown that displays, click the down arrow, then click the green _Run workflow_ button in the list.
-+ The build starts running and the progress dispalys in the list.
-+ Github actions indicates a successful build with a green button, or an unsuccessful build with a red button.
++
+The build starts running and the progress dispalys in the list.
++
+Github actions indicates a successful build with a green button, or an unsuccessful build with a red button.
 
 NOTE: If the build is problematic, let us know by emailing help@riscv.org.
 
@@ -28,12 +30,12 @@ Some RISC-V contributors are linking directly to the `resources` directory withi
 The reason is that the look and feel of PDF output from the toolchain in use is controlled by interactions between the github actions build commmands (contained in files within .github/workflows and /dependencies) and:
 
 * AsciiDoc headers (here in the book_header.adoc).
-* Graphics files (here in /images and its subdirectory).
+* Graphics files (here in /images and its subdirectories).
 * a YAML theme file (here in /resources/themes).
 * fonts (here in /resources/fonts).
 * defaults used by Asciidoctor in Prawn.
 
-While best practice is _usually_ to maintain the same relative locations for files and directories so that other contributors can easily find everything, you have the option of changing things for your group and edting the github actions for your repo--as long as the pdf output keeps the esablished looks and feel.
+While best practice is _usually_ to maintain the same relative locations for files and directories so that other contributors can easily find everything, you have the option of changing things for your group and edting the github actions for your repo--as long as the pdf output keeps the esablished look and feel.
 
 We use the modifier _usually_ because AsciiDoc is intentionally used because of its usefulness in automated environemnts.
 
