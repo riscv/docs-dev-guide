@@ -19,7 +19,7 @@ jobs:
       BUNDLE_GEMFILE: ${{ github.workspace }}/dependencies/Gemfile
       BUNDLE_BIN: ${{ github.workspace }}/bin
       NPM_PACKAGE_FOLDER: ${{ github.workspace }}/dependencies
-      PDF_RESULT: book_header.pdf
+      PDF_RESULT: example.pdf
     steps:
     - uses: actions/checkout@v2
     - name: Install Ubuntu packages
