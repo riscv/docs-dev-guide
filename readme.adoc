@@ -22,7 +22,7 @@ NOTE: If the build is problematic, let us know by emailing help@riscv.org.
 
 Some RISC-V contributors are linking directly to the `resources` directory within this docs-temaplates repo. While this is a good idea from the point of view of seamlessly syncing with any style changes that take place over time, this _does not_ give you all of the assets that contribute to the look and feel of RISC-V documentation.
 
-The reason is that the look and feel of PDF output from the toolchain in use is controlled by interactions between the github actions build files and:
+The reason is that the look and feel of PDF output from the toolchain in use is controlled by interactions between the github actions build commmands (contained in files within .github/workflows and /dependencies) and:
 
 * AsciiDoc headers (here in the book_header.adoc).
 * Graphics files (here in /images and its subdirectory).
