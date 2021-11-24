@@ -1,4 +1,14 @@
-= Using github actions to build a pdf
+NOTE: This is a work in progress, and the tools can change, so please let us know if you run into problems and/or have questions.
+
+= Build a PDF Locally
+
+Instructions for building locally can be found in https://github.com/riscv/docs-templates/blob/main/local_build.md[local_build.md].
+
+= Build a PDF Using a Docker Container
+
+See our image on https://hub.docker.com/r/riscvintl/rv-docs[dockerhub].
+
+= Build a PDF Using GitHub Actions
 
 This repo contains:
 
@@ -8,8 +18,6 @@ This repo contains:
 The github actions requires that you keep specific assets in the same relative location to the build files for the github actions build to work properly, because they pull in information that contains required images, fonts, themes, page formatting, bibliographic information, and other assets.
 
 When you clone this repo, you have the file structure on your machine that you need for creating professional quality pdfs from AsciiDoc, along with examples that demonstrate how to handle use cases that we have encountered.
-
-NOTE: This is a work in progress, and the tools can change, so please let us know if you run into problems and/or have questions.
 
 == Building the example.pdf from github actions
 
