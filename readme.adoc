@@ -1,4 +1,13 @@
-= Documentation builds
+= RISC-V docs-templates repo
+
+This repo contains:
+
+* a demo that can be used for you to implement github actions to build pdfs for RISC-V documentation.
+* an example.pdf file that contains helpful information to assist documentation contributors in their authorship.
+
+The github actions build requires that you keep specific assets in the same relative locations for the build to work properly, because they pull in information that contains required images, fonts, themes, page formatting, bibtex, and other assets.
+
+Cloning this repo gives you the file structure that you need for creating professional quality pdfs from AsciiDoc, along with the example.pdf that demonstrates how to handle use cases that we have encountered.
 
 NOTE: This is a work in progress, and the tools can change, so please let us know if you run into problems and/or have questions.
 
@@ -12,16 +21,7 @@ See our image on https://hub.docker.com/r/riscvintl/rv-docs[dockerhub].
 
 == Build a PDF Using GitHub Actions
 
-This repo contains:
-
-* a demo that can be used for you to implement github actions to build pdfs for RISC-V documentation.
-* an example.pdf file that contains helpful information to assist documentation contributors in their authorship.
-
-The github actions build requires that you keep specific assets in the same relative locations for the build to work properly, because they pull in information that contains required images, fonts, themes, page formatting, bibtex, and other assets.
-
-Cloning this repo gives you the file structure that you need for creating professional quality pdfs from AsciiDoc, along with the example.pdf that demonstrates how to handle use cases that we have encountered.
-
-=== Building the example.pdf from github actions
+=== Build this repo's example.pdf using github actions
 
 . Navigate to https://github.com/riscv/docs-templates/actions/workflows/build-pdf.yml[github actions] for this repo.
 . Click the _Build Document PDF_ button.
@@ -33,7 +33,7 @@ Github actions indicates a successful build with a green button, or an unsuccess
 
 NOTE: If problems arise with the build, let us know by emailing help@riscv.org.
 
-=== Integrating this build into an existing repo
+=== Integrate this build into an existing repo
 
 Some RISC-V contributors are linking directly to the `resources` directory within this docs-templates repo. While this is a good idea from the point of view of seamlessly syncing with any style changes that take place over time, this _does not_ give you all of the assets that contribute to the look and feel of RISC-V documentation.
 
