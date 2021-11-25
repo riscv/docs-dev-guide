@@ -2,10 +2,10 @@
 
 This repo contains:
 
-* a demo that can be used for you to implement github actions to build pdfs for RISC-V documentation.
+* a demo that can be used for you to implement Github actions to build pdfs for RISC-V documentation.
 * an example.pdf file that contains helpful information to assist documentation contributors in their authorship.
 
-The github actions build requires that you keep specific assets in the same relative locations for the build to work properly, because they pull in information that contains required images, fonts, themes, page formatting, bibtex, and other assets.
+The Github actions build requires that you keep specific assets in the same relative locations for the build to work properly, because it pulls in information that contains required images, fonts, themes, page formatting, bibtex, and other assets.
 
 Cloning this repo gives you the file structure that you need for creating professional quality pdfs from AsciiDoc, along with the example.pdf that demonstrates how to handle use cases that we have encountered.
 
@@ -19,7 +19,7 @@ Instructions for building locally can be found in https://github.com/riscv/docs-
 
 See our image on https://hub.docker.com/r/riscvintl/rv-docs[dockerhub].
 
-== Build a PDF Using GitHub Actions
+== Build a PDF Using GitHub actions
 
 === Build this repo's example.pdf using github actions
 
@@ -37,7 +37,7 @@ NOTE: If problems arise with the build, let us know by emailing help@riscv.org.
 
 Some RISC-V contributors are linking directly to the `resources` directory within this docs-templates repo. While this is a good idea from the point of view of seamlessly syncing with any style changes that take place over time, this _does not_ give you all of the assets that contribute to the look and feel of RISC-V documentation.
 
-The reason is that the look and feel of PDF output from the toolchain in use is controlled by interactions between the github actions build commmands (contained in files within .github/workflows and /dependencies) and:
+The reason is that the look and feel of PDF output from the toolchain in use is controlled by interactions between the Github actions build commands (contained in files within .github/workflows and /dependencies) and:
 
 * AsciiDoc headers (here in the book_header.adoc).
 * Graphics files (here in /images and its subdirectories).
@@ -45,9 +45,9 @@ The reason is that the look and feel of PDF output from the toolchain in use is 
 * fonts (here in /resources/fonts).
 * defaults used by Asciidoctor in Prawn.
 
-While best practice is _usually_ to maintain the same relative locations for files and directories so that other contributors can easily find everything, you have the option of changing things for your group and edting the github actions for your repo--as long as the pdf output keeps the established look and feel.
+While best practice is _usually_ to maintain the same relative locations for files and directories so that other contributors can easily find everything, you have the option of changing things for your group and editing the github actions for your repo--as long as the pdf output keeps the established look and feel.
 
-We use the modifier _usually_ because AsciiDoc is intentionally used because of its usefulness in automated environemnts.
+We use the modifier _usually_ because AsciiDoc is intentionally used because of its usefulness in automated environments.
 
 
 
