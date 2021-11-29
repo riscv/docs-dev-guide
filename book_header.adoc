@@ -1,9 +1,9 @@
 [[riscv-authoring]]
-= Authoring and Editing RISC-V Specificaations
+= Authoring and Editing RISC-V Specifications
 :description: A working template for documenting RISC-V architecture in asciidoc
 :company: RISC-V.org
-:revdate: 11/2021
-:revnumber: 0.01
+:revdate: 12/2021
+:revnumber: 0.
 :revremark: Pre-release version
 //development: assume everything can change
 //stable: assume everything could change
@@ -58,6 +58,7 @@ This document is released under a Creative Commons Attribution 4.0 International
 include::colophon.adoc[]
 //While some documents need several levels of introductory material, other documents only need a breif introduction. You can choose to have either colophon or an overview, or to have both.
 //include::overview.adoc[]
+include::authoring.adoc[]
 include::a_few_basics.adoc[]
 include::tables_graphics.adoc[]
 include::blocks_notes_markers.adoc[]

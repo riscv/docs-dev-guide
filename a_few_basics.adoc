@@ -1,26 +1,14 @@
 [[a_few_basics]]
 == A few basics
 
-Asciidoc is fully documented, and its documentation is actively maintained. This document contains some information on asciidoc markup to get you started.
-
-For details and additional options:
-
- * Asciidoc/asciidoctor writers' guide: https://asciidoctor.org/docs/asciidoc-writers-guide/
- * Asciidoc quick reference: http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
- * Asciidoctor user manual: http://asciidoctor.org/docs/user-manual/
-
-In addition, you have the option of asking questions in the asciidoctor discussion list:
-
-As is true of any complex process, asciidoc/asciidoctor has some quirks. Please be certain to make use of these templates because they provide you with files that will result in fully featured pdf output.
-
-Best practice is to test the pdf build frequently to ensure that you have not accidentally introduced something that breaks the build.
-
-WARNING: PDFs require the use of Ruby 2.7.2.
+When you
 
 
 === Headers
 
-In asciidoc you cannot jump directly from a Head 1 to a Head 3 or 4. Your headers must appear in numerical sequence from Head 1 to Head 2, and onward. If you skip over a header in the sequence, asciidoctor throws an error.
+While authoring in asciidoc, you cannot jump directly from a Head 1 to a Head 3 or 4. Your headers must appear in sequence from Head 1 to Head 2, and onward. If you skip over a header in the sequence, asciidoctor throws an error.
+
+Following is an axample of a valid sequence of headers.
 
 ```adoc
 = Title head (book or report title)
@@ -44,7 +32,7 @@ In asciidoc you cannot jump directly from a Head 1 to a Head 3 or 4. Your header
 Index
 ```
 
-NOTE: Settings in the header file trigger auto-generation of Appendix prefixes and of the Index (among other things).
+NOTE: Settings in the header file (`book_header.adoc` in the docs-templates repo) trigger auto-generation of Appendix prefixes and of the Index (among other things).
 
 === Code Blocks
 

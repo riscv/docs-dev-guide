@@ -1,0 +1,98 @@
+== Asciidoc authoring for RISC-V contributors
+
+Asciidoc is fully documented, and its documentation is actively maintained. This document contains some information on asciidoc markup to get you started.
+
+For details and additional options:
+
+ * Asciidoc/asciidoctor writers' guide: https://asciidoctor.org/docs/asciidoc-writers-guide/
+ * Asciidoc quick reference: http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
+ * Asciidoctor user manual: http://asciidoctor.org/docs/user-manual/
+
+In addition, you have the option of asking questions in the asciidoctor discussion list:
+
+As is true of any complex process, asciidoc/asciidoctor has some quirks. Please be certain to make use of these templates because they provide you with files that will result in fully featured pdf output.
+
+Best practice is to test the pdf build frequently to ensure that you have not accidentally introduced something that breaks the build.
+
+WARNING: PDFs require the use of Ruby 2.7.2.
+
+[NOTE]
+====
+Please feel free to send questions to help@riscv.org
+====
+
+AsiiDoc is the markup language and Asciidoctor is a set of toolchains that support publishing from AsciiDoc. 
+
+There are three major toolchains:
+
+* Ruby, which is well-established and which we are using.
+* Antora, which is relatively new and which uses NPM.
+* Python-based, which is legacy and in maintenance mode.
+
+=== RISC-V asciidoc authoring assets
+
+Please view the readme in the https://github.com/riscv/docs-templates[docs-templates repo] for information on automated build processes.
+
+The above mentioned repo also contains assets (fonts, styles, directory structure, and themes) that you need for RISC-V specifications, along with a https://github.com/riscv/docs-templates/commit/5c18cc9761eb3f6516975ee0c109729a4ce66b93[document] that takes you through a local install process that supports all of the needed features.
+
+Although testing your markup by building a pdf is good practice, you can catch many common errors by simply downloading Asciidoctor and building the HTMl5 output using the following command:
+
+[source,cmd]
+----
+asciidoctor book_header.adoc
+----
+
+=== Simply writing
+
+To begin authoring in asciidoc, all you need is a text editor. Please scroll down for a list of text editors that have features that support authoring in AsciiDoc.
+
+A quick reference for AsciiDoc markup: https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/.
+
+
+Detailed instructions for installing the toolchain are fully documented in at https://asciidoctor.org/docs/asciidoc-writers-guide/, and for pdf generation at https://github.com/asciidoctor/asciidoctor-pdf#install-the-published-gem.
+
+Most of the markup that you will need is simple, and much is similar to what you use for git-flavored Markdown. For RISC-V specifications, it is the procedures for graphical elements that add complexity. Even as we are using Waverdrom to simplify the creation of accurate (and aesthetically pleasing) images for register diagrams, it’s impossible to eliminate some inherent complexity.
+Text editors that support AsciiDoc authoring
+I have not yet encountered a true wysiwyg editor for asciidoc. However, there are live preview options listed at https://docs.asciidoctor.org/asciidoctor/latest/tooling/. You might want to use your favorite text editor, or perhaps switch to one that has good asciidoc linting.
+
+The following list contains links to resources for text editor/IDE support of asciidoc:
+
+Information on helpful asciidoc tools that integrate with several popular IDEs:
+https://docs.asciidoctor.org/asciidoctor/latest/tooling/
+
+* https://marketplace.visualstudio.com/items?itemName=asciidoctor.asciidoctor-vscode[VS]
+* https://github.com/asciidoc/vim-asciidoc[vim]
+* https://www.emacswiki.org/emacs/AsciiDoc[Emacs]
+* https://packagecontrol.io/[Sublime Text] (works best when you add the Sublime Linter package)
+* https://atom.io/users/asciidoctor[Atom]
+* https://github.com/edusantana/asciidoc-highlight[Notepad++ and gedit]
+* https://alldocs.app/convert-openoffice-odt-to-asciidoc[OpenOffice]--it’s possible to start by authoring in OpenOffice and then output to asciidoc, and you can https://github.com/dagwieers/asciidoc-odf[go the other way]
+* https://www.asciidocfx.com/[AsciidocFX]
+
+There was a request for information on ghostwriter and while it does support Markdown, it does not support AsciiDoc.
+
+=== An asciidoc primer and more
+
+Everything you need to know about the asciidoc toolchain that we are using, including install procedures, is online in the
+
+https://asciidoctor.org/docs/asciidoc-writers-guide/[AsciiDOc Writers' Guide]
+
+Here are a few additional, useful links:
+
+* https://asciidoctor.org/docs/asciidoc-recommended-practices[asciidoc best practices]
+* https://docs.asciidoctor.org/asciidoc/latest/tables/build-a-basic-table/[tables]
+* https://docs.asciidoctor.org/asciidoc/latest/macros/link-macro-ref/[links]
+
+[NOTE]
+====
+The best linter for asciidoc is available for Sublime Text, and linters are available for other popular text editors as listed above.
+====
+
+==== Build often
+
+As soon as you have installed asciidoctor on your computer, you have the ability to check that each individual file builds in html by simply running `asciidoctor filename.adoc` on any file. You can also check that the book or report on which you are working builds in html by running `asciidoctor bookname.adoc` or `asciidoctor reportname.adoc` on the book or report header. The strings filename, bookname, and reportname all should be replaced with the actual names you are using.
+
+Asciidoctor has fairly good error messages and usually lets you know the file and row number where the build first breaks.
+
+
+
