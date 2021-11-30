@@ -32,7 +32,7 @@ The Lumineers,Ho Hey,Folk Rock
 |===
 
 
-There are numerous formatting options available. While some of the property settings are cryptic, they can be quite useful. There are numerous examples availabel at https://asciidoc.org/newtables.html. Here one example of what can be done with spans alignment in tables from that page:
+There are numerous formatting options available. While some of the property settings are cryptic, they can be quite useful. There are numerous examples available at https://asciidoc.org/newtables.html. Here one example of what can be done with spans alignment in tables from that page:
 
 [source,adoc]
 ----
@@ -283,7 +283,7 @@ Wavedrom Conversion
 
 [NOTE]
 ====
-The following string is lacking macro brackets (`[]`) that should appear after `filename.adoc` because adding the brackets will cause the include to activate even though it's within a code block. Best practice for automated diagramming is to save AsciiDoc files containing properly formatted AsciiDoc blocks, each block containing the code or script for either a single diagram or a group of diagrams that are presesnted together as a single figure.
+The following string is lacking macro brackets (`[]`) that should appear after `filename.adoc` because adding the brackets will cause the include to activate even though it's within a code block. Best practice for automated diagramming is to save AsciiDoc files containing properly formatted AsciiDoc blocks, each block containing the code or script for either a single diagram or a group of diagrams that are presented together as a single figure.
 [source,adoc]
 ----
 include::images/wavedrom/filename.adoc

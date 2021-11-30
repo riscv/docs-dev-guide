@@ -63,6 +63,7 @@ include::a_few_basics.adoc[]
 include::tables_graphics.adoc[]
 include::blocks_notes_markers.adoc[]
 include::wavedrom_edit.adoc[]
+include::writing.adoc[]
 //please note that the index must precede the bibliography for both to work within the same book.
 include::index.adoc[]
 include::bibliography.adoc[]

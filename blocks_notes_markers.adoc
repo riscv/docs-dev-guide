@@ -259,9 +259,9 @@ With the following result:
 
 === Change bars
 
-Change indicators within text files are exceedlingly useful and also can be equally complex to implement. Please consider the fact that much of the software programming for Git revolves around handling various kinds of change indicators.
+Change indicators within text files are exceedingly useful and also can be equally complex to implement. Please consider the fact that much of the software programming for Git revolves around handling various kinds of change indicators.
 
-In exploring possbile implementation of change bars for RISC-V, we have looked for a solution that is as simple as possible while maximizing value with respect to the time invested in implementing, maintaining, and using the tools and procedures.
+In exploring possible implementation of change bars for RISC-V, we have looked for a solution that is as simple as possible while maximizing value with respect to the time invested in implementing, maintaining, and using the tools and procedures.
 
 The suggested solution makes use of:
 

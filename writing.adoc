@@ -1,0 +1,53 @@
+== Write simply
+
+All professional technical writers eventually learn to keep their writing as simple as possible.
+
+
+=== Develop style guidelines only as needed
+
+While we develop style guidelines, this chapter serves for collecting style guidelines specific to RISC-V. At this point December 2021) there is almost no content.
+
+Please feel free to suggest ideas and content for the RISC-V style guidelines, and please don’t think that you need to add polished content. 
+
+Small organizations like RISC-V usually identify existing style guides and then document the "deltas," including cases where it makes sense to deviate from what's in the existing style guides and also what needs to be added. 
+
+I have a list of existing guides that we can use as a starting point. These are likely the most pertinent existing style guidelines that were created for addressing the needs of highly technical audiences as opposed to consumer end user audiences:
+
+- https://www.writethedocs.org/guide/writing/style-guides/[Write the Docs style guide]
+- https://developers.google.com/style[Google's developer docs style guide]
+- https://stylepedia.net/style/[Stylepedia]
+
+[WARNING]
+====
+One of the typical problems that technical writers that specialize in developer-facing documentation tend to find is the misapplication of maxims that are only appropriate for addressing usability issues that arise with consumer end-user audiences. What works for one audience does not always work for all audiences. For example, I have found that developers tend to prefer long topics (this has been very consistent), while consumer end users tend to prefer short topics. Also developers often prefer code examples to graphical representations, while consumer end users are quite consistent in wanting graphical illustrations.
+====
+
+=== Active voice
+
+Technical writers are always encouraged to use active voice as much as possible. When writing documentation for developer audiences, however, strict adherence to using active voice can result in the writing of convoluted sentences. As a result, while attempting to use active voice can result in improved clarity, contributors can choose to make use of passive voice. That said, we still encourage RISC-V contributors make use of active voice as much as possible.
+
+=== Identify information types
+
+While other style issues are important, addressing the need for guidelines on the information type(s) associated with instructions appears to be something that could increase the quality and efficiency of contributions to RISC-V specifications.
+
+While documentation for most technologies require special style considerations, RISC-V’s focus on ISAs (Instruction Set Architectures) means that its documentation contains information types for which we will be setting standards. RISC-V contributors are in the process of identifying how information about mnemonics can be clearly typed, named, and stored in a database that can then be used as a single source of truth. This is analogous to how some API reference information is identified, typed, and stored in databases.
+
+Handling reference information in this way has many benefits that are easy to recognize. From the point of view of working with the Asciidoctor toolchain, each individual topic of this type can:
+
+* be stored in a database
+* contain attributes as needed
+* make use of AsciiDoc Roles
+
+=== RISC-V-specific style guidelines
+
+This section is here to contain results of style discussions that have emerged from direct email, pull requests, issues, and other venues.
+
+==== Table captions: above or below the table?
+
+RE: A request for table captions to be placed below tables.
+
+Discussion: A simple Google search on the topic of table caption placement resulted in all but one online discussion stating that table captions should appear above tables. The single result that did not make this statement mentioned that while normal placement is above the table, there are occasional instances where organizations decide to place table captions below.
+
+
+
+
