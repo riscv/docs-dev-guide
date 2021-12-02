@@ -2,6 +2,23 @@
 
 All professional technical writers eventually learn to keep their writing as simple as possible.
 
+=== Writing is rewriting
+
+No matter how accomplished the writer, a first draft is a first draft.
+
+* In high tech industries, writers often allow publishing of a first draft in order to provide users with the information that they need.
+* In the entertainment industry, even a script for which a company paid millions might undergo more than one "page one rewrite" before production.
+
+The above seems counter-intuitive.
+
+Here are some writing guidelines:
+
+* Organize information according to a pattern that supports one of both of the following:
+	** Phases of development from idea through development, testing, and deployment.
+	** Concepts, supporting a learning process, from simple and easy to complex and difficult.
+	** Prioritize documenting information that all users require.
+	** If possible, illustrate decisions that users must make with examples that show potential outcomes.
+* As much as possible, maintain parallelism with respect to how you handle information.
 
 === Develop style guidelines only as needed
 
@@ -16,6 +33,7 @@ I have a list of existing guides that we can use as a starting point. These are 
 - https://www.writethedocs.org/guide/writing/style-guides/[Write the Docs style guide]
 - https://developers.google.com/style[Google's developer docs style guide]
 - https://stylepedia.net/style/[Stylepedia]
+- https://docs.netapp.com/us-en/contribute/style.html#write-conversationally[NetApp styke guide]
 
 [WARNING]
 ====
@@ -24,7 +42,10 @@ One of the typical problems that technical writers that specialize in developer-
 
 === Active voice
 
-Technical writers are always encouraged to use active voice as much as possible. When writing documentation for developer audiences, however, strict adherence to using active voice can result in the writing of convoluted sentences. As a result, while attempting to use active voice can result in improved clarity, contributors can choose to make use of passive voice. That said, we still encourage RISC-V contributors make use of active voice as much as possible.
+Technical writers are always encouraged to use active voice as much as possible (irony fully intended).
+
+
+When writing for highly technical audiences, strictly adhering to the use of active voice can result in convoluted sentences. As a result, while attempting to use active voice can result in improved clarity, contributors can choose to make use of passive voice. That said, we still encourage RISC-V contributors make use of active voice as much as possible.
 
 === Identify information types
 

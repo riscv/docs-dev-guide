@@ -146,6 +146,7 @@ sym,num,name
 &#9083;,9083,not checkmark not working
 |===
 
+[[graphics]]
 === Graphics
 
 While asciidoc can render graphics in all popular formats, by far the highest quality graphics rendering is from .svg format.

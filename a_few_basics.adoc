@@ -1,8 +1,63 @@
 [[a_few_basics]]
-== A few basics
+== A few AsciiDoc basics
 
-When you
+AsciiDoc is fully documented, and its documentation is actively maintained. This document contains some information on asciidoc markup to get you started.
 
+For details and additional options, see:
+
+ * Asciidoc/asciidoctor https://asciidoctor.org/docs/asciidoc-writers-guide/[writers' guide].
+ * Asciidoc http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/[quick reference].
+ * Asciidoctor http://asciidoctor.org/docs/user-manual/[user manual].
+
+In addition, you have the option of asking questions in the asciidoctor discussion list:
+
+As is true of any complex process, asciidoc/asciidoctor has some quirks. Please be certain to make use of these templates because they provide you with files that will result in fully featured pdf output.
+
+Best practice is to test the pdf build frequently to ensure that you have not accidentally introduced something that breaks the build.
+
+WARNING: PDF generation currently requires the use of Ruby 2.7.2.
+
+[NOTE]
+====
+Please feel free to send questions to help@riscv.org
+====
+
+=== Paragraphs
+
+In AsciiDoc, normal paragraphs require no markup at all.
+
+==== Basics of blocks and indents
+
+  If you simply add an indent, your indented text becomes a block like this.
+
+* You can add indented, explanatory paragraphs to lists.
++
+Add a `+` directly above the line of text that you want to be indented within the list.
+* Another point.
++
+Using the `+` to create an indented paragraph only works within the context of a numbered or bulleted list.
+
+Asciidoc/asciidoctor supports code blocks with syntax highlighting for many languages. You can use either periods or dashes to indicate code blocks, and use macros to indicate that the block contains code in the specified language, as in the following example:
+
+
+[source,adoc]
+----
+[source,python]
+....
+mono-spaced code block
+add a1,a2,a3; # do an ADD
+....
+----
+
+renders as follows:
+
+[source,python]
+----
+mono-spaced code block
+add a1,a2,a3; # do an ADD
+----
+
+See <<blocks_notes_markers>> for additional information on blocks.
 
 === Headers
 
@@ -33,28 +88,6 @@ Index
 ```
 
 NOTE: Settings in the header file (`book_header.adoc` in the docs-templates repo) trigger auto-generation of Appendix prefixes and of the Index (among other things).
-
-=== Code Blocks
-
-Asciidoc/asciidoctor supports code blocks with syntax highlighting for many languages. You can use either periods or dashes to indicate code blocks, and use macros to indicate that the block contains code in the specified language, as in the following example:
-
-
-[source,adoc]
-----
-[source,python]
-....
-mono-spaced code block
-add a1,a2,a3; # do an ADD
-....
-----
-
-renders as follows:
-
-[source,python]
-----
-mono-spaced code block
-add a1,a2,a3; # do an ADD
-----
 
 
 === Hyperlinks and cross references
@@ -113,10 +146,10 @@ kind of trap.
 |===
 ----
 
-The table below, <<trapcharacteristics,Characteristics of traps>> shows the characteristics of each
+The table below, <<trapcharacteristics>> shows the characteristics of each
 kind of trap.
 
-[[trapcharacteristics,Characteristics of traps]]
+[[trapcharacteristics]]
 .Characteristics of traps.
 [cols="<,^,^,^,^",options="header",]
 |===
@@ -150,8 +183,5 @@ In some cases, you might want to make use of unicode characters. Keep in mind th
 Hexadecimal unicode looks like it has problems in the pdf. This is gnarley.
 
 Updates to asciidoctor-pdf: https://github.com/asciidoctor/asciidoctor-pdf
-
-
-
 
 
