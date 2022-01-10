@@ -1,9 +1,10 @@
-= RISC-V docs-templates repo
+= RISC-V Documentation Developer Guide
 
 This repo contains:
 
 * a demo that can be used for you to implement Github actions to build pdfs for RISC-V documentation.
 * an `example.pdf` file that contains helpful information to assist documentation contributors in their authorship.
+* a robust, but not complete, list of Asciidoctor features that might be used in RISC-V docs. See the ascidoctor docs for a complete list.
 
 The Github actions build requires that you keep specific assets in the same relative locations for the build to work properly, because it pulls in information that contains required images, fonts, themes, page formatting, bibtex, and other assets.
 
