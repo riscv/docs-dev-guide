@@ -327,7 +327,7 @@ While Pandoc does a reasonably good job, there are always documentation nits tha
 
 ## If you want to make use of change bars
 
-The current procedure for changebars is, aditedly, a bit fiddly, but the convenience value of changebars that show up in a pdf can make them worth the effort. 
+The current procedure for changebars is, admittedly, a bit fiddly, but the convenience value of changebars that show up in a pdf can make them worth the effort. 
 
 To support changebars, the following has been added to the YAML stylesheet:
 
@@ -342,7 +342,7 @@ role:
 ```
 Note the changebar entry--this is used as a key to key to create the bars.
 
-To support rendering of changebars in your local build, you must modify tow files in your local gem:
+To support rendering of changebars in your local build, you must modify two files in your local gem:
 
 transform.rb line18 :
 
