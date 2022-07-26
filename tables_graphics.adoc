@@ -503,11 +503,11 @@ DiagramBlock <|-- PlantUmlBlock
 
 NOTE: Asciidoctor supports dditional diagram types. For information on additional diagram types, see the https://docs.asciidoctor.org/diagram-extension/latest/[Asciidoctor-diagram documentation].
 
-===== A mention of Bytefeild
+===== A mention of Bytefield
 
-Currently he idea of making use of Bytefeild as an additional diagram type is being explored.
+Currently the idea of making use of Bytefield as an additional diagram type is being explored.
 
-//=== Bytefeild
+//=== Bytefield
 //
 //
 //.A byte field
