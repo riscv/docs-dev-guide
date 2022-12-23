@@ -474,7 +474,7 @@ It's possible to include other files, which are also processed.
 
 [CAUTION]
 =====
-To to prevent problems with other appendices, leave keep the index as the second-to-last appendix and the bibliography as the last appendix in you list of included chapter sections within the book-header file.
+To prevent problems with other appendices, keep the index as the second-to-last appendix and the bibliography as the last appendix in your list of included chapter sections within the book-header file.
 
 Citations must be contained within a single line.
 =====
