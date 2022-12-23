@@ -521,7 +521,7 @@ Following are example json-formatted bibliographic entries:
 
 ==== Manual bibliography procedures
 
-While the automated procedure and use of the RISC-V bibtex file is preferred, it is also possible to manually create and reference a bibliogprapy.
+While the automated procedure and use of the RISC-V bibtex file is preferred, it is also possible to manually create and reference a bibliography.
 
 Text with markup that will generate links:
 
