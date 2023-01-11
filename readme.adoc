@@ -25,7 +25,7 @@ Instructions for building locally can be found in https://github.com/riscv/docs-
 
 == Build a PDF using a Docker container
 
-See our image on https://hub.docker.com/r/riscvintl/rv-docs[dockerhub].
+You can easily build the documentation by leveraging a pre-built container image with all dependencies already installed. Follow the steps https://github.com/riscv/riscv-docs-base-container-image[here].
 
 == Build a PDF Using GitHub actions
 
