@@ -1,5 +1,5 @@
 HEADER_SOURCE := book_header.adoc
-PDF_RESULT := example.pdf
+PDF_RESULT := docs-dev-guide.pdf
 # Not all document sources are yet listed here.  Not just adoc files but
 # images/ and resources/ content.  Once they are the target can remove the
 # phony use.
