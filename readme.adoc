@@ -3,7 +3,7 @@
 This repo contains:
 
 * A demo that can be used for you to implement Github actions to build pdfs for RISC-V documentation.
-* An `docs-dev-guide.pdf` file that contains helpful information to assist documentation contributors in their authorship.
+* A `docs-dev-guide.pdf` file that contains helpful information to assist documentation contributors in their authorship.
 * A robust, but not complete, list of Asciidoctor features that might be used in RISC-V docs. See the asciidoctor docs for a complete list.
 
 A simple template for writing a RISC-V sepcification based off this developer guide can be found here: https://github.com/riscv/docs-spec-template
