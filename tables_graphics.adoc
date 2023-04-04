@@ -525,7 +525,7 @@ Currently the idea of making use of Bytefield as an additional diagram type is b
 WARNING: Asciidoctor-mathematical has some limitations. For inline expressions, the graphical representations appear small and they are centered virtically. In some cases where there is a single-character Asciidoctor-mathemtical expresssion, it unintentionally looks like a superscript. For this reason, always use viable alternatives like _italics_ or unicode (see <<Unicode symbols>>).
 
 
-==== Superscritps and subscripts
+==== Superscripts and subscripts
 
 To indicate a superscript, enclose the string for the superscript in carets as in the following example:
 
