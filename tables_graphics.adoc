@@ -553,7 +553,7 @@ For subscripts, use tildes:
 C~2~ H~6~
 ----
 
-With the followoing result:
+With the following result:
 
 C~2~ H~6~
 
