@@ -6,7 +6,7 @@ This repo contains:
 * A `docs-dev-guide.pdf` file that contains helpful information to assist documentation contributors in their authorship.
 * A robust, but not complete, list of Asciidoctor features that might be used in RISC-V docs. See the asciidoctor docs for a complete list.
 
-A simple template for writing a RISC-V sepcification based off this developer guide can be found here: https://github.com/riscv/docs-spec-template
+A simple template for writing a RISC-V specification based off this developer guide can be found here: https://github.com/riscv/docs-spec-template
 
 The Github actions build requires that you keep specific assets in the same relative locations for the build to work properly, because it pulls in information that contains required images, fonts, themes, page formatting, bibtex, and other assets.
 
