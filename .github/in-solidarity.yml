@@ -1,0 +1,343 @@
+---
+
+defaultMessage: >
+  You might want to consider an alternative to the term "{{match}}".
+
+  {{#if alternatives~}}
+  Possibilities might include: {{#each alternatives}}{{#if @index}},
+  {{/if}}"{{this}}"{{/each}}.
+  {{~/if}}
+
+  (This check uses pattern-matching and may therefore
+  be incorrect. To improve the patterns or to make other suggestions,
+  please open an issue or pull-request at
+  https://github.com/ietf/terminology/issues.)
+
+rules:
+  whitelist:
+    regex:
+      - /\bwhite[\w_-]*list\w*\b/gi
+    level: warning
+    alternatives:
+      - accept list
+      - allowlist
+      - approved list
+      - pass list
+      - permitted
+
+  blacklist:
+    regex:
+      - /\bblack[\w_-]*list\w*\b/gi
+    level: warning
+    alternatives:
+      - blocklist
+      - denylist
+      - prohibited
+      - refused
+      - reject list
+      - unapproved list
+
+  master:
+    regex:
+      - /\bmaster\w*\b/gi
+    level: warning
+    alternatives:
+      - active
+      - central
+      - initiator
+      - leader
+      - main
+      - orchestrator
+      - parent
+      - primary
+      - server
+
+  slave:
+    regex:
+      - /\bslave\w*\b/gi
+    level: warning
+    alternatives:
+      - follower
+      - peripheral
+      - replica
+      - responder
+      - secondary
+      - standby
+      - worker
+
+  grandfathered:
+    regex:
+      - /\bgrandfather\w*\b/gi
+    level: warning
+    alternatives:
+      - exemption
+      - historical
+      - legacy status
+      - pre-approved
+      - special case
+
+  gendered-terms:
+    regex:
+      - /\bchair[\w_-]*man\w*\b/gi
+      - /\bmankind\b/gi
+      - /\bman[\w_-]*month\w*\b/gi
+      - /\bmans\b/gi
+      - /\bman[\w_-]*made\w*\b/gi
+      - /\bman[\w_-]*power\w*\b/gi
+      - /\bguys?\b/gi
+      - /\b(wo)?m[ae]n\b/gi
+      - /\b(fe)?male\w*\b/gi
+      - /\blad(y|ie)\'?s?\'?\b/gi
+      - /\b(\w+m[ae]nship)\b/gi
+    level: warning
+    alternatives:
+      - individual
+      - people
+      - person
+
+  gendered-pronouns:
+    regex:
+      - /\b(he|him|his|she|her|hers)\b/gi
+    level: warning
+    alternatives:
+      - they
+      - them
+      - their
+
+  sanity-check:
+    regex:
+      - /\bsanity[\w_-]*check\w*\b/gi
+    level: warning
+    alternatives:
+      - coherence check
+      - confidence check
+      - quick check
+
+  crazy:
+    regex:
+      - /\bcraz(y|ie)?\w*\b/gi
+    level: warning
+    alternatives:
+      - malfunctioning
+      - puzzling
+      - surprising
+      - unexpected
+
+  dummy:
+    regex:
+      - /\bdummy\w*\b/gi
+    level: warning
+    alternatives:
+      - placeholder
+      - sample
+      - stand-in
+      - substitute
+
+  dark-pattern:
+    regex:
+      - /\bdark[\w_-]*pattern\w*\b/gi
+    level: warning
+    alternatives:
+      - deception pattern
+
+  balkanization:
+    regex:
+      - /\bbalkani[zs]\w*\b/gi
+    level: warning
+    alternatives:
+      - bifurcation
+      - segmentation
+
+  blackmail:
+    regex:
+      - /\bblack[\w_-]*mail\w*\b/gi
+    level: warning
+    alternatives:
+      - extortion
+
+  black-sheep:
+    regex:
+      - /\bblack[\w_-]*sheep\w*\b/gi
+    level: warning
+    alternatives:
+      - disreputable
+
+  black-market:
+    regex:
+      - /\bblack[\w_-]*market\w*\b/gi
+    level: warning
+    alternatives:
+      - illegal marketplace
+
+  tradition:
+    regex:
+      - /\btradition\w*\b/gi
+    level: warning
+    alternatives:
+      - classic
+      - classical
+      - common
+      - conventional
+      - customary
+      - fixed
+      - habitual
+      - historic
+      - long-established
+      - popular
+      - prescribed
+      - regular
+      - rooted
+      - time-honored
+      - universal
+      - widely used
+      - widespread
+
+  native:
+    regex:
+      - /\bnative\w*\b/gi
+    level: warning
+    alternatives:
+      - built-in
+      - fundamental
+      - ingrained
+      - intrinsic
+      - original
+
+  elder:
+    regex:
+      - /\belder\w*\b/gi
+    level: warning
+    alternatives:
+      - aged
+      - aging
+      - old
+
+  dumb:
+    regex:
+      - /\bdumb\w*\b/gi
+    level: warning
+    alternatives:
+      - dull
+      - inarticuate
+      - incoherent
+
+  immature:
+    regex:
+      - /\bimmatur\w*\b/gi
+    level: warning
+    alternatives:
+      - imperfect
+      - premature
+      - underdeveloped
+      - unfinished
+      - unsophisticated
+
+  cripple:
+    regex:
+      - /\bcrippl\w*\b/gi
+    level: warning
+    alternatives:
+      - broken
+      - damaged
+      - defective
+      - deformed
+      - impaired
+
+  handicap:
+    regex:
+      - /\bhandicap\w*\b/gi
+    level: warning
+    alternatives:
+      - broken
+      - damaged
+      - defective
+      - deformed
+      - impaired
+
+  gendered-connectors:
+    regex:
+      - /\b(fe)?male[\w_-]*(connector|end)\w*\b/gi
+    level: warning
+    alternatives:
+      - plug
+      - socket
+
+  # Taken out after causing author confusion numerous time.
+  # invalid:
+  #   regex:
+  #     - /\binvalid\w*\b/gi
+  #   level: warning
+  #   alternatives:
+  #     - not valid
+  #     - unenforceable
+  #     - not binding
+  #     - inoperative
+  #     - illegitimate
+  #     - incorrect
+  #     - improper
+  #     - unacceptable
+  #     - inapplicable
+  #     - revoked
+  #     - rescinded
+
+  blind:
+    regex:
+      - /\bblind\w*\b/gi
+    level: warning
+    alternatives:
+      - visually impaired
+      - unmindful of
+      - unconcerned about
+      - negligent of
+      - unaware
+      - uncomprehending
+      - unaware
+      - uncritical
+      - unthinking
+      - hasty
+      - blocked
+      - opaque
+
+  deaf:
+    regex:
+      - /\bdeaf\w*\b/gi
+    level: warning
+    alternatives:
+      - hard of hearing
+      - unmoved by
+      - unaffected by
+      - unconcerned with
+      - oblivious to
+      - indifferent to
+
+  # This occurs in the IETF boilerplate text...
+  # right:
+  #   regex:
+  #     - /\bright\w*\b/gi
+  #   level: warning
+  #   alternatives:
+  #     - just
+  #     - fair
+  #     - good
+  #     - correct
+  #     - accurate
+  #     - precise
+  #     - official
+  #     - suitable
+  #     - ideal
+  #     - opportune
+  #     - fitting
+
+  # See https://github.com/ietf/terminology/issues/31
+  # blackhole:
+  #   regex:
+  #     - /\bblack[\w_-]hol\w*\b/gi
+  #   level: warning
+  #   alternatives:
+  #     - drop
+  #     - reject
+  #     - ignore
+  #     - disregard
+  #     - bypass
+
+ignoreDefaults: true

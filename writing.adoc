@@ -2,6 +2,8 @@
 
 All professional technical writers eventually learn to keep their writing as simple as possible.
 
+bad text added here, it uses master and slave as bad words. 
+
 === Writing is rewriting
 
 No matter how accomplished the writer, a first draft is a first draft.
