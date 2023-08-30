@@ -1,5 +1,8 @@
 = RISC-V Documentation Developer Guide
 
+master
+slave
+
 This repo contains:
 
 * A demo that can be used for you to implement Github actions to build pdfs for RISC-V documentation.
