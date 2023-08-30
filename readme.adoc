@@ -2,6 +2,10 @@
 
 master
 slave
+manmade
+manpower
+he
+she
 
 This repo contains:
 
