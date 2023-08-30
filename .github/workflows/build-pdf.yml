@@ -12,75 +12,70 @@ on:
       - main
   workflow_dispatch:
     inputs:
-      prerelease:
-        description: 'Generate a pre-release.'
-        required: false 
-        type: boolean
+      create_release:
+        description: 'Create a new Docs Dev Guide release if set to true'
+        required: false
+        default: 'false'
+      target_branch:
+        description: 'Target Branch'
+        required: true
+        default: 'main'
+      release_notes:
+        description: 'Release Notes'
+        required: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    env:
-      APT_PACKAGES_FILE: ${{ github.workspace }}/dependencies/apt_packages.txt
-      BUNDLE_GEMFILE: ${{ github.workspace }}/dependencies/Gemfile
-      BUNDLE_BIN: ${{ github.workspace }}/bin
-      NPM_PACKAGE_FOLDER: ${{ github.workspace }}/dependencies
-      PDF_RESULT: docs-dev-guide.pdf
     steps:
-    - uses: actions/checkout@v2
-    - name: Install Ubuntu packages
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      
+    # Set the short SHA for use in artifact names
+    - name: Set short SHA
+      run: echo "SHORT_SHA=$(echo ${GITHUB_SHA::7})" >> $GITHUB_ENV
+      
+    # Get the current date
+    - name: Get current date
+      run: echo "CURRENT_DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+
+    # Pull the latest RISC-V Docs container image
+    # https://github.com/riscv/riscv-docs-base-container-image
+    # https://hub.docker.com/r/riscvintl/riscv-docs-base-container-image
+    - name: Pull Container
+      id: pull_container_image
       run: |
-        sudo apt-get update
-        grep -vE '^#' ${APT_PACKAGES_FILE} | xargs sudo apt-get install --yes --no-install-recommends
-    # Ruby for asciidoctor
-    - name: Setup Ruby and Gemfile content
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: "3.2.0"
-        bundler-cache: true
-    # Node.js for wavedrom
-    - uses: actions/cache@v2
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
-    - name: Setup Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-    - name: Install Node.js dependencies
-      run: npm install ${NPM_PACKAGE_FOLDER}
-    - name: Generate PDF
+        docker pull riscvintl/riscv-docs-base-container-image:latest
+
+    # Build PDF  files using the container
+    - name: Build Files
+      id: build_files
+      if: steps.pull_container_image.outcome == 'success'
       run: |
-        PATH=${PATH}:${BUNDLE_BIN}:$(npm bin) \
-        make ${PDF_RESULT}
-    - name: Archive PDF result
-      uses: actions/upload-artifact@v2
+        docker run --rm -v ${{ github.workspace }}:/ riscvintl/riscv-docs-base-container-image:latest \
+        /bin/sh -c make
+
+    # Upload the priv-isa-asciidoc PDF file
+    - name: Upload docs-dev-guide.pdf
+      if: steps.build_files.outcome == 'success'
+      uses: actions/upload-artifact@v3
       with:
-        name: result.pdf
-        path: ${{ env.PDF_RESULT }}
+        name: docs-dev-guide-${{ env.SHORT_SHA }}.pdf
+        path: ${{ github.workspace }}/docs-dev-guide.pdf
         retention-days: 7
+      
     - name: Create Release
-      id: create_release
-      if: ${{ github.event.inputs.prerelease }}
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      if: steps.build_files.outcome == 'success' && github.event_name == 'workflow_dispatch' && github.event.inputs.create_release == 'true'
+      uses: softprops/action-gh-release@v1
       with:
-        tag_name: ${{ github.ref_name }}
-        release_name: Release ${{ github.ref_name }}
         draft: false
-        prerelease: true
-    - name: Upload Release Asset
-      id: upload-release-asset
-      if: ${{ github.event.inputs.prerelease }}
-      uses: actions/upload-release-asset@v1
+        tag_name: docs-dev-guide-${{ env.SHORT_SHA }}-${{ env.CURRENT_DATE }}
+        name: ${{ env.CURRENT_DATE }}
+        body: |
+          This release was created by: ${{ github.event.sender.login }}
+          Release Notes: ${{ github.event.inputs.release_notes }}
+        files: |
+          ${{ github.workspace }}/docs-dev-guide.pdf
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./docs-dev-guide.pdf
-        asset_name: docs-dev-guide.pdf
-        asset_content_type: application/pdf
+        GITHUB_TOKEN: ${{ secrets.GHTOKEN }}
