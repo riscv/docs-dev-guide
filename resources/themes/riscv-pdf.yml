@@ -62,7 +62,7 @@ vertical_spacing: $vertical_rhythm
 link:
     font_color: 428bca
   # literal is currently used for inline monospaced in prose and table cells
-literal:
+codespan:
     font_color: b12146
     font_family: code
 menu_caret_content: " <font size=\"1.15em\"><color rgb=\"b12146\">\u203a</color></font> "
@@ -210,7 +210,7 @@ description_list:
   term_font_style: bold
   term_spacing: $vertical_rhythm / 4
   description_indent: $horizontal_rhythm * 1.25
-outline_list:
+list:
   indent: $horizontal_rhythm * 1.5
   #marker_font_color: 404040
   # NOTE outline_list_item_spacing applies to list items that do not have complex content
