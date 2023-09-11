@@ -53,8 +53,11 @@ base:
   font_size_large: round($base_font_size * 1.25)
   font_size_small: round($base_font_size * 0.85)
   font_size_min: $base_font_size * 0.75
+  font_color:
   border_radius: 3
   border_width: 0.25
+  border_color:
+
 vertical_rhythm: $base_line_height_length
 horizontal_rhythm: $base_line_height_length
  # QUESTION should vertical_spacing be block_spacing instead?
