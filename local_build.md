@@ -20,7 +20,7 @@ We are using the Ruby toolchain because it supports building the customizable, f
 
 To support building WaveDrom diagrams directly from scripts contained in blocks in the AsciiDoc source files, we use NPM to install the wavedrom-cli, even though we are using the Ruby toolchain.
 
-NOTE: Even though NPM is required for the Wavedrom diagrams to work properly, we are *not* using the Asciidoctor NPM toolchain. 
+NOTE: Even though NPM is required for the Wavedrom diagrams to work properly, we are *not* using the Asciidoctor NPM toolchain.
 
 ## Install Ruby on MacOS
 
@@ -67,11 +67,11 @@ rvm use system
 rvm use 2.5.9
 ```
 
-ALERT: Ensure that you are using the same Ruby version for all Ruby gems that you install for the Asciidoctor toolchain. 
+ALERT: Ensure that you are using the same Ruby version for all Ruby gems that you install for the Asciidoctor toolchain.
 
 ## Windows—install Ruby with RVM
 
-NOTE: Users of Windows 10 are reporting problems with RVM. We plan to test the use of Cygwin as a workaround. Please note that if you don't need asciidoctor-mathematical for rendering of mathematical expressions, you can make use of Ruby 2.7.2. 
+NOTE: Users of Windows 10 are reporting problems with RVM. We plan to test the use of Cygwin as a workaround. Please note that if you don't need asciidoctor-mathematical for rendering of mathematical expressions, you can make use of Ruby 2.7.2.
 
 - For Windows, use: http://rubyinstaller.org/
 
@@ -81,7 +81,7 @@ NOTE: During the Windows install, click in the installer to:
 - add paths
 - add tdtk
 
-ALERT: Ensure that you are using the same Ruby version for all gems that you install for the Asciidoctor toolchain. 
+ALERT: Ensure that you are using the same Ruby version for all gems that you install for the Asciidoctor toolchain.
 
 ## MacOS--install Asciidoctor
 
@@ -127,7 +127,7 @@ Install the following:
 * asciidoctor-bibtex gem, which is needed for auto-creation of a bibliography from citations.
 
 ```cmd
-gem install asciidoctor-pdf 
+gem install asciidoctor-pdf
 gem install asciidoctor-bibtex
 ```
 
@@ -142,7 +142,7 @@ Install syntax highlighting gems as follows (for Windows, append the string `--s
 gem install coderay
 gem install rouge
 gem install pygments.rb
-``` 
+```
 
 ## Add NVM, node 15, and `wavedrom-cli` for WaveDrom diagrams
 
@@ -150,7 +150,7 @@ For MacOS, use brew to install nvm and create an nvm directory:
 
 ```cmd
 brew install nvm
-mkdir ~/.nvm 
+mkdir ~/.nvm
 ```
 
 open either ~/.bash_profile or ~/.zshrc (for macOS Catalina or later):
@@ -213,7 +213,7 @@ WARNING: For the MacOS, if you upgrade from a prior version to Big Sur, you must
 
 ## Graphviz is used for diagrams in some appendices
 
-To support graphviz on the Mac, use brew 
+To support graphviz on the Mac, use brew
 
 ```cmd
 brew install graphviz
@@ -252,14 +252,14 @@ gem install csl-styles
 gem install asciidoctor-bibtex
 ```
 
-You can then add a bibliography to your appendices and use bibtex conventions to add citations into your AsciiDoc text files. 
+You can then add a bibliography to your appendices and use bibtex conventions to add citations into your AsciiDoc text files.
 
 Details of how to work with bibtex and the RISC-V bibliogrpahy are in the example.pdf file.
 
 
 ## AsciiDoc book headers and styles
 
-Attributes in the book headers for RISC-V AsciiDoc content control aspects of the pdf build. Together with the `risc-v_spec-pdf.yml` file, they enable, among other things, numbered headings, a TOC, running headers and footers, footnotes at chapter ends, custom fonts, admonitions, an index, and an optional colophon. 
+Attributes in the book headers for RISC-V AsciiDoc content control aspects of the pdf build. Together with the `risc-v_spec-pdf.yml` file, they enable, among other things, numbered headings, a TOC, running headers and footers, footnotes at chapter ends, custom fonts, admonitions, an index, and an optional colophon.
 
 In addition, properties in the book header within this repo point to the `images` directory and also the `resources/riscv-spec.bib` file that contains the RISC-V `bibtex` entries for use in creating a bibliography as one of the appendices.
 
@@ -278,7 +278,7 @@ NOTE: Blank lines are not allowed in between the `include::file_name.adoc` files
 
 ## HTML build
 
-Building in HTML is a good way to check that your content under development builds properly. 
+Building in HTML is a good way to check that your content under development builds properly.
 
 As soon as you have installed Asciidoctor, you can build HTML content from any `.adoc` file on your own machine--simply CD into the directory that contains your `.adoc` files and run the following:
 
@@ -293,7 +293,7 @@ For pdf output, cd into this cloned directory and use this command:
 asciidoctor-pdf -r asciidoctor-mathematical -a mathematical-format=svg -r asciidoctor-bibtex -r asciidoctor-diagram book_header.adoc -a pdf-style=resources/themes/riscv-pdf.yml -a pdf-fontsdir=resources/fonts/
 ```
 
-This generates a file named `book_header.pdf` that makes use of the graphics, styles, and fonts that is identical to example.pdf. 
+This generates a file named `book_header.pdf` that makes use of the graphics, styles, and fonts that is identical to example.pdf.
 
 ALERT: When copying/pasting commands for the CLI on the Windows OS, check that no substitutions are being made. We have seen the '=' get replaced with a '#', causing an error message about fonts.
 
@@ -327,7 +327,7 @@ While Pandoc does a reasonably good job, there are always documentation nits tha
 
 ## If you want to make use of change bars
 
-The current procedure for changebars is, admittedly, a bit fiddly, but the convenience value of changebars that show up in a pdf can make them worth the effort. 
+The current procedure for changebars is, admittedly, a bit fiddly, but the convenience value of changebars that show up in a pdf can make them worth the effort.
 
 To support changebars, the following has been added to the YAML stylesheet:
 
@@ -360,13 +360,13 @@ if (border_width = data[:border_changebar])
         prev_line_width = pdf.line_width
         pdf.stroke_color border_color
         pdf.line_width border_width
-        pdf.stroke_vertical_line fragment.top + border_offset, fragment.top-height, :at => 50 - pdf.bounds.absolute_left 
+        pdf.stroke_vertical_line fragment.top + border_offset, fragment.top-height, :at => 50 - pdf.bounds.absolute_left
         pdf.stroke_color prev_stroke_color
         pdf.line_width prev_line_width
       elsif (border_width = data[:border_width])
 ```
 
-At this point changebars require manual entry and removal. You can find documentation for how to use markup for changebars in the example.pdf. 
+At this point changebars require manual entry and removal. You can find documentation for how to use markup for changebars in the example.pdf.
 
 Technical staff is exploring further automated processing and CI/CD.
 
@@ -378,4 +378,3 @@ https://docs.google.com/document/d/1fUWEM3b-lbHQRruvAw3BUOA_ND_cJD0bsijV5bESklA/
 ### Link to JDK
 
 You can find information on installing the JDK on a MacOS here: https://docs.oracle.com/en/java/javase/15/install/installation-jdk-macos.html#GUID-F575EB4A-70D3-4AB4-A20E-DBE95171AB5F
-

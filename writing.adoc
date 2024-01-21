@@ -2,7 +2,7 @@
 
 All professional technical writers eventually learn to keep their writing as simple as possible.
 
-bad text added here, it uses master and slave as bad words. 
+bad text added here, it uses master and slave as bad words.
 
 === Writing is rewriting
 
@@ -26,9 +26,9 @@ Here are some writing guidelines:
 
 While we develop style guidelines, this chapter serves for collecting style guidelines specific to RISC-V. At this point December 2021) there is almost no content.
 
-Please feel free to suggest ideas and content for the RISC-V style guidelines, and please don’t think that you need to add polished content. 
+Please feel free to suggest ideas and content for the RISC-V style guidelines, and please don’t think that you need to add polished content.
 
-Small organizations like RISC-V usually identify existing style guides and then document the "deltas," including cases where it makes sense to deviate from what's in the existing style guides and also what needs to be added. 
+Small organizations like RISC-V usually identify existing style guides and then document the "deltas," including cases where it makes sense to deviate from what's in the existing style guides and also what needs to be added.
 
 I have a list of existing guides that we can use as a starting point. These are likely the most pertinent existing style guidelines that were created for addressing the needs of highly technical audiences as opposed to consumer end user audiences:
 
@@ -70,7 +70,3 @@ This section is here to contain results of style discussions that have emerged f
 RE: A request for table captions to be placed below tables.
 
 Discussion: A simple Google search on the topic of table caption placement resulted in all but one online discussion stating that table captions should appear above tables. The single result that did not make this statement mentioned that while normal placement is above the table, there are occasional instances where organizations decide to place table captions below.
-
-
-
-

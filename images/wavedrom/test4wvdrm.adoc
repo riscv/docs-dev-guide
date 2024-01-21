@@ -12,4 +12,3 @@
   {bits: 6, name: 'funct5',     type: 8, attr: ['5','AMOSWAP.W/D', 'AMOADD.W/D', 'AMOAND.W/D', 'AMOOR.W/D', 'AMOXOR.W/D', 'AMOMAX[U].W/D','AMOMIN[U].W/D']},
 ], config: {bits: 32}}
 ....
-

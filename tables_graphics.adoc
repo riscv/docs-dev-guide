@@ -586,7 +586,3 @@ latexmath:[$C = \alpha + \beta Y^{\gamma} + \epsilon$]
 ====
 Latexmath rendering has some limitations with respect to sizing and placement inline. This happens because of how the images for the mathemtical symbols are rendered within the build process. For this reason, please avoid using single character latexmath expresions inline and prefentially make use of unicode or superscripts and subscripts when possible.
 ====
-
-
-
-

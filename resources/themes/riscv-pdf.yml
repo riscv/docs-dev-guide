@@ -1,6 +1,7 @@
+---
 font:
   catalog:
-    merge: false 
+    merge: false
  #Petrona
     body:
       normal: Petrona-Light.ttf
@@ -61,47 +62,47 @@ base:
 vertical_rhythm: $base_line_height_length
 horizontal_rhythm: $base_line_height_length
  # QUESTION should vertical_spacing be block_spacing instead?
-vertical_spacing: $vertical_rhythm  
+vertical_spacing: $vertical_rhythm
 link:
-    font_color: 428bca
+  font_color: 428bca
   # literal is currently used for inline monospaced in prose and table cells
 codespan:
-    font_color: b12146
-    font_family: code
-menu_caret_content: " <font size=\"1.15em\"><color rgb=\"b12146\">\u203a</color></font> "
+  font_color: b12146
+  font_family: code
+menu_caret_content: ' <font size="1.15em"><color rgb="b12146">›</color></font> '
 heading:
-    align: left
-    font_color: 3e058e
+  align: left
+  font_color: 3e058e
+  font_family: headings
+  font_style: light
+  h1_font_size: floor($base_font_size * 2.8)
+    # h2 is used for chapter titles (book doctype only)
+  h2_font_size: floor($base_font_size * 2.15)
+  h3_font_size: round($base_font_size * 1.7)
+  h4_font_size: $base_font_size_large
+  h5_font_size: $base_font_size
+  h6_font_size: $base_font_size_small
+title_page:
+  align: right
+  logo:
+    top: 10%
+  title:
     font_family: headings
     font_style: light
-    h1_font_size: floor($base_font_size * 2.8)
-    # h2 is used for chapter titles (book doctype only)
-    h2_font_size: floor($base_font_size * 2.15)
-    h3_font_size: round($base_font_size * 1.7)
-    h4_font_size: $base_font_size_large
-    h5_font_size: $base_font_size
-    h6_font_size: $base_font_size_small
-title_page:
-    align: right
-    logo:
-     top: 10%
-    title:
-     font_family: headings
-     font_style: light
-     font_size: floor($base_font_size * 2.8)
-     top: 55%
-     font_color: 3e058e
-    subtitle:
-     font_family: headings
-     font_style: light
-     font_size: floor($base_font_size * 1.2)
-    authors:
-     font_family: headings
-     font_color: 3e058e
-     font_style: light
-     font_size: floor($base_font_size * .8)
-    revision:
-     margin_top: $base_font_size * 1.25
+    font_size: floor($base_font_size * 2.8)
+    top: 55%
+    font_color: 3e058e
+  subtitle:
+    font_family: headings
+    font_style: light
+    font_size: floor($base_font_size * 1.2)
+  authors:
+    font_family: headings
+    font_color: 3e058e
+    font_style: light
+    font_size: floor($base_font_size * .8)
+  revision:
+    margin_top: $base_font_size * 1.25
 block:
   margin_top: 0
   margin_bottom: $vertical_rhythm
@@ -130,7 +131,7 @@ abstract:
     font_style: $heading_font_style
 sidebar:
   font-style: italic
-  background-color: f5f5fc 
+  background-color: f5f5fc
   border-color: 8d81b8
   border-radius: 3
   border-width: 0.2
@@ -146,7 +147,7 @@ admonition:
   column_rule_width: $base_border_width
   padding: [0, $horizontal_rhythm, 0, $horizontal_rhythm]
   icon:
-    note:  
+    note:
       name: pencil-square-o
       stroke_color: 6489b3
     tip:
@@ -158,7 +159,7 @@ admonition:
       stroke_color: 5f8c8b
     warning:
       stroke_color: 9c4d4b
-    caution: 
+    caution:
       stroke_color: c99a2c
   label:
     text_transform: uppercase
@@ -256,7 +257,7 @@ header:
   # * {section-title}
   # * {section-or-chapter-title}
   recto:
-    right: 
+    right:
       content: '{section-or-chapter-title} | Page {page-number}'
   verso:
     left:
@@ -276,7 +277,7 @@ footer:
   # content: '{company}'
   # * {page-count}
   # * {page-number}
-  #center: 
+  #center:
     #content: '{document-title}'
   # * {document-subtitle}
   # * {chapter-title}
@@ -296,4 +297,3 @@ footer:
       content: $footer_recto_right_content
       #center: '{page-number}'
     #content: '{page-number}'
-
