@@ -9,7 +9,7 @@ In either case, please feel free to examine the AsciiDoc source files for this `
 
 === About Asciidoctor
 
-AsiiDoc is the markup language and Asciidoctor is a set of toolchains that support publishing from AsciiDoc. 
+AsiiDoc is the markup language and Asciidoctor is a set of toolchains that support publishing from AsciiDoc.
 
 There are three major Asciidoctor toolchains:
 
@@ -79,4 +79,3 @@ The best linter for asciidoc is available for Sublime Text, and linters are avai
 As soon as you have installed asciidoctor on your computer, you have the ability to check that each individual file builds in html by simply running `asciidoctor filename.adoc` on any file. You can also check that the book or report on which you are working builds in html by running `asciidoctor bookname.adoc` or `asciidoctor reportname.adoc` on the book or report header. The strings `filename`, `bookname`, and `reportname` all should be replaced with the actual names you are using.
 
 Asciidoctor has fairly good error messages and usually lets you know the file and row number where the build first breaks.
-

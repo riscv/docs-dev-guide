@@ -16,4 +16,3 @@ https://docs.asciidoctor.org/reveal.js-converter/latest/converter/features/#basi
 ----
 
 For information on the build process for reveal.js presentations, see https://docs.asciidoctor.org/reveal.js-converter/latest/
-

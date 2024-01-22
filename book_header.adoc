@@ -77,4 +77,3 @@ include::linting.adoc[]
 include::index.adoc[]
 
 include::bibliography.adoc[]
-

@@ -56,5 +56,3 @@ The reason is that the look and feel of PDF output from the toolchain in use is 
 While best practice is _usually_ to maintain the same relative locations for files and directories so that other contributors can easily find everything, you have the option of changing things for your group and editing the github actions for your repo--as long as the pdf output keeps the established look and feel.
 
 We use the modifier _usually_ because AsciiDoc is intentionally used because of its usefulness in automated environments.
-
-
