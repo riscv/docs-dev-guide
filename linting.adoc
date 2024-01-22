@@ -1,0 +1,14 @@
+== Linting
+
+The linting of code/documentation can be categorized as dealing with formatting, syntax, or semantics.  Once the rules for a given project are defined, many of these rules can be checked automatically with tooling.
+
+=== Tooling
+
+link:https://pre-commit.com/[pre-commit tool] is a very useful, open source, well maintained, and popular tool/framework to help automate linting checks in general.  It provides some of the following key features:
+
+* link:https://pre-commit.com/hooks.html[a great number of support hooks for linting]
+** including direct support by many of the maintainers of best in class linters (ex: link:https://github.com/psf/black[python linter black])
+** link:https://pre-commit.com/index.html#plugins[hook plugins] allow adding these and versioning to control updates
+* support for link:https://pre-commit.com/index.html#new-hooks[creating new custom hooks easily]
+* can be run before `git commit` (i.e. "pre-commit") so authors can detect and fix problems sooner in the workflow
+* can also be run in link:https://pre-commit.com/index.html#github-actions-example[continuous integration (CI)] to enforce checks are run for every pull request

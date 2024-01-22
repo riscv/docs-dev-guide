@@ -56,15 +56,25 @@ This document is released under a Creative Commons Attribution 4.0 International
 
 //the colophon allows for a section after the preamble that is part of the frontmatter and therefore not assigned a page number.
 include::colophon.adoc[]
+
 //While some documents need several levels of introductory material, other documents only need a breif introduction. You can choose to have either colophon or an overview, or to have both.
 //include::overview.adoc[]
 include::authoring.adoc[]
+
 include::a_few_basics.adoc[]
+
 include::tables_graphics.adoc[]
+
 include::blocks_notes_markers.adoc[]
+
 include::wavedrom_edit.adoc[]
+
 include::writing.adoc[]
+
+include::linting.adoc[]
+
 //please note that the index must precede the bibliography for both to work within the same book.
 include::index.adoc[]
+
 include::bibliography.adoc[]
 
