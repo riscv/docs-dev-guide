@@ -90,7 +90,7 @@ NOTE: Annotations have been added to the code to illustrate their use.
 
 === Unicode symbols
 
-For pdf, five-digit unicdole symbols generally don't work and some other unicode symbols are buggy. This happens because the Ruby asciidcotor-pdf toolchain makes ue of Prawn to build pdfs and it's Prawn that has the problems.
+For PDFs, five-digit unicode symbols generally don't work and some other unicode symbols are buggy. This happens because the Ruby asciidoctor-pdf toolchain makes use of Prawn to build PDFs and it's Prawn that has the problems.
 
 Here are a few unicode examples from https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references that might be useful:
 
@@ -133,7 +133,7 @@ sym,num,name
 &#114;,114,latin small letter r
 |===
 
-For many symbols, then, we must turn to asciidoctor-mathematical. See <<Superscipts and other mathematical notations>>.
+For many symbols, then, we must turn to asciidoctor-mathematical. See <<Superscripts and other mathematical notations>>.
 
 [[unicode-not-working]]
 .Unicode identified as not working
@@ -153,9 +153,9 @@ While asciidoc can render graphics in all popular formats, by far the highest qu
 
 https://wavedrom.com/[WaveDrom sequence diagrams] are essential to the RISC-V specifications. We are in the process of phasing in an automated process for incorporating WaveDrom diagrams into the professional quality pdf output so please stay tuned.
 
-https://asciidoctor.org/docs/asciidoctor-diagram/#image-output-location[Asciidocdoctor-pdf] enables automation of diagrams from scripts, including WaveDrom.
+https://asciidoctor.org/docs/asciidoctor-diagram/#image-output-location[Asciidocdoctor-pdf] enables automation of diagrams from scripts, including Wavedrom.
 
-Even as we are using WaveDrom to simplify the creation of accurate svgs for register diagrams, the graphical elements--those for the various diagrams--add complexity to the build.
+Even as we are using Wavedrom to simplify the creation of accurate SVGs for register diagrams, the graphical elements--those for the various diagrams--add complexity to the build.
 
 
 ==== Automated diagramming
@@ -296,7 +296,7 @@ include::images/wavedrom/filename.adoc
 The Unpriv appendices contain Graphviz diagrams with associated keys that are arranged in tables. While in the LaTeX version, the diagrams and tables are arranged side-by-side, for the AsciiDoc version;
 
 * each Graphviz diagram should be directly above the key table.
-* store scripts for Graphiviz diagrams in the images/graphviz directory, as <filename>.txt
+* store scripts for Graphviz diagrams in the images/graphviz directory, as <filename>.txt
 * import the Graphviz by reference using the pattern in the following example.
 
 [source,adoc]
@@ -501,7 +501,7 @@ DiagramBlock <|-- DitaaBlock
 DiagramBlock <|-- PlantUmlBlock
 ....
 
-NOTE: Asciidoctor supports dditional diagram types. For information on additional diagram types, see the https://docs.asciidoctor.org/diagram-extension/latest/[Asciidoctor-diagram documentation].
+NOTE: Asciidoctor supports additional diagram types. For information on additional diagram types, see the https://docs.asciidoctor.org/diagram-extension/latest/[Asciidoctor-diagram documentation].
 
 ===== A mention of Bytefield
 
@@ -522,7 +522,7 @@ Currently the idea of making use of Bytefield as an additional diagram type is b
 
 === Mathematical notations
 
-WARNING: Asciidoctor-mathematical has some limitations. For inline expressions, the graphical representations appear small and they are centered virtically. In some cases where there is a single-character Asciidoctor-mathemtical expresssion, it unintentionally looks like a superscript. For this reason, always use viable alternatives like _italics_ or unicode (see <<Unicode symbols>>).
+WARNING: Asciidoctor-mathematical has some limitations. For inline expressions, the graphical representations appear small and they are centered vertically. In some cases where there is a single-character Asciidoctor-mathematical expression, it unintentionally looks like a superscript. For this reason, always use viable alternatives like _italics_ or unicode (see <<Unicode symbols>>).
 
 
 ==== Superscripts and subscripts
@@ -584,5 +584,5 @@ latexmath:[$C = \alpha + \beta Y^{\gamma} + \epsilon$]
 
 [TIP]
 ====
-Latexmath rendering has some limitations with respect to sizing and placement inline. This happens because of how the images for the mathemtical symbols are rendered within the build process. For this reason, please avoid using single character latexmath expresions inline and prefentially make use of unicode or superscripts and subscripts when possible.
+Latexmath rendering has some limitations with respect to sizing and placement inline. This happens because of how the images for the mathematical symbols are rendered within the build process. For this reason, please avoid using single character latexmath expressions inline and preferentially make use of unicode or superscripts and subscripts when possible.
 ====

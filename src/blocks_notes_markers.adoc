@@ -37,7 +37,7 @@ This is more content in the sidebar block.
 ****
 
 
-You can add a title, along with any kind of content. Best practice for many of the "commentaries" in the LaTeX source that elucidate the decisionmaking process is to convert to this format with the `TIP` icon that illustrates a conversation or discussion, as in the following example:
+You can add a title, along with any kind of content. Best practice for many of the "commentaries" in the LaTeX source that elucidate the decision-making process is to convert to this format with the `TIP` icon that illustrates a conversation or discussion, as in the following example:
 
 [source,adoc]
 ----
@@ -428,9 +428,9 @@ Asciidoctor-bibtex enables options that allow for establishing a single source o
 
 For asciidoctor-bibtex to work, please install the Ruby gems as documented in the docs-templates README file.
 
-NOTE: This has now been tested and is the preferred procedure for adding a biliography.
+NOTE: This has now been tested and is the preferred procedure for adding a bibliography.
 
-The doc header file in the docs-templates repo now contains the following attributes for the purpose of implementing a biliograpy using asciidoctor-bibtex:
+The doc header file in the docs-templates repo now contains the following attributes for the purpose of implementing a bibliography using asciidoctor-bibtex:
 
 [source,adoc]
 ----
@@ -439,7 +439,7 @@ The doc header file in the docs-templates repo now contains the following attrib
 :bibtex-style: apa
 ----
 
-The repo also contains the most recent version of the `riscv-spec.bib` file for asciidocotor-bibtex to use while building the bibliogrpahy.
+The repo also contains the most recent version of the `riscv-spec.bib` file for asciidoctor-bibtex to use while building the bibliography.
 
 When you run asciidoctor-bibtex as part of the build, it searches for the bibtex file first in the folder and subfolders of the document header, and then in `\~/Documents`."
 
@@ -454,7 +454,7 @@ with the result, cite:[riscvtr(12)]
 
 Add age numbers (locators) using the pattern:
 
-[sorce,adoc]
+[source,adoc]
 ----
 cite:[Kim-micro2005(45)]
 ----
