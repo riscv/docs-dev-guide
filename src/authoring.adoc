@@ -9,7 +9,7 @@ In either case, please feel free to examine the AsciiDoc source files for this `
 
 === About Asciidoctor
 
-AsiiDoc is the markup language and Asciidoctor is a set of toolchains that support publishing from AsciiDoc.
+AsciiDoc is the markup language and Asciidoctor is a set of toolchains that support publishing from AsciiDoc.
 
 There are three major Asciidoctor toolchains:
 

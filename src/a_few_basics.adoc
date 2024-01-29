@@ -63,7 +63,7 @@ See <<blocks_notes_markers>> for additional information on blocks.
 
 While authoring in asciidoc, you cannot jump directly from a Head 1 to a Head 3 or 4. Your headers must appear in sequence from Head 1 to Head 2, and onward. If you skip over a header in the sequence, asciidoctor throws an error.
 
-Following is an axample of a valid sequence of headers.
+Following is an example of a valid sequence of headers.
 
 ```adoc
 = Title head (book or report title)
