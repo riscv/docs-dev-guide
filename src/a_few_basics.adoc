@@ -1,30 +1,30 @@
 [[a_few_basics]]
 == A few AsciiDoc basics
 
-AsciiDoc is fully documented, and its documentation is actively maintained. This document contains some information on asciidoc markup to get you started.
+AsciiDoc is fully documented, and its documentation is actively maintained. This document contains some information on AsciiDoc markup to get you started.
 
 For details and additional options, see:
 
- * Asciidoc/asciidoctor https://asciidoctor.org/docs/asciidoc-writers-guide/[writers' guide].
- * Asciidoc http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/[quick reference].
+ * AsciiDoc/Asciidoctor https://asciidoctor.org/docs/asciidoc-writers-guide/[writers' guide].
+ * AsciiDoc http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/[quick reference].
  * Asciidoctor http://asciidoctor.org/docs/user-manual/[user manual].
 
-In addition, you have the option of asking questions in the asciidoctor discussion list:
+In addition, you can ask questions in the https://discuss.asciidoctor.org/[Asciidoctor discussion list].
 
-As is true of any complex process, asciidoc/asciidoctor has some quirks. Please be certain to make use of these templates because they provide you with files that will result in fully featured pdf output.
+As is true of any complex process, AsciiDoc/Asciidoctor has some quirks. Please be certain to use the templates, as the templates provide you with files that result in fully featured PDF output.
 
-Best practice is to test the pdf build frequently to ensure that you have not accidentally introduced something that breaks the build.
+Best practice is to test the PDF build frequently to ensure that you have not accidentally introduced something that breaks the build.
 
 WARNING: PDF generation currently requires the use of Ruby 2.7.2.
 
 [NOTE]
 ====
-Please feel free to send questions to help@riscv.org
+Please feel free to send questions to help@riscv.org.
 ====
 
 === Paragraphs
 
-In AsciiDoc, normal paragraphs require no markup at all.
+In AsciiDoc, normal paragraphs do not require markup.
 
 ==== Basics of blocks and indents
 
@@ -37,7 +37,7 @@ Add a `+` directly above the line of text that you want to be indented within th
 +
 Using the `+` to create an indented paragraph only works within the context of a numbered or bulleted list.
 
-Asciidoc/asciidoctor supports code blocks with syntax highlighting for many languages. You can use either periods or dashes to indicate code blocks, and use macros to indicate that the block contains code in the specified language, as in the following example:
+AsciiDoc/Asciidoctor supports code blocks with syntax highlighting for many languages. You can use either periods or dashes to indicate code blocks, and use macros to indicate that the block contains code in the specified language, as in the following example:
 
 
 [source,adoc]
@@ -49,7 +49,7 @@ add a1,a2,a3; # do an ADD
 ....
 ----
 
-renders as follows:
+This example renders as follows:
 
 [source,python]
 ----
@@ -57,13 +57,13 @@ mono-spaced code block
 add a1,a2,a3; # do an ADD
 ----
 
-See <<blocks_notes_markers>> for additional information on blocks.
+See <<blocks_notes_markers>> for additional information about blocks.
 
 === Headers
 
-While authoring in asciidoc, you cannot jump directly from a Head 1 to a Head 3 or 4. Your headers must appear in sequence from Head 1 to Head 2, and onward. If you skip over a header in the sequence, asciidoctor throws an error.
+When you author in AsciiDoc, you cannot jump directly from a Head 1 to a Head 3 or 4. Your headers must appear in sequence from Head 1 to Head 2, and onward. If you skip over a header in the sequence, Asciidoctor throws an error.
 
-Following is an example of a valid sequence of headers.
+The following example is a valid sequence of headers.
 
 ```adoc
 = Title head (book or report title)
@@ -118,19 +118,18 @@ Use macros for cross references (links within a document) as in the following ex
 <<Index markers>> describes how index markers work.
 ----
 
-This renders as:
+This example renders as:
 
 <<Index markers>> describes how index markers work.
 
 
-The `book_header.adoc` file in the docs-templates repo sets the `full` cross reference attribute to enable the display of captions from targets in the anchors. This allows you to set captions for tables, blocks, and illustrations. If no caption is provided, Asciidoctor defaults to the _basic_ cross reference style.
+The `book_header.adoc` file in the docs-templates repo sets the `full` cross-reference attribute to enable captions to display from targets in the anchors. This ability allows you to set captions for tables, blocks, and illustrations. If you do not provide a caption, Asciidoctor defaults to the _basic_ cross reference style.
 
 To set a caption for a table or image, use the pattern as follows:
 
 [source,adoc]
 ----
-The table below, <<trapcharacteristics,Characteristics of traps>> shows the characteristics of each
-kind of trap.
+The following table, <<trapcharacteristics,Characteristics of traps>> shows the characteristics of each kind of trap.
 ----
 
 [source,adoc]
@@ -146,7 +145,7 @@ kind of trap.
 |===
 ----
 
-The table below, <<trapcharacteristics>> shows the characteristics of each
+The following table, <<trapcharacteristics>> shows the characteristics of each
 kind of trap.
 
 [[trapcharacteristics]]
@@ -180,6 +179,6 @@ sqrt(4) = 2
 
 In some cases, you might want to make use of unicode characters. Keep in mind that asciidoctor-pdf currently only supports decimal character references. See https://github.com/asciidoctor/asciidoctor-pdf/issues/486
 
-Hexadecimal unicode looks like it has problems in the pdf. This is gnarley.
+Hexadecimal unicode looks like it has problems in the PDF. This is gnarley.
 
 Updates to asciidoctor-pdf: https://github.com/asciidoctor/asciidoctor-pdf

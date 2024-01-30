@@ -1,9 +1,9 @@
-== Asciidoc authoring for RISC-V contributors
+== AsciiDoc authoring for RISC-V contributors
 
 As a contributor to RISC-V, your contributions will likely be in one of the two following categories:
 
-* adding content to an existing specification.
-* creating an entirely new specification.
+* Adding content to an existing specification.
+* Creating an entirely new specification.
 
 In either case, please feel free to examine the AsciiDoc source files for this `example.pdf` and adapt the markup for your use.
 
@@ -19,11 +19,11 @@ There are three major Asciidoctor toolchains:
 
 === RISC-V AsciiDoc authoring assets
 
-Please view the readme in the https://github.com/riscv/docs-templates[docs-templates repo] for information on automated build processes.
+Please view the https://github.com/riscv/docs-templates[readme] in the docs-templates repo for information about the automated build processes.
 
-The above mentioned repo also contains assets (fonts, styles, directory structure, and themes) that you need for RISC-V specifications, along with a https://github.com/riscv/docs-templates/commit/5c18cc9761eb3f6516975ee0c109729a4ce66b93[document] that takes you through a local install process that supports all of the needed features for a local build.
+The docs-templates repo also contains assets, such as fonts, styles, directory structure, and themes that you need for RISC-V specifications, along with a https://github.com/riscv/docs-templates/commit/5c18cc9761eb3f6516975ee0c109729a4ce66b93[document] that takes you through a local install process that supports all of the required features for a local build.
 
-Although testing your markup by building a pdf is good practice, you can catch many common errors by simply downloading Asciidoctor and building the HTMl5 output using the following command:
+Although testing your markup by building a PDF is good practice, you can catch many common errors by simply downloading Asciidoctor and building the HTMl5 output using the following command:
 
 [source,cmd]
 ----
@@ -32,18 +32,18 @@ asciidoctor book_header.adoc
 
 === Simply writing
 
-To begin authoring in AsciiDoc, all you need is a  text editor. <<editors>> lists editors that support authoring in AsciiDoc.
+To begin authoring in AsciiDoc, select a text editor. <<editors>> lists the editors that support authoring in AsciiDoc.
 
-A quick reference for AsciiDoc markup: https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/. Most of the markup that you will need is simple, and will have a familiar feel to people who have used git-flavored Markdown. For RISC-V specifications, it is the procedures for <<graphics>> that add complexity.
+For quick reference, see https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/[AsciiDoc Syntax Quick Reference]. Most of the markup for the specifications is simple and have a familiar feel to people who have used Git-flavored Markdown. For RISC-V specifications, it is the procedures for <<graphics>> that add complexity.
 
-The https://asciidoctor.org/docs/asciidoc-writers-guide/[AsciiDoc Writers Guide] contains details about AsciiDoc markup. For pdf generation, you can find details at https://github.com/asciidoctor/asciidoctor-pdf#install-the-published-gem[asciidoctor-pdf].
+The https://asciidoctor.org/docs/asciidoc-writers-guide/[AsciiDoc Writers Guide] contains details about AsciiDoc markup. For PDF generation, you can find details at https://github.com/asciidoctor/asciidoctor-pdf#install-the-published-gem[asciidoctor-pdf].
 
 [[editors]]
 ==== Text editors that support AsciiDoc authoring
 
-I have not yet encountered a true wysiwyg editor for asciidoc. However, there are live preview options listed in the https://docs.asciidoctor.org/asciidoctor/latest/tooling/[Asciidoctor documentation]. You might want to use your favorite text editor, or perhaps switch to one that has good asciidoc linting.
+There isn't a true WYSIWYG editor for AsciiDoc. However, there are live preview options that are listed in the https://docs.asciidoctor.org/asciidoctor/latest/tooling/[Asciidoctor documentation] that can help you see what the output looks like. You can also use your favorite text editor, or perhaps switch to one that has good AsciiDoc linting.
 
-The following list contains links to resources for text editor/IDE support of asciidoc:
+The following list contains links to resources for text editor/IDE support of AsciiDoc:
 
 * Information on helpful https://docs.asciidoctor.org/asciidoctor/latest/tooling/[AsciiDoc tools that integrate with several popular IDEs]
 * https://marketplace.visualstudio.com/items?itemName=asciidoctor.asciidoctor-vscode[VS]
@@ -55,13 +55,11 @@ The following list contains links to resources for text editor/IDE support of as
 * https://alldocs.app/convert-openoffice-odt-to-asciidoc[OpenOffice]--it’s possible to start by authoring in OpenOffice and then output to asciidoc, and you can https://github.com/dagwieers/asciidoc-odf[go the other way]
 * https://www.asciidocfx.com/[AsciidocFX]
 
-We received a request for information on ghostwriter and found that while it does support Markdown, it does not at this time support AsciiDoc.
+While ghostwriter does support Markdown, it does not support AsciiDoc at this time.
 
-=== An asciidoc primer and more
+=== An AsciiDoc primer and more
 
-Much of what you need to know about the asciidoc toolchain that we are using, including install procedures, is online in the
-
-https://asciidoctor.org/docs/asciidoc-writers-guide/[AsciiDOc Writers' Guide]
+Much of what you need to know about the AsciiDoc toolchain used for RISC-V, including installation procedures, is online in the https://asciidoctor.org/docs/asciidoc-writers-guide/[AsciiDoc Writers' Guide].
 
 Here are a few additional, useful links:
 
@@ -71,11 +69,11 @@ Here are a few additional, useful links:
 
 [NOTE]
 ====
-The best linter for asciidoc is available for Sublime Text, and linters are available for other popular text editors as listed above.
+The best linter for AsciiDoc is available for Sublime Text, and linters are available for other popular text editors as previously listed.
 ====
 
 ==== Build often
 
-As soon as you have installed asciidoctor on your computer, you have the ability to check that each individual file builds in html by simply running `asciidoctor filename.adoc` on any file. You can also check that the book or report on which you are working builds in html by running `asciidoctor bookname.adoc` or `asciidoctor reportname.adoc` on the book or report header. The strings `filename`, `bookname`, and `reportname` all should be replaced with the actual names you are using.
+As soon as you install Asciidoctor on your computer, you can check that each individual file builds in HTML by running `asciidoctor filename.adoc` on any file. You can also check that the book or report on which you are working builds into HTML by running `asciidoctor bookname.adoc` or `asciidoctor reportname.adoc` on the book or report header. The strings `filename`, `bookname`, and `reportname` all can be replaced with the actual names that you are using.
 
 Asciidoctor has fairly good error messages and usually lets you know the file and row number where the build first breaks.
