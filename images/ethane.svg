@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg height='188pt' preserveAspectRatio='xMidYMid meet' viewBox='0.00 0.00 384.38 188.00' width='384pt' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg'>
+<g class='graph' id='graph0' transform='scale(1 1) rotate(0) translate(4 184)'>
+<title>ethane</title>
+<polygon fill='white' points='-4,4 -4,-184 380.38,-184 380.38,4 -4,4' stroke='none'/>
+
+<g class='node' id='node1'>
+<title>C_0</title>
+<ellipse cx='148.69' cy='-162' fill='none' rx='29.64' ry='18' stroke='black'/>
+<text font-family='Times,serif' font-size='14.00' text-anchor='middle' x='148.69' y='-157.32'>C_0</text>
+</g>
+
+<g class='node' id='node2'>
+<title>H_0</title>
+<ellipse cx='30.69' cy='-90' fill='none' rx='30.69' ry='18' stroke='black'/>
+<text font-family='Times,serif' font-size='14.00' text-anchor='middle' x='30.69' y='-85.33'>H_0</text>
+</g>
+
+<g class='edge' id='edge1'>
+<title>C_0&#45;&#45;H_0</title>
+<path d='M127.87,-148.65C106.43,-135.93 73.21,-116.22 51.7,-103.47' fill='none' stroke='black'/>
+</g>
+
+<g class='node' id='node3'>
+<title>H_1</title>
+<ellipse cx='109.69' cy='-90' fill='none' rx='30.69' ry='18' stroke='black'/>
+<text font-family='Times,serif' font-size='14.00' text-anchor='middle' x='109.69' y='-85.33'>H_1</text>
+</g>
+
+<g class='edge' id='edge2'>
+<title>C_0&#45;&#45;H_1</title>
+<path d='M139.45,-144.41C133.23,-133.25 125.07,-118.6 118.87,-107.47' fill='none' stroke='black'/>
+</g>
+
+<g class='node' id='node4'>
+<title>H_2</title>
+<ellipse cx='188.69' cy='-90' fill='none' rx='30.69' ry='18' stroke='black'/>
+<text font-family='Times,serif' font-size='14.00' text-anchor='middle' x='188.69' y='-85.33'>H_2</text>
+</g>
+
+<g class='edge' id='edge3'>
+<title>C_0&#45;&#45;H_2</title>
+<path d='M157.97,-144.76C164.43,-133.46 173.01,-118.44 179.46,-107.15' fill='none' stroke='black'/>
+</g>
+
+<g class='node' id='node5'>
+<title>C_1</title>
+<ellipse cx='266.69' cy='-90' fill='none' rx='29.64' ry='18' stroke='black'/>
+<text font-family='Times,serif' font-size='14.00' text-anchor='middle' x='266.69' y='-85.33'>C_1</text>
+</g>
+
+<g class='edge' id='edge4'>
+<title>C_0&#45;&#45;C_1</title>
+<path d='M169.51,-148.65C191.08,-135.85 224.58,-115.98 246.07,-103.23' fill='none' stroke='black'/>
+</g>
+
+<g class='node' id='node6'>
+<title>H_3</title>
+<ellipse cx='187.69' cy='-18' fill='none' rx='30.69' ry='18' stroke='black'/>
+<text font-family='Times,serif' font-size='14.00' text-anchor='middle' x='187.69' y='-13.32'>H_3</text>
+</g>
+
+<g class='edge' id='edge5'>
+<title>C_1&#45;&#45;H_3</title>
+<path d='M250.32,-74.5C236.76,-62.48 217.59,-45.49 204.04,-33.49' fill='none' stroke='black'/>
+</g>
+
+<g class='node' id='node7'>
+<title>H_4</title>
+<ellipse cx='266.69' cy='-18' fill='none' rx='30.69' ry='18' stroke='black'/>
+<text font-family='Times,serif' font-size='14.00' text-anchor='middle' x='266.69' y='-13.32'>H_4</text>
+</g>
+
+<g class='edge' id='edge6'>
+<title>C_1&#45;&#45;H_4</title>
+<path d='M266.69,-71.7C266.69,-60.85 266.69,-46.92 266.69,-36.1' fill='none' stroke='black'/>
+</g>
+
+<g class='node' id='node8'>
+<title>H_5</title>
+<ellipse cx='345.69' cy='-18' fill='none' rx='30.69' ry='18' stroke='black'/>
+<text font-family='Times,serif' font-size='14.00' text-anchor='middle' x='345.69' y='-13.32'>H_5</text>
+</g>
+
+<g class='edge' id='edge7'>
+<title>C_1&#45;&#45;H_5</title>
+<path d='M283.06,-74.5C296.62,-62.48 315.79,-45.49 329.34,-33.49' fill='none' stroke='black'/>
+</g>
+</g>
+</svg>
