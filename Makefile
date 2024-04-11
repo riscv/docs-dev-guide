@@ -13,12 +13,12 @@
 # the Doc Template for RISC-V Extensions.
 
 DATE ?= $(shell date +%Y-%m-%d)
-VERSION ?= v0.0.0
+VERSION ?= v1.0.0
 REVMARK ?= Draft
 DOCKER_RUN := docker run --rm -v ${PWD}:/build -w /build \
 riscvintl/riscv-docs-base-container-image:latest
 
-SRC_DIR := src
+SRC_DIR := ./src
 BUILD_DIR := build
 HEADER_SOURCE := $(SRC_DIR)/docs-dev-guide.adoc
 
