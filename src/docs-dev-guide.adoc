@@ -65,11 +65,11 @@ include::authoring.adoc[]
 
 include::a_few_basics.adoc[]
 
-include::tables_graphics.adoc[]
+include::tables_symbols_math.adoc[]
 
 include::blocks_notes_markers.adoc[]
 
-include::wavedrom_edit.adoc[]
+include::graphics.adoc[]
 
 include::writing.adoc[]
 
