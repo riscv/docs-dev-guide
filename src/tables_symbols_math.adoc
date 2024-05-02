@@ -1,4 +1,4 @@
-[[tables_symbols_graphics]]
+[[tables_symbols_math]]
 == Tables, symbols, and math
 
 Asciidoc makes standard tables easy and also supports the creation of complex tables.
