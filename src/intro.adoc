@@ -1,0 +1,19 @@
+[[doc_intro]]
+== Contributing to the RISC-V documentation
+
+Welcome to the RISC-V documentation guidelines. This document is maintained by the https://github.com/riscv-admin/docs-sig/blob/main/CHARTER.adoc[RISC-V Doc Sig].
+
+This group gathers and works issues from the https://github.com/riscv-admin/docs-sig[Doc-sig GitHub repository].
+
+RISC-V documentation contributors:
+
+- Improve existing content
+- Create new content
+- Ensure content follows the style guidelines
+- Translate the documentation (coming soon!)
+
+
+=== How to join RISC-V documentation
+
+- Create a Linux foundation ID with https://lfx.linuxfoundation.org/[LFX].
+- Become a https://riscv.org/membership/[member of the RISC-V International] organization.

@@ -59,7 +59,8 @@ This document is released under a Creative Commons Attribution 4.0 International
 include::colophon.adoc[]
 
 //While some documents need several levels of introductory material, other documents only need a brief introduction. You can choose to have either colophon or an overview, or to have both.
-//include::overview.adoc[]
+include::intro.adoc[]
+
 include::authoring.adoc[]
 
 include::a_few_basics.adoc[]
