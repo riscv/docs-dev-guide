@@ -1,5 +1,5 @@
 [[tables_symbols_graphics]]
-== Tables, symbols, and graphics
+== Tables, symbols, and math
 
 Asciidoc makes standard tables easy and also supports the creation of complex tables.
 
@@ -146,379 +146,6 @@ sym,num,name
 &#9083;,9083,not checkmark not working
 |===
 
-[[graphics]]
-=== Graphics
-
-While asciidoc can render graphics in all popular formats, by far the highest quality graphics rendering is from .svg format.
-
-https://wavedrom.com/[WaveDrom sequence diagrams] are essential to the RISC-V specifications. We are in the process of phasing in an automated process for incorporating WaveDrom diagrams into the professional quality pdf output so please stay tuned.
-
-https://asciidoctor.org/docs/asciidoctor-diagram/#image-output-location[Asciidocdoctor-pdf] enables automation of diagrams from scripts, including Wavedrom.
-
-Even as we are using Wavedrom to simplify the creation of accurate SVGs for register diagrams, the graphical elements--those for the various diagrams--add complexity to the build.
-
-
-==== Automated diagramming
-
-Automated diagramming isn't easy. However, it can be important because some specifications require numerous, very accurate diagrams. Please feel free to ask questions about some of the details in this section.
-
-The https://docs.asciidoctor.org/diagram-extension/latest/[asciidoctor-diagram extension] supports numerous diagram types, including https://wavedrom.com/[WaveDrom] diagramming for sequence and waveform diagrams, and https://graphviz.gitlab.io/[Graphviz digrams], which can be useful for illustrating software, networking, and security concepts.
-
-The requirements for building WaveDrom diagrams are specified in the https://github.com/riscv/docs-templates/blob/main/README.md[docs templates README]. Graphviz does not require anything in addition to asciidoctor-diagram.
-
-NOTE: To ensure findability of graphics source files, store the files in filetype subdirectories within the `images` directory.
-
-ALERT: The build process for automated diagramming places an image file for each diagram into the `images` folder. Please do *not* check any generated image files into the git repository.
-
-==== Wavedrom diagrams in specifications
-
-The following json-formatted script, when added within an asciidoc block with the macro indicators `[wavedrom, ,]`, will embed the diagram output into the pdf:
-
-[source,json]
-....
-{reg:[
-    { bits:  7, name: 0x3b, attr: ['OP-32'] },
-    { bits:  5, name: 'rd' },
-    { bits:  3, name: 0x0, attr: ['ADD.UW'] },
-    { bits:  5, name: 'rs1' },
-    { bits:  5, name: 'rs2' },
-    { bits:  7, name: 0x04, attr: ['ADD.UW'] },
-]}
-....
-
-[WARNING]
-====
-The macro `[wavedrom, , ]` has two commas and leaves a blank space as an implicit indicator to the build processor to auto-generate identifiers for the images after they are created. After the first comma you can insert a name as an identifier of the file that is created in the /images directory for embedding in the pdf.
-
-DO NOT make the mistake of simply using `[wavedrom,svg]`. Without the second comma, the build interprets 'svg' as a target name because it is the second value within the macro.
-====
-
-In the specifications, there are numerous instances in which several Wavedrom diagrams are grouped and presented as a single figure. To handle these while preserving consistency in how the build renders figure titles, we are making use of a minimalistic, white graphic with the filename `image_placeholder.png` that blends in with the page background. Following is the pattern of its use (minus the macro indicator `[]` in the first line:
-
-[source,adoc]
-....
-include::images/wavedrom/instruction_formats.adoc
-[[instruction_formats]]
-.Test for wavedrom
-image::image_placeholder.png[]
-....
-
-With the following result:
-
-include::images/wavedrom/instruction_formats.adoc[]
-[[instruction_formats]]
-.Test for wavedrom
-image::image_placeholder.png[]
-
-
-. Wavedrom code for all diagrams in this illustration stored in `wavedrom` subdirectory within the `images` directory.
-. Link target that, along with settings in the `book_header` file, automates the inclusion, in the text, of the figure number and caption.
-. Figure caption.
-. "Invisible" placeholder needed for figure caption to display consistently and correctly.
-
-
-===== Explanation
-
-For the above to build into a diagram that has a figure title, and a figure title and a macro the specifies the diagram type above the code block. You can add a `target` filename and, in addition, specify the image output format or leave output unspecified to default to png.
-
-When prepended to the javascript for a Wavedrom diagram, the following creates `file-name.svg` with the legend `Figure title`:
-
-[source,adoc]
-----
-.Figure title
-[wavedrom,target="file-name",svg]
-----
-
-Following are some examples of Wavedrom diagrams:
-
-[source,adoc]
-----
-.Figure title
-[wavedrom,target="op-32-add-uw",]
-....
-{reg:[
-    { bits:  7, name: 0x3b, attr: ['OP-32'] },
-    { bits:  5, name: 'rd' },
-    { bits:  3, name: 0x0, attr: ['ADD.UW'] },
-    { bits:  5, name: 'rs1' },
-    { bits:  5, name: 'rs2' },
-    { bits:  7, name: 0x04, attr: ['ADD.UW'] },
-]}
-....
-----
-
-.For this example, the output format was not specified, so it defaults to a png.
-[wavedrom,target="op-32-add-uw"]
-----
-{reg:[
-    { bits:  7, name: 0x3b, attr: ['OP-32'] },
-    { bits:  5, name: 'rd' },
-    { bits:  3, name: 0x0, attr: ['ADD.UW'] },
-    { bits:  5, name: 'rs1' },
-    { bits:  5, name: 'rs2' },
-    { bits:  7, name: 0x04, attr: ['ADD.UW'] },
-]}
-----
-
-.Wavedrom example with svg output specified
-[wavedrom,target="z-type",svg]
-....
-{reg: [
-  {bits: 7,  name: 'opcode'},
-  {bits: 5,  name: 'rd'},
-  {bits: 3,  name: 'func3'},
-  {bits: 5,  name: 'rs1'},
-  {bits: 5,  name: 'rs2'},
-  {bits: 7,  name: 'funct7'}
-], config: {label: {right: 'z-Type'}}}
-....
-
-You have the option of referencing graphics files directly:
-
-[#wavedrom_example2]
-.This example is from an svg generated prior to the build.
-image::wavedrom/wavedrom-example2.svg[wavedrom_example2]
-
-
-Wavedrom Conversion
-
-[NOTE]
-====
-The following string is lacking macro brackets (`[]`) that should appear after `filename.adoc` because adding the brackets will cause the include to activate even though it's within a code block. Best practice for automated diagramming is to save AsciiDoc files containing properly formatted AsciiDoc blocks, each block containing the code or script for either a single diagram or a group of diagrams that are presented together as a single figure.
-[source,adoc]
-----
-include::images/wavedrom/filename.adoc
-----
-====
-
-==== Graphviz
-
-The Unpriv appendices contain Graphviz diagrams with associated keys that are arranged in tables. While in the LaTeX version, the diagrams and tables are arranged side-by-side, for the AsciiDoc version;
-
-* each Graphviz diagram should be directly above the key table.
-* store scripts for Graphviz diagrams in the images/graphviz directory, as <filename>.txt
-* import the Graphviz by reference using the pattern in the following example.
-
-[source,adoc]
-----
-.Sample litmus test
-graphviz::images/graphviz/litmus_sample.txt[align="center"]
-
-[cols="2,1"]
-_Key for sample litmus test_
-[width="60%",cols="^,<,^,<",options="header",align="center"]
-|===
-|Hart 0 | |Hart 1 |
-| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
-| |li t1,1 | |li t4,4
-|(a) |sw t1,0(s0) |(e) |sw t4,0(s0)
-| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
-| |li t2,2 | |
-|(b) |sw t2,0(s0) | |
-| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
-|(c) |lw a0,0(s0) | |
-| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
-| |li t3,3 | |li t5,5
-|(d) |sw t3,0(s0) |(f) |sw t5,0(s0)
-| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
-|===
-----
-
-.Sample litmus test
-graphviz::images/graphviz/litmus_sample.txt[align="center"]
-
-[cols="2,1"]
-_Key for sample litmus test_
-[width="60%",cols="^,<,^,<",options="header",align="center"]
-|===
-|Hart 0 | |Hart 1 |
-| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
-| |li t1,1 | |li t4,4
-|(a) |sw t1,0(s0) |(e) |sw t4,0(s0)
-| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
-| |li t2,2 | |
-|(b) |sw t2,0(s0) | |
-| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
-|(c) |lw a0,0(s0) | |
-| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
-| |li t3,3 | |li t5,5
-|(d) |sw t3,0(s0) |(f) |sw t5,0(s0)
-| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
-|===
-
-
-CAUTION: The procedures for Graphviz diagrams are similar but not identical to procedures for <<Wavedrom diagrams in specifications>>.
-
-Following is an example of Graphviz diagram source:
-
-[source,adoc]
-----
-.Graphviz s
-[graphviz, target="ethane",svg]
-....
-graph ethane {
-     C_0 -- H_0 [type=s];
-     C_0 -- H_1 [type=s];
-     C_0 -- H_2 [type=s];
-     C_0 -- C_1 [type=s];
-     C_1 -- H_3 [type=s];
-     C_1 -- H_4 [type=s];
-     C_1 -- H_5 [type=s];
-}
-....
-----
-
-This renders as:
-
-.Graphviz s
-[graphviz, target="ethane",svg]
-....
-graph ethane {
-     C_0 -- H_0 [type=s];
-     C_0 -- H_1 [type=s];
-     C_0 -- H_2 [type=s];
-     C_0 -- C_1 [type=s];
-     C_1 -- H_3 [type=s];
-     C_1 -- H_4 [type=s];
-     C_1 -- H_5 [type=s];
-}
-....
-
-.An example graphviz diagram from a specification
-[graphviz,test-diagram,svg]
-....
-digraph G {
-
-splines=spline;
-pad="0.000000";
-
-
-/* the unlocked events */
-eiid0 [label="a: Ry=1", shape="none", fontsize=8, pos="1.000000,1.125000!", fixedsize="false", height="0.111111", width="0.555556"];
-eiid1 [label="c: Wx=t", shape="none", fontsize=8, pos="1.000000,0.562500!", fixedsize="false", height="0.111111", width="0.555556"];
-eiid2 [label="d: Rx=t", shape="none", fontsize=8, pos="2.500000,1.125000!", fixedsize="false", height="0.111111", width="0.555556"];
-eiid3 [label="e: Rt=$v$", shape="none", fontsize=8, pos="2.500000,0.562500!", fixedsize="false", height="0.111111", width="0.555556"];
-eiid4 [label="f: Wy=1", shape="none", fontsize=8, pos="2.500000,0.000000!", fixedsize="false", height="0.111111", width="0.555556"];
-
-/* the intra_causality_data edges */
-
-
-/* the intra_causality_control edges */
-
-/* the poi edges */
-/* the rfmap edges */
-
-
-/* The viewed-before edges */
-eiid0 -> eiid1 [label=<<font color="darkgreen">fence</font><font color="indigo">ppo</font>>, color="darkgreen:indigo", fontsize=11, penwidth="3.000000", arrowsize="0.666700"];
-eiid1 -> eiid2 [label=<<font color="red">rf</font>>, color="red", fontsize=11, penwidth="3.000000", arrowsize="0.666700"];
-eiid2 -> eiid3 [label=<<font color="indigo">addr</font><font color="indigo">ppo</font>>, color="indigo", fontsize=11, penwidth="3.000000", arrowsize="0.666700"];
-eiid2 -> eiid4 [label=<<font color="indigo">ppo</font>>, color="indigo", fontsize=11, penwidth="3.000000", arrowsize="0.666700"];
-eiid3 -> eiid4 [label=<<font color="black">po</font>>, color="black", fontsize=11, penwidth="3.000000", arrowsize="0.666700"];
-eiid4 -> eiid0 [label=<<font color="red">rf</font>>, color="red", fontsize=11, penwidth="3.000000", arrowsize="0.666700"];
-}
-....
-
-==== Additional diagram type examples
-
-Following is source for simple ditaa diagram:
-
-[source,adoc]
-----
-[ditaa,target="image-example",svg]
-....
-
-                   +-------------+
-                   | Asciidoctor |-------+
-                   |   diagram   |       |
-                   +-------------+       | SVG out
-                       ^                 |
-                       | ditaa in        |
-                       |                 v
- +--------+   +--------+----+    /---------------\
- |        | --+ Asciidoctor +--> |               |
- |  Text  |   +-------------+    |   Beautiful   |
- |Document|   |   !magic!   |    |    Output     |
- |     {d}|   |             |    |               |
- +---+----+   +-------------+    \---------------/
-     :                                   ^
-     |          Lots of work             |
-     +-----------------------------------+
-....
-----
-
-Which renders to:
-
-[ditaa,target="image-example",svg]
-....
-
-                   +-------------+
-                   | Asciidoctor |-------+
-                   |   diagram   |       |
-                   +-------------+       | SVG out
-                       ^                 |
-                       | ditaa in        |
-                       |                 v
- +--------+   +--------+----+    /---------------\
- |        | --+ Asciidoctor +--> |               |
- |  Text  |   +-------------+    |   Beautiful   |
- |Document|   |   !magic!   |    |    Output     |
- |     {d}|   |             |    |               |
- +---+----+   +-------------+    \---------------/
-     :                                   ^
-     |          Lots of work             |
-     +-----------------------------------+
-....
-
-Following is source for a simple plantuml diagram:
-
-[source,adoc]
-----
-[plantuml, diagram-classes, svg]
-....
-class BlockProcessor
-class DiagramBlock
-class DitaaBlock
-class PlantUmlBlock
-
-BlockProcessor <|-- DiagramBlock
-DiagramBlock <|-- DitaaBlock
-DiagramBlock <|-- PlantUmlBlock
-....
-----
-
-Which renders to:
-
-[plantuml, diagram-classes, svg]
-....
-class BlockProcessor
-class DiagramBlock
-class DitaaBlock
-class PlantUmlBlock
-
-BlockProcessor <|-- DiagramBlock
-DiagramBlock <|-- DitaaBlock
-DiagramBlock <|-- PlantUmlBlock
-....
-
-NOTE: Asciidoctor supports additional diagram types. For information on additional diagram types, see the https://docs.asciidoctor.org/diagram-extension/latest/[Asciidoctor-diagram documentation].
-
-===== A mention of Bytefield
-
-Currently the idea of making use of Bytefield as an additional diagram type is being explored.
-
-//=== Bytefield
-//
-//
-//.A byte field
-//[bytefield]
-//----
-//(draw-column-headers)
-//(draw-box 42)
-//(draw-gap "Whee!")
-//(draw-bottom)
-//----
-
 
 === Mathematical notations
 
@@ -586,3 +213,28 @@ latexmath:[$C = \alpha + \beta Y^{\gamma} + \epsilon$]
 ====
 Latexmath rendering has some limitations with respect to sizing and placement inline. This happens because of how the images for the mathematical symbols are rendered within the build process. For this reason, please avoid using single character latexmath expressions inline and preferentially make use of unicode or superscripts and subscripts when possible.
 ====
+
+==== Stem content
+
+The `:stem: latexmath` setting makes use of asciidoctor-mathematical for asciidoctor-pdf output.
+
+Asciidoctor Mathematical is a Ruby gem that uses native extensions. It has a few system prerequisites which limit installation to Linux and macOS. Please refer to the https://github.com/riscv/docs-templates[README in the RISC-V docs-templates repo] for information on the asciidoctor-mathematical install.
+
+[source,adoc]
+----
+[stem]
+++++
+sqrt(4) = 2
+++++
+----
+
+[stem]
+++++
+sqrt(4) = 2
+++++
+
+In some cases, you might want to make use of unicode characters. Keep in mind that asciidoctor-pdf currently only supports decimal character references. See https://github.com/asciidoctor/asciidoctor-pdf/issues/486
+
+Hexadecimal unicode looks like it has problems in the PDF. This is gnarley.
+
+Updates to asciidoctor-pdf: https://github.com/asciidoctor/asciidoctor-pdf
