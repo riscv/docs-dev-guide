@@ -237,4 +237,7 @@ In some cases, you might want to make use of unicode characters. Keep in mind th
 
 Hexadecimal unicode looks like it has problems in the PDF. This is gnarley.
 
-Updates to asciidoctor-pdf: https://github.com/asciidoctor/asciidoctor-pdf
+Updates to asciidoctor-pdf: https://github.com/asciidoctor/asciidoctor-pdf.
+
+
+
