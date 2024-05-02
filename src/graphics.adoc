@@ -1,0 +1,543 @@
+[[graphics]]
+=== Graphics
+
+While asciidoc can render graphics in all popular formats, by far the highest quality graphics rendering is from .svg format.
+
+https://wavedrom.com/[WaveDrom sequence diagrams] are essential to the RISC-V specifications. We are in the process of phasing in an automated process for incorporating WaveDrom diagrams into the professional quality pdf output so please stay tuned.
+
+https://asciidoctor.org/docs/asciidoctor-diagram/#image-output-location[Asciidocdoctor-pdf] enables automation of diagrams from scripts, including Wavedrom.
+
+Even as we are using Wavedrom to simplify the creation of accurate SVGs for register diagrams, the graphical elements--those for the various diagrams--add complexity to the build.
+
+
+==== Automated diagramming
+
+Automated diagramming isn't easy. However, it can be important because some specifications require numerous, very accurate diagrams. Please feel free to ask questions about some of the details in this section.
+
+The https://docs.asciidoctor.org/diagram-extension/latest/[asciidoctor-diagram extension] supports numerous diagram types, including https://wavedrom.com/[WaveDrom] diagramming for sequence and waveform diagrams, and https://graphviz.gitlab.io/[Graphviz digrams], which can be useful for illustrating software, networking, and security concepts.
+
+The requirements for building WaveDrom diagrams are specified in the https://github.com/riscv/docs-templates/blob/main/README.md[docs templates README]. Graphviz does not require anything in addition to asciidoctor-diagram.
+
+NOTE: To ensure findability of graphics source files, store the files in filetype subdirectories within the `images` directory.
+
+ALERT: The build process for automated diagramming places an image file for each diagram into the `images` folder. Please do *not* check any generated image files into the git repository.
+
+==== Wavedrom diagrams in specifications
+
+The following json-formatted script, when added within an asciidoc block with the macro indicators `[wavedrom, ,]`, will embed the diagram output into the pdf:
+
+[source,json]
+....
+{reg:[
+    { bits:  7, name: 0x3b, attr: ['OP-32'] },
+    { bits:  5, name: 'rd' },
+    { bits:  3, name: 0x0, attr: ['ADD.UW'] },
+    { bits:  5, name: 'rs1' },
+    { bits:  5, name: 'rs2' },
+    { bits:  7, name: 0x04, attr: ['ADD.UW'] },
+]}
+....
+
+[WARNING]
+====
+The macro `[wavedrom, , ]` has two commas and leaves a blank space as an implicit indicator to the build processor to auto-generate identifiers for the images after they are created. After the first comma you can insert a name as an identifier of the file that is created in the /images directory for embedding in the pdf.
+
+DO NOT make the mistake of simply using `[wavedrom,svg]`. Without the second comma, the build interprets 'svg' as a target name because it is the second value within the macro.
+====
+
+In the specifications, there are numerous instances in which several Wavedrom diagrams are grouped and presented as a single figure. To handle these while preserving consistency in how the build renders figure titles, we are making use of a minimalistic, white graphic with the filename `image_placeholder.png` that blends in with the page background. Following is the pattern of its use (minus the macro indicator `[]` in the first line:
+
+[source,adoc]
+....
+include::images/wavedrom/instruction_formats.adoc
+[[instruction_formats]]
+.Test for wavedrom
+image::image_placeholder.png[]
+....
+
+With the following result:
+
+include::images/wavedrom/instruction_formats.adoc[]
+[[instruction_formats]]
+.Test for wavedrom
+image::image_placeholder.png[]
+
+
+. Wavedrom code for all diagrams in this illustration stored in `wavedrom` subdirectory within the `images` directory.
+. Link target that, along with settings in the `book_header` file, automates the inclusion, in the text, of the figure number and caption.
+. Figure caption.
+. "Invisible" placeholder needed for figure caption to display consistently and correctly.
+
+
+===== Explanation
+
+For the above to build into a diagram that has a figure title, and a figure title and a macro the specifies the diagram type above the code block. You can add a `target` filename and, in addition, specify the image output format or leave output unspecified to default to png.
+
+When prepended to the javascript for a Wavedrom diagram, the following creates `file-name.svg` with the legend `Figure title`:
+
+[source,adoc]
+----
+.Figure title
+[wavedrom,target="file-name",svg]
+----
+
+Following are some examples of Wavedrom diagrams:
+
+[source,adoc]
+----
+.Figure title
+[wavedrom,target="op-32-add-uw",]
+....
+{reg:[
+    { bits:  7, name: 0x3b, attr: ['OP-32'] },
+    { bits:  5, name: 'rd' },
+    { bits:  3, name: 0x0, attr: ['ADD.UW'] },
+    { bits:  5, name: 'rs1' },
+    { bits:  5, name: 'rs2' },
+    { bits:  7, name: 0x04, attr: ['ADD.UW'] },
+]}
+....
+----
+
+.For this example, the output format was not specified, so it defaults to a png.
+[wavedrom,target="op-32-add-uw"]
+----
+{reg:[
+    { bits:  7, name: 0x3b, attr: ['OP-32'] },
+    { bits:  5, name: 'rd' },
+    { bits:  3, name: 0x0, attr: ['ADD.UW'] },
+    { bits:  5, name: 'rs1' },
+    { bits:  5, name: 'rs2' },
+    { bits:  7, name: 0x04, attr: ['ADD.UW'] },
+]}
+----
+
+.Wavedrom example with svg output specified
+[wavedrom,target="z-type",svg]
+....
+{reg: [
+  {bits: 7,  name: 'opcode'},
+  {bits: 5,  name: 'rd'},
+  {bits: 3,  name: 'func3'},
+  {bits: 5,  name: 'rs1'},
+  {bits: 5,  name: 'rs2'},
+  {bits: 7,  name: 'funct7'}
+], config: {label: {right: 'z-Type'}}}
+....
+
+You have the option of referencing graphics files directly:
+
+[#wavedrom_example2]
+.This example is from an svg generated prior to the build.
+image::wavedrom/wavedrom-example2.svg[wavedrom_example2]
+
+
+Wavedrom Conversion
+
+[NOTE]
+====
+The following string is lacking macro brackets (`[]`) that should appear after `filename.adoc` because adding the brackets will cause the include to activate even though it's within a code block. Best practice for automated diagramming is to save AsciiDoc files containing properly formatted AsciiDoc blocks, each block containing the code or script for either a single diagram or a group of diagrams that are presented together as a single figure.
+[source,adoc]
+----
+include::images/wavedrom/filename.adoc
+----
+====
+
+==== Graphviz
+
+The Unpriv appendices contain Graphviz diagrams with associated keys that are arranged in tables. While in the LaTeX version, the diagrams and tables are arranged side-by-side, for the AsciiDoc version;
+
+* each Graphviz diagram should be directly above the key table.
+* store scripts for Graphviz diagrams in the images/graphviz directory, as <filename>.txt
+* import the Graphviz by reference using the pattern in the following example.
+
+[source,adoc]
+----
+.Sample litmus test
+graphviz::images/graphviz/litmus_sample.txt[align="center"]
+
+[cols="2,1"]
+_Key for sample litmus test_
+[width="60%",cols="^,<,^,<",options="header",align="center"]
+|===
+|Hart 0 | |Hart 1 |
+| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
+| |li t1,1 | |li t4,4
+|(a) |sw t1,0(s0) |(e) |sw t4,0(s0)
+| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
+| |li t2,2 | |
+|(b) |sw t2,0(s0) | |
+| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
+|(c) |lw a0,0(s0) | |
+| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
+| |li t3,3 | |li t5,5
+|(d) |sw t3,0(s0) |(f) |sw t5,0(s0)
+| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
+|===
+----
+
+.Sample litmus test
+graphviz::images/graphviz/litmus_sample.txt[align="center"]
+
+[cols="2,1"]
+_Key for sample litmus test_
+[width="60%",cols="^,<,^,<",options="header",align="center"]
+|===
+|Hart 0 | |Hart 1 |
+| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
+| |li t1,1 | |li t4,4
+|(a) |sw t1,0(s0) |(e) |sw t4,0(s0)
+| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
+| |li t2,2 | |
+|(b) |sw t2,0(s0) | |
+| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
+|(c) |lw a0,0(s0) | |
+| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
+| |li t3,3 | |li t5,5
+|(d) |sw t3,0(s0) |(f) |sw t5,0(s0)
+| |latexmath:[$\vdots$] | |latexmath:[$\vdots$]
+|===
+
+
+CAUTION: The procedures for Graphviz diagrams are similar but not identical to procedures for <<Wavedrom diagrams in specifications>>.
+
+Following is an example of Graphviz diagram source:
+
+[source,adoc]
+----
+.Graphviz s
+[graphviz, target="ethane",svg]
+....
+graph ethane {
+     C_0 -- H_0 [type=s];
+     C_0 -- H_1 [type=s];
+     C_0 -- H_2 [type=s];
+     C_0 -- C_1 [type=s];
+     C_1 -- H_3 [type=s];
+     C_1 -- H_4 [type=s];
+     C_1 -- H_5 [type=s];
+}
+....
+----
+
+This renders as:
+
+.Graphviz s
+[graphviz, target="ethane",svg]
+....
+graph ethane {
+     C_0 -- H_0 [type=s];
+     C_0 -- H_1 [type=s];
+     C_0 -- H_2 [type=s];
+     C_0 -- C_1 [type=s];
+     C_1 -- H_3 [type=s];
+     C_1 -- H_4 [type=s];
+     C_1 -- H_5 [type=s];
+}
+....
+
+.An example graphviz diagram from a specification
+[graphviz,test-diagram,svg]
+....
+digraph G {
+
+splines=spline;
+pad="0.000000";
+
+
+/* the unlocked events */
+eiid0 [label="a: Ry=1", shape="none", fontsize=8, pos="1.000000,1.125000!", fixedsize="false", height="0.111111", width="0.555556"];
+eiid1 [label="c: Wx=t", shape="none", fontsize=8, pos="1.000000,0.562500!", fixedsize="false", height="0.111111", width="0.555556"];
+eiid2 [label="d: Rx=t", shape="none", fontsize=8, pos="2.500000,1.125000!", fixedsize="false", height="0.111111", width="0.555556"];
+eiid3 [label="e: Rt=$v$", shape="none", fontsize=8, pos="2.500000,0.562500!", fixedsize="false", height="0.111111", width="0.555556"];
+eiid4 [label="f: Wy=1", shape="none", fontsize=8, pos="2.500000,0.000000!", fixedsize="false", height="0.111111", width="0.555556"];
+
+/* the intra_causality_data edges */
+
+
+/* the intra_causality_control edges */
+
+/* the poi edges */
+/* the rfmap edges */
+
+
+/* The viewed-before edges */
+eiid0 -> eiid1 [label=<<font color="darkgreen">fence</font><font color="indigo">ppo</font>>, color="darkgreen:indigo", fontsize=11, penwidth="3.000000", arrowsize="0.666700"];
+eiid1 -> eiid2 [label=<<font color="red">rf</font>>, color="red", fontsize=11, penwidth="3.000000", arrowsize="0.666700"];
+eiid2 -> eiid3 [label=<<font color="indigo">addr</font><font color="indigo">ppo</font>>, color="indigo", fontsize=11, penwidth="3.000000", arrowsize="0.666700"];
+eiid2 -> eiid4 [label=<<font color="indigo">ppo</font>>, color="indigo", fontsize=11, penwidth="3.000000", arrowsize="0.666700"];
+eiid3 -> eiid4 [label=<<font color="black">po</font>>, color="black", fontsize=11, penwidth="3.000000", arrowsize="0.666700"];
+eiid4 -> eiid0 [label=<<font color="red">rf</font>>, color="red", fontsize=11, penwidth="3.000000", arrowsize="0.666700"];
+}
+....
+
+==== Additional diagram type examples
+
+Following is source for simple ditaa diagram:
+
+[source,adoc]
+----
+[ditaa,target="image-example",svg]
+....
+
+                   +-------------+
+                   | Asciidoctor |-------+
+                   |   diagram   |       |
+                   +-------------+       | SVG out
+                       ^                 |
+                       | ditaa in        |
+                       |                 v
+ +--------+   +--------+----+    /---------------\
+ |        | --+ Asciidoctor +--> |               |
+ |  Text  |   +-------------+    |   Beautiful   |
+ |Document|   |   !magic!   |    |    Output     |
+ |     {d}|   |             |    |               |
+ +---+----+   +-------------+    \---------------/
+     :                                   ^
+     |          Lots of work             |
+     +-----------------------------------+
+....
+----
+
+Which renders to:
+
+[ditaa,target="image-example",svg]
+....
+
+                   +-------------+
+                   | Asciidoctor |-------+
+                   |   diagram   |       |
+                   +-------------+       | SVG out
+                       ^                 |
+                       | ditaa in        |
+                       |                 v
+ +--------+   +--------+----+    /---------------\
+ |        | --+ Asciidoctor +--> |               |
+ |  Text  |   +-------------+    |   Beautiful   |
+ |Document|   |   !magic!   |    |    Output     |
+ |     {d}|   |             |    |               |
+ +---+----+   +-------------+    \---------------/
+     :                                   ^
+     |          Lots of work             |
+     +-----------------------------------+
+....
+
+Following is source for a simple plantuml diagram:
+
+[source,adoc]
+----
+[plantuml, diagram-classes, svg]
+....
+class BlockProcessor
+class DiagramBlock
+class DitaaBlock
+class PlantUmlBlock
+
+BlockProcessor <|-- DiagramBlock
+DiagramBlock <|-- DitaaBlock
+DiagramBlock <|-- PlantUmlBlock
+....
+----
+
+Which renders to:
+
+[plantuml, diagram-classes, svg]
+....
+class BlockProcessor
+class DiagramBlock
+class DitaaBlock
+class PlantUmlBlock
+
+BlockProcessor <|-- DiagramBlock
+DiagramBlock <|-- DitaaBlock
+DiagramBlock <|-- PlantUmlBlock
+....
+
+NOTE: Asciidoctor supports additional diagram types. For information on additional diagram types, see the https://docs.asciidoctor.org/diagram-extension/latest/[Asciidoctor-diagram documentation].
+
+===== A mention of Bytefield
+
+Currently the idea of making use of Bytefield as an additional diagram type is being explored.
+
+//=== Bytefield
+//
+//
+//.A byte field
+//[bytefield]
+//----
+//(draw-column-headers)
+//(draw-box 42)
+//(draw-gap "Whee!")
+//(draw-bottom)
+//----
+
+
+
+=== Editing Wavedrom diagrams for Unpriv
+
+[NOTE]
+====
+This is a work in progress. I am at this point not versed in content issues with respect to the diagrams and in addition I am discovering the editing process through trial and error. There are properties for which I have not yet tested procedures. For that reason I welcome helpful suggestions and critiques. Please email help@riscv.org.
+====
+
+==== Relevant contextual information
+
+Wavedrom is a utility that is available at https://wavedrom.com/.
+
+// contributors can make suggestions here.
+The Wavedrom diagrams used in the Unpriv specification include opcodes and related information. The diagrams are vital to understanding the specification.
+
+For some RISC-V specifications, Wavedrom diagrams have been placed within topics that are seen as https://csrc.nist.gov/glossary/term/information_object[information objects] that have identifiable patterns but have yet to be fully and formally defined.
+
+The Wavedrom diagrams for the Unpriv specification are contained in the src/images/wavedrom folder in the https://github.com/riscv/riscv-isa-manual/tree/convert2adoc[convert2adoc] branch.
+
+Wavedrom diagrams are coded using a javascript-like code structure.
+//if a contributor understands the rules for creating the diagrams for RISC-V please inform me.
+
+The working assumption is that we need to start with a 1:1 converted version, with the exception that we are adding missing figure titles, table titles, and example titles for consistency in the specification.
+
+==== Example Wavedrom code, before and after
+
+Following is an example Wavedrom file that is typical of one the needs just a few edits, minus the `[]` brackets that indicate a macro (because using the macro even within a code block activates a process in the Asciidoctor build):
+
+[source,adoc]
+----
+{reg: [
+  {bits: 7, name: 'opcode',	 attr: ['FMADD', 'FNMADD', 'FMSUB', 'FNMSUB'],    type: 8},
+  {bits: 5, name: 'rd',     attr: 'dest',     type: 2},
+  {bits: 3, name: 'func3',  attr: 'RM', type: 8},
+  {bits: 5, name: 'rs1',    attr: 'src1',     type: 4},
+  {bits: 5, name: 'rs2',    attr: 'src2',     type: 4},
+  {bits: 2, name: 'fmt',    attr: 'Q',        type: 8},
+  {bits: 5, name: 'rs3',    attr: 'src3',     type: 4},
+]}
+----
+
+This renders as follows:
+
+[wavedrom, , ]
+....
+{reg: [
+  {bits: 7, name: 'opcode',	attr: ['FMADD', 'FNMADD', 'FMSUB', 'FNMSUB'],    type: 8},
+  {bits: 5, name: 'rd',     attr: 'dest',     type: 2},
+  {bits: 3, name: 'func3',  attr: 'RM', type: 8},
+  {bits: 5, name: 'rs1',    attr: 'src1',     type: 4},
+  {bits: 5, name: 'rs2',    attr: 'src2',     type: 4},
+  {bits: 2, name: 'fmt',    attr: 'Q',        type: 8},
+  {bits: 5, name: 'rs3',    attr: 'src3',     type: 4},
+]}
+....
+
+
+.For convenience, it makes sense to line up the `type:` attribute so that it remains easy to see:
+
+[source,adoc]
+----
+{reg: [
+  {bits: 7, name: 'opcode', type: 8,	attr: ['FMADD', 'FNMADD', 'FMSUB', 'FNMSUB'],    },
+  {bits: 5, name: 'rd',   	type: 2,	attr: 'dest',   },
+  {bits: 3, name: 'func3',	type: 8, 	attr: 'RM', },
+  {bits: 5, name: 'rs1',    type: 4, 	attr: 'src1', },
+  {bits: 5, name: 'rs2',    type: 4, 	attr: 'src2',  },
+  {bits: 2, name: 'fmt',    type: 8, 	attr: 'Q',    },
+  {bits: 5, name: 'rs3',    type: 8, 	attr: 'src3', },
+]}
+----
+
+The output remains the same:
+
+[wavedrom, , ]
+....
+{reg: [
+  {bits: 7, name: 'opcode', type: 8,	attr: ['FMADD', 'FNMADD', 'FMSUB', 'FNMSUB'],    },
+  {bits: 5, name: 'rd',   	type: 2,	attr: 'dest',   },
+  {bits: 3, name: 'func3',	type: 8, 	attr: 'RM', },
+  {bits: 5, name: 'rs1',    type: 4, 	attr: 'src1', },
+  {bits: 5, name: 'rs2',    type: 4, 	attr: 'src2',  },
+  {bits: 2, name: 'fmt',    type: 8, 	attr: 'Q',    },
+  {bits: 5, name: 'rs3',    type: 8, 	attr: 'src3', },
+]}
+....
+
+[start=2]
+. For each line that contain a single value for the `attr` attribute:
+
+* add `[]` to contain additional values--and--
+* follow the convention for commas to contain and separate additional values until all the lines contain the same number of values for `attr` that are in the 'opcodes' row:
+
+[source,adoc]
+----
+{reg: [
+  {bits: 7, name: 'opcode', type: 8,	attr: ['FMADD', 'FNMADD', 'FMSUB', 'FNMSUB'], },
+  {bits: 5, name: 'rd',   	type: 2,	attr: ['dest','dest','dest','dest',],},
+  {bits: 3, name: 'func3',	type: 8, 	attr: ['RM','RM','RM','RM',], },
+  {bits: 5, name: 'rs1',    type: 4, 	attr: ['src1','src1','src1','src1',], },
+  {bits: 5, name: 'rs2',    type: 4, 	attr: ['src2','src2', 'src2', 'src2', ],  },
+  {bits: 2, name: 'fmt',    type: 8, 	attr: ['Q','Q','Q','Q',],    },
+  {bits: 5, name: 'rs3',    type: 8, 	attr: ['src3','src3','src3','src3',], },
+]}
+----
+
+[WARNING]
+====
+Wavedrom makes use of straight single quotes like `''` rather than diagonal single quotes like ````.
+====
+
+Here's the result:
+
+[wavedrom, , ]
+....
+{reg: [
+  {bits: 7, name: 'opcode', type: 8,	attr: ['FMADD', 'FNMADD', 'FMSUB', 'FNMSUB'], },
+  {bits: 5, name: 'rd',   	type: 2,	attr: ['dest','dest','dest','dest'],},
+  {bits: 3, name: 'func3',	type: 8, 	attr: ['RM','RM','RM','RM'], },
+  {bits: 5, name: 'rs1',    type: 4, 	attr: ['src1','src1','src1','src1'], },
+  {bits: 5, name: 'rs2',    type: 4, 	attr: ['src2','src2', 'src2', 'src2'],  },
+  {bits: 2, name: 'fmt',    type: 8, 	attr: ['Q','Q','Q','Q'],    },
+  {bits: 5, name: 'rs3',    type: 8, 	attr: ['src3','src3','src3','src3'], },
+]}
+....
+
+[start=3]
+. Check the LaTeX version of the diagram to check for the numerical values that are needed within the missing row:
+
+[source,adoc]
+----
+{reg: [
+  {bits: 7, name: 'opcode', type: 8,	attr: ['8', 'FMADD', 'FNMADD', 'FMSUB', 'FNMSUB'], },
+  {bits: 5, name: 'rd',   	type: 2,	attr: ['6', 'dest','dest','dest','dest',], },
+  {bits: 3, name: 'func3',	type: 8, 	attr: ['4', 'RM','RM','RM','RM',], },
+  {bits: 5, name: 'rs1',    type: 4, 	attr: ['6', 'src1','src1','src1','src1',], },
+  {bits: 5, name: 'rs2',    type: 4, 	attr: ['6', 'src2','src2', 'src2', 'src2', ], },
+  {bits: 2, name: 'fmt',    type: 8, 	attr: ['4', 'Q','Q','Q','Q',], },
+  {bits: 5, name: 'rs3',    type: 8, 	attr: ['6', 'src3','src3','src3','src3',], },
+]}
+----
+
+Now the diagram should contain all of the content that exists within the LaTeX version:
+
+[wavedrom, , ]
+....
+{reg: [
+  {bits: 7, name: 'opcode', type: 8,	attr: ['7', 'FMADD', 'FNMADD', 'FMSUB', 'FNMSUB'], },
+  {bits: 5, name: 'rd',   	type: 2,	attr: ['5', 'dest','dest','dest','dest',],},
+  {bits: 3, name: 'func3',	type: 8, 	attr: ['3', 'RM','RM','RM','RM',], },
+  {bits: 5, name: 'rs1',    type: 4, 	attr: ['5', 'src1','src1','src1','src1',], },
+  {bits: 5, name: 'rs2',    type: 4, 	attr: ['5', 'src2','src2', 'src2', 'src2', ], },
+  {bits: 2, name: 'fmt',    type: 8, 	attr: ['3', 'Q','Q','Q','Q',],    },
+  {bits: 5, name: 'rs3',    type: 8, 	attr: ['5', 'src3','src3','src3','src3',], },
+]}
+....
+
+[start=4]
+. If you or a member of your team can build locally, please ensure that someone checks that the diagrams build without errors.
+. Generate a PR to the convert2adoc branch and indicate whether you or a member of the team has tested your changes in a local build.
+. As always, thanks for your participation in the success of RISC-V.
+
+==== Caveats for editing wavedrom diagrams
+
+At the time of this writing, we have noticed the following unexpected results during diagram builds using the asciidoctor-pdf toolchain, as follows:
+
+* Some, but not all, unicode that works in AsciiDoc (see <<useful-unicode>> ) actually breaks the Wavedrom diagram build, and other unicode does not break the Wavedrom diagram build but still doesn't render properly.
+* Latexmath appears to not work at all in Wavedrom diagrams.
+* After struggling to understand why various options that we explored for an acceptable &#8800; in Wavedrom diagrams and discovering the above rather confusing results, we decided to use `!=` as a workaround. With the fact that both Asciidoctor and Wavedrom are evolving, and also the fact that bytefield is being considered as an alternative diagrams rendering solution, it seems possible that this workaround will be temporary.
