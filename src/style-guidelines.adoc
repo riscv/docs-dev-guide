@@ -1,0 +1,47 @@
+== RISC-V Style guidelines
+[style-guidelines]
+
+All professional technical writers eventually learn to keep their writing as simple as possible.
+
+== Avoid statements that will soon be out of date
+
+Avoid words like "currently" and "new." A feature that is new today might not be considered new in a few months.
+
+[cols="1,1"]
+|===
+|Do	
+|Don't
+
+|In version 1.4, ...	
+|In the current version, ...
+
+|The Federation feature provides ...	
+|The new Federation feature provides ...
+|===
+
+
+== Avoid words that assume a specific level of understanding
+
+
+Avoid words such as "just", "simply", "easy", "easily", or "simple". These words do not add value.
+
+[cols="1,1"]
+|===
+|Do	
+|Don't
+
+|Include one command in ...	
+|Include just one command in ...
+
+|Run the container ...	
+|Simply run the container ...
+
+|You can remove ...	
+|You can easily remove ...
+
+|These steps ...	
+|These simple steps ..
+|===
+
+
+
