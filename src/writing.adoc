@@ -2,14 +2,12 @@
 
 All professional technical writers eventually learn to keep their writing as simple as possible.
 
-bad text added here, it uses master and slave as bad words.
-
 === Writing is rewriting
 
 No matter how accomplished the writer, a first draft is a first draft.
 
-* In high tech industries, writers often allow publishing of a first draft in order to provide users with the information that they need.
-* In the entertainment industry, even a script for which a company paid millions might undergo more than one "page one rewrite" before production.
+* In high tech industries, writers often allow a first draft to be published in order to provide users with the information that they need as soon as possible.
+* In the entertainment industry, even a script that a company paid millions might undergo more than one "page one rewrite" before production.
 
 The above seems counter-intuitive.
 
@@ -39,7 +37,7 @@ I have a list of existing guides that we can use as a starting point. These are 
 
 [WARNING]
 ====
-One of the typical problems that technical writers that specialize in developer-facing documentation tend to find is the misapplication of maxims that are only appropriate for addressing usability issues that arise with consumer end-user audiences. What works for one audience does not always work for all audiences. For example, I have found that developers tend to prefer long topics (this has been very consistent), while consumer end users tend to prefer short topics. Also developers often prefer code examples to graphical representations, while consumer end users are quite consistent in wanting graphical illustrations.
+One of the typical problems that technical writers who specialize in developer-facing documentation tend to find is the misapplication of maxims that are appropriate only for addressing usability issues that arise with consumer end-user audiences. What works for one audience does not always work for all audiences. For example, one audience might prefer a short, reference type document.Alsodevelopers often prefer code examples to graphical representations, while consumer end users are quite consistent in wanting graphical illustrations.
 ====
 
 === Active voice
