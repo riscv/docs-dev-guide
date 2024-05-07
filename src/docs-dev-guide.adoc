@@ -73,6 +73,8 @@ include::graphics.adoc[]
 
 include::writing.adoc[]
 
+include::style-guidelines.adoc[]
+
 include::linting.adoc[]
 
 //please note that the index must precede the bibliography for both to work within the same book.
