@@ -8,6 +8,32 @@ Asciidoc makes standard tables easy and also supports the creation of complex ta
 *Never* use automated wrapping for table titles, figure captions, and example captions. Asciidoctor reads a hard return as an indicator to start a new "Normal" paragraph.
 ====
 
+=== Simple table
+
+[source]
+----
+[cols="1,1"]  
+|===
+|Cell in column 1, row 1 
+|Cell in column 2, row 1
+
+|Cell in column 1, row 2 
+|Cell in column 2, row 2
+|===
+----
+
+Results in the following table.
+
+[cols="1,1"]  
+|===
+|Cell in column 1, row 1 
+|Cell in column 2, row 1
+
+|Cell in column 1, row 2 
+|Cell in column 2, row 2
+|===
+
+
 === More on examples
 
 AsciiDoc tables can also be created directly from CSV data. Just set the format block attribute to CSV and insert CSV data inside the block delimiters directly:
