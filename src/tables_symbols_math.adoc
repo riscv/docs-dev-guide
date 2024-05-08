@@ -10,6 +10,8 @@ Asciidoc makes standard tables easy and also supports the creation of complex ta
 
 === Simple table
 
+The following example shows a simple table with 2 rows and 2 columns. To indicate a new row, put a empty line between them.
+
 [source]
 ----
 [cols="1,1"]  
@@ -33,10 +35,68 @@ Results in the following table.
 |Cell in column 2, row 2
 |===
 
+=== Adding table headers
 
-=== More on examples
+Headers can add additional information to your table, making them easier to understand.
 
-AsciiDoc tables can also be created directly from CSV data. Just set the format block attribute to CSV and insert CSV data inside the block delimiters directly:
+You can add a header row by adding the first row of cells directly in a line.
+
+----
+[cols="1,1,1"] 
+|===
+|Col 1, header row|Col 2, header row|Col 3, header row
+
+|Cell in col 1, row 2
+|Cell in col 2, row 2
+|Cell in col 3, row 2
+|===
+----
+
+Or you can use the `header` option.
+
+----
+[%header,cols="1,1,1"] 
+|===
+|Col 1, header row
+|Col 2, header row
+|Col 3, header row
+
+|Cell in col 1, row 2
+|Cell in col 2, row 2
+|Cell in col 3, row 2
+|===
+----
+
+Either table renders with table headers.
+
+One line
+[cols="1,1,1"] 
+|===
+|Col 1, header row|Col 2, header row|Col 3, header row
+
+|Cell in col 1, row 2
+|Cell in col 2, row 2
+|Cell in col 3, row 2
+|===
+
+
+Headers option table 
+
+[%header,cols="1,1,1"] 
+|===
+|Col 1, header row
+|Col 2, header row
+|Col 3, header row
+
+|Cell in col 1, row 2
+|Cell in col 2, row 2
+|Cell in col 3, row 2
+|===
+
+
+=== Asciidoc tables from CSV data.
+
+AsciiDoc tables can also be created directly from CSV data. Set the format block attribute to `csv` and insert the data inside the block delimiters directly:
 
 [source,adoc]
 ----
@@ -48,7 +108,7 @@ The Lumineers,Ho Hey,Folk Rock
 |===
 ----
 
-The above renders as follows:
+The previous example renders as follows:
 
 [%header,format=csv]
 |===
