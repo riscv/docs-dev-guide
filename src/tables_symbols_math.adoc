@@ -69,24 +69,9 @@ Or you can use the `header` option.
 
 Either table renders with table headers.
 
-One line
 [cols="1,1,1"] 
 |===
 |Col 1, header row|Col 2, header row|Col 3, header row
-
-|Cell in col 1, row 2
-|Cell in col 2, row 2
-|Cell in col 3, row 2
-|===
-
-
-Headers option table 
-
-[%header,cols="1,1,1"] 
-|===
-|Col 1, header row
-|Col 2, header row
-|Col 3, header row
 
 |Cell in col 1, row 2
 |Cell in col 2, row 2
