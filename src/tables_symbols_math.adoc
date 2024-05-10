@@ -79,7 +79,7 @@ Either table renders with table headers.
 |===
 
 
-=== Asciidoc tables from CSV data.
+=== Asciidoc tables from CSV data
 
 AsciiDoc tables can also be created directly from CSV data. Set the format block attribute to `csv` and insert the data inside the block delimiters directly:
 
@@ -102,8 +102,13 @@ Baauer,Harlem Shake,Hip Hop
 The Lumineers,Ho Hey,Folk Rock
 |===
 
+=== Other table formatting options
 
-There are numerous formatting options available. While some of the property settings are cryptic, they can be quite useful. There are numerous examples available at https://asciidoc.org/newtables.html. Here one example of what can be done with spans alignment in tables from that page:
+There are numerous formatting options available. While some of the property settings are cryptic, they can be quite useful. There are numerous examples available at https://asciidoc.org/newtables.html. 
+
+==== Table column spans
+
+Here one example of what can be done with spans alignment in tables from that page:
 
 [source,adoc]
 ----
@@ -125,6 +130,8 @@ Which renders as follows:
 ^|8
 |9 2+>|10
 |============================
+
+==== Numbered encoding table
 
 Following is code for a numbered encoding table with link target.
 
