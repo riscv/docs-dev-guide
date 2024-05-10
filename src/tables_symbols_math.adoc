@@ -131,9 +131,10 @@ Which renders as follows:
 |9 2+>|10
 |============================
 
+
 ==== Numbered encoding table
 
-Following is code for a numbered encoding table with link target.
+The following example is code for a numbered encoding table with link target.
 
 NOTE: Annotations have been added to the code to illustrate their use.
 
@@ -154,6 +155,8 @@ NOTE: Annotations have been added to the code to illustrate their use.
 . Link target.
 . Numbered table title.
 
+The previous example results in the following table.
+
 [#proposed-16bit-encodings-1]
 .proposed 16-bit encodings-1
 [width="100%",options=header]
@@ -168,7 +171,7 @@ NOTE: Annotations have been added to the code to illustrate their use.
 
 === Unicode symbols
 
-For PDFs, five-digit unicode symbols generally don't work and some other unicode symbols are buggy. This happens because the Ruby asciidoctor-pdf toolchain makes use of Prawn to build PDFs and it's Prawn that has the problems.
+For PDFs, five-digit unicode symbols generally don't work and some other unicode symbols are buggy. This failure happens because the Ruby asciidoctor-pdf toolchain makes use of Prawn to build PDFs and it's Prawn that has the problems.
 
 Here are a few unicode examples from https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references that might be useful:
 
@@ -211,7 +214,7 @@ sym,num,name
 &#114;,114,latin small letter r
 |===
 
-For many symbols, then, we must turn to asciidoctor-mathematical. See <<Superscripts and other mathematical notations>>.
+For many other symbols, use asciidoctor-mathematical. See <<Superscripts and other mathematical notations>>.
 
 [[unicode-not-working]]
 .Unicode identified as not working
@@ -311,11 +314,9 @@ sqrt(4) = 2
 sqrt(4) = 2
 ++++
 
-In some cases, you might want to make use of unicode characters. Keep in mind that asciidoctor-pdf currently only supports decimal character references. See https://github.com/asciidoctor/asciidoctor-pdf/issues/486
+In some cases, you might want to make use of unicode characters. Keep in mind that asciidoctor-pdf supports only decimal character references. See https://github.com/asciidoctor/asciidoctor-pdf/issues/486
 
-Hexadecimal unicode looks like it has problems in the PDF. This is gnarley.
-
-Updates to asciidoctor-pdf: https://github.com/asciidoctor/asciidoctor-pdf.
+For updates to asciidoctor-pdf, see https://github.com/asciidoctor/asciidoctor-pdf.
 
 
 
