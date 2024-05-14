@@ -12,6 +12,7 @@ Can (might, must, may, should, shall, will)::
 - Don't use "may," which is ambiguous because it could mean either capability or permission.
 - Use "should" to indicate a recommended, but optional action. Consider using an alternative phrase instead, such as "we recommend." Do not use "should" to indicate something that might happen. "After you push the power button, the system should turn on." Instead, be bold! "After you push the power button, the system turns on."
 - Use "must" to indicate a rquired action or condition. "The system must be powered on."
+- Use "shall" to indicate something that "The state of the `BUSY` bit shall change only in response to a write to the register."
 
 If (whether):: Use if as a condition, such as logic. If a, then b.
 Use whether to indicate choice or alternative. Event a happens, whether event b does or not.
