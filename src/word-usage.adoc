@@ -18,3 +18,5 @@ If (whether):: Use if as a condition, such as logic. If a, then b.
 Use whether to indicate choice or alternative. Event a happens, whether event b does or not.
 
 Legal:: Use only to indicate that something is allowed because of a law. "RISC-V processors are legally available." Avoid using when something is allowed. Instead, use "valid". 
+
+Since:: Use "since" when time is involved. "Since the invention of sliced bread, toasters became popular." Do not use it when you mean "Because".
