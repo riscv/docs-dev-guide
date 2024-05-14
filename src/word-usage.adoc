@@ -1,23 +1,19 @@
 == Word usage
 
-=== A words
 
 Above - Avoid
 Above, below, left, and right do not translate well to screen readers. Instead, use "previous or the "following". 
 
-After (once)
-Use after to indicate a sequence of events. Use once to indicate one time.
+After (once):: Use after to indicate a sequence of events. Use once to indicate one time.
 
-Can (might, must, may, should, shall, will)
+Can (might, must, may, should, shall, will):: 
 - Use "can" to indicate capability: "This option can cause your system to fail." 
 - Use "might" to indicate possibility: "This option might affect your system performance."
 - Don't use "may," which is ambiguous because it could mean either capability or permission.
 - Use "should" to indicate a recommended, but optional action. Consider using an alternative phrase instead, such as "we recommend." Do not use "should" to indicate something that might happen. "After you push the power button, the system should turn on." Instead, be bold! "After you push the power button, the system turns on."
-- Use "must" to indicate a rquired action or condition. The system must be on. 
-- Use "shall" to indicate a requirement. "The system 
+- Use "must" to indicate a rquired action or condition. "The system must be powered on."
 
-If (whether)
-Use if as a condition, such as logic. If a, then b.
+If (whether):: Use if as a condition, such as logic. If a, then b.
 Use whether to indicate choice or alternative. Event a happens, whether event b does or not.
 
-
+Legal:: Use only to indicate that something is allowed because of a law. "RISC-V processors are legally available." Avoid using when something is allowed. Instead, use "valid". 
