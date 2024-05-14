@@ -19,4 +19,9 @@ Use whether to indicate choice or alternative. Event a happens, whether event b 
 
 Legal:: Use only to indicate that something is allowed because of a law. "RISC-V processors are legally available." Avoid using when something is allowed. Instead, use "valid". 
 
+prior (versus "before," "previous," or "preceding"):: 
+- If possible, replace "prior" with "before."If you can't use "before," use "prior" as an adjective to refer to something that occurred earlier in time or with a higher order of importance.
+- Use "previous" to indicate something that occurred at an unspecified time earlier.
+- Use "preceding" to indicate something that occurred immediately beforehand.
+
 Since:: Use "since" when time is involved. "Since the invention of sliced bread, toasters became popular." Do not use it when you mean "Because".
