@@ -1,8 +1,7 @@
 == Word usage
 
 
-Above - Avoid
-Above, below, left, and right do not translate well to screen readers. Instead, use "previous or the "following". 
+Above - Avoid using. Above, below, left, and right do not translate well to screen readers. Instead, use "previous or the "following". 
 
 After (once):: Use after to indicate a sequence of events. Use once to indicate one time.
 
@@ -24,4 +23,9 @@ prior (versus "before," "previous," or "preceding")::
 - Use "previous" to indicate something that occurred at an unspecified time earlier.
 - Use "preceding" to indicate something that occurred immediately beforehand.
 
+Re- words:: In general, words with the prefix `re` can be written without a hyphen. The only exception is `re-create`, unless you are planning to be in a boat having fun.
+
 Since:: Use "since" when time is involved. "Since the invention of sliced bread, toasters became popular." Do not use it when you mean "Because".
+
+Time frame:: Write as 2 words, no hyphen.
+
