@@ -1,7 +1,7 @@
 == Word usage
 
 
-Above:: Avoid using directional words. Above and below do not translate well to screen readers. Instead, use "previous" or "following. 
+Above:: Avoid using directional words. Above and below do not translate well to screen readers. Instead, use "previous" or "following". 
 
 Acronyms:: Acronyms and other shortened forms of words must spell out the acronym at first use in a section. Also, please add them to the [https://github.com/riscv/riscv-glossary/blob/main/src/glossary.adoc]glossary for a handy reference.
 
@@ -17,14 +17,16 @@ Can (might, must, may, should, shall, will)::
 - Don't use "may," which is ambiguous because it could mean either capability or permission.
 - Use "should" to indicate a recommended, but optional action. Consider using an alternative phrase instead, such as "we recommend." Do not use "should" to indicate something that might happen. "After you push the power button, the system should turn on." Instead, be bold! "After you push the power button, the system turns on."
 - Use "must" to indicate a rquired action or condition. "The system must be powered on."
-- Use "shall" to indicate something that "The state of the `BUSY` bit shall change only in response to a write to the register."
+- Use "shall" to indicate something must happen, but has not yet occured. "The state of the `BUSY` bit shall change only in response to a write to the register."
 
-Contractions:: Use contractions as they set a conversational tone.
+Contractions:: Use common contractions as they set a conversational tone. For example, it's, isn't, can't, don't, etc.
 
 Following:: Don't use "following" by itself. Don't say "See the following". Instead, use "See the following list".
 
 If (whether):: Use if as a condition, such as logic. If a, then b.
 Use whether to indicate choice or alternative. Event a happens, whether event b does or not.
+
+Latin phrases:: Avoid abbreviations such as etc., e.g., i.e. They do not translate well. Instead use "and so on" and "for example,".
 
 Legal:: Use only to indicate that something is allowed because of a law. "RISC-V processors are legally available." Avoid using when something is allowed. Instead, use "valid". 
 
