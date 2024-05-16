@@ -1,7 +1,7 @@
 == Word usage
 
 
-Above:: Avoid using directional words. Above, below, left, and right do not translate well to screen readers. Instead, use "previous or the "following". 
+Above:: Avoid using directional words. Above and below do not translate well to screen readers. Instead, use "previous" or "following. 
 
 Acronyms:: Acronyms and other shortened forms of words must spell out the acronym at first use in a section. Also, please add them to the [https://github.com/riscv/riscv-glossary/blob/main/src/glossary.adoc]glossary for a handy reference.
 
