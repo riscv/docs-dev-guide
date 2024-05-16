@@ -1,15 +1,17 @@
-== Write simply
+== Write concisely
 
 All professional technical writers eventually learn to keep their writing as simple as possible.
 
-=== Writing is rewriting
+=== Write for an international audience
 
-No matter how accomplished the writer, a first draft is a first draft.
+=== Write for accessibility
 
-* In high tech industries, writers often allow a first draft to be published in order to provide users with the information that they need as soon as possible.
-* In the entertainment industry, even a script that a company paid millions might undergo more than one "page one rewrite" before production.
+=== Write in the active voice
 
-The above seems counter-intuitive.
+Technical writers are always encouraged to use active voice as much as possible (irony fully intended).
+
+
+When writing for highly technical audiences, strictly adhering to the use of active voice can result in convoluted sentences. As a result, while attempting to use active voice can result in improved clarity, contributors can choose to make use of passive voice. That said, we still encourage RISC-V contributors make use of active voice as much as possible.
 
 Here are some writing guidelines:
 
@@ -40,12 +42,8 @@ I have a list of existing guides that we can use as a starting point. These are 
 One of the typical problems that technical writers who specialize in developer-facing documentation tend to find is the misapplication of maxims that are appropriate only for addressing usability issues that arise with consumer end-user audiences. What works for one audience does not always work for all audiences. For example, one audience might prefer a short, reference type document.Alsodevelopers often prefer code examples to graphical representations, while consumer end users are quite consistent in wanting graphical illustrations.
 ====
 
-=== Active voice
-
-Technical writers are always encouraged to use active voice as much as possible (irony fully intended).
 
 
-When writing for highly technical audiences, strictly adhering to the use of active voice can result in convoluted sentences. As a result, while attempting to use active voice can result in improved clarity, contributors can choose to make use of passive voice. That said, we still encourage RISC-V contributors make use of active voice as much as possible.
 
 === Identify information types
 
@@ -59,12 +57,5 @@ Handling reference information in this way has many benefits that are easy to re
 * contain attributes as needed
 * make use of AsciiDoc Roles
 
-=== RISC-V-specific style guidelines
 
-This section is here to contain results of style discussions that have emerged from direct email, pull requests, issues, and other venues.
 
-==== Table captions: above or below the table?
-
-RE: A request for table captions to be placed below tables.
-
-Discussion: A simple Google search on the topic of table caption placement resulted in all but one online discussion stating that table captions should appear above tables. The single result that did not make this statement mentioned that while normal placement is above the table, there are occasional instances where organizations decide to place table captions below.
