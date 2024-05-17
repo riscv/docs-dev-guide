@@ -1,18 +1,18 @@
 == Word usage
 
 
-Above:: Avoid using directional words. Above and below do not translate well to screen readers. Instead, use "previous" or "following". 
+Above:: Avoid using directional words. Above and below do not translate well to screen readers. Instead, use "previous" or "following".
 
 Acronyms:: Acronyms and other shortened forms of words must spell out the acronym at first use in a section. Also, please add them to the [https://github.com/riscv/riscv-glossary/blob/main/src/glossary.adoc]glossary for a handy reference.
 
 After (once):: Use "after" to indicate a sequence of events. Use "once" to indicate "one time".
 
-Also:: use to mean additionally rather than alternatively. 
+Also:: use to mean additionally rather than alternatively.
 
 As:: Don't use "as" to mean "because". Don't say "Use the correct version as the wrong version can cause issues." Instead, "Use the correct version because the wrong version can cause issues."
 
-Can (might, must, may, should, shall, will):: 
-- Use "can" to indicate capability: "This option can cause your system to fail." 
+Can (might, must, may, should, shall, will)::
+- Use "can" to indicate capability: "This option can cause your system to fail."
 - Use "might" to indicate possibility: "This option might affect your system performance."
 - Don't use "may," which is ambiguous because it could mean either capability or permission.
 - Use "should" to indicate a recommended, but optional action. Consider using an alternative phrase instead, such as "we recommend." Do not use "should" to indicate something that might happen. "After you push the power button, the system should turn on." Instead, be bold! "After you push the power button, the system turns on."
@@ -28,7 +28,7 @@ Use whether to indicate choice or alternative. Event a happens, whether event b 
 
 Latin phrases:: Avoid abbreviations such as etc., e.g., i.e. They do not translate well. Instead use "and so on" and "for example,".
 
-Legal:: Use only to indicate that something is allowed because of a law. "RISC-V processors are legally available." Avoid using when something is allowed. Instead, use "valid". 
+Legal:: Use only to indicate that something is allowed because of a law. "RISC-V processors are legally available." Avoid using when something is allowed. Instead, use "valid".
 
 Left (and right):: Avoid using these words if at all possible. If you do use them, use "left" and "right" and not "lefthand" or "righthand".
 
@@ -39,8 +39,8 @@ Numbers:: Use Arabic for numbers greater than 10. Use words for numbers 1 throug
 - If there is a mix of numbers less and greater than 10, use Arabic.
 - Use the word if the number begins a sentence. So if the number is a value, rewrite the sentence so that the number doesn't begin the sentence.
 
-Prior (versus "before," "previous," or "preceding"):: 
-- If possible, replace "prior to" with "before" as "before" is a little less formal. 
+Prior (versus "before," "previous," or "preceding")::
+- If possible, replace "prior to" with "before" as "before" is a little less formal.
 - Use "previous" to indicate something that occurred at an unspecified time earlier.
 - Use "preceding" to indicate something that occurred immediately before.
 
@@ -58,5 +58,4 @@ This, those, these:: Provide a noun after words such as this, those, and these. 
 
 Time frame:: Write as 2 words, no hyphen.
 
-Using:: Try not to use "using" by itself. Replace with "by using" or "with". "Using" can be either a noun or a participle, which can causing translation issues. You can use "Using" at the beginning of a sentence such as "Using RISC-V standards to design your chip". 
-
+Using:: Try not to use "using" by itself. Replace with "by using" or "with". "Using" can be either a noun or a participle, which can causing translation issues. You can use "Using" at the beginning of a sentence such as "Using RISC-V standards to design your chip".
