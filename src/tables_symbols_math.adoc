@@ -10,10 +10,10 @@ Asciidoc makes standard tables easy and also supports the creation of complex ta
 - Align tables to center with the options `float="center"` and `align="center"`.
 - Use table header coding to indicate a header. Don't use a different font, color, or any background indication.
 - Sort rows in either a logical order or by alphabetizing the rows and columns.
-- If your table is long or complicated, consider creating multiple tables. If you do choose to create a complicated table, make sure that 
+- If your table is long or complicated, consider creating multiple tables. If you do choose to create a complicated table, make sure that
 - Use table captions to describe your table contents. Captions appear after the table and are controlled by the theme.
 - If you use footnotes in your table, make sure they appear immediately after the table.
-- Remember that tables can be hard for screen readers to parse. If your table is complex, be sure that the contents are described in the text. 
+- Remember that tables can be hard for screen readers to parse. If your table is complex, be sure that the contents are described in the text.
 
 
 === Column header formating
@@ -34,24 +34,24 @@ The following example shows a simple table with 2 rows and 2 columns. To indicat
 
 [source]
 ----
-[cols="1,1"]  
+[cols="1,1"]
 |===
-|Cell in column 1, row 1 
+|Cell in column 1, row 1
 |Cell in column 2, row 1
 
-|Cell in column 1, row 2 
+|Cell in column 1, row 2
 |Cell in column 2, row 2
 |===
 ----
 
 Results in the following table.
 
-[cols="1,1"]  
+[cols="1,1"]
 |===
-|Cell in column 1, row 1 
+|Cell in column 1, row 1
 |Cell in column 2, row 1
 
-|Cell in column 1, row 2 
+|Cell in column 1, row 2
 |Cell in column 2, row 2
 |===
 
@@ -62,7 +62,7 @@ Headers can add additional information to your table, making them easier to unde
 You can add a header row by adding the first row of cells directly in a line.
 
 ----
-[cols="1,1,1"] 
+[cols="1,1,1"]
 |===
 |Col 1, header row|Col 2, header row|Col 3, header row
 
@@ -75,7 +75,7 @@ You can add a header row by adding the first row of cells directly in a line.
 Or you can use the `header` option.
 
 ----
-[%header,cols="1,1,1"] 
+[%header,cols="1,1,1"]
 |===
 |Col 1, header row
 |Col 2, header row
@@ -89,7 +89,7 @@ Or you can use the `header` option.
 
 Either table renders with table headers.
 
-[cols="1,1,1"] 
+[cols="1,1,1"]
 |===
 |Col 1, header row|Col 2, header row|Col 3, header row
 
@@ -329,5 +329,3 @@ sqrt(4) = 2
 In some cases, you might want to make use of unicode characters. Keep in mind that asciidoctor-pdf supports only decimal character references. See https://github.com/asciidoctor/asciidoctor-pdf/issues/486
 
 For updates to asciidoctor-pdf, see https://github.com/asciidoctor/asciidoctor-pdf.
-
-

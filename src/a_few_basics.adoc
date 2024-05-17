@@ -157,5 +157,3 @@ kind of trap.
 |Software is oblivious |No |No |Yes |Yeslatexmath:[$^{2}$]
 |Handled by environment |No |Yes |Yes |Yes
 |===
-
-
