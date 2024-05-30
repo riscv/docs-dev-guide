@@ -1,14 +1,25 @@
-== Write concisely
+== Write simply and concisely
 
-All professional technical writers eventually learn to keep their writing as simple as possible.
+Keep your writing as simple as possible. 
+
+- Use as few words as possible without sounding too formal or too casual. 
+- Shorten or simplify long sentences or else break them into separate sentences. 
+- Use lists to make the content more scannable.
 
 === Write for an international audience
 
+When you write, keep your international audience in mind.
+
+- Use concepts consistently. Check the glossary for common terms and definitions.
+- Avoid words that end in `ing`. Words that end in `ing` can be a verb, adjective, or noun. Rewriting your sentence to avoid `ing` is best. So "Rewrite your sentence to avoid `ing`."
+
 === Write for accessibility
+
+Imagine how your doc sounds with a screen reader. Are your visual elements described? Do your tables make sense?
 
 === Write in the active voice
 
-Technical writers are always encouraged to use active voice as much as possible (irony fully intended).
+Use the active voice as much as possible.
 
 
 When writing for highly technical audiences, strictly adhering to the use of active voice can result in convoluted sentences. As a result, while attempting to use active voice can result in improved clarity, contributors can choose to make use of passive voice. That said, we still encourage RISC-V contributors make use of active voice as much as possible.
@@ -24,23 +35,12 @@ Here are some writing guidelines:
 
 === Develop style guidelines only as needed
 
-While we develop style guidelines, this chapter serves for collecting style guidelines specific to RISC-V. At this point December 2021) there is almost no content.
-
-Please feel free to suggest ideas and content for the RISC-V style guidelines, and please don’t think that you need to add polished content.
-
-Small organizations like RISC-V usually identify existing style guides and then document the "deltas," including cases where it makes sense to deviate from what's in the existing style guides and also what needs to be added.
-
 I have a list of existing guides that we can use as a starting point. These are likely the most pertinent existing style guidelines that were created for addressing the needs of highly technical audiences as opposed to consumer end user audiences:
 
 - https://www.writethedocs.org/guide/writing/style-guides/[Write the Docs style guide]
 - https://developers.google.com/style[Google's developer docs style guide]
 - https://stylepedia.net/style/[Stylepedia]
 - https://docs.netapp.com/us-en/contribute/style.html#write-conversationally[NetApp styke guide]
-
-[WARNING]
-====
-One of the typical problems that technical writers who specialize in developer-facing documentation tend to find is the misapplication of maxims that are appropriate only for addressing usability issues that arise with consumer end-user audiences. What works for one audience does not always work for all audiences. For example, one audience might prefer a short, reference type document.Alsodevelopers often prefer code examples to graphical representations, while consumer end users are quite consistent in wanting graphical illustrations.
-====
 
 
 
