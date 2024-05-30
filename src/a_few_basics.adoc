@@ -89,6 +89,30 @@ Index
 
 NOTE: Settings in the header file (`book_header.adoc` in the docs-templates repo) trigger auto-generation of Appendix prefixes and of the Index (among other things).
 
+=== Lists
+
+Unordered list
+* Priv
+* Unpriv
+* Debug
+
+Ordered list
+. Priv
+. Unpriv
+. Debug
+
+Nested list
+* Priv
+** Intro
+*** Definitions
+** CSRs
+* Unpriv
+
+Add a title to a list
+.Ordered list
+. Priv
+. Unpriv
+. Debug
 
 === Hyperlinks and cross references
 
