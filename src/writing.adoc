@@ -26,7 +26,6 @@ Imagine how your doc sounds with a screen reader. Are your visual elements descr
 
 Use the active voice as much as possible.
 
-
 When writing for highly technical audiences, strictly adhering to the use of active voice can result in convoluted sentences. As a result, while attempting to use active voice can result in improved clarity, contributors can choose to make use of passive voice. That said, we still encourage RISC-V contributors make use of active voice as much as possible.
 
 Here are some writing guidelines:
