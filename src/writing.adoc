@@ -1,4 +1,9 @@
-== Write simply and concisely
+[[writing-simple]]
+== Writing tips
+
+Follow these tips to write your documents well.
+
+=== Write simply and concisely
 
 Keep your writing as simple as possible. 
 
