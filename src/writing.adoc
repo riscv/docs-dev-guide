@@ -1,15 +1,28 @@
-== Write simply
+== Write simply and concisely
 
-All professional technical writers eventually learn to keep their writing as simple as possible.
+Keep your writing as simple as possible. 
 
-=== Writing is rewriting
+- Use as few words as possible without sounding too formal or too casual. 
+- Shorten or simplify long sentences or else break them into separate sentences. 
+- Use lists to make the content more scannable.
 
-No matter how accomplished the writer, a first draft is a first draft.
+=== Write for an international audience
 
-* In high tech industries, writers often allow a first draft to be published in order to provide users with the information that they need as soon as possible.
-* In the entertainment industry, even a script that a company paid millions might undergo more than one "page one rewrite" before production.
+When you write, keep your international audience in mind.
 
-The above seems counter-intuitive.
+- Use concepts consistently. Check the glossary for common terms and definitions.
+- Avoid words that end in `ing`. Words that end in `ing` can be a verb, adjective, or noun. Rewriting your sentence to avoid `ing` is best. So "Rewrite your sentence to avoid `ing`."
+
+=== Write for accessibility
+
+Imagine how your doc sounds with a screen reader. Are your visual elements described? Do your tables make sense?
+
+=== Write in the active voice
+
+Use the active voice as much as possible.
+
+
+When writing for highly technical audiences, strictly adhering to the use of active voice can result in convoluted sentences. As a result, while attempting to use active voice can result in improved clarity, contributors can choose to make use of passive voice. That said, we still encourage RISC-V contributors make use of active voice as much as possible.
 
 Here are some writing guidelines:
 
@@ -22,12 +35,6 @@ Here are some writing guidelines:
 
 === Develop style guidelines only as needed
 
-While we develop style guidelines, this chapter serves for collecting style guidelines specific to RISC-V. At this point December 2021) there is almost no content.
-
-Please feel free to suggest ideas and content for the RISC-V style guidelines, and please don’t think that you need to add polished content.
-
-Small organizations like RISC-V usually identify existing style guides and then document the "deltas," including cases where it makes sense to deviate from what's in the existing style guides and also what needs to be added.
-
 I have a list of existing guides that we can use as a starting point. These are likely the most pertinent existing style guidelines that were created for addressing the needs of highly technical audiences as opposed to consumer end user audiences:
 
 - https://www.writethedocs.org/guide/writing/style-guides/[Write the Docs style guide]
@@ -35,17 +42,8 @@ I have a list of existing guides that we can use as a starting point. These are 
 - https://stylepedia.net/style/[Stylepedia]
 - https://docs.netapp.com/us-en/contribute/style.html#write-conversationally[NetApp styke guide]
 
-[WARNING]
-====
-One of the typical problems that technical writers who specialize in developer-facing documentation tend to find is the misapplication of maxims that are appropriate only for addressing usability issues that arise with consumer end-user audiences. What works for one audience does not always work for all audiences. For example, one audience might prefer a short, reference type document.Alsodevelopers often prefer code examples to graphical representations, while consumer end users are quite consistent in wanting graphical illustrations.
-====
-
-=== Active voice
-
-Technical writers are always encouraged to use active voice as much as possible (irony fully intended).
 
 
-When writing for highly technical audiences, strictly adhering to the use of active voice can result in convoluted sentences. As a result, while attempting to use active voice can result in improved clarity, contributors can choose to make use of passive voice. That said, we still encourage RISC-V contributors make use of active voice as much as possible.
 
 === Identify information types
 
@@ -59,12 +57,5 @@ Handling reference information in this way has many benefits that are easy to re
 * contain attributes as needed
 * make use of AsciiDoc Roles
 
-=== RISC-V-specific style guidelines
 
-This section is here to contain results of style discussions that have emerged from direct email, pull requests, issues, and other venues.
 
-==== Table captions: above or below the table?
-
-RE: A request for table captions to be placed below tables.
-
-Discussion: A simple Google search on the topic of table caption placement resulted in all but one online discussion stating that table captions should appear above tables. The single result that did not make this statement mentioned that while normal placement is above the table, there are occasional instances where organizations decide to place table captions below.
