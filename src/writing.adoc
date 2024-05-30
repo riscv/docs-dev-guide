@@ -2,16 +2,16 @@
 
 Keep your writing as simple as possible. 
 
-- Use as few words as possible without sounding too formal or too casual. 
-- Shorten or simplify long sentences or else break them into separate sentences. 
-- Use lists to make the content more scannable.
+* Use as few words as possible without sounding too formal or too casual. 
+* Shorten or simplify long sentences or else break them into separate sentences. 
+* Use lists to make the content more scannable.
 
 === Write for an international audience
 
 When you write, keep your international audience in mind.
 
-- Use concepts consistently. Check the glossary for common terms and definitions.
-- Avoid words that end in `ing`. Words that end in `ing` can be a verb, adjective, or noun. Rewriting your sentence to avoid `ing` is best. So "Rewrite your sentence to avoid `ing`."
+* Use concepts consistently. Check the glossary for common terms and definitions.
+* Avoid words that end in `ing`. Words that end in `ing` can be a verb, adjective, or noun. Rewriting your sentence to avoid `ing` is best. So "Rewrite your sentence to avoid `ing`."
 
 === Write for accessibility
 
@@ -37,13 +37,10 @@ Here are some writing guidelines:
 
 I have a list of existing guides that we can use as a starting point. These are likely the most pertinent existing style guidelines that were created for addressing the needs of highly technical audiences as opposed to consumer end user audiences:
 
-- https://www.writethedocs.org/guide/writing/style-guides/[Write the Docs style guide]
-- https://developers.google.com/style[Google's developer docs style guide]
-- https://stylepedia.net/style/[Stylepedia]
-- https://docs.netapp.com/us-en/contribute/style.html#write-conversationally[NetApp styke guide]
-
-
-
+* https://www.writethedocs.org/guide/writing/style-guides/[Write the Docs style guide]
+* https://developers.google.com/style[Google's developer docs style guide]
+* https://stylepedia.net/style/[Stylepedia]
+* https://docs.netapp.com/us-en/contribute/style.html#write-conversationally[NetApp styke guide]
 
 === Identify information types
 
@@ -56,6 +53,3 @@ Handling reference information in this way has many benefits that are easy to re
 * be stored in a database
 * contain attributes as needed
 * make use of AsciiDoc Roles
-
-
-
