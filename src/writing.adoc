@@ -16,7 +16,7 @@ Keep your writing as simple as possible.
 When you write, keep your international audience in mind.
 
 * Use concepts consistently. Check the glossary for common terms and definitions.
-* Avoid words that end in `ing`. Words that end in `ing` can be a verb, adjective, or noun. Rewriting your sentence to avoid `ing` is best. So "Rewrite your sentence to avoid `ing`."
+* Avoid words that end in "ing". Words that end in "ing" can be a verb, adjective, or noun. Rewriting your sentence to avoid "ing" is best. So Rewrite your sentence to avoid "ing".
 
 === Write for accessibility
 
