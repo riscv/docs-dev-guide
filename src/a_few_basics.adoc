@@ -19,7 +19,7 @@ WARNING: PDF generation currently requires the use of Ruby 2.7.2.
 
 [NOTE]
 ====
-Please feel free to send questions to help@riscv.org.
+Send questions to help@riscv.org.
 ====
 
 === Paragraphs
