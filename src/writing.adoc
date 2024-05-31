@@ -1,4 +1,9 @@
-== Write simply and concisely
+[[writing-simple]]
+== Writing tips
+
+Follow these tips to write your documents well.
+
+=== Write simply and concisely
 
 Keep your writing as simple as possible. 
 
@@ -11,7 +16,7 @@ Keep your writing as simple as possible.
 When you write, keep your international audience in mind.
 
 * Use concepts consistently. Check the glossary for common terms and definitions.
-* Avoid words that end in `ing`. Words that end in `ing` can be a verb, adjective, or noun. Rewriting your sentence to avoid `ing` is best. So "Rewrite your sentence to avoid `ing`."
+* Avoid words that end in "ing". Words that end in "ing" can be a verb, adjective, or noun. Rewriting your sentence to avoid "ing" is best. So Rewrite your sentence to avoid "ing".
 
 === Write for accessibility
 
@@ -20,7 +25,6 @@ Imagine how your doc sounds with a screen reader. Are your visual elements descr
 === Write in the active voice
 
 Use the active voice as much as possible.
-
 
 When writing for highly technical audiences, strictly adhering to the use of active voice can result in convoluted sentences. As a result, while attempting to use active voice can result in improved clarity, contributors can choose to make use of passive voice. That said, we still encourage RISC-V contributors make use of active voice as much as possible.
 
