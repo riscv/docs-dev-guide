@@ -1,0 +1,10 @@
+This is the text that I want to add to the main guide.
+
+I'm testing some things
+
+1. list
+2. second item
+
+Does this xref:writing.adoc[link work]?
+
+How about xref:writing.adoc#writing.adoc[this one]? 
