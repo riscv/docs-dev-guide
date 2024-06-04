@@ -3,6 +3,7 @@
 
 Follow these tips to write your documents well.
 
+[[simple-concise]]
 === Write simply and concisely
 
 Keep your writing as simple as possible. 
@@ -11,6 +12,7 @@ Keep your writing as simple as possible.
 * Shorten or simplify long sentences or else break them into separate sentences. 
 * Use lists to make the content more scannable.
 
+[[international-audience]]
 === Write for an international audience
 
 When you write, keep your international audience in mind.
@@ -18,6 +20,7 @@ When you write, keep your international audience in mind.
 * Use concepts consistently. Check the glossary for common terms and definitions.
 * Avoid words that end in "ing". Words that end in "ing" can be a verb, adjective, or noun. Rewriting your sentence to avoid "ing" is best. So Rewrite your sentence to avoid "ing".
 
+[[accessibility]]
 === Write for accessibility
 
 Imagine how your doc sounds with a screen reader. Are your visual elements described? Do your tables make sense?
@@ -37,6 +40,7 @@ Here are some writing guidelines:
 	** If possible, illustrate decisions that users must make with examples that show potential outcomes.
 * As much as possible, maintain parallelism with respect to how you handle information.
 
+[[style-guidelines]]
 === Develop style guidelines only as needed
 
 I have a list of existing guides that we can use as a starting point. These are likely the most pertinent existing style guidelines that were created for addressing the needs of highly technical audiences as opposed to consumer end user audiences:
@@ -46,14 +50,3 @@ I have a list of existing guides that we can use as a starting point. These are 
 * https://stylepedia.net/style/[Stylepedia]
 * https://docs.netapp.com/us-en/contribute/style.html#write-conversationally[NetApp styke guide]
 
-=== Identify information types
-
-While other style issues are important, addressing the need for guidelines on the information type(s) associated with instructions appears to be something that could increase the quality and efficiency of contributions to RISC-V specifications.
-
-While documentation for most technologies require special style considerations, RISC-V’s focus on ISAs (Instruction Set Architectures) means that its documentation contains information types for which we will be setting standards. RISC-V contributors are in the process of identifying how information about mnemonics can be clearly typed, named, and stored in a database that can then be used as a single source of truth. This is analogous to how some API reference information is identified, typed, and stored in databases.
-
-Handling reference information in this way has many benefits that are easy to recognize. From the point of view of working with the Asciidoctor toolchain, each individual topic of this type can:
-
-* be stored in a database
-* contain attributes as needed
-* make use of AsciiDoc Roles
