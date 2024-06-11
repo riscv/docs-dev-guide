@@ -153,10 +153,15 @@ brew install nvm
 mkdir ~/.nvm
 ```
 
-open either ~/.bash_profile or ~/.zshrc (for macOS Catalina or later):
+open either ~/.bash_profile or ~/.zshrc (for macOS Catalina or later) in vim or nano.
+
 
 ```cmd
-vim ~./bash.profile
+nano ~/.bash_profile
+```
+
+```cmd
+vim ~/.zshrc
 ```
 
 Add the following lines to the profile:
@@ -170,6 +175,10 @@ Load the profile:
 
 ```cmd
 source ~/.zshrc
+```
+
+```cmd
+source ~/.bash_profile
 ```
 
 Install the most recent node, node 15, and make node 15 the version you use:
@@ -191,8 +200,6 @@ Check that wavedrom-cli is in the path (this should display the help):
 ```cmd
 wavedrom-cli
 ```
-
-NOTE: It appears that Oracle JDK is also required for WaveDrom diagrams to work. You can find a link to the JDK below.
 
 For Windows:
 
