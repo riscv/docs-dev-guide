@@ -7,4 +7,4 @@ I'm testing some things
 
 Does this xref:writing.adoc[link work]?
 
-How about xref:writing.adoc#writing.adoc[this one]? 
+How about xref:writing.adoc#writing.adoc[this one]?
