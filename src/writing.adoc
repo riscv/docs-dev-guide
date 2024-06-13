@@ -6,10 +6,10 @@ Follow these tips to write your documents well.
 [[simple-concise]]
 === Write simply and concisely
 
-Keep your writing as simple as possible. 
+Keep your writing as simple as possible.
 
-* Use as few words as possible without sounding too formal or too casual. 
-* Shorten or simplify long sentences or else break them into separate sentences. 
+* Use as few words as possible without sounding too formal or too casual.
+* Shorten or simplify long sentences or else break them into separate sentences.
 * Use lists to make the content more scannable.
 
 [[international-audience]]
@@ -49,4 +49,3 @@ I have a list of existing guides that we can use as a starting point. These are 
 * https://developers.google.com/style[Google's developer docs style guide]
 * https://stylepedia.net/style/[Stylepedia]
 * https://docs.netapp.com/us-en/contribute/style.html#write-conversationally[NetApp styke guide]
-
