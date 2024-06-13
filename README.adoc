@@ -46,13 +46,13 @@ To build the document, you'll need the following tools installed on your system:
 === Cloning the Repository
 
 ```shell
-git clone --recurse-submodules https://github.com/riscv/docs-spec-template.git
+git clone --recurse-submodules https://github.com/riscv/docs-dev-guide.git
 ```
 
 All in one single line:
 
 ```shell
-git clone --recurse-submodules https://github.com/riscv/docs-spec-template.git && cd docs-spec-template && git submodule update --init --recursive
+git clone --recurse-submodules https://github.com/riscv/docs-dev-guide.git && cd docs-dev-guide && git submodule update --init --recursive
 
 ```
 
@@ -61,7 +61,7 @@ git clone --recurse-submodules https://github.com/riscv/docs-spec-template.git &
 To start the build process, run:
 
 ```shell
-cd ./docs-spec-template && make build
+cd ./docs-dev-guide && make build
 ```
 
 The link:Makefile[] script will check the availability of Docker on your system:
