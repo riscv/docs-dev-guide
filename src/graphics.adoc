@@ -1,11 +1,9 @@
 [[graphics]]
 === Graphics
 
-While asciidoc can render graphics in all popular formats, by far the highest quality graphics rendering is from .svg format.
+While asciidoc can render graphics in all popular formats, by far the highest quality graphics rendering is from .svg format. This format is the preferred graphic type.
 
-https://wavedrom.com/[WaveDrom sequence diagrams] are essential to the RISC-V specifications. We are in the process of phasing in an automated process for incorporating WaveDrom diagrams into the professional quality pdf output so please stay tuned.
-
-https://asciidoctor.org/docs/asciidoctor-diagram/#image-output-location[Asciidocdoctor-pdf] enables automation of diagrams from scripts, including Wavedrom.
+https://asciidoctor.org/docs/asciidoctor-diagram/#image-output-location[Asciidocdoctor-pdf] enables automation of diagrams from scripts, including Wavedrom. https://wavedrom.com/[WaveDrom sequence diagrams] are essential to the RISC-V specifications. 
 
 Even as we are using Wavedrom to simplify the creation of accurate SVGs for register diagrams, the graphical elements--those for the various diagrams--add complexity to the build.
 
@@ -15,8 +13,6 @@ Even as we are using Wavedrom to simplify the creation of accurate SVGs for regi
 Automated diagramming isn't easy. However, it can be important because some specifications require numerous, very accurate diagrams. Please feel free to ask questions about some of the details in this section.
 
 The https://docs.asciidoctor.org/diagram-extension/latest/[asciidoctor-diagram extension] supports numerous diagram types, including https://wavedrom.com/[WaveDrom] diagramming for sequence and waveform diagrams, and https://graphviz.gitlab.io/[Graphviz digrams], which can be useful for illustrating software, networking, and security concepts.
-
-The requirements for building WaveDrom diagrams are specified in the https://github.com/riscv/docs-templates/blob/main/README.md[docs templates README]. Graphviz does not require anything in addition to asciidoctor-diagram.
 
 NOTE: To ensure findability of graphics source files, store the files in filetype subdirectories within the `images` directory.
 
