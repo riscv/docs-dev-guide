@@ -26,16 +26,18 @@ Send questions to help@riscv.org.
 
 In AsciiDoc, normal paragraphs do not require markup.
 
+To create a new paragraph, put a space after the previous line of text and continue.
+
 ==== Basics of blocks and indents
 
-  If you simply add an indent, your indented text becomes a block like this.
+  If you add an indent, your indented text becomes a block like this.
 
 * You can add indented, explanatory paragraphs to lists.
 +
 Add a `+` directly above the line of text that you want to be indented within the list.
 * Another point.
 +
-Using the `+` to create an indented paragraph only works within the context of a numbered or bulleted list.
+Using the `+` to create an indented paragraph works only within the context of a numbered or bulleted list.
 
 AsciiDoc/Asciidoctor supports code blocks with syntax highlighting for many languages. You can use either periods or dashes to indicate code blocks, and use macros to indicate that the block contains code in the specified language, as in the following example:
 
@@ -91,24 +93,30 @@ NOTE: Settings in the header file (`book_header.adoc` in the docs-templates repo
 
 === Lists
 
-Unordered list
+Unordered lists are created with the `*` before the list item. Ordered lists require a `.` Add a space between any supporting text at the beginning of a list.
+
+==== Unordered list
+
 * Priv
 * Unpriv
 * Debug
 
-Ordered list
+==== Ordered list
+
 . Priv
 . Unpriv
 . Debug
 
-Nested list
+==== Nested list
+
 * Priv
 ** Intro
 *** Definitions
 ** CSRs
 * Unpriv
 
-Add a title to a list
+==== Add a title to a list
+
 .Ordered list
 . Priv
 . Unpriv
@@ -118,8 +126,8 @@ Add a title to a list
 
 Asciidoctor automates some linking as follows:
 
-* Asciidoctor recognizes hyperlinks to Web pages and shortens them for readability.
-* Asciidoctor automatically creates an anchor for every section and discrete heading.
+* Recognizes hyperlinks to Web pages and shortens them for readability.
+* Automatically creates an anchor for every section and discrete heading.
 
 ==== Hyperlinks
 
@@ -145,6 +153,8 @@ Use macros for cross references (links within a document) as in the following ex
 This example renders as:
 
 <<Index markers>> describes how index markers work.
+
+For more information about options, see https://docs.asciidoctor.org/asciidoc/latest/macros/xref/#internal-cross-references[Cross References].
 
 
 The `book_header.adoc` file in the docs-templates repo sets the `full` cross-reference attribute to enable captions to display from targets in the anchors. This ability allows you to set captions for tables, blocks, and illustrations. If you do not provide a caption, Asciidoctor defaults to the _basic_ cross reference style.
