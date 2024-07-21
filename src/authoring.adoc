@@ -1,7 +1,5 @@
 == AsciiDoc authoring for RISC-V contributors
 
-=== About Asciidoctor
-
 AsciiDoc is the markup language and Asciidoctor is a set of toolchains that support publishing from AsciiDoc.
 
 Asciidoctor toolchains:
@@ -49,7 +47,7 @@ The following list contains links to resources for text editors/IDEs support of 
 ** https://marketplace.visualstudio.com/items?itemName=asciidoctor.asciidoctor-vscode[asciidoctor-vscode extension]
 * https://www.vim.org/[vim] (supports asciidoc natively)
 * https://www.gnu.org/software/emacs/[emacs]
-** https://www.emacswiki.org/emacs/AsciiDoc[emacs Wiki Asciidoc page]
+** https://www.emacswiki.org/emacs/AsciiDoc[emacs Wiki AsciiDoc page]
 *** https://github.com/bbatsov/adoc-mode[bbatsov/adoc-mode]
 * https://www.asciidocfx.com/[AsciidocFX]
 * https://www.jetbrains.com/idea/[Intellij IDEs] (NOTE: IntelliJ IDEs are not free/OSS)
@@ -57,7 +55,3 @@ The following list contains links to resources for text editors/IDEs support of 
 * https://www.sublimetext.com/[Sublime Text] (NOTE: Sublime is not free)
 ** https://packagecontrol.io/packages/AsciiDoc[asciidoc package for Sublime Text2]
 
-
-==== included text
-
-include::additionaltext.adoc[]

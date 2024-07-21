@@ -1,9 +1,7 @@
 [[tables_symbols_math]]
-== Tables, symbols, and math
+=== Tables
 
-Asciidoc makes standard tables easy and also supports the creation of complex tables. 
-
-=== Table rules
+Follow these general rules when you create a table.
 
 - Avoid tables in the middle of lists.
 - Do not use tables to lay out a page. For example, if you have a long list of items, do not use a 2 column table to save space. The information should make sense side by side.
@@ -43,7 +41,7 @@ Asciidoc makes standard tables easy and also supports the creation of complex ta
 *Never* use automated wrapping for table titles, figure captions, and example captions. Asciidoctor reads a hard return as an indicator to start a new "Normal" paragraph.
 ====
 
-=== Simple table
+==== Simple table
 
 The following example shows a simple table with 2 rows and 2 columns. To indicate a new row, put a empty line between them.
 
@@ -70,7 +68,7 @@ Results in the following table.
 |Cell in column 2, row 2
 |===
 
-=== Adding table headers
+==== Adding table headers
 
 Headers can add additional information to your table, making them easier to understand.
 
@@ -113,12 +111,45 @@ Either table renders with table headers.
 |Cell in col 3, row 2
 |===
 
-=== Table captions
+==== Table captions
+
+The `book_header.adoc` file in the docs-templates repo sets the `full` cross-reference attribute to enable captions to display from targets in the anchors. This ability allows you to set captions for tables, blocks, and illustrations. If you do not provide a caption, Asciidoctor defaults to the _basic_ cross reference style.
+
+To set a caption for a table or image, use the pattern as follows:
+
+[source,adoc]
+----
+The following table, <<trapcharacteristics,Characteristics of traps>> shows the characteristics of each kind of trap.
+----
+
+[source,adoc]
+----
+[[trapcharacteristics,Characteristics of traps]]
+.Characteristics of traps.
+[cols="<,^,^,^,^",options="header",]
+|===
+| |Contained |Requested |Invisible |Fatal
+|Execution terminates |No |Nolatexmath:[$^{1}$] |No |Yes
+|Software is oblivious |No |No |Yes |Yeslatexmath:[$^{2}$]
+|Handled by environment |No |Yes |Yes |Yes
+|===
+----
+
+The following table, <<trapcharacteristics>> shows the characteristics of each
+kind of trap.
+
+[[trapcharacteristics]]
+.Characteristics of traps.
+[cols="<,^,^,^,^",options="header",]
+|===
+| |Contained |Requested |Invisible |Fatal
+|Execution terminates |No |Nolatexmath:[$^{1}$] |No |Yes
+|Software is oblivious |No |No |Yes |Yeslatexmath:[$^{2}$]
+|Handled by environment |No |Yes |Yes |Yes
+|===
 
 
-
-
-=== Asciidoc tables from CSV data.
+==== AsciiDoc tables from CSV data.
 
 AsciiDoc tables can also be created directly from CSV data. Set the format block attribute to `csv` and insert the data inside the block delimiters directly:
 

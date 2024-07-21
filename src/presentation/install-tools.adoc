@@ -7,19 +7,19 @@ Elisa Sawyer
 :status:
 :split:
 
-== Asciidoc needs Asciidoctor
+== AsciiDoc needs Asciidoctor
 
-- To author in Asciidoc, you must install Aciidoctor.
+- To author in AsciiDoc, you must install Aciidoctor.
 
 - To install Asciidoctor, you must install Ruby.
 
-- To create a pdf from Asciidoc, you must insall asciidoctor-pdf and a few additional rubies.
+- To create a pdf from AsciiDoc, you must insall asciidoctor-pdf and a few additional rubies.
 
 == Install Ruby on Mac
 
 Asciidoctor's Web site recommends installing Ruby using RVM, and then Asciidoctor.
 
-RVM is essential for creating pdfs because the pdf build requires Ruby version 2.7.x.
+RVM is essential for creating PDF files because the PDF build requires Ruby version 2.7.x.
 
 RVM is a Ruby installation and version manager. RVM works by installing Ruby inside your home directory and manages the environment variables to allow you to switch between the system-wide Ruby and any Ruby installed using RVM.
 
@@ -108,7 +108,7 @@ Install the asciidoctor-pdf gem, which is needed for pdf rendering:
 $ gem install asciidoctor-pdf --pre --source http://rubygems.org
 ----
 
-== Add syntax highlighting gems for Asciidoc output
+== Add syntax highlighting gems for AsciiDoc output
 
 Install syntax highlighting gems as follows (for Windows, append the string --source http://rubygems.org to each command):
 ----
@@ -123,7 +123,7 @@ gem install pygments
 https://octicons.github.com/
 ----
 
-== Asciidoc headers
+== AsciiDoc headers
 
 
 :NOTE: The headers are already in the template files, so there's no need to add or change anything in them.
@@ -144,7 +144,7 @@ include::requirements.adoc[]
 
 == Build static documentation only
 
-To build content from just Asciidoc files on your own machine:
+To build content from AsciiDoc files on your own machine:
 
 - CD into the directory that contains your adoc files.
 - If some files reference other files, the build usually runs from the directory that contains the  the adoc file with headers.
@@ -162,7 +162,7 @@ asciidoctor-pdf book_template.adoc -a pdf-style=resources/themes/risc-v_spec-pdf
 
 == Asciidoc/asciidoctor documentation
 
-- Asciidoc quick reference
+- AsciiDoc quick reference
 ----
 http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
 ----

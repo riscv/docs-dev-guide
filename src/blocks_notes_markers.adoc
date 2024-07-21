@@ -1,16 +1,5 @@
 [[blocks_notes_markers]]
-== Blocks, notes and markers
-
-RISC-V specifications are notable for their extended commentaries that explain the thinking behind various important aspects of the technologies.
-
-In most cases, contributors should make use of admonition blocks for their commentaries.
-
-
-=== Blocks
-
-Asciidoctor allows for many types of blocks, as documented at https://docs.asciidoctor.org/asciidoc/latest/blocks/.
-
-==== Sidebars
+=== Sidebars
 
 Sidebars provide for a form of commentary.
 
@@ -75,9 +64,9 @@ const { expect, expectCalledWith, heredoc } = require('../test/test-utils')
 ----
 ****
 
-==== Admonition blocks
+=== Admonition blocks
 
-Five kinds of standard admonition blocks are available in asciidoc and these can be mapped to either default or custom icons.
+Five kinds of standard admonition blocks are available in AsciiDoc and these can be mapped to either default or custom icons.
 
 [source,adoc]
 ----
@@ -192,7 +181,7 @@ CAUTION,bf3400,c99a2c
 IMPORTANT,bf0000,b58f5b
 |===
 
-==== Code blocks
+=== Code blocks
 
 AsciiDoc enables code blocks that support syntax highlighting.
 
@@ -318,7 +307,7 @@ This lists the line numbers of changes within the specified file like the follow
 
 === Footnotes
 
-Asciidoc has a limitation in that footnotes appear at the end of each chapter. Asciidoctor does not support footnotes appearing at the bottom of each page.
+AsciiDoc has a limitation in that footnotes appear at the end of each chapter. Asciidoctor does not support footnotes appearing at the bottom of each page.
 
 You can add footnotes to your presentation using the footnote macro. If you plan to reference a footnote more than once, use the footnote macro with a target that you identify in the brackets.
 
@@ -347,207 +336,3 @@ A bold statement!footnote:disclaimer[Opinions are my own.]
 
 Another outrageous statement.footnote:disclaimer[]
 
-=== Index markers
-
-There are two types of index terms in AsciiDoc:
-
-*A flow index term.* appears in the flow of text (a visible term) and in the index. This type of index term can only be used to define a primary entry:
-
-[source,adoc]
-----
-indexterm2:[<primary>] or ((<primary>))
-----
-
-*A concealed index term.* a group of index terms that appear only in the index. This type of index term can be used to define a primary entry as well as optional secondary and tertiary entries:
-
-[source,adoc]
-----
-indexterm:[<primary>, <secondary>, <tertiary>]
-----
-
---or--
-
-[source,adoc]
-----
-(((<primary>, <secondary>, <tertiary>)))
-----
-
-[source,adoc]
-----
-The Lady of the Lake, her arm clad in the purest shimmering samite,
-held aloft Excalibur from the bosom of the water,
-signifying by divine providence that I, ((Arthur)), <1>
-was to carry Excalibur (((Sword, Broadsword, Excalibur))). <2>
-That is why I am your king. Shut up! Will you shut up?!
-Burn her anyway! I'm not a witch.
-Look, my liege! We found them.
-
-indexterm2:[Lancelot] was one of the Knights of the Round Table. <3>
-indexterm:[knight, Knight of the Round Table, Lancelot] <4>
-----
-
-<1> The double parenthesis form adds a primary index term and includes the term in the generated output.
-<2> The triple parenthesis form allows for an optional second and third index term and does not include the terms in the generated output (a concealed index term).
-<3> The inline macro `indexterm2\:[primary]` is equivalent to the double parenthesis form.
-<4> The inline macro `indexterm:\[primary, secondary, tertiary]`` is equivalent to the triple parenthesis form.
-
-If you’re defining a concealed index term (the indexterm macro), and one of the terms contains a comma, you must surround that segment in double quotes so the comma is treated as content. For example:
-
-[source,adoc]
-----
-I, King Arthur.
-indexterm:[knight, "Arthur, King"]
-----
-
-I, King Arthur.
-indexterm:[knight, "Arthur, King"]
-
---or--
-
-[source,adoc]
-----
-I, King Arthur.
-(((knight, "Arthur, King")))
-----
-
-I, King Arthur.
-(((knight, "Arthur, King")))
-
-=== Bibliography and references
-
-There are two ways of handling bibliographies:
-
-- making manual entries to which you can create links from the text in the body of your document.
-- using automated features provided by asciidoctor-bibtex[]
-
-You can add bibliographic entries to the last appendix that you use in a book document.
-
-==== Automated bibliography procedures with asciidoctor-bibtex
-
-Asciidoctor-bibtex enables options that allow for establishing a single source of bibliographic entries that we can use for RISC-V specifications. As an added benefit we can make use of existing bibtex files.
-
-For asciidoctor-bibtex to work, please install the Ruby gems as documented in the docs-templates README file.
-
-NOTE: This has now been tested and is the preferred procedure for adding a bibliography.
-
-The doc header file in the docs-templates repo now contains the following attributes for the purpose of implementing a bibliography using asciidoctor-bibtex:
-
-[source,adoc]
-----
-:bibtex-file: resources/references.bib
-:bibtex-order: alphabetical
-:bibtex-style: apa
-----
-
-The repo also contains the most recent version of the `riscv-spec.bib` file for asciidoctor-bibtex to use while building the bibliography.
-
-When you run asciidoctor-bibtex as part of the build, it searches for the bibtex file first in the folder and subfolders of the document header, and then in `\~/Documents`."
-
-Within your text, add author-year references using the pattern:
-
-[source,adoc]
-----
- cite:[riscvtr(12)]
-----
-
-with the result, cite:[riscvtr(12)]
-
-Add age numbers (locators) using the pattern:
-
-[source,adoc]
-----
-cite:[Kim-micro2005(45)]
-----
-
-with the result: cite:[Kim-micro2005(45)]
-
-Add pretext using the pattern:
-
-[source,adoc]
-----
-cite:See[Kim-micro2005(45)]
-----
-
-with the result: cite:See[Kim-micro2005(45)]
-
-It's possible to include other files, which are also processed.
-
-[CAUTION]
-=====
-To prevent problems with other appendices, keep the index as the second-to-last appendix and the bibliography as the last appendix in your list of included chapter sections within the book-header file.
-
-Citations must be contained within a single line.
-=====
-
-The bibliography section of the book must be set up as follows, to receive the entries during the build:
-
-[source,adoc]
-----
-== Bibliography
-
-bibliography::[]
-----
-
-WARNING: When using the automated option, _do not_ manually add entries to the `bibliography.adoc` file.
-
-Following are example json-formatted bibliographic entries:
-
-[source,json]
-----
-@book{Lane12a,
-	author = {P. Lane},
-	title =	 {Book title},
-	publisher = {Publisher},
-	year =	 {2000}
-}
-
-@book{Lane12b,
-	author = {K. Mane and D. Smith},
-	title =	 {Book title},
-	publisher = {Publisher},
-	year =	 {2000}
-}
-
-@article{Anderson04,
-	author = {J. R. Anderson and D. Bothell and M. D. Byrne and S. Douglass and C. Lebiere and Y. L. Qin},
-	title = {An integrated theory of the mind},
-	journal = {Psychological Review},
-	volume = {111},
-	number = {4},
-	pages = {1036--1060},
-	year = {2004}
-}
-----
-
-==== Manual bibliography procedures
-
-While the automated procedure and use of the RISC-V bibtex file is preferred, it is also possible to manually create and reference a bibliography.
-
-Text with markup that will generate links:
-
-[source,adoc]
-----
-_The Pragmatic Programmer_ <<pp>> should be required reading for all developers.
-To learn all about design patterns, refer to the book by the "`Gang of Four`" <<gof>>.
-----
-
-Links from within text to bibliographic entries:
-
-[source.adoc]
-----
-[[bibliography]]
-== References
-
-* [[[pp]]] Andy Hunt & Dave Thomas. The Pragmatic Programmer:
-From Journeyman to Master. Addison-Wesley. 1999.
-* [[[gof,gang]]] Erich Gamma, Richard Helm, Ralph Johnson & John Vlissides.
-Design Patterns: Elements of Reusable Object-Oriented Software. Addison-Wesley. 1994.
-----
-
-Text that links to bibliography:
-
-[source,adoc]
-----
-_The Pragmatic Programmer_ <<pp>> should be required reading for all developers.
-To learn all about design patterns, refer to the book by the "`Gang of Four`" <<gof>>.
-----
