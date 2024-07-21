@@ -1,14 +1,14 @@
 [[graphics]]
-=== Graphics
+== Graphics
 
-While asciidoc can render graphics in all popular formats, by far the highest quality graphics rendering is from .svg format. This format is the preferred graphic type.
+While AsciiDoc can render graphics in all popular formats, by far the highest quality graphics rendering is from .svg format. This format is the preferred graphic type.
 
 https://asciidoctor.org/docs/asciidoctor-diagram/#image-output-location[Asciidocdoctor-pdf] enables automation of diagrams from scripts, including Wavedrom. https://wavedrom.com/[WaveDrom sequence diagrams] are essential to the RISC-V specifications. 
 
-Even as we are using Wavedrom to simplify the creation of accurate SVGs for register diagrams, the graphical elements--those for the various diagrams--add complexity to the build.
+While Wavedrom simplifies the creation of accurate SVGs for register diagrams, the graphical elements--those for the various diagrams--add complexity to the build.
 
 
-==== Automated diagramming
+=== Automated diagramming
 
 Automated diagramming isn't easy. However, it can be important because some specifications require numerous, very accurate diagrams. Please feel free to ask questions about some of the details in this section.
 
@@ -18,9 +18,9 @@ NOTE: To ensure findability of graphics source files, store the files in filetyp
 
 ALERT: The build process for automated diagramming places an image file for each diagram into the `images` folder. Please do *not* check any generated image files into the git repository.
 
-==== Wavedrom diagrams in specifications
+=== Wavedrom diagrams in specifications
 
-The following json-formatted script, when added within an asciidoc block with the macro indicators `[wavedrom, ,]`, will embed the diagram output into the pdf:
+The following json-formatted script, when added within an AsciiDoc block with the macro indicators `[wavedrom, ,]`, embeds the diagram output into the pdf:
 
 [source,json]
 ....
@@ -65,9 +65,9 @@ image::image_placeholder.png[]
 . "Invisible" placeholder needed for figure caption to display consistently and correctly.
 
 
-===== Explanation
+=== Explanation
 
-For the above to build into a diagram that has a figure title, and a figure title and a macro the specifies the diagram type above the code block. You can add a `target` filename and, in addition, specify the image output format or leave output unspecified to default to png.
+For the previous example to build into a diagram that includes a figure title, and a figure title and a macro the specifies the diagram type before the code block. You can add a `target` filename and, in addition, specify the image output format to be `svg`.
 
 When prepended to the javascript for a Wavedrom diagram, the following creates `file-name.svg` with the legend `Figure title`:
 
@@ -139,7 +139,7 @@ include::images/wavedrom/filename.adoc
 ----
 ====
 
-==== Graphviz
+=== Graphviz
 
 The Unpriv appendices contain Graphviz diagrams with associated keys that are arranged in tables. While in the LaTeX version, the diagrams and tables are arranged side-by-side, for the AsciiDoc version;
 
@@ -267,7 +267,7 @@ eiid4 -> eiid0 [label=<<font color="red">rf</font>>, color="red", fontsize=11, p
 }
 ....
 
-==== Additional diagram type examples
+=== Additional diagram type examples
 
 Following is source for simple ditaa diagram:
 
@@ -351,7 +351,7 @@ DiagramBlock <|-- PlantUmlBlock
 
 NOTE: Asciidoctor supports additional diagram types. For information on additional diagram types, see the https://docs.asciidoctor.org/diagram-extension/latest/[Asciidoctor-diagram documentation].
 
-===== A mention of Bytefield
+=== Bytefield diagrams
 
 Currently the idea of making use of Bytefield as an additional diagram type is being explored.
 

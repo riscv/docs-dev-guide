@@ -3,7 +3,7 @@
 
 This document demonstrates the use of AsciiDoc for RISC-V specifications, with the goal of capturing information that will result in effective and efficient collaboration throughout the community.
 
-Asciidoc is currently the most feature-rich of the popular lightweight markup languages based on markdown. An Open Source effort, it is gaining wider adoption and there is an asciidoc working group. RISC-V also supports some documentation associated with testing that is written in another popular lightweight markup language, Restructured Text.
+AsciiDoc is currently the most feature-rich of the popular lightweight markup languages based on markdown. An Open Source effort, it is gaining wider adoption and there is an AsciiDoc working group. RISC-V also supports some documentation associated with testing that is written in another popular lightweight markup language, Restructured Text.
 
 It’s helpful to think of AsciiDoc as https://docs.asciidoctor.org/asciidoc/latest/asciidoc-vs-markdown/[Markdown grown up]. People in tech often have impulses to re-invent markdown with a brand new lightweight markup language of their own. As appealing as that idea can be, it is inherently flawed. Publishing, like music, can have simple forms, but when fully featured is quite complex. Everyone who has attempted to build upon Markdown to create a simple and feature-rich publishing solution faces the same reality--as we add features, the process necessarily becomes complex.
 
