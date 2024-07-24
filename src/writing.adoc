@@ -25,20 +25,12 @@ When you write, keep your international audience in mind.
 
 Imagine how your doc sounds with a screen reader. Are your visual elements described? Do your tables make sense?
 
+[[active-voice]]
 === Write in the active voice
 
 Use the active voice as much as possible.
 
 When writing for highly technical audiences, strictly adhering to the use of active voice can result in convoluted sentences. As a result, while attempting to use active voice can result in improved clarity, contributors can choose to make use of passive voice. That said, we still encourage RISC-V contributors make use of active voice as much as possible.
-
-Here are some writing guidelines:
-
-* Organize information according to a pattern that supports one of both of the following:
-	** Phases of development from idea through development, testing, and deployment.
-	** Concepts, supporting a learning process, from simple and easy to complex and difficult.
-	** Prioritize documenting information that all users require.
-	** If possible, illustrate decisions that users must make with examples that show potential outcomes.
-* As much as possible, maintain parallelism with respect to how you handle information.
 
 [[style-guidelines]]
 === Develop style guidelines only as needed

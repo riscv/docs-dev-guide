@@ -3,37 +3,43 @@
 
 Follow these general rules when you create a table.
 
-- Avoid tables in the middle of lists.
-- Do not use tables to lay out a page. For example, if you have a long list of items, do not use a 2 column table to save space. The information should make sense side by side.
-- Do not create a table that has a single row or a single column, unless you are following a previous layout. For example, if each section in a chapter includes a table of options, then use a table even if one of the sections has only a single option. 
-- Always use table headers and captions to make your tables more accessible.
-- Use introductory sentences for your table. For example, "The following table contains the options for the CSR." You can use either a period or a colon for your introductory sentence.
-- Do not refer to the "table above" or the "below table". Use words such as "The following table" or "The preceeding table".
+* Avoid tables in the middle of lists.
+* Do not use tables to lay out a page. For example, if you have a long list of items, do not use a 2 column table to save space. The information should make sense side by side.
+* Do not create a table that has a single row or a single column, unless you are following a previous layout. For example, if each section in a chapter includes a table of options, then use a table even if one of the sections has only a single option. 
+* Always use table headers and captions to make your tables more accessible.
+* Use introductory sentences for your table. For example, "The following table contains the options for the CSR." You can use either a period or a colon for your introductory sentence.
+* Do not refer to the "table above" or the "below table". Use words such as "The following table" or "The preceeding table".
 
 ==== Table formatting
 
-- Align tables to center with the options `float="center"` and `align="center"`.
-- Use table header coding to indicate a header. Don't use a different font, color, or any background indication.
-- Sort rows in either a logical order or by alphabetizing the rows and columns.
-- If your table is long or complicated, consider creating multiple tables. If you do choose to create a complicated table, make sure that
-- Use table captions to describe your table contents. Captions appear after the table and are controlled by the theme.
-- If you use footnotes in your table, make sure they appear immediately after the table.
-- Remember that tables can be hard for screen readers to parse. If your table is complex, be sure that the contents are described in the text.
+Follow these formatting rules when you create a table.
+
+* Align tables to center with the options `float="center"` and `align="center"`.
+* Use table header coding to indicate a header. Don't use a different font, color, or any background indication.
+* Sort rows in either a logical order or by alphabetizing the rows and columns.
+* If your table is long or complicated, consider creating multiple tables. Remember that tables can be hard for screen readers to parse. If your table is complex, be sure that the contents are described in the text.
+* Use table captions to describe your table contents. Captions appear after the table and are controlled by the theme.
+* If you use footnotes in your table, make sure they appear immediately after the table.
+
 
 
 ==== Column header formatting
 
-- Use sentence case.
-- Write concise headings and omit articles (a, an, the).
-- Don't end with punctuation, including a period, an ellipsis, or a colon.
-- Use table headings for the first column and the first row only.
+Follow these column header rules.
+
+* Use sentence case.
+* Write concise headings and omit articles (a, an, the).
+* Don't end with punctuation, including a period, an ellipsis, or a colon.
+* Use table headings for the first column and the first row only.
 
 
 ==== Punctuation in tables
 
-- If all cells in a table column are complete sentences, then end each cell with a period.
-- If all cells in a table column are sentence fragments, then do not use a period to end each cell.
-- If cells in a table column contain a mixture of complete and fragmented sentences, then first try to make them all parallel - either all complete sentences or all sentence fragments. However, if this approach is impractical, then punctuate each cell independently, and punctuate appropriate for that individual cell. 
+Follow these punctuation rules for tables.
+
+* If all cells in a table column are complete sentences, then end each cell with a period.
+* If all cells in a table column are sentence fragments, then do not use a period to end each cell.
+* If cells in a table column contain a mixture of complete and fragmented sentences, then first try to make them all parallel - either all complete sentences or all sentence fragments. However, if this approach is impractical, then punctuate each cell independently, and punctuate appropriate for that individual cell. 
 - Do not end column headers with punctuation, including a period, an ellipsis, or a colon.
 
 [WARNING]

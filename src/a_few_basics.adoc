@@ -97,11 +97,15 @@ Unordered lists are created with the `*` before the list item. Ordered lists req
 
 ==== Unordered list
 
+To create an unordered list, place a `*` and a space before an item. Put each new list item on a new line. Add a space between any supporting text at the beginning of a list.
+
 * Priv
 * Unpriv
 * Debug
 
 ==== Ordered list
+
+To create an ordered (numbered) list, place a `.` and a space before an item. Put each new list item on a new line. Add a space between any supporting text at the beginning of a list.
 
 . Priv
 . Unpriv
@@ -109,11 +113,37 @@ Unordered lists are created with the `*` before the list item. Ordered lists req
 
 ==== Nested list
 
+To create a nested unordered list, use `** ` before the nested item. 
+
+----
 * Priv
 ** Intro
 *** Definitions
 ** CSRs
 * Unpriv
+----
+
+Which looks like this:
+
+* Priv
+** Intro
+*** Definitions
+** CSRs
+* Unpriv
+
+To create a nested ordered list, use `.. ` before the nested list item.
+
+. first item
+.. nested item
+.. second nested item
+. back to original level.
+
+You can also create an unordered list that contains a nested ordered list (or an ordered list that contains a nested unordered list).
+
+* unordered item
+.. numbered item
+.. second numbered item
+* another bullet
 
 ==== Add a title to a list
 
