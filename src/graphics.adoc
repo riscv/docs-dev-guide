@@ -1,26 +1,37 @@
 [[graphics]]
 == Graphics
 
-While AsciiDoc can render graphics in all popular formats, by far the highest quality graphics rendering is from .svg format. This format is the preferred graphic type.
+Graphics help people learn, break up text, and can overall improve your document content. 
 
-https://asciidoctor.org/docs/asciidoctor-diagram/#image-output-location[Asciidocdoctor-pdf] enables automation of diagrams from scripts, including Wavedrom. https://wavedrom.com/[WaveDrom sequence diagrams] are essential to the RISC-V specifications. 
+While AsciiDoc can render graphics in all popular formats, by far the highest quality graphics rendering is from `.svg` format. This format is the preferred graphic type to use in RISC-V documents.
 
-While Wavedrom simplifies the creation of accurate SVGs for register diagrams, the graphical elements--those for the various diagrams--add complexity to the build.
+The https://docs.asciidoctor.org/diagram-extension/latest/[asciidoctor-diagram extension] supports numerous diagram types. Some types that are common are:
 
+* <<wavedrom>> Wavedrom diagrams
+* <<graphviz>> Graphviz diagrams
+* <<bytefield>> Bytefield diagrams
+* <<ditaa>> Ditaa diagrams
 
-=== Automated diagramming
+You can certainly use one of the other supported types, but know that they might cause issues with the build. Please contact the RISC-V docs team before using them.
 
-Automated diagramming isn't easy. However, it can be important because some specifications require numerous, very accurate diagrams. Please feel free to ask questions about some of the details in this section.
+[[GBP]]
+=== Graphics best practices
 
-The https://docs.asciidoctor.org/diagram-extension/latest/[asciidoctor-diagram extension] supports numerous diagram types, including https://wavedrom.com/[WaveDrom] diagramming for sequence and waveform diagrams, and https://graphviz.gitlab.io/[Graphviz digrams], which can be useful for illustrating software, networking, and security concepts.
+Follow these guidelines for graphics.
 
-NOTE: To ensure findability of graphics source files, store the files in filetype subdirectories within the `images` directory.
+* Store your graphics in a subfolder. For the RISC-V main ISA doc, this folder is the https://github.com/riscv/riscv-isa-manual/tree/main/src/images[`images` folder]. Place your graphic in the subfolder that correspondes to its type. 
+* The build process creates the final image object. Do *not* create any generated image files into GitHub.
+* Introduce your graphic with a lead-in sentence. "The following image shows ..."
+* Use "following" and "preceding" to locate your image. Avoid using "above" or "below" (Doesn't make sense for people that use screen readers.)
+* Avoid using text in your image. If it can be included as regular text, then don't include it as part of the image. (screen readers again).
+* Images should support your text. Do not put important information in only an image.
 
-ALERT: The build process for automated diagramming places an image file for each diagram into the `images` folder. Please do *not* check any generated image files into the git repository.
-
+[[wavedrom]]
 === Wavedrom diagrams in specifications
 
-The following json-formatted script, when added within an AsciiDoc block with the macro indicators `[wavedrom, ,]`, embeds the diagram output into the pdf:
+Wavedrom diagrams are used mainly for registers. To specify a wavedrom file, create a `json` file and then call it from your text. For more information, see https://wavedrom.com/[WaveDrom sequence diagrams].
+
+The following json-formatted script, when added within an AsciiDoc block with the macro indicators `[wavedrom, ,svg]`, embeds the diagram output into the PDF:
 
 [source,json]
 ....
@@ -34,14 +45,14 @@ The following json-formatted script, when added within an AsciiDoc block with th
 ]}
 ....
 
-[WARNING]
+[NOTE]
 ====
-The macro `[wavedrom, , ]` has two commas and leaves a blank space as an implicit indicator to the build processor to auto-generate identifiers for the images after they are created. After the first comma you can insert a name as an identifier of the file that is created in the /images directory for embedding in the pdf.
+The macro `[wavedrom, , ]` includes two commas and leaves a blank space as an implicit indicator to the build processor to auto-generate identifiers for the images after they are created. After the first comma, you can insert a name as an identifier of the file that is created in the `/images` directory for embedding in the PDF.
 
 DO NOT make the mistake of simply using `[wavedrom,svg]`. Without the second comma, the build interprets 'svg' as a target name because it is the second value within the macro.
 ====
 
-In the specifications, there are numerous instances in which several Wavedrom diagrams are grouped and presented as a single figure. To handle these while preserving consistency in how the build renders figure titles, we are making use of a minimalistic, white graphic with the filename `image_placeholder.png` that blends in with the page background. Following is the pattern of its use (minus the macro indicator `[]` in the first line:
+In the specifications, there are numerous instances in which several Wavedrom diagrams are grouped and presented as a single figure. To handle these cases while preserving consistency in how the build renders figure titles, we use a minimalistic, white graphic with the filename `image_placeholder.png` that blends in with the page background. The following example shows the pattern of its use (minus the macro indicator `[]` in the first line:
 
 [source,adoc]
 ....
@@ -59,7 +70,7 @@ include::images/wavedrom/instruction_formats.adoc[]
 image::image_placeholder.png[]
 
 
-. Wavedrom code for all diagrams in this illustration stored in `wavedrom` subdirectory within the `images` directory.
+. Wavedrom code for all diagrams in this illustration are stored in `wavedrom` subdirectory within the `images` directory.
 . Link target that, along with settings in the `book_header` file, automates the inclusion, in the text, of the figure number and caption.
 . Figure caption.
 . "Invisible" placeholder needed for figure caption to display consistently and correctly.
@@ -121,24 +132,21 @@ Following are some examples of Wavedrom diagrams:
 ], config: {label: {right: 'z-Type'}}}
 ....
 
-You have the option of referencing graphics files directly:
-
-[#wavedrom_example2]
-.This example is from an svg generated prior to the build.
-image::wavedrom/wavedrom-example2.svg[wavedrom_example2]
 
 
 Wavedrom Conversion
 
 [NOTE]
 ====
-The following string is lacking macro brackets (`[]`) that should appear after `filename.adoc` because adding the brackets will cause the include to activate even though it's within a code block. Best practice for automated diagramming is to save AsciiDoc files containing properly formatted AsciiDoc blocks, each block containing the code or script for either a single diagram or a group of diagrams that are presented together as a single figure.
+The following string is lacking macro brackets (`[]`) that should appear after `filename.adoc` because adding the brackets causes the include to activate even though it's within a code block. Best practice for automated diagramming is to save AsciiDoc files containing properly formatted AsciiDoc blocks, each block containing the code or script for either a single diagram or a group of diagrams that are presented together as a single figure.
+
 [source,adoc]
 ----
 include::images/wavedrom/filename.adoc
 ----
 ====
 
+[[graphviz]]
 === Graphviz
 
 The Unpriv appendices contain Graphviz diagrams with associated keys that are arranged in tables. While in the LaTeX version, the diagrams and tables are arranged side-by-side, for the AsciiDoc version;
@@ -146,6 +154,8 @@ The Unpriv appendices contain Graphviz diagrams with associated keys that are ar
 * each Graphviz diagram should be directly above the key table.
 * store scripts for Graphviz diagrams in the images/graphviz directory, as <filename>.txt
 * import the Graphviz by reference using the pattern in the following example.
+
+https://graphviz.gitlab.io/[Graphviz digrams]
 
 [source,adoc]
 ----
@@ -267,7 +277,9 @@ eiid4 -> eiid0 [label=<<font color="red">rf</font>>, color="red", fontsize=11, p
 }
 ....
 
-=== Additional diagram type examples
+[[ditaa]]
+=== Ditaa diagrams
+
 
 Following is source for simple ditaa diagram:
 
@@ -351,46 +363,56 @@ DiagramBlock <|-- PlantUmlBlock
 
 NOTE: Asciidoctor supports additional diagram types. For information on additional diagram types, see the https://docs.asciidoctor.org/diagram-extension/latest/[Asciidoctor-diagram documentation].
 
+[[bytefield]]
 === Bytefield diagrams
 
-Currently the idea of making use of Bytefield as an additional diagram type is being explored.
+Bytefield diagrams are used for register graphics that cannot be rendered in wavedrom. For more information, see https://bytefield-svg.deepsymmetry.org/bytefield-svg/1.8.0/intro.html[Bytefield diagrams].
 
-//=== Bytefield
-//
-//
-//.A byte field
-//[bytefield]
-//----
-//(draw-column-headers)
-//(draw-box 42)
-//(draw-gap "Whee!")
-//(draw-bottom)
-//----
 
+Bytefield diagrams look similar to the following example.
+
+----
+(defattrs :plain [:plain {:font-family "M+ 1p Fallback" :font-size 24}])
+(def row-height 40 )
+(def row-header-fn nil)
+(def left-margin 30)
+(def right-margin 30)
+(def boxes-per-row 32)
+(draw-column-headers {:height 24 :font-size 24 :labels (reverse ["0" "1" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "HSXLEN-1" ""])})
+
+(draw-box "Guest External Interrupts" {:span 18 :text-anchor "end" :borders {:left :border-unrelated :top :border-unrelated :bottom :border-unrelated}})
+(draw-box (text "(WARL)" {:font-weight "bold" :font-size 24}) {:span 13 :text-anchor "start" :borders {:top :border-unrelated :bottom :border-unrelated}})
+(draw-box "0" )
+(draw-box "HSXLEN" {:font-size 24 :span 31 :borders {}})
+(draw-box "1" {:borders {}})
+----
+
+
+Then you can include it with the following statement (the `{}` are to keep it from rendering):
+
+
+----
+{.Counter-enable (`mcounteren`) register.
+include::images/bytefield/examplebyte.adoc[]}
+----
+
+After the build, it looks like this example:
+
+.Counter-enable (`mcounteren`) register.
+include::images/bytefield/examplebyte.adoc[]
 
 
 === Editing Wavedrom diagrams for Unpriv
 
-[NOTE]
-====
-This is a work in progress. I am at this point not versed in content issues with respect to the diagrams and in addition I am discovering the editing process through trial and error. There are properties for which I have not yet tested procedures. For that reason I welcome helpful suggestions and critiques. Please email help@riscv.org.
-====
+
 
 ==== Relevant contextual information
 
 Wavedrom is a utility that is available at https://wavedrom.com/.
 
-// contributors can make suggestions here.
-The Wavedrom diagrams used in the Unpriv specification include opcodes and related information. The diagrams are vital to understanding the specification.
 
-For some RISC-V specifications, Wavedrom diagrams have been placed within topics that are seen as https://csrc.nist.gov/glossary/term/information_object[information objects] that have identifiable patterns but have yet to be fully and formally defined.
 
-The Wavedrom diagrams for the Unpriv specification are contained in the src/images/wavedrom folder in the https://github.com/riscv/riscv-isa-manual/tree/convert2adoc[convert2adoc] branch.
 
-Wavedrom diagrams are coded using a javascript-like code structure.
-//if a contributor understands the rules for creating the diagrams for RISC-V please inform me.
-
-The working assumption is that we need to start with a 1:1 converted version, with the exception that we are adding missing figure titles, table titles, and example titles for consistency in the specification.
 
 ==== Example Wavedrom code, before and after
 
@@ -539,32 +561,3 @@ At the time of this writing, we have noticed the following unexpected results du
 * After struggling to understand why various options that we explored for an acceptable &#8800; in Wavedrom diagrams and discovering the above rather confusing results, we decided to use `!=` as a workaround. With the fact that both Asciidoctor and Wavedrom are evolving, and also the fact that bytefield is being considered as an alternative diagrams rendering solution, it seems possible that this workaround will be temporary.
 
 
-==== testing wavedrom
-
-the first test
-
-[wavedrom, ,svg]
-....
-{reg: [
-  {bits: 2, name: 'op',     type: 8, attr: ['2', 'C0','C0','C0','C0','C0']},
-  {bits: 3, name: 'rs2/u2032',   type: 3, attr: ['3', 'src','src','src','src','src']},
-  {bits: 2, name: 'imm',    type: 2, attr: ['2', 'offset[2|6]','offset[7:6]','offset[7:6]','offset[2|6]','offset[7:6]']},
-  {bits: 3, name: 'rs1`',   type: 3, attr: ['3', 'base','base','base','base','base']},
-  {bits: 3, name: 'imm',    type: 3, attr: ['3', 'offset[5:3]','offset[5:3]','offset[5|4|8]','offset[5:3]','offset[5:3]']},
-  {bits: 3, name: 'funct3', type: 8, attr: ['3', 'C.SW','C.SD','C.SQ','C.FSW','C.FSD']},
-], config: {bits: 16}}
-....
-
-The second test
-
-[wavedrom, ,svg]
-....
-{reg: [
-  {bits: 2, name: 'op',     type: 8, attr: ['2', 'C0','C0','C0','C0','C0']},
-  {bits: 3, name: 'rs2ʹ',   type: 3, attr: ['3', 'src','src','src','src','src']},
-  {bits: 2, name: 'imm',    type: 2, attr: ['2', 'offset[2|6]','offset[7:6]','offset[7:6]','offset[2|6]','offset[7:6]']},
-  {bits: 3, name: 'rs1ʹ',   type: 3, attr: ['3', 'base','base','base','base','base']},
-  {bits: 3, name: 'imm',    type: 3, attr: ['3', 'offset[5:3]','offset[5:3]','offset[5|4|8]','offset[5:3]','offset[5:3]']},
-  {bits: 3, name: 'funct3', type: 8, attr: ['3', 'C.SW','C.SD','C.SQ','C.FSW','C.FSD']},
-], config: {bits: 16}}
-....
