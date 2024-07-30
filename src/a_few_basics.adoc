@@ -185,4 +185,3 @@ This example renders as:
 <<Index markers>> describes how index markers work.
 
 For more information about options, see https://docs.asciidoctor.org/asciidoc/latest/macros/xref/#internal-cross-references[Cross References].
-
