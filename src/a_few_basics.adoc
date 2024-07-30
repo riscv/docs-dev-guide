@@ -113,7 +113,7 @@ To create an ordered (numbered) list, place a `.` and a space before an item. Pu
 
 ==== Nested list
 
-To create a nested unordered list, use `** ` before the nested item. 
+To create a nested unordered list, use `** ` before the nested item.
 
 ----
 * Priv
@@ -185,4 +185,3 @@ This example renders as:
 <<Index markers>> describes how index markers work.
 
 For more information about options, see https://docs.asciidoctor.org/asciidoc/latest/macros/xref/#internal-cross-references[Cross References].
-

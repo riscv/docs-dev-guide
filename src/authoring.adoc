@@ -54,4 +54,3 @@ The following list contains links to resources for text editors/IDEs support of 
 ** https://plugins.jetbrains.com/plugin/7391-asciidoc[jetbrain asciidoc plugin]
 * https://www.sublimetext.com/[Sublime Text] (NOTE: Sublime is not free)
 ** https://packagecontrol.io/packages/AsciiDoc[asciidoc package for Sublime Text2]
-
