@@ -559,5 +559,3 @@ At the time of this writing, we have noticed the following unexpected results du
 * Some, but not all, unicode that works in AsciiDoc (see <<useful-unicode>> ) actually breaks the Wavedrom diagram build, and other unicode does not break the Wavedrom diagram build but still doesn't render properly.
 * Latexmath appears to not work at all in Wavedrom diagrams.
 * After struggling to understand why various options that we explored for an acceptable &#8800; in Wavedrom diagrams and discovering the above rather confusing results, we decided to use `!=` as a workaround. With the fact that both Asciidoctor and Wavedrom are evolving, and also the fact that bytefield is being considered as an alternative diagrams rendering solution, it seems possible that this workaround will be temporary.
-
-

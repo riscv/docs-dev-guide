@@ -99,6 +99,17 @@ Unordered lists are created with the `*` before the list item. Ordered lists req
 
 To create an unordered list, place a `*` and a space before an item. Put each new list item on a new line. Add a space between any supporting text at the beginning of a list.
 
+Example:
+
+[source,adoc]
+----
+* Priv
+* Unpriv
+* Debug
+----
+
+Example output:
+
 * Priv
 * Unpriv
 * Debug
@@ -106,6 +117,15 @@ To create an unordered list, place a `*` and a space before an item. Put each ne
 ==== Ordered list
 
 To create an ordered (numbered) list, place a `.` and a space before an item. Put each new list item on a new line. Add a space between any supporting text at the beginning of a list.
+
+[source,adoc]
+----
+. Priv
+. Unpriv
+. Debug
+----
+
+Example output:
 
 . Priv
 . Unpriv
@@ -123,7 +143,7 @@ To create a nested unordered list, use `** ` before the nested item.
 * Unpriv
 ----
 
-Which looks like this:
+Example output:
 
 * Priv
 ** Intro
@@ -133,6 +153,16 @@ Which looks like this:
 
 To create a nested ordered list, use `.. ` before the nested list item.
 
+[source,adoc]
+----
+. first item
+.. nested item
+.. second nested item
+. back to original level.
+----
+
+Example output:
+
 . first item
 .. nested item
 .. second nested item
@@ -140,12 +170,34 @@ To create a nested ordered list, use `.. ` before the nested list item.
 
 You can also create an unordered list that contains a nested ordered list (or an ordered list that contains a nested unordered list).
 
+[source,adoc]
+----
+* unordered item
+.. numbered item
+.. second numbered item
+* another bullet
+----
+
+Example output:
+
 * unordered item
 .. numbered item
 .. second numbered item
 * another bullet
 
 ==== Add a title to a list
+
+Titles can help introduce your list content.
+
+[source,adoc]
+----
+.Ordered list
+. Priv
+. Unpriv
+. Debug
+----
+
+Example output:
 
 .Ordered list
 . Priv
@@ -185,4 +237,3 @@ This example renders as:
 <<Index markers>> describes how index markers work.
 
 For more information about options, see https://docs.asciidoctor.org/asciidoc/latest/macros/xref/#internal-cross-references[Cross References].
-

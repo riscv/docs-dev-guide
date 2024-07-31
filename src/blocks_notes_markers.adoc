@@ -1,69 +1,4 @@
 [[blocks_notes_markers]]
-=== Sidebars
-
-Sidebars provide for a form of commentary.
-
-[source,adoc]
-----
-
-****
-This is content in a sidebar block.
-
-image:example-3.svg[]
-
-This is more content in the sidebar block.
-****
-----
-
-This renders as follows:
-
-****
-This is content in a sidebar block.
-
-image:example-3.svg[]
-
-This is more content in the sidebar block.
-****
-
-
-You can add a title, along with any kind of content. Best practice for many of the "commentaries" in the LaTeX source that elucidate the decision-making process is to convert to this format with the `TIP` icon that illustrates a conversation or discussion, as in the following example:
-
-[source,adoc]
-----
-.Optional Title
-****
-Sidebars are used to visually separate auxiliary bits of content
-that supplement the main text.
-
-TIP: They can contain any type of content, including admonitions like this, and code examples like the following.
-
-.Source code block within a sidebar
-[source,js]
-/----   (1)
-const { expect, expectCalledWith, heredoc } = require('../test/test-utils')
-/----  (2)
-****
-
-----
-
-1 and 2. Escapes are necessary to preserve this as an AsciiDoc code example.
-
-Once the escapes are removed, the above renders with both the admonition and code blocks within the sidebar:
-
-.Optional Title
-****
-Sidebars are used to visually separate auxiliary bits of content
-that supplement the main text.
-
-TIP: They can contain any type of content, including admonitions like this, and code examples like the following.
-
-.Source code block in a sidebar
-[source,js]
-----
-const { expect, expectCalledWith, heredoc } = require('../test/test-utils')
-----
-****
-
 === Admonition blocks
 
 Five kinds of standard admonition blocks are available in AsciiDoc and these can be mapped to either default or custom icons.
@@ -180,6 +115,11 @@ WARNING,bf6900,9c4d4b
 CAUTION,bf3400,c99a2c
 IMPORTANT,bf0000,b58f5b
 |===
+
+
+Testing changing important:
+
+
 
 === Code blocks
 
@@ -336,3 +276,67 @@ A bold statement!footnote:disclaimer[Opinions are my own.]
 
 Another outrageous statement.footnote:disclaimer[]
 
+=== Sidebars
+
+Sidebars provide for a form of commentary.
+
+[source,adoc]
+----
+
+****
+This is content in a sidebar block.
+
+image:example-3.svg[]
+
+This is more content in the sidebar block.
+****
+----
+
+This renders as follows:
+
+****
+This is content in a sidebar block.
+
+image:example-3.svg[]
+
+This is more content in the sidebar block.
+****
+
+
+You can add a title, along with any kind of content. Best practice for many of the "commentaries" in the LaTeX source that elucidate the decision-making process is to convert to this format with the `TIP` icon that illustrates a conversation or discussion, as in the following example:
+
+[source,adoc]
+----
+.Optional Title
+****
+Sidebars are used to visually separate auxiliary bits of content
+that supplement the main text.
+
+TIP: They can contain any type of content, including admonitions like this, and code examples like the following.
+
+.Source code block within a sidebar
+[source,js]
+/----   (1)
+const { expect, expectCalledWith, heredoc } = require('../test/test-utils')
+/----  (2)
+****
+
+----
+
+1 and 2. Escapes are necessary to preserve this as an AsciiDoc code example.
+
+Once the escapes are removed, the above renders with both the admonition and code blocks within the sidebar:
+
+.Optional Title
+****
+Sidebars are used to visually separate auxiliary bits of content
+that supplement the main text.
+
+TIP: They can contain any type of content, including admonitions like this, and code examples like the following.
+
+.Source code block in a sidebar
+[source,js]
+----
+const { expect, expectCalledWith, heredoc } = require('../test/test-utils')
+----
+****
