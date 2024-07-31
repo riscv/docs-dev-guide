@@ -26,7 +26,7 @@ Following:: Don't use "following" by itself. Don't say "See the following". Inst
 If (whether):: Use if as a condition, such as logic. If a, then b.
 Use whether to indicate choice or alternative. Event a happens, whether event b does or not.
 
-Latin phrases:: Avoid abbreviations such as etc., e.g., i.e. They do not translate well. Instead use "and so on" and "for example,". If you do use e.g. or i.e., then know that e.g. means "for example" and i.e means "in other words". With e.g., it is understood that there are more examples than just the ones listed; "The colors of the rainbow, e.g. red, yellow and green". With i.e., however, it is intended as a replacement for the previous text. "The primary colors, i.e. red, blue, and yellow". 
+Latin phrases:: Avoid abbreviations such as etc., e.g., i.e. They do not translate well. Instead use "and so on" and "for example,". If you do use e.g. or i.e., then know that e.g. means "for example" and i.e means "in other words". With e.g., it is understood that there are more examples than just the ones listed; "The colors of the rainbow, e.g. red, yellow, and green". With i.e., however, it is intended as a replacement for the previous text. "The primary colors, i.e. red, blue, and yellow".
 
 Legal:: Use only to indicate that something is allowed because of a law. "RISC-V processors are legally available." Avoid using when something is allowed. Instead, use "valid".
 

@@ -10,7 +10,7 @@ Follow these basic formatting guidelines.
 * Use *`monospace bold`* for hex numbers. Hex numbers start with `0x`.
 * Use *`monospace bold`* for binary numbers. Binary numbers start with `0b`.
 * Use *`monospace bold`* for any literals.
-* Any number range, use regular font
+* Any number range, use regular font.
 
 See the next section for rules about referring to a CSR.
 
@@ -19,20 +19,22 @@ See the next section for rules about referring to a CSR.
 
 Use the following guidelines when you document a CSR:
 
-* CSR must always be capitalized. 
+* CSR must always be capitalized.
 * When plural, lowercase the `s`. CSRs.
-* Register is capitalized in title, but lowercase in text. "Supervisor Status (`sstatus`) Register”. But “The `sstatus` register…” 
+* Register is capitalized in title, but lowercase in text. "Supervisor Status (`sstatus`) Register”. But “The `sstatus` register…”
 * When in doubt, use "CSR" to indicate the type of register. You can then intermingle CSR and register in the text. So "The `misa` CSR is used to...." And then later in the paragraph, you can use "register". As in, "This register also does this other thing."
 * In a title, the format is “Long name (`short name`) Register. All other references in that section can use the short name, but it must be in tics. So "Supervisor Status (`sstatus`) Register”. The rest of the references to that register can be "the `sstatus` CSR".
-* Avoid starting a sentence with a CSR name. 
+* Avoid starting a sentence with a CSR name.
 * As a general rule, whenever you use a term in tics, it should be followed by what the thing is to help with translation. So avoid statements like this:  “`misa` also helps distinguish different variants of a design.”  And instead use this: “The `misa` CSR also helps distinguish different variants of a design.”
-* Fields for registers are formatted in this style: `register`.FIELD. For example, `sstatus`.SPP
+* Fields for registers are formatted in this style: `register`.FIELD. For example, `sstatus`.SPP.
 
+[[bp-gen]]
 === General best practices
 
 
 This section contains suggested best practices for clear, concise, and consistent content.
 
+[[bp-present]]
 ==== Use present tense
 
 
@@ -45,9 +47,9 @@ This section contains suggested best practices for clear, concise, and consisten
 |Cache-management operation instructions will perform operations on copies of data in the memory hierarchy.
 |===
 
-Exception: Use future or past tense if it is required to convey the correct
-meaning.
+Exception: Use future or past tense if it is required to convey the correct meaning.
 
+[[bp-active]]
 ==== Use active voice
 
 [cols="1,1"]
@@ -58,12 +60,13 @@ meaning.
 |You can use the RVWMO memory model...
 |The RVWMO memory model can be used...
 
-|The RVWMO memory model enables architects 
+|The RVWMO memory model enables architects.
 |Architects are enabled by the RVWMO memory model.
 |===
 
 Exception: Use passive voice if active voice leads to an awkward construction.
 
+[[bp-simple]]
 ==== Use simple and direct language
 
 Use simple and direct language. Avoid using unnecessary phrases, such as saying "please."
@@ -73,16 +76,17 @@ Use simple and direct language. Avoid using unnecessary phrases, such as saying 
 |Yes
 |No
 
-|To build a chip, ... 
+|To build a chip, ...
 |In order to build a chip, ...
 
-|See the Hypervisor extension. 
+|See the Hypervisor extension.
 |Please see the Hypervisor extension.
 
-|View the register. 
+|View the register.
 |With this next command, we'll view the register.
 |===
 
+[[bp-you]]
 ==== Address the reader as "you"
 
 [cols="1,1"]
@@ -90,13 +94,14 @@ Use simple and direct language. Avoid using unnecessary phrases, such as saying 
 |Yes
 |No
 
-|You can use the `misa` CSR ... 
+|You can use the `misa` CSR ...
 |We'll use the `misa` CSR  ...
 
-|In the preceding output, you can see... 
+|In the preceding output, you can see...
 |In the preceding output, we can see ...
 |===
 
+[[bp-latin]]
 ==== Avoid Latin phrases
 
 Prefer English terms over Latin abbreviations.
@@ -106,39 +111,39 @@ Prefer English terms over Latin abbreviations.
 |Yes
 |No
 
-|For example, ... 
+|For example, ...
 |e.g., ...
 
 |That is, ...
 |i.e., ...
 |===
 
-
+[[bp-patterns]]
 === Patterns to avoid
 
+[[bp-we]]
 ==== Avoid using "we"
 
-Using "we" in a sentence can be confusing, because the reader might not know
-whether they're part of the "we" you're describing.
+Using "we" in a sentence can be confusing, because the reader might not know whether they're part of the "we" you're describing.
 
 [cols="1,1"]
 |===
 |Yes
 |No
 
-|Version 1.4 includes ... 
+|Version 1.4 includes ...
 |In version 1.4, we have added ...
 
-|RISC-V provides a new feature for ... 
+|RISC-V provides a new feature for ...
 |We provide a new feature ...
 
-|This page teaches you how to create CSRs. 
+|This page teaches you how to create CSRs.
 |In this page, we are going to learn about CSRs.
 |===
 
 An exception for using "we" is the rationale sections.
 
-
+[[bp-jargon]]
 ==== Avoid jargon and idioms
 
 Some readers speak English as a second language. Avoid jargon and idioms to help them understand better.
@@ -148,57 +153,56 @@ Some readers speak English as a second language. Avoid jargon and idioms to help
 |Yes
 |No
 
-|Internally, ... 
+|Internally, ...
 |Under the hood, ...
 
 |Stop trying.
 |Chutar o pau-da-barraca (which translates to "kicking away the tent pole")
 |===
 
+[[bp-future]]
 ==== Avoid statements about the future
 
-Avoid making promises or giving hints about the future. If you need to talk about
-an alpha feature, put the text under a heading that identifies it as alpha
-information.
+Avoid making promises or giving hints about the future. If you need to talk about an alpha feature, put the text under a heading that identifies it as alpha information.
 
-An exception to this rule is documentation about announced deprecations targeting removal in future versions. 
+An exception to this rule is documentation about announced deprecations targeting removal in future versions.
 
-==== Avoid statements that will soon be out of date
+[[bp-out-of-date]]
+==== Avoid statements that will soon be out-of-date
 
-Avoid words like "currently" and "new." A feature that is new today might not be
-considered new in a few months.
+Avoid words like "currently" and "new." A feature that is new today might not be considered new in a few months.
 
 [cols="1,1"]
 |===
 |Do
 |Don't
 
-|In version 1.4, ... 
+|In version 1.4, ...
 |In the current version, ...
 
-|The pointer masking extension provides ... 
+|The pointer masking extension provides ...
 |The new pointer masking extension provides ...
 |===
 
+[[bp-assume]]
 ==== Avoid words that assume a specific level of understanding
 
-Avoid words such as "just", "simply", "easy", "easily", or "simple". These words do not add value and can actually make a user feel
+Avoid words such as "just", "simply", "easy", "easily", or "simple". These words do not add value and can actually make a user feel stupid.
 
 [cols="1,1"]
 |===
 |Do
 |Don't
 
-|Include one command in ... 
+|Include one command in ...
 |Include just one command in ...
 
-|Run the command ... 
+|Run the command ...
 |Simply run the command ...
 
-|You can remove ... 
+|You can remove ...
 |You can easily remove ...
 
-|These steps ... 
+|These steps ...
 |These simple steps ...
 |===
-

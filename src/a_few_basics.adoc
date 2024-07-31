@@ -133,7 +133,7 @@ Example output:
 
 ==== Nested list
 
-To create a nested unordered list, use `** ` before the nested item. 
+To create a nested unordered list, use `** ` before the nested item.
 
 ----
 * Priv

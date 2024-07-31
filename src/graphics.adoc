@@ -1,7 +1,7 @@
 [[graphics]]
 == Graphics
 
-Graphics help people learn, break up text, and can overall improve your document content. 
+Graphics help people learn, break up text, and can overall improve your document content.
 
 While AsciiDoc can render graphics in all popular formats, by far the highest quality graphics rendering is from `.svg` format. This format is the preferred graphic type to use in RISC-V documents.
 
@@ -19,7 +19,7 @@ You can certainly use one of the other supported types, but know that they might
 
 Follow these guidelines for graphics.
 
-* Store your graphics in a subfolder. For the RISC-V main ISA doc, this folder is the https://github.com/riscv/riscv-isa-manual/tree/main/src/images[`images` folder]. Place your graphic in the subfolder that correspondes to its type. 
+* Store your graphics in a subfolder. For the RISC-V main ISA doc, this folder is the https://github.com/riscv/riscv-isa-manual/tree/main/src/images[`images` folder]. Place your graphic in the subfolder that correspondes to its type.
 * The build process creates the final image object. Do *not* create any generated image files into GitHub.
 * Introduce your graphic with a lead-in sentence. "The following image shows ..."
 * Use "following" and "preceding" to locate your image. Avoid using "above" or "below" (Doesn't make sense for people that use screen readers.)
