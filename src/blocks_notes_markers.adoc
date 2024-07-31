@@ -117,10 +117,6 @@ IMPORTANT,bf0000,b58f5b
 |===
 
 
-Testing changing important:
-
-
-
 === Code blocks
 
 AsciiDoc enables code blocks that support syntax highlighting.
@@ -201,7 +197,7 @@ The suggested solution makes use of:
 
 ==== Indicate changes
 
-With apologies for requiring a manual step at this time, indicators for the changed lines must be inserted:
+Indicators for the changed lines must be inserted manually:
 
 [source,adoc]
 ----
@@ -227,14 +223,14 @@ For change bars associated with headings, place the change indicator after the h
 
 ==== Check for changed lines before a `git commit`
 
-You can double check for all changed lines just before doing a commit, using this pattern:
+You can double check for all changed lines before committing by using this pattern:
 
 [source,cmd]
 ----
 git blame <file> | grep -n '^0\{8\} ' | cut -f1 -d:
 ----
 
-This lists the line numbers of changes within the specified file like the following:
+This lists the line numbers of changes within the specified file like the following example:
 
 [source,cmd]
 ----
