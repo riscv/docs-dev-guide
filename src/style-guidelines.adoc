@@ -1,5 +1,5 @@
+[[style-guidelines]]
 == RISC-V Style guidelines
-[style-guidelines]
 
 Whether you are creating a new extention or even a stand alone doc for RISC-V, follow these style guidelines to improve readability.
 
@@ -16,7 +16,6 @@ Follow these basic formatting guidelines.
 * Use *`monospace bold`* for any literals.
 * Any number range, use regular font.
 * Put punctuation outside of quotes, unless you are quoting someone directly.
-=======
 
 .Formatting guidelines for names
 * Instructions are lowercase (`ld`, `c`.`lw`)
