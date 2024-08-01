@@ -103,8 +103,6 @@ whether they're part of the "we" you're describing.
 |In this page, we are going to learn about CSRs.
 |===
 
-An exception for using "we" is the rationale sections.
-
 === Avoid jargon and idioms
 
 Some readers speak English as a second language. Avoid jargon and idioms to help them understand better.
