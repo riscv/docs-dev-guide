@@ -9,13 +9,19 @@ Whether you are creating a new extention or even a stand alone doc for RISC-V, f
 Follow these basic formatting guidelines.
 
 * Use _italic_ for new terms.
-* Use `monospace` for filenames, directories, and paths.
-* Use `monospace` for inline code and commands.
-* Use *`monospace bold`* for hex numbers. Hex numbers start with `0x`.
-* Use *`monospace bold`* for binary numbers. Binary numbers start with `0b`.
-* Use *`monospace bold`* for any literals.
-* Any number range, use regular font.
-* Put punctuation outside of quotes, unless you are quoting someone directly.
+* Use `monospace` for the following items:
+** Filenames
+** Directories
+** Paths
+** Inline code
+** Commands
+* Use *`monospace bold`* for the following items:
+** Hex numbers. Hex numbers start with `0x`.
+** Binary numbers. Binary numbers start with `0b`.
+** Non-base 10 literals
+** Non-base 10 number ranges
+
+Do not use any special formatting for base 10.
 
 .Formatting guidelines for names
 * Instructions are lowercase (`ld`, `c`.`lw`)
