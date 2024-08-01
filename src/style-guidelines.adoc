@@ -28,12 +28,12 @@ Follow these basic formatting guidelines.
 
 Use the following guidelines when you document a CSR:
 
-* The acronym CSR must always be capitalized. 
+* The acronym CSR must always be capitalized.
 * When plural, lowercase the `s`. CSRs.
-* The word `Register` is capitalized in title, but lowercase in text. "Supervisor Status (`sstatus`) Register”. But “The `sstatus` register…” 
-* When in doubt, use "CSR" to indicate the type of register. You can then intermingle CSR and register in the text. So "The `misa` CSR is used to...." And then later in the paragraph, you can use "register". As in, "This register also does this other thing."
-* Avoid starting a sentence with a CSR name. 
-* In a title, the format is “Long name (`short name`) Register. All other references in that section can use the short name, but it must be in monospace. So "Supervisor Status (`sstatus`) Register”. The rest of the references to that register can be "the `sstatus` CSR".
+* The word `Register` is capitalized in title, but lowercase in text. "Supervisor Status (`sstatus`) Register”. But “The `sstatus` register…”
+* When in doubt, use "CSR" to indicate the type of register. You can then intermingle CSR and register in the text. So "The `misa` CSR is used to..." And then later in the paragraph, you can use "register". As in, "This register also does this other thing."
+* Avoid starting a sentence with a CSR name.
+* In a title, the format is “Long name (`short name`) Register. All other references in that section can use the short name, but it must be in monospace. So "Supervisor Status (`sstatus`) Register”. The rest of the references to that register can be "the `sstatus` CSR.
 * The short name is always lower case and monospace: `sstatus`.
 * As a general rule, whenever you use a term in tics, it should be followed by what the thing is to help with translation. So avoid statements similar to this one:  “`misa` also helps distinguish different variants of a design.”  And instead use this one: “The `misa` CSR also helps distinguish different variants of a design.”
 * Fields for registers are formatted in this style: `register`.FIELD. For example, `sstatus`.SPP.
@@ -65,6 +65,5 @@ Follow these punctuation rules for tables.
 
 * If all cells in a table column are complete sentences, then end each cell with a period.
 * If all cells in a table column are sentence fragments, then do not use a period to end each cell.
-* If cells in a table column contain a mixture of complete and fragmented sentences, then first try to make them all parallel - either all complete sentences or all sentence fragments. However, if this approach is impractical, then punctuate each cell independently, and punctuate appropriate for that individual cell. 
+* If cells in a table column contain a mixture of complete and fragmented sentences, then first try to make them all parallel - either all complete sentences or all sentence fragments. However, if this approach is impractical, then punctuate each cell independently, and punctuate appropriate for that individual cell.
 * Do not end column headers with punctuation, including a period, an ellipsis, or a colon.
-
