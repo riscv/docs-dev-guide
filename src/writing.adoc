@@ -66,6 +66,8 @@ Use simple and direct language. Avoid using unnecessary phrases, such as saying 
 |In the preceding output, we can see
 |===
 
+An exception to this rule is the rationale sections.
+
 === Avoid Latin phrases
 
 Prefer English terms over Latin abbreviations.
@@ -125,7 +127,7 @@ Avoid making promises or giving hints about the future. If you need to talk abou
 an alpha feature, put the text under a heading that identifies it as alpha
 information.
 
-An exception to this rule is documentation about announced deprecations targeting removal in future versions. 
+An exception to this rule is documentation about announced deprecations targeting removal in future versions.
 
 === Avoid statements that will soon be out of date
 
