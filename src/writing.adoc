@@ -24,10 +24,10 @@ meaning.
 |Yes
 |No
 
-|You can use the RVWMO memory model...
-|The RVWMO memory model can be used...
+|You can use the RVWMO memory model
+|The RVWMO memory model can be used
 
-|The RVWMO memory model enables architects 
+|The RVWMO memory model enables architects
 |Architects are enabled by the RVWMO memory model.
 |===
 
@@ -42,8 +42,8 @@ Use simple and direct language. Avoid using unnecessary phrases, such as saying 
 |Yes
 |No
 
-|To build a chip, ... 
-|In order to build a chip, ...
+|To build a chip, 
+|In order to build a chip,
 
 |See the Hypervisor extension. 
 |Please see the Hypervisor extension.
@@ -59,11 +59,11 @@ Use simple and direct language. Avoid using unnecessary phrases, such as saying 
 |Yes
 |No
 
-|You can use the `misa` CSR ... 
-|We'll use the `misa` CSR  ...
+|You can use the `misa` CSR
+|We'll use the `misa` CSR
 
-|In the preceding output, you can see... 
-|In the preceding output, we can see ...
+|In the preceding output, you can see
+|In the preceding output, we can see
 |===
 
 === Avoid Latin phrases
@@ -75,11 +75,11 @@ Prefer English terms over Latin abbreviations.
 |Yes
 |No
 
-|For example, ... 
-|e.g., ...
+|For example,
+|e.g.,
 
-|That is, ...
-|i.e., ...
+|That is,
+|i.e.,
 |===
 
 
@@ -93,11 +93,11 @@ whether they're part of the "we" you're describing.
 |Yes
 |No
 
-|Version 1.4 includes ... 
-|In version 1.4, we have added ...
+|Version 1.4 includes
+|In version 1.4, we have added
 
-|RISC-V provides a new feature for ... 
-|We provide a new feature ...
+|RISC-V provides a new feature for
+|We provide a new feature
 
 |This page teaches you how to create CSRs. 
 |In this page, we are going to learn about CSRs.
@@ -115,8 +115,8 @@ Some readers speak English as a second language. Avoid jargon and idioms to help
 |Yes
 |No
 
-|Internally, ... 
-|Under the hood, ...
+|Internally,
+|Under the hood,
 
 |Stop trying.
 |Chutar o pau-da-barraca (which translates to "kicking away the tent pole")
@@ -140,11 +140,11 @@ considered new in a few months.
 |Do
 |Don't
 
-|In version 1.4, ... 
-|In the current version, ...
+|In version 1.4,
+|In the current version,
 
-|The pointer masking extension provides ... 
-|The new pointer masking extension provides ...
+|The pointer masking extension provides
+|The new pointer masking extension provides
 |===
 
 === Avoid words that assume a specific level of understanding
@@ -156,17 +156,17 @@ Avoid words such as "just", "simply", "easy", "easily", or "simple". These words
 |Do
 |Don't
 
-|Include one command in ... 
-|Include just one command in ...
+|Include one command in
+|Include just one command in
 
-|Run the command ... 
-|Simply run the command ...
+|Run the command 
+|Simply run the command
 
-|You can remove ... 
-|You can easily remove ...
+|You can remove 
+|You can easily remove
 
-|These steps ... 
-|These simple steps ...
+|These steps
+|These simple steps
 |===
 
 [[style-guidelines]]
