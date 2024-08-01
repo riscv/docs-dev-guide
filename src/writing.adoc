@@ -1,41 +1,178 @@
 [[writing-simple]]
-== Writing tips
+== Best practices
 
-Follow these tips to write your documents well.
+This section contains suggested best practices for clear, concise, and consistent content.
 
-[[simple-concise]]
-=== Write simply and concisely
+=== Use present tense
 
-Keep your writing as simple as possible.
+[cols="1,1"]
+|===
+|Yes
+|No
 
-* Use as few words as possible without sounding too formal or too casual.
-* Shorten or simplify long sentences or else break them into separate sentences.
-* Use lists to make the content more scannable.
+|Cache-management operation instructions perform operations on copies of data in the memory hierarchy.
+|Cache-management operation instructions will perform operations on copies of data in the memory hierarchy.
+|===
 
-[[international-audience]]
-=== Write for an international audience
+Exception: Use future or past tense if it is required to convey the correct
+meaning.
 
-When you write, keep your international audience in mind.
+=== Use active voice
 
-* Use concepts consistently. Check the glossary for common terms and definitions.
-* Avoid words that end in "ing". Words that end in "ing" can be a verb, adjective, or noun. Rewriting your sentence to avoid "ing" is best. So Rewrite your sentence to avoid "ing".
+[cols="1,1"]
+|===
+|Yes
+|No
 
-[[accessibility]]
-=== Write for accessibility
+|You can use the RVWMO memory model...
+|The RVWMO memory model can be used...
 
-Imagine how your doc sounds with a screen reader. Are your visual elements described? Do your tables make sense?
+|The RVWMO memory model enables architects 
+|Architects are enabled by the RVWMO memory model.
+|===
 
-[[active-voice]]
-=== Write in the active voice
+Exception: Use passive voice if active voice leads to an awkward construction.
 
-Use the active voice as much as possible.
+=== Use simple and direct language
 
-When writing for highly technical audiences, strictly adhering to the use of active voice can result in convoluted sentences. As a result, while attempting to use active voice can result in improved clarity, contributors can choose to make use of passive voice. That said, we still encourage RISC-V contributors make use of active voice as much as possible.
+Use simple and direct language. Avoid using unnecessary phrases, such as saying "please."
+
+[cols="1,1"]
+|===
+|Yes
+|No
+
+|To build a chip, ... 
+|In order to build a chip, ...
+
+|See the Hypervisor extension. 
+|Please see the Hypervisor extension.
+
+|View the register. 
+|With this next command, we'll view the register.
+|===
+
+=== Address the reader as "you"
+
+[cols="1,1"]
+|===
+|Yes
+|No
+
+|You can use the `misa` CSR ... 
+|We'll use the `misa` CSR  ...
+
+|In the preceding output, you can see... 
+|In the preceding output, we can see ...
+|===
+
+=== Avoid Latin phrases
+
+Prefer English terms over Latin abbreviations.
+
+[cols="1,1"]
+|===
+|Yes
+|No
+
+|For example, ... 
+|e.g., ...
+
+|That is, ...
+|i.e., ...
+|===
+
+
+=== Avoid using "we"
+
+Using "we" in a sentence can be confusing, because the reader might not know
+whether they're part of the "we" you're describing.
+
+[cols="1,1"]
+|===
+|Yes
+|No
+
+|Version 1.4 includes ... 
+|In version 1.4, we have added ...
+
+|RISC-V provides a new feature for ... 
+|We provide a new feature ...
+
+|This page teaches you how to create CSRs. 
+|In this page, we are going to learn about CSRs.
+|===
+
+An exception for using "we" is the rationale sections.
+
+
+=== Avoid jargon and idioms
+
+Some readers speak English as a second language. Avoid jargon and idioms to help them understand better.
+
+[cols="1,1"]
+|===
+|Yes
+|No
+
+|Internally, ... 
+|Under the hood, ...
+
+|Stop trying.
+|Chutar o pau-da-barraca (which translates to "kicking away the tent pole")
+|===
+
+=== Avoid statements about the future
+
+Avoid making promises or giving hints about the future. If you need to talk about
+an alpha feature, put the text under a heading that identifies it as alpha
+information.
+
+An exception to this rule is documentation about announced deprecations targeting removal in future versions. 
+
+=== Avoid statements that will soon be out of date
+
+Avoid words like "currently" and "new." A feature that is new today might not be
+considered new in a few months.
+
+[cols="1,1"]
+|===
+|Do
+|Don't
+
+|In version 1.4, ... 
+|In the current version, ...
+
+|The pointer masking extension provides ... 
+|The new pointer masking extension provides ...
+|===
+
+=== Avoid words that assume a specific level of understanding
+
+Avoid words such as "just", "simply", "easy", "easily", or "simple". These words do not add value and can actually make a user feel
+
+[cols="1,1"]
+|===
+|Do
+|Don't
+
+|Include one command in ... 
+|Include just one command in ...
+
+|Run the command ... 
+|Simply run the command ...
+
+|You can remove ... 
+|You can easily remove ...
+
+|These steps ... 
+|These simple steps ...
+|===
 
 [[style-guidelines]]
-=== Develop style guidelines only as needed
+=== Other style guidelines
 
-I have a list of existing guides that we can use as a starting point. These are likely the most pertinent existing style guidelines that were created for addressing the needs of highly technical audiences as opposed to consumer end user audiences:
+Other style guidelines for reference:
 
 * https://www.writethedocs.org/guide/writing/style-guides/[Write the Docs style guide]
 * https://developers.google.com/style[Google's developer docs style guide]

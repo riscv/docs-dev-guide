@@ -14,39 +14,6 @@ Follow these general rules when you create a table.
 * Use introductory sentences for your table. For example, "The following table contains the options for the CSR." You can use either a period or a colon for your introductory sentence.
 * Do not refer to the "table above" or the "below table". Use words such as "The following table" or "The preceeding table".
 
-[[tables-format]]
-==== Table formatting
-
-Follow these formatting rules when you create a table.
-
-* Align tables to center with the options `float="center"` and `align="center"`.
-* Use table header coding to indicate a header. Don't use a different font, color, or any background indication.
-* Sort rows in either a logical order or by alphabetizing the rows and columns.
-* If your table is long or complicated, consider creating multiple tables. Remember that tables can be hard for screen readers to parse. If your table is complex, be sure that the contents are described in the text.
-* Use table captions to describe your table contents. Captions appear after the table and are controlled by the theme.
-* If you use footnotes in your table, make sure they appear immediately after the table.
-
-
-[[tables-column-format]]
-==== Column header formatting
-
-Follow these column header rules.
-
-* Use sentence case.
-* Write concise headings and omit articles (a, an, the).
-* Don't end with punctuation, including a period, an ellipsis, or a colon.
-* Use table headings for the first column and the first row only.
-
-[[tables-punctuation]]
-==== Punctuation in tables
-
-Follow these punctuation rules for tables.
-
-* If all cells in a table column are complete sentences, then end each cell with a period.
-* If all cells in a table column are sentence fragments, then do not use a period to end each cell.
-* If cells in a table column contain a mixture of complete and fragmented sentences, then first try to make them all parallel - either all complete sentences or all sentence fragments. However, if this approach is impractical, then punctuate each cell independently, and punctuate appropriate for that individual cell.
-* Do not end column headers with punctuation, including a period, an ellipsis, or a colon.
-
 [WARNING]
 ====
 *Never* use automated wrapping for table titles, figure captions, and example captions. Asciidoctor reads a hard return as an indicator to start a new "Normal" paragraph.
