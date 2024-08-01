@@ -1,17 +1,18 @@
 [[tables_symbols_math]]
 === Tables
 
+By using tables, you can group information into logical units, which can make the infromation presented easier to understand.
+
+[[tables-gen]]
+==== General rules for tables
 Follow these general rules when you create a table.
 
 * Avoid tables in the middle of lists.
 * Do not use tables to lay out a page. For example, if you have a long list of items, do not use a 2 column table to save space. The information should make sense side by side.
-* Do not create a table that has a single row or a single column, unless you are following a previous layout. For example, if each section in a chapter includes a table of options, then use a table even if one of the sections has only a single option. 
+* Do not create a table that has a single row or a single column, unless you are following a previous layout. For example, if each section in a chapter includes a table of options, then use a table even if one of the sections has only a single option.
 * Always use table headers and captions to make your tables more accessible.
 * Use introductory sentences for your table. For example, "The following table contains the options for the CSR." You can use either a period or a colon for your introductory sentence.
 * Do not refer to the "table above" or the "below table". Use words such as "The following table" or "The preceeding table".
-
-For table formatting rules, see <<table-rule>>.
-
 
 [WARNING]
 ====
