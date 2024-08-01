@@ -42,13 +42,13 @@ Use simple and direct language. Avoid using unnecessary phrases, such as saying 
 |Yes
 |No
 
-|To build a chip, 
+|To build a chip,
 |In order to build a chip,
 
-|See the Hypervisor extension. 
+|See the Hypervisor extension.
 |Please see the Hypervisor extension.
 
-|View the register. 
+|View the register.
 |With this next command, we'll view the register.
 |===
 
@@ -99,12 +99,11 @@ whether they're part of the "we" you're describing.
 |RISC-V provides a new feature for
 |We provide a new feature
 
-|This page teaches you how to create CSRs. 
+|This page teaches you how to create CSRs.
 |In this page, we are going to learn about CSRs.
 |===
 
 An exception for using "we" is the rationale sections.
-
 
 === Avoid jargon and idioms
 
@@ -159,10 +158,10 @@ Avoid words such as "just", "simply", "easy", "easily", or "simple". These words
 |Include one command in
 |Include just one command in
 
-|Run the command 
+|Run the command
 |Simply run the command
 
-|You can remove 
+|You can remove
 |You can easily remove
 
 |These steps
