@@ -80,6 +80,6 @@ include::style-guidelines.adoc[]
 //include::linting.adoc[]
 
 //Note that the index must precede the bibliography for both to work within the same book.
-include::index.adoc[]
+//include::index.adoc[]
 
 //include::bibliography.adoc[]
