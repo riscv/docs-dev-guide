@@ -12,9 +12,9 @@
 :revinfo:
 :url-riscv: http://riscv.org
 :doctype: book
-:preface-title: Preamble
-:colophon:
-:appendix-caption: Appendix
+//:preface-title: Preamble
+//:colophon:
+//:appendix-caption: Appendix
 :imagesdir: images
 //:title-logo-image: image:risc-v_logo.png["RISC-V International Logo",pdfwidth=3.25in,align=center]
 //:page-background-image: image:draft.svg[opacity=20%]
@@ -49,17 +49,17 @@ endif::[]
 :stem: latexmath
 :footnote:
 
-This is the preamble, which can contain contributor information and should contain the Creative Commons Attribution statement below.
+//This is the preamble, which can contain contributor information and should contain the Creative Commons Attribution statement below.
 
-For this book example, I have copied information directly from several Web sites that are hosted by asciidoctor.org and devoted to providing Asciidoc/Asciidoctor documentation, and have authored some explanations. Graphics used are either explicitly available for free, are property of RISC-V International, or were created using Wavedrom.
+//For this book example, I have copied information directly from several Web sites that are hosted by asciidoctor.org and devoted to providing Asciidoc/Asciidoctor documentation, and have authored some explanations. Graphics used are either explicitly available for free, are property of RISC-V International, or were created using Wavedrom.
 
-This document is released under a Creative Commons Attribution 4.0 International License.
+//This document is released under a Creative Commons Attribution 4.0 International License.
 
 //the colophon allows for a section after the preamble that is part of the frontmatter and therefore not assigned a page number.
 include::colophon.adoc[]
 
 //While some documents need several levels of introductory material, other documents need only a brief introduction. You can choose to have either colophon or an overview, or to have both.
-include::intro.adoc[]
+//include::intro.adoc[]
 
 //include::authoring.adoc[]
 
