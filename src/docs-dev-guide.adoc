@@ -69,7 +69,7 @@ include::tables_symbols_math.adoc[]
 
 include::blocks_notes_markers.adoc[]
 
-include::index_bib.adoc[]
+//include::index_bib.adoc[]
 
 include::graphics.adoc[]
 
