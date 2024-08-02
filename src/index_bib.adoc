@@ -1,4 +1,3 @@
-[[index_bib]]
 == Index and bibliography
 
 An index and bibliography are included in the main priv and unpriv docs. You can develop your own index and bibliography for your stand alone document, but if it is to be merged into the main docs, you must merge the index and bibliography as well.
