@@ -21,7 +21,7 @@
 //:title-page-background-image: none
 //:back-cover-image: image:backpage.png[opacity=25%]
 // Settings:
-:experimental:
+//:experimental:
 :reproducible:
 :imagesoutdir: ../build/images
 :srcdir: src
