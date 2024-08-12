@@ -168,12 +168,18 @@ Avoid words such as "just", "simply", "easy", "easily", or "simple". These words
 |These simple steps
 |===
 
+[NOTE]
+====
+These guidelines were adapted from the https://kubernetes.io/docs/contribute/style/style-guide/[Documentation style guidelines] for Kubernetes in August of 2024.
+====
+
 [[style-guidelines]]
 === Other style guidelines
 
 Other style guidelines for reference:
 
+* https://kubernetes.io/docs/contribute/style/style-guide/[Documentation style guidelines] for Kubernetes
 * https://www.writethedocs.org/guide/writing/style-guides/[Write the Docs style guide]
 * https://developers.google.com/style[Google's developer docs style guide]
 * https://stylepedia.net/style/[Stylepedia]
-* https://docs.netapp.com/us-en/contribute/style.html#write-conversationally[NetApp styke guide]
+* https://docs.netapp.com/us-en/contribute/style.html#write-conversationally[NetApp style guide]
