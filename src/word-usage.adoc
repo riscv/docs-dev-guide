@@ -3,13 +3,22 @@
 
 Above:: Avoid using directional words. Above and below do not translate well to screen readers. Instead, use "previous" or "following".
 
-Acronyms:: Acronyms and other shortened forms of words must spell out the acronym at first use in a section. Also, please add them to the [https://github.com/riscv/riscv-glossary/blob/main/src/glossary.adoc]glossary for a handy reference.
+Acronyms:: Acronyms and other shortened forms of words must spell out the acronym at first use in a section. Also, you can add them to the [https://github.com/riscv/riscv-glossary/blob/main/src/glossary.adoc]glossary for a handy reference.
 
 After (once):: Use "after" to indicate a sequence of events. Use "once" to indicate "one time".
 
 Also:: use to mean additionally rather than alternatively.
 
-As:: Don't use "as" to mean "because". Don't say "Use the correct version as the wrong version can cause issues." Instead, "Use the correct version because the wrong version can cause issues."
+As:: Don't use "as" to mean "because". For example, don't say "Use the correct version as the wrong version can cause issues." Instead, "Use the correct version because the wrong version can cause issues." Use "as" to compare. 
+
+Because (since or as):: Use "because" to mean “for the reason that" or "due to the fact that". "As" is a comparison. "Since" means a timeline.
+
+Before (versus "prior," "previous," or "preceding")::
+- If possible, replace "prior to" with "before" as "before" is a little less formal.
+- Use "previous" to indicate something that occurred at an unspecified time earlier.
+- Use "preceding" to indicate something that occurred immediately before.
+
+Below:: Avoid using directional words. Above and below do not translate well to screen readers. Instead, use "previous" or "following".
 
 Can (might, must, may, should, shall, will)::
 - Use "can" to indicate capability: "This option can cause your system to fail."
@@ -18,13 +27,14 @@ Can (might, must, may, should, shall, will)::
 - Use "should" to indicate a recommended, but optional action. Consider using an alternative phrase instead, such as "we recommend." Do not use "should" to indicate something that might happen. "After you push the power button, the system should turn on." Instead, be bold! "After you push the power button, the system turns on."
 - Use "must" to indicate a rquired action or condition. "The system must be powered on."
 - Use "shall" to indicate something must happen, but has not yet occured. "The state of the `BUSY` bit shall change only in response to a write to the register."
+- Use "will" very sparingly. Use the present tense for most technical documentation. Use future or past tense if it is required to convey the correct meaning only.
 
 Contractions:: Use common contractions as they set a conversational tone. For example, it's, isn't, can't, don't, and so on.
 
 Following:: Don't use "following" by itself. Don't say "See the following". Instead, use "See the following list".
 
-If (whether):: Use if as a condition, such as logic. If a, then b.
-Use whether to indicate choice or alternative. Event a happens, whether event b does or not.
+If (whether):: Use "if" as a condition, such as logic. "If a, then b."
+Use "whether" to indicate choice or alternative. "Event a happens, whether event b does or not".
 
 Latin phrases:: Avoid abbreviations such as etc., e.g., i.e. They do not translate well. Instead use "and so on" and "for example,". If you do use e.g. or i.e., then know that e.g. means "for example" and i.e means "in other words". With e.g., it is understood that there are more examples than just the ones listed; "The colors of the rainbow, e.g. red, yellow, and green". With i.e., however, it is intended as a replacement for the previous text. "The primary colors, i.e. red, blue, and yellow".
 
@@ -34,10 +44,21 @@ Left (and right):: Avoid using these words if at all possible. If you do use the
 
 Like:: Use "like" to compare or draw similarities. To provide examples, use "such as".
 
+Might (can, must, may, should, shall, will)::
+- Use "can" to indicate capability: "This option can cause your system to fail."
+- Use "might" to indicate possibility: "This option might affect your system performance."
+- Don't use "may," which is ambiguous because it could mean either capability or permission.
+- Use "should" to indicate a recommended, but optional action. Consider using an alternative phrase instead, such as "we recommend." Do not use "should" to indicate something that might happen. "After you push the power button, the system should turn on." Instead, be bold! "After you push the power button, the system turns on."
+- Use "must" to indicate a rquired action or condition. "The system must be powered on."
+- Use "shall" to indicate something must happen, but has not yet occured. "The state of the `BUSY` bit shall change only in response to a write to the register."
+- Use "will" very sparingly. Use the present tense for most technical documentation. "The system will power on" becomes "The system powers on." Use future or past tense if it is required to convey the correct meaning only. 
+
 Numbers:: Use Arabic for numbers greater than 10. Use words for numbers 1 through 10. Except in the following cases.
 - If the numbers are values, use Arabic. "Valid input is 1-10."
-- If there is a mix of numbers less and greater than 10, use Arabic.
-- Use the word if the number begins a sentence. So if the number is a value, rewrite the sentence so that the number doesn't begin the sentence.
+- If there is a mix of numbers less and greater than 10, use Arabic. "2, 3, 5, 7, 11, 13, 17, and 19 are the prime numbers between 1 and 20."
+- Use the word if the number begins a sentence. "One is the loneliest number." If the number is a value, rewrite the sentence so that the number doesn't begin the sentence. "2 is the correct answer" can be rewritten to be "The correct answer is 2."
+
+Once (after):: Use "after" to indicate a sequence of events. Use "once" to indicate "one time".
 
 Prior (versus "before," "previous," or "preceding")::
 - If possible, replace "prior to" with "before" as "before" is a little less formal.
@@ -45,6 +66,15 @@ Prior (versus "before," "previous," or "preceding")::
 - Use "preceding" to indicate something that occurred immediately before.
 
 Re- words:: In general, words with the prefix `re` can be written as one word without a hyphen. The only exception is `re-create`, meaning to create again.
+
+Should (can, might, must, may, should, shall, will)::
+- Use "can" to indicate capability: "This option can cause your system to fail."
+- Use "might" to indicate possibility: "This option might affect your system performance."
+- Don't use "may," which is ambiguous because it could mean either capability or permission.
+- Use "should" to indicate a recommended, but optional action. Consider using an alternative phrase instead, such as "we recommend." Do not use "should" to indicate something that might happen. "After you push the power button, the system should turn on." Instead, be bold! "After you push the power button, the system turns on."
+- Use "must" to indicate a rquired action or condition. "The system must be powered on."
+- Use "shall" to indicate something must happen, but has not yet occured. "The state of the `BUSY` bit shall change only in response to a write to the register."
+- Use "will" very sparingly. Use the present tense for most technical documentation. Use future or past tense if it is required to convey the correct meaning only.
 
 Since:: Use "since" when time is involved. "Since the invention of sliced bread, toasters became popular." Do not use it when you mean "Because".
 
@@ -59,3 +89,16 @@ This, those, these:: Provide a noun after words such as this, those, and these. 
 Time frame:: Write as 2 words, no hyphen.
 
 Using:: Try not to use "using" by itself. Replace with "by using" or "with". "Using" can be either a noun or a participle, which can causing translation issues. You can use "Using" at the beginning of a sentence such as "Using RISC-V standards to design your chip".
+
+Whether (if):: Use "if" as a condition, such as logic. "If a, then b."
+Use "whether" to indicate choice or alternative. "Event a happens, whether event b does or not".
+
+Will (can, might, must, may, should, shall, will)::
+- Use "can" to indicate capability: "This option can cause your system to fail."
+- Use "might" to indicate possibility: "This option might affect your system performance."
+- Don't use "may," which is ambiguous because it could mean either capability or permission.
+- Use "should" to indicate a recommended, but optional action. Consider using an alternative phrase instead, such as "we recommend." Do not use "should" to indicate something that might happen. "After you push the power button, the system should turn on." Instead, be bold! "After you push the power button, the system turns on."
+- Use "must" to indicate a rquired action or condition. "The system must be powered on."
+- Use "shall" to indicate something must happen, but has not yet occured. "The state of the `BUSY` bit shall change only in response to a write to the register."
+- Use "will" very sparingly. Use the present tense for most technical documentation. Use future or past tense if it is required to convey the correct meaning only.
+
