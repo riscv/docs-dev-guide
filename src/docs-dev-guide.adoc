@@ -59,27 +59,27 @@ endif::[]
 include::colophon.adoc[]
 
 //While some documents need several levels of introductory material, other documents need only a brief introduction. You can choose to have either colophon or an overview, or to have both.
-//include::intro.adoc[]
+include::intro.adoc[]
 
-//include::authoring.adoc[]
+include::authoring.adoc[]
 
-//include::a_few_basics.adoc[]
+include::a_few_basics.adoc[]
 
-//include::tables_symbols_math.adoc[]
+include::tables_symbols_math.adoc[]
 
-//include::blocks_notes_markers.adoc[]
+include::blocks_notes_markers.adoc[]
 
-//include::index_bib.adoc[]
+include::index_bib.adoc[]
 
-//include::graphics.adoc[]
+include::graphics.adoc[]
 
 include::style-guidelines.adoc[]
 
-//include::writing.adoc[]
+include::writing.adoc[]
 
-//include::linting.adoc[]
+include::linting.adoc[]
 
 //Note that the index must precede the bibliography for both to work within the same book.
-//include::index.adoc[]
+include::index.adoc[]
 
-//include::bibliography.adoc[]
+include::bibliography.adoc[]
