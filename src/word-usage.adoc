@@ -9,7 +9,7 @@ After (once):: Use "after" to indicate a sequence of events. Use "once" to indic
 
 Also:: use to mean additionally rather than alternatively.
 
-As:: Don't use "as" to mean "because". For example, don't say "Use the correct version as the wrong version can cause issues." Instead, "Use the correct version because the wrong version can cause issues." Use "as" to compare. 
+As:: Don't use "as" to mean "because". For example, don't say "Use the correct version as the wrong version can cause issues." Instead, "Use the correct version because the wrong version can cause issues." Use "as" to compare.
 
 Because (since or as):: Use "because" to mean “for the reason that" or "due to the fact that". "As" is a comparison. "Since" means a timeline.
 
@@ -51,7 +51,7 @@ Might (can, must, may, should, shall, will)::
 - Use "should" to indicate a recommended, but optional action. Consider using an alternative phrase instead, such as "we recommend." Do not use "should" to indicate something that might happen. "After you push the power button, the system should turn on." Instead, be bold! "After you push the power button, the system turns on."
 - Use "must" to indicate a rquired action or condition. "The system must be powered on."
 - Use "shall" to indicate something must happen, but has not yet occured. "The state of the `BUSY` bit shall change only in response to a write to the register."
-- Use "will" very sparingly. Use the present tense for most technical documentation. "The system will power on" becomes "The system powers on." Use future or past tense if it is required to convey the correct meaning only. 
+- Use "will" very sparingly. Use the present tense for most technical documentation. "The system will power on" becomes "The system powers on." Use future or past tense if it is required to convey the correct meaning only.
 
 Numbers:: Use Arabic for numbers greater than 10. Use words for numbers 1 through 10. Except in the following cases.
 - If the numbers are values, use Arabic. "Valid input is 1-10."
@@ -101,4 +101,3 @@ Will (can, might, must, may, should, shall, will)::
 - Use "must" to indicate a rquired action or condition. "The system must be powered on."
 - Use "shall" to indicate something must happen, but has not yet occured. "The state of the `BUSY` bit shall change only in response to a write to the register."
 - Use "will" very sparingly. Use the present tense for most technical documentation. Use future or past tense if it is required to convey the correct meaning only.
-
