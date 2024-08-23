@@ -173,7 +173,7 @@ Avoid words such as "just", "simply", "easy", "easily", or "simple". These words
 These guidelines were adapted from the https://kubernetes.io/docs/contribute/style/style-guide/[Documentation style guidelines] for Kubernetes in August of 2024.
 ====
 
-[[style-guidelines]]
+[[other-style-guidelines]]
 === Other style guidelines
 
 Other style guidelines for reference:
