@@ -1,7 +1,7 @@
 [[blocks_notes_markers]]
 === Admonition blocks
 
-Five kinds of standard admonition blocks are available in AsciiDoc. RISC-V uses these 5 standards with the default icons. Note that the admonition type is not displayed, only the icon. 
+Five kinds of standard admonition blocks are available in AsciiDoc. RISC-V uses these 5 standards with the default icons. Note that the admonition type is not displayed, only the icon.
 
 Note:: Highlight extra information that should stand out from the rest of the text. A "by the way, you should know this" statement.
 
@@ -67,7 +67,7 @@ As a general rule, follow these guidelines for admonitions:
 
 ==== Admonition with a title
 
-You can add a title to your admonition block. 
+You can add a title to your admonition block.
 
 [source,adoc]
 ----
