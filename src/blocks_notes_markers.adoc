@@ -1,42 +1,29 @@
 [[blocks_notes_markers]]
 === Admonition blocks
 
-Five kinds of standard admonition blocks are available in AsciiDoc and these can be mapped to either default or custom icons.
+Five kinds of standard admonition blocks are available in AsciiDoc. RISC-V uses these 5 standards with the default icons. Note that the admonition type is not displayed, only the icon. 
 
-[source,adoc]
-----
-[NOTE]
-====
-This is an example of an admonition block.
+Note:: Highlight extra information that should stand out from the rest of the text. A "by the way, you should know this" statement.
 
-Unlike an admonition paragraph, it may contain any AsciiDoc content.
-The style can be any one of the admonition labels:
+Caution:: Warns users about a condition or action that can lead to bad outcomes such as personal injury or damage equipment). A "we don’t recommend" statement.
 
-* NOTE
-* TIP
-* WARNING
-* CAUTION
-* IMPORTANT
-====
-----
+Warning:: Warns users about a situation that is undesirable. A "Do not do this!" or "You must do this" statement.
 
-This renders as:
+Important:: Information that a user must have. For example, "After you set your password, you cannot change it."
 
-[NOTE]
-====
-This is an example of an admonition block.
+Tip:: Used for Non-normative text such as clarification or hints for implementers or to convey design rationale and why other options were discontinued. RISC-V tech team is working on a solution that will allow these admonitions to be turned off.
 
-Unlike an admonition paragraph, it may contain any AsciiDoc content.
-The style can be any one of the admonition labels:
+As a general rule, follow these guidelines for admonitions:
 
-* NOTE
-* TIP
-* WARNING
-* CAUTION
-* IMPORTANT
-====
+* Understand that admonitions are interruptions. They should be relevant to the topic, but not necessary. If the reader skips reading it, they can still succeed.
+* If the information is necessary, make it part of the topic and even add a heading. Don't put it in an admonition.
+* Limit admonitions to a maximum of 3 on a page (standard PDF page - longer HTML pages can use more.)
+* Do not include results, steps, or prerequisites in admonitions.
+* Make your admonition clear and concise.
+ 
+==== Single paragraph admonition
 
-For a single paragraph admonition, simply use a double colon:
+For a single paragraph admonition, use a double colon:
 
 [source,adoc]
 ----
@@ -47,52 +34,61 @@ which renders as:
 
 NOTE: Note content.
 
-Alternate octicons:
+==== Admonition blocks
 
-* alert-24
-* comment-discussion-24
-* flame-24
-* info-24
-* pencil-24
-* question-24
-* sheild-24
-* squirrel-24
-* zap-24
-
-
-Another example of an admonition block:
+An admonition block can contain any AsciiDoc content.
 
 [source,adoc]
 ----
 [IMPORTANT]
-.Feeding the Werewolves
 ====
-While werewolves are hardy community members, keep in mind the following dietary concerns:
+As a general rule, follow these guidelines for admonitions:
 
-. They are allergic to cinnamon.
-. More than two glasses of orange juice in 24 hours makes them howl in harmony with alarms and sirens.
-. Celery makes them sad.
+* Understand that admonitions are interruptions. They should be relevant to the topic, but not necessary. If the reader skips reading it, they can still succeed.
+* If the information is necessary, make it part of the topic and even add a heading. Don't put it in an admonition.
+* Limit admonitions to a maximum of 3 on a page (standard PDF page - longer HTML pages can use more.)
+* Do not include results, steps, or prerequisites in admonitions.
+* Make your admonition clear and concise.
+====
+----
+
+which renders as:
+
+[IMPORTANT]
+====
+As a general rule, follow these guidelines for admonitions:
+
+* Understand that admonitions are interruptions. They should be relevant to the topic, but not necessary. If the reader skips reading it, they can still succeed.
+* If the information is necessary, make it part of the topic and even add a heading. Don't put it in an admonition.
+* Limit admonitions to a maximum of 3 on a page (standard PDF page - longer HTML pages can use more.)
+* Do not include results, steps, or prerequisites in admonitions.
+* Make your admonition clear and concise.
+====
+
+==== Admonition with a title
+
+You can add a title to your admonition block. 
+
+[source,adoc]
+----
+[WARNING]
+.Security vulnerability
+====
+*Be aware that RLB introduces a security vulnerability if it is set after the boot process is over.* Use with caution, even when you use it temporarily. Editable PMP rules in M-mode gives a false sense of security since it only takes a few malicious instructions to lift any PMP restrictions this way. It doesn’t make sense to have a security control in place and leave it unprotected. Rule Locking Bypass is only meant as a way to optimize the allocation of PMP rules, catch errors durring debugging, and allow the bootrom/firmware to register executable _Shared-Region_ rules. If developers / vendors have no use for such functionality, they should never set ``mseccfg.RLB`` and if possible hard-wire it to 0. In any case *RLB should be disabled and locked as soon as possible*.
 ====
 ----
 
 Rendered:
 
-[IMPORTANT]
-.Feeding the Werewolves
+[WARNING]
+.Security vulnerability
 ====
-While werewolves are hardy community members, keep in mind the following dietary concerns:
-
-. They are allergic to cinnamon.
-. More than two glasses of orange juice in 24 hours makes them howl in harmony with alarms and sirens.
-. Celery makes them sad.
+*Be aware that RLB introduces a security vulnerability if it is set after the boot process is over.* Use with caution, even when you use it temporarily. Editable PMP rules in M-mode gives a false sense of security since it only takes a few malicious instructions to lift any PMP restrictions this way. It doesn’t make sense to have a security control in place and leave it unprotected. Rule Locking Bypass is only meant as a way to optimize the allocation of PMP rules, catch errors durring debugging, and allow the bootrom/firmware to register executable _Shared-Region_ rules. If developers / vendors have no use for such functionality, they should never set ``mseccfg.RLB`` and if possible hard-wire it to 0. In any case *RLB should be disabled and locked as soon as possible*.
 ====
 
+==== RISC-V admonition icon colors
 
-https://github.com/asciidoctor/asciidoctor-pdf/blob/master/docs/theming-guide.adoc#key-prefix-admonition-icon
-
-The default admonition icons don't look right for RISC-V specification, and alternate icons and colors have been set in risc-v_spec-pdf.yml.  and will be considered.
-
-Current icons, edited to tone down color:
+The admonition icons are set in `risc-v_spec-pdf.yml`. RISC-V uses custom colors, as indicated in the <<custom-color-icons>> table.
 
 NOTE: note
 
