@@ -20,7 +20,7 @@ As a general rule, follow these guidelines for admonitions:
 * Limit admonitions to a maximum of 3 on a page (standard PDF page - longer HTML pages can use more.)
 * Do not include results, steps, or prerequisites in admonitions.
 * Make your admonition clear and concise.
- 
+
 ==== Single paragraph admonition
 
 For a single paragraph admonition, use a double colon:
@@ -88,7 +88,7 @@ Rendered:
 
 ==== RISC-V admonition icon colors
 
-The admonition icons are set in `risc-v_spec-pdf.yml`. RISC-V uses custom colors, as indicated in the <<custom-color-icons>> table.
+The admonition icons are set in `risc-v_spec-pdf.yml`. RISC-V uses custom colors, as indicated in the <<custom-color-icons>>.
 
 NOTE: note
 
