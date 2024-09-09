@@ -1,17 +1,29 @@
 [[blocks_notes_markers]]
 === Admonition blocks
 
-Five kinds of standard admonition blocks are available in AsciiDoc. RISC-V uses these 5 standards with the default icons. Note that the admonition type is not displayed, only the icon.
+Five types of standard link:https://docs.asciidoctor.org/asciidoc/latest/blocks/admonitions/[admonition blocks] are available in AsciiDoc. RISC-V uses these five types with the default icons.
+
+NOTE: The admonition type is not displayed, only the icon.
 
 Note:: Highlight extra information that should stand out from the rest of the text. A "by the way, you should know this" statement.
 
-Caution:: Warns users about a condition or action that can lead to bad outcomes such as personal injury or damage equipment). A "we don’t recommend" statement.
+NOTE: example of note type
+
+Caution:: Cautions users about a condition or action that can lead to bad outcomes such as personal injury or damage equipment. A "we don’t recommend" statement.
+
+CAUTION: example of caution type
 
 Warning:: Warns users about a situation that is undesirable. A "Do not do this!" or "You must do this" statement.
 
+WARNING: example of warning type
+
 Important:: Information that a user must have. For example, "After you set your password, you cannot change it."
 
+IMPORTANT: example of important type
+
 Tip:: Used for Non-normative text such as clarification or hints for implementers or to convey design rationale and why other options were discontinued. RISC-V tech team is working on a solution that will allow these admonitions to be turned off.
+
+TIP: example of tip type
 
 As a general rule, follow these guidelines for admonitions:
 
