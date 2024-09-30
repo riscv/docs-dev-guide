@@ -45,7 +45,7 @@ OPTIONS := --trace \
 REQUIRES := --require=asciidoctor-diagram \
             --require=asciidoctor-mathematical
 
-.PHONY: all build clean build-container build-no-containee
+.PHONY: all build clean build-container build-no-container
 
 all: build
 
