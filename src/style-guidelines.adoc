@@ -8,16 +8,16 @@ Whether you are creating a new extention or even a stand alone doc for RISC-V, f
 
 Follow these basic formatting guidelines.
 
-* Use _italic_ for new terms.
+* Use _italic_ for new terms. The _Atomic Layer Deposition_ is a layer-by-layer process that results in the deposition of thin films one atomic layer at a time in a highly controlled manner.
 * Use `monospace` for the following items:
-** Filenames
-** Directories
-** Paths
-** Inline code
-** Commands
+** Filenames: `a-st-ext.adoc`
+** Directories: The `src` directory.
+** Paths: `https://github.com/riscv/riscv-isa-manual/blob/main/src/a-st-ext.adoc`
+** Inline code: The `push()` method adds elements to an array.
+** Commands: The `make` command.
 * Use *`monospace bold`* for the following items:
-** Hex numbers. Hex numbers start with `0x`.
-** Binary numbers. Binary numbers start with `0b`.
+** Hex numbers. Hex numbers start with *`0x`*.
+** Binary numbers. Binary numbers start with *`0b`*.
 ** Non-base 10 literals
 ** Non-base 10 number ranges
 

@@ -9,13 +9,9 @@ For details and additional options, see:
  * AsciiDoc http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/[quick reference].
  * Asciidoctor http://asciidoctor.org/docs/user-manual/[user manual].
 
-In addition, you can ask questions in the https://discuss.asciidoctor.org/[Asciidoctor discussion list].
-
-As is true of any complex process, AsciiDoc/Asciidoctor has some quirks. Please be certain to use the templates, as the templates provide you with files that result in fully featured PDF output.
+In addition, you can ask questions in <https://asciidoctor.zulipchat.com/>
 
 Best practice is to test the PDF build frequently to ensure that you have not accidentally introduced something that breaks the build.
-
-WARNING: PDF generation requires the use of Ruby 2.7.2.
 
 [NOTE]
 ====

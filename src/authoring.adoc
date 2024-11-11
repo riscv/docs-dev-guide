@@ -12,7 +12,7 @@ Asciidoctor toolchains:
 
 Please view the https://github.com/riscv/docs-templates[readme] in the docs-templates repo for information about the automated build processes.
 
-The docs-templates repo also contains assets, such as fonts, styles, directory structure, and themes that you need for RISC-V specifications, along with a https://github.com/riscv/docs-templates/commit/5c18cc9761eb3f6516975ee0c109729a4ce66b93[document] that takes you through a local install process that supports all of the required features for a local build.
+The docs-templates repo also contains assets, such as fonts, styles, directory structure, and themes that you need for RISC-V specifications, along with a https://github.com/riscv/docs-dev-guide/blob/main/local_build.md[document] that takes you through a local install process that supports all of the required features for a local build.
 
 Although testing your markup by building a PDF is good practice, you can catch many common errors by simply downloading Asciidoctor and building the HTML output by using the following command:
 

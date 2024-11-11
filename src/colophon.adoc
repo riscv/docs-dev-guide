@@ -1,20 +1,14 @@
 [colophon]
 = Preface
 
-This document demonstrates the use of AsciiDoc for RISC-V specifications, with the goal of capturing information that will result in effective and efficient collaboration throughout the community.
+This document demonstrates the use of AsciiDoc for RISC-V specifications, with the goal of capturing information that will result in effective and efficient communication of the specs.
 
-AsciiDoc is currently the most feature-rich of the popular lightweight markup languages based on markdown. An Open Source effort, it is gaining wider adoption and there is an AsciiDoc working group. RISC-V also supports some documentation associated with testing that is written in another popular lightweight markup language, Restructured Text.
+AsciiDoc is currently the most feature-rich of the popular lightweight markup languages. As an Open Source effort, it is gaining wider adoption and there is an link:https://asciidoc-wg.eclipse.org/[AsciiDoc working group] to standardize the AsciiDoc specification as well as other ways to get involved.
 
-It’s helpful to think of AsciiDoc as https://docs.asciidoctor.org/asciidoc/latest/asciidoc-vs-markdown/[Markdown grown up]. People in tech often have impulses to re-invent markdown with a brand new lightweight markup language of their own. As appealing as that idea can be, it is inherently flawed. Publishing, like music, can have simple forms, but when fully featured is quite complex. Everyone who has attempted to build upon Markdown to create a simple and feature-rich publishing solution faces the same reality--as we add features, the process necessarily becomes complex.
+RISC-V specifications require the use of AsciiDoc markup and the Asciidoctor toolchain with advanced publishing features that are provided by several add-ons. The <https://github.com/riscv/docs-spec-template> repo allows you to jump into writing a spec.
 
-RISC-V specifications require the use of AsciiDoc markup and the Asciidoctor toolchain with advanced publishing features that are provided by several add-ons. The templates in this repo allow you to jump in with a hands-on approach and build a PDF using the example files.
 
-[TIP]
-====
-Because AsciiDoc is gaining in popularity, there are opportunities contributors to the AsciiDoc specification while it is still being developed. You might want to view what Dan Allen and Sarah White are doing. Along with a growing open source community, they support both AsciiDoc and the Asciidoctor toolchain. Feel free to find out about the working group, the specification under development, the toolchain and its various plugins, and other projects that make use of AsciiDoc.
-====
-
-If you'd like to add to the documentation build toolchain, please join the RISC-V group devoted to supporting the RISC-V publishing templates. As members of an Open Source community, we like to support other open source efforts, and for that reason we enourage coordination in adding features so that everyone benefits.
+If you'd like to discuss the documentation build toolchain, please join the RISC-V group link:https://lists.riscv.org/g/sig-documentation[sig-documentation] devoted to supporting the RISC-V spec documentation. As members of an Open Source community, we like to support other open source efforts, and for that reason we encourage coordination in adding features so that everyone benefits.
 
 [NOTE]
 ====
