@@ -2,6 +2,6 @@
 extends: existence
 scope: raw
 level: error
-message: "Attribute block is not closed."
+message: Attribute block is not closed.
 raw:
   - '(?<!.)(\[(?!{)[^\]\n]+)\n'

@@ -1,7 +1,7 @@
 ---
 extends: script
 level: error
-message: "Unterminated admonition block found in file."
+message: Unterminated admonition block found in file.
 link: https://docs.asciidoctor.org/asciidoc/latest/blocks/admonitions/
 scope: raw
 script: |

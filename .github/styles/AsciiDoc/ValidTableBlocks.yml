@@ -1,7 +1,7 @@
 ---
 extends: script
 level: error
-message: "Unterminated table block found in file."
+message: Unterminated table block found in file.
 link: https://docs.asciidoctor.org/asciidoc/latest/tables/build-a-basic-table/
 scope: raw
 script: |

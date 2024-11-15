@@ -2,6 +2,6 @@
 extends: existence
 scope: raw
 level: error
-message: "Quoted ID value is not closed."
+message: Quoted ID value is not closed.
 raw:
   - '(?<!.)\[id=(["\x27]).*(?<!\1)\]'

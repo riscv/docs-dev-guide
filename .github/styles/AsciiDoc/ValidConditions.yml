@@ -1,7 +1,7 @@
 ---
 extends: script
 level: error
-message: "File contains unbalanced if statements. Review the file to ensure it contains matching opening and closing if statements."
+message: File contains unbalanced if statements. Review the file to ensure it contains matching opening and closing if statements.
 link: https://docs.asciidoctor.org/asciidoc/latest/directives/ifdef-ifndef/
 scope: raw
 script: |

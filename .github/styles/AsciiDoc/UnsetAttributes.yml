@@ -1,7 +1,7 @@
 ---
 extends: script
 level: warning
-message: "Set attribute directive does not have a corresponding unset attribute directive."
+message: Set attribute directive does not have a corresponding unset attribute directive.
 link: https://docs.asciidoctor.org/asciidoc/latest/attributes/unset-attributes/#unset-a-document-attribute-in-the-body
 scope: raw
 script: |

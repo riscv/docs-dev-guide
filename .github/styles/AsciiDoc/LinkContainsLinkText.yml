@@ -5,6 +5,6 @@ level: warning
 ignorecase: true
 nonword: true
 link: https://redhat-documentation.github.io/supplementary-style-guide/#cloud-services-links-hypertext
-message: "Link is missing descriptive link text for accessibility."
+message: Link is missing descriptive link text for accessibility.
 raw:
   - 'link:.*(\[\]|\[click here\]|\[here\]|\[this\])'
