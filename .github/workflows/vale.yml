@@ -1,17 +1,31 @@
-name: reviewdog
+---
+#
+# Copyright (c) 2021 Red Hat, Inc.
+# This program and the accompanying materials are made
+# available under the terms of the Eclipse Public License 2.0
+# which is available at https://www.eclipse.org/legal/epl-2.0/
+#
+# SPDX-License-Identifier: EPL-2.0
+#
+name: Linting with Vale on pull request
 on: [pull_request]
 
 jobs:
   vale:
-    name: runner / vale
-    runs-on: ubuntu-latest
+    name: Linting with Vale
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
-      - uses: errata-ai/vale-action@v2.1.1
+      - name: Install Asciidoctor
+        run: sudo apt-get install -y asciidoctor
+      - uses: errata-ai/vale-action@reviewdog
         with:
-          version: 2.17.0
-          files: /src/*.adoc
-          reporter: github-pr-check
+          filter_mode: diff_context
+          vale_flags: "--no-exit --minAlertLevel=error --glob=*.adoc"
+          reporter: github-pr-review
           fail_on_error: true
-          filter_mode: nofilter
-          token: ${{secrets.VALE_GITHUB_TOKEN}}
+        env:
+          # Required, set by GitHub actions automatically:
+          # https://docs.github.com/en/actions/security-guides/automatic-token-authentication#about-the-github_token-secret
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          REVIEWDOG_GITHUB_API_TOKEN: ${{secrets.GITHUB_TOKEN}}
