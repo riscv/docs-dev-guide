@@ -22,7 +22,7 @@ jobs:
         with:
           filter_mode: diff_context
           vale_flags: "--no-exit --minAlertLevel=error --glob=*.adoc"
-          reporter: github-pr-review
+          reporter: github-pr-check
           fail_on_error: true
         env:
           # Required, set by GitHub actions automatically:
