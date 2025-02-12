@@ -65,10 +65,10 @@ build-no-container:
 
 clean:
 	@if command -v docker >/dev/null 2>&1 ; then \
-	  echo "Cleaning up generated files via Docker..."; \
-	  $(DOCKER_RUN) /bin/sh -c "rm -rf $(BUILD_DIR)"; \
+		echo "Cleaning up generated files via Docker..."; \
+		$(DOCKER_RUN) /bin/sh -c "rm -rf $(BUILD_DIR)"; \
 	else \
-	  echo "Cleaning up generated files..."; \
-	  rm -rf $(BUILD_DIR); \
+		echo "Cleaning up generated files..."; \
+		rm -rf $(BUILD_DIR); \
 	fi
 	@echo "Cleanup completed."
