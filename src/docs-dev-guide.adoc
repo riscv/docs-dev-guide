@@ -2,6 +2,7 @@
 = Authoring and Editing RISC-V Specifications
 :description: A working template for documenting RISC-V architecture in asciidoc
 :company: RISC-V.org
+:revnumber: v0.2.0-example
 :revremark: Pre-release version
 //development: assume everything can change
 //stable: assume everything could change

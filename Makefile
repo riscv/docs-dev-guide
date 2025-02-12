@@ -13,11 +13,12 @@
 # the Doc Template for RISC-V Extensions.
 
 DATE ?= $(shell date +%Y-%m-%d)
-VERSION ?= v1.0.0
-REVMARK ?= Draft
 DOCKER_RUN := docker run --rm -v ${PWD}:/build -w /build \
 riscvintl/riscv-docs-base-container-image:latest
 
+# DO NOT SPECIFY A VERSION OR REVMARK HERE! The revision version and mark
+# (draft/release/etc) should be marked via the :revnumber: and :revremark: fields
+# in the source document itself.
 SRC_DIR := ./src
 BUILD_DIR := build
 HEADER_SOURCE := $(SRC_DIR)/docs-dev-guide.adoc
@@ -27,13 +28,11 @@ ASCIIDOCTOR_HTML := asciidoctor
 OPTIONS := --trace \
            -a compress \
            -a mathematical-format=svg \
-           -a revnumber=${VERSION} \
-           -a revremark=${REVMARK} \
            -a revdate=${DATE} \
            -a pdf-fontsdir=docs-resources/fonts \
            -a pdf-theme=docs-resources/themes/riscv-pdf.yml \
            -D $(BUILD_DIR) \
-           --failure-level=ERROR
+           --failure-level=WARNING
 REQUIRES := --require=asciidoctor-bibtex \
             --require=asciidoctor-diagram \
             --require=asciidoctor-mathematical
