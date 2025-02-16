@@ -59,7 +59,7 @@ recommended date format is YYYY-MM-DD.
 *** `v0.6-public-review`
 .. Push your changes to upstream.
 .. Perform a `make clean all` to perform the official build off of the tag.
-.. Inspect the final PDF to ensure the git SHA tag does not contain `dirty` as part of the name; if so, there are some uncommitted changes in your working repository.
+.. Inspect the final PDF(s) to ensure the git SHA tag does not contain `dirty` as part of the name; if so, there are some uncommitted changes in your working repository. If not, then commit your changes and re-tag the release and try again.
 .. Publish the document appropriately.
 
 - To help ensure clean "coding" in the documentation, it can be useful to turn
