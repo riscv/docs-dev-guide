@@ -22,13 +22,13 @@ riscvintl/riscv-docs-base-container-image:latest
 SRC_DIR := ./src
 BUILD_DIR := build
 HEADER_SOURCE := $(SRC_DIR)/docs-dev-guide.adoc
+GIT_SHA_DOC := $(SRC_DIR)/git_sha.adoc
 
 ASCIIDOCTOR_PDF := asciidoctor-pdf
 ASCIIDOCTOR_HTML := asciidoctor
 OPTIONS := --trace \
            -a compress \
            -a mathematical-format=svg \
-           -a revdate=${DATE} \
            -a pdf-fontsdir=docs-resources/fonts \
            -a pdf-theme=docs-resources/themes/riscv-pdf.yml \
            -D $(BUILD_DIR) \
@@ -39,7 +39,12 @@ REQUIRES := --require=asciidoctor-bibtex \
 
 .PHONY: all build clean build-container build-no-container
 
-all: build
+all: $(GIT_SHA_DOC) build
+
+$(GIT_SHA_DOC): .FORCE
+	echo ":git_sha: $$(git describe --dirty --always)" > $@
+.PHONY: .FORCE
+.FORCE:	# To force the GIT_SHA_DOC to get rebuilt each time
 
 build:
 	@echo "Checking if Docker is available..."
