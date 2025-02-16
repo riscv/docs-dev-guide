@@ -1,0 +1,70 @@
+== Build Infrastructure
+
+Most RISC-V AsciiDoc documents use a `Makefile` to simplify the build process. For many documents, building the PDF and HTML flavors of the documents is as simple as going into the root directory of the document repository and typing `make`.
+
+If Docker is already installed, the `Makefile` will invoke `docker` for the build process. Otherwise, it will build natively.
+
+As an author of a document, there are some conventions to be aware of:
+
+- The version, date, and state (draft, frozen, ratified) of the document should be specified in the `.adoc` file for that document via use of the `:revnumber:` and `:revremark:` keywords. An example usage is the following:
+
+[source,cmd]
+----
+...
+:revnumber: v0.5.1
+:revremark: Draft
+...
+----
+
+
+[NOTE]
+====
+The version, date, and state (draft/frozen/ratified) of the specification
+should be specified *only* in the appropriate `.adoc` file in that repository.
+Some of the document repositories currently use an override in the `Makefile`,
+which can lead to the `Makefile` and the source document claiming different
+revision numbers, dates, and states.
+====
+
+- When preparing to release a specification, it is incumbent to ensure the
+release is fully reproducible and self-documenting. To maintain this, please
+follow these steps for a release:
+.. Update the revision number `:revnumber:` in the source document to reflect
+the release number. This may contain any text (except carriage returns), like
+the following examples. There are no currently agreed-upon conventions for
+this, but please ensure your tag is meaningful for others.
+*** `v0.2`
+*** `v0.2 (with draft of potential Zxyz additions)`
+*** `2025-01-26`
+*** `v1.0.0-draft`
+*** `v1.0.0-rc2`
+*** `v1.0.0`
+*** `v1.0.0-ratified`
+.. Update the revision remark `:revremark:` in the source document to reflect the specification state. Some examples include:
+*** `This document is in development. Assume everything can change.`
+*** `draft`
+*** `This document is in draft state. Change should be expected.`
+*** `This document is in stable state. Assume everything could change.`
+*** `Frozen`
+*** `Release candidate`
+*** `Ratified`
+.. If desired, update the date field `:revdate:` in the source document. If
+left unspecified, no date will be printed on the revision subtitle. The
+recommended date format is YYYY-MM-DD.
+.. Perform a `make clean all` to ensure everything builds cleanly.
+.. Use `git tag <tag-name>` to tag the repository so this build can be perfectly reproduced. Some example tag names:
+*** `riscv-Zxyz-v1.0.0-rc2`
+*** `riscv-Zxyz-v20240411-draft`
+*** `v0.4`
+*** `v0.6-public-review`
+.. Push your changes to upstream.
+.. Perform a `make clean all` to perform the official build off of the tag.
+.. Publish the document appropriately.
+
+- To help ensure clean "coding" in the documentation, it can be useful to turn
+Asciidoctor's error checking to the more strict `--failure-level=WARNING` such
+that any warnings during the document build process are considered fatal
+errors. This can be adjusted by altering the `asciidoc` invocation in the `Makefile`.
+
+This document repository currently adheres to all of these conventions, and
+may be a useful starting point for other specifications.
