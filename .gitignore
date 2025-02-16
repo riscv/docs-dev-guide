@@ -1,2 +1,5 @@
 /build/*
 /images/stem*
+git_sha.adoc
+images
+.*.swp
