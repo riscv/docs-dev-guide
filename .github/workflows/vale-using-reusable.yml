@@ -1,0 +1,6 @@
+name: Linting with Vale on pull request
+on: [pull_request]
+
+jobs:
+   call-reusable-vale-workflow-in-riscv-vale-repo:
+      uses: riscv-admin/riscv-vale/.github/workflows/vale-reusable.yml@main
