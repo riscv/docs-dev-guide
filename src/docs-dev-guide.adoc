@@ -1,11 +1,24 @@
 [[riscv-authoring]]
 = Authoring and Editing RISC-V Specifications
+//:title-logo-image: image:risc-v_logo.png[pdfwidth=3.25in,align=center]
 :description: A working template for documenting RISC-V architecture in asciidoc
 :company: RISC-V.org
+// Grab the auto-generated git SHA.
+include::git_sha.adoc[]
+// IMPORTANT: Each author should make sure that revnumber, revdate, and revremark
+// are set to proper values. Whenever the status of a spec changes, or a new
+// release is done, these should be updated to reflect that. NO OVERRIDES of
+// these values through the Makefile or command-line should be done, to ensure
+// that the proper versioning is captured in the git commits.
+// See also the Build Infrastructure section near the end of this document, or
+// src/build-infrastructure.adoc
+:revnumber: v0.2.0-example (git SHA {git_sha})
+// If desired, uncomment this and hard-code a date.
+//:revdate: today
 :revremark: Pre-release version
 //development: assume everything can change
 //stable: assume everything could change
-//frozen: of you implement this version you assume the risk that something might change because of the public review cycle  but we expect little to no change.
+//frozen: if you implement this version you assume the risk that something might change because of the public review cycle  but we expect little to no change.
 //ratified: you can implement this and be assured nothing will change. if something needs to change due to an errata or enhancement, it will come out in a new extension. we do not revise extensions.
 :revinfo:
 :url-riscv: http://riscv.org
@@ -78,6 +91,8 @@ include::writing.adoc[]
 include::word-usage.adoc[]
 
 include::linting.adoc[]
+
+include::build-infrastructure.adoc[]
 
 //Note that the index must precede the bibliography for both to work within the same book.
 include::index.adoc[]

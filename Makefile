@@ -13,34 +13,38 @@
 # the Doc Template for RISC-V Extensions.
 
 DATE ?= $(shell date +%Y-%m-%d)
-VERSION ?= v1.0.0
-REVMARK ?= Draft
 DOCKER_RUN := docker run --rm -v ${PWD}:/build -w /build \
 riscvintl/riscv-docs-base-container-image:latest
 
+# DO NOT SPECIFY A VERSION OR REVMARK HERE! The revision version and mark
+# (draft/release/etc) should be marked via the :revnumber: and :revremark: fields
+# in the source document itself.
 SRC_DIR := ./src
 BUILD_DIR := build
 HEADER_SOURCE := $(SRC_DIR)/docs-dev-guide.adoc
+GIT_SHA_DOC := $(SRC_DIR)/git_sha.adoc
 
 ASCIIDOCTOR_PDF := asciidoctor-pdf
 ASCIIDOCTOR_HTML := asciidoctor
 OPTIONS := --trace \
            -a compress \
            -a mathematical-format=svg \
-           -a revnumber=${VERSION} \
-           -a revremark=${REVMARK} \
-           -a revdate=${DATE} \
            -a pdf-fontsdir=docs-resources/fonts \
            -a pdf-theme=docs-resources/themes/riscv-pdf.yml \
            -D $(BUILD_DIR) \
-           --failure-level=ERROR
+           --failure-level=WARNING
 REQUIRES := --require=asciidoctor-bibtex \
             --require=asciidoctor-diagram \
             --require=asciidoctor-mathematical
 
 .PHONY: all build clean build-container build-no-container
 
-all: build
+all: $(GIT_SHA_DOC) build
+
+$(GIT_SHA_DOC): .FORCE
+	echo ":git_sha: $$(git describe --dirty --always)" > $@
+.PHONY: .FORCE
+.FORCE:	# To force the GIT_SHA_DOC to get rebuilt each time
 
 build:
 	@echo "Checking if Docker is available..."
@@ -65,6 +69,11 @@ build-no-container:
 	@echo "Build completed successfully."
 
 clean:
-	@echo "Cleaning up generated files..."
-	rm -rf $(BUILD_DIR)
+	@if command -v docker >/dev/null 2>&1 ; then \
+		echo "Cleaning up generated files via Docker..."; \
+		$(DOCKER_RUN) /bin/sh -c "rm -rf $(BUILD_DIR)"; \
+	else \
+		echo "Cleaning up generated files..."; \
+		rm -rf $(BUILD_DIR); \
+	fi
 	@echo "Cleanup completed."
