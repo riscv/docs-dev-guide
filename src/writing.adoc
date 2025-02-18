@@ -3,6 +3,11 @@
 
 This section contains suggested best practices for clear, concise, and consistent content.
 
+Csr
+
+CSR
+CsR
+
 === Use present tense
 
 [cols="1,1"]
