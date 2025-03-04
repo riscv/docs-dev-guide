@@ -24,10 +24,10 @@ on:
         required: false
         type: boolean
         default: false
-  pull_request:
-  push:
-    branches:
-      - main
+ # pull_request:
+ # push:
+ #   branches:
+ #     - main
 
 jobs:
   build:
