@@ -1,6 +1,8 @@
 [[a_few_basics]]
 == AsciiDoc basics
 
+pseudoinstruction
+
 AsciiDoc is fully documented, and its documentation is actively maintained. This document contains some information on AsciiDoc markup to get you started.
 
 For details and additional options, see:
