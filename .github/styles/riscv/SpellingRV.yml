@@ -1,0 +1,29 @@
+#file: noinspection IncorrectFormatting
+---
+extends: spelling
+level: warning
+link: https://redhat-documentation.github.io/vale-at-red-hat/docs/main/reference-guide/spelling/
+message: "Verify the word '%s'. It is not in the American English spelling dictionary used by Vale."
+# A "filter" is a case-sensitive regular expression specifying words to ignore during spell checking.
+# Spelling rule applies to individual words
+# There is no need to add plural forms (s?) to the regex
+filters:
+  - "[mM]icroarchitecture"
+  - "[mM]icroarchitectural"
+  - "IEEE"
+  - "RISC"
+  - "RISC-V"
+  - "IEC"
+  - "[vV]irtualize"
+  - "virtualization"
+  - "SOAR"
+  - "SPUR"
+  - "[mM]icrocontroller"
+  - "FPGA"
+  - "[pP]seudocode"
+  - "[hH]alfword"
+  - "[dD]oubleword"
+  - "[bB]itwise"
+  - "[bB]oolean"
+  - "[sS]box"
+  - "[eE]ndian"
