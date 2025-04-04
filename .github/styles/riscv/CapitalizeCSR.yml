@@ -1,0 +1,7 @@
+---
+extends: existence
+scope: raw
+level: error
+message: "The acronym CSR must always be capitalized."
+raw:
+  - '\b(?!(CSR)\b)[cC][sS][rR]\b'
