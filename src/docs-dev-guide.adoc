@@ -84,6 +84,8 @@ include::index_bib.adoc[]
 
 include::graphics.adoc[]
 
+include::vale.adoc[]
+
 include::style-guidelines.adoc[]
 
 include::writing.adoc[]
