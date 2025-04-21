@@ -7,7 +7,7 @@ RISC-V uses Vale to perform various checks to ensure that the RISC-V style guide
 
 You can find installation instructions for Vale at the https://github.com/riscv-admin/riscv-vale/[Vale for RISC-V documentation GitHub repository].
 
-=== AsciiDoc style for Vale
+== AsciiDoc style for Vale
 
 The AsciiDoc style for Vale lints common AsciiDoc syntax errors. Note that many of the AsciiDoc rules replicate features of the Visual Studio Code editor Asciidoctor plugin.
 
