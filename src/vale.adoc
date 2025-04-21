@@ -59,7 +59,7 @@ Avoid ellipses (...) to indicated omitted words. Instead, spell out the complete
 
 === Em dashes
 
-Avoid em dashes. Instead use commas, parenthesis, or colons. Em dashes can be picked up by ASCIIDoc as an indicator for a list.
+Avoid em dashes. Instead use commas, parenthesis, or colons.
 
 === First person
 
