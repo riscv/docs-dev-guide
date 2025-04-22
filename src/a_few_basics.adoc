@@ -3,6 +3,8 @@
 
 pseudoinstruction
 pseudo-instruction
+CSr
+vsr
 
 AsciiDoc is fully documented, and its documentation is actively maintained. This document contains some information on AsciiDoc markup to get you started.
 
