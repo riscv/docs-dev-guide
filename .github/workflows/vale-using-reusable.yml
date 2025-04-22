@@ -3,6 +3,7 @@ on:
    push:
       branches: [main]
    pull_request:
+      branches: [main]
 
 jobs:
    call-reusable-vale-workflow-in-riscv-vale-repo:
