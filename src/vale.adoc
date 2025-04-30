@@ -26,7 +26,7 @@ The RISC-V style for Vale enforces the rules that are set by the RISC-V style gu
 
 === Abbreviations
 
-Do not use punctuation in abbreviations.
+Do not use punctuation in abbreviations. For example, IBM does not contain any periods.
 
 === Anthropomorphism
 
