@@ -63,7 +63,7 @@ Avoid em dashes. Instead use commas, parenthesis, or colons.
 
 === First person
 
-Do not use words such as "I" or "we", unless you are indeed speaking on behalf of all of RISC-V.
+Do not use words such as "I" or "we", unless you are indeed speaking on behalf of all of RISC-V International.
 
 === Gender neutral language
 
