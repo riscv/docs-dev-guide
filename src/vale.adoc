@@ -111,7 +111,7 @@ Use one space between words and after the end of sentences.
 
 === Spelling
 
-The dictionary chosen for RISC-V is Webster's New College dictionary. You can find it online at https://www.yourdictionary.com/about/websters-new-world-college-dictionary.html[Webster's New World College Dictionary].
+The dictionary chosen for RISC-V International specification writing is Webster's New College dictionary. You can find it online at https://www.yourdictionary.com/about/websters-new-world-college-dictionary.html[Webster's New World College Dictionary].
 
 RISC-V works with cutting edge technology and new words are to be expected. If you want to use a word that is not found in the Dictionary, you must first create an issue in the https://github.com/riscv-admin/riscv-vale/[Vale GitHub] repository. Your issue will be discussed at the Doc-Sig meeting. Please include the rationale for why your term should be included as well as any definitions that your term requires.  If approved, your term will be added to the spelling exception list as well as to the https://github.com/riscv/riscv-glossary[RISC-V glossary].
 
