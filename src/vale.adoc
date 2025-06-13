@@ -42,7 +42,7 @@ Terms such as RISC-V are case sensitive. If your usage is in code, then be sure 
 
 === Conjunctions
 
-Do not overuse conjunctions when you begin a sentence, including the following conjunctions:
+Do not overuse conjunctions ("and", "but", "or", "so") when you begin a sentence.
 
 * And
 * But
