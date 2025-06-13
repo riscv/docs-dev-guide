@@ -59,7 +59,7 @@ Avoid ellipses (...) to indicated omitted words. Instead, spell out the complete
 
 === Em dashes
 
-Avoid em dashes. Instead use commas, parenthesis, or colons.
+Avoid em dashes. An em dash -- so called because it is the length of an English capital M -- sets off a comment in your text. Instead, use commas, parenthesis, or colons.
 
 === First person
 
