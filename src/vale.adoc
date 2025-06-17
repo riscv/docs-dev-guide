@@ -50,7 +50,6 @@ Do not overuse conjunctions ("and", "but", "or", "so") when you begin a sentence
 
 * And
 * But
-* Or
 
 === Contractions
 
