@@ -36,7 +36,7 @@ Anthropomorphism is granting abilities to inanimate objects, such as "This code 
 
 === Camel case
 
-If you are using Camel case (`camelCase`), consider using backticks.
+If you are using camel case (`camelCase`), consider using backticks.
 
 ////
 
