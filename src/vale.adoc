@@ -28,6 +28,8 @@ The RISC-V style for Vale enforces the rules that are set by the RISC-V style gu
 
 Do not use punctuation in abbreviations. For example, IBM does not contain any periods.
 
+////
+
 === Anthropomorphism
 
 Anthropomorphism is granting abilities to inanimate objects, such as "This code allows you to enable access." Instead, make the user the focus of the sentence: "You can use this code to enable access." 
@@ -36,9 +38,11 @@ Anthropomorphism is granting abilities to inanimate objects, such as "This code 
 
 If you are using Camel case (`camelCase`), consider using backticks.
 
+////
+
 === Case sensitive terms
 
-Terms such as RISC-V are case sensitive. If your usage is in code, then be sure to place back ticks around the code phrase.
+Terms such as "RISC-V" and "GitHub" are case sensitive. If your usage is in code, then be sure to place back ticks around the code phrase.
 
 === Conjunctions
 
@@ -51,7 +55,7 @@ Do not overuse conjunctions ("and", "but", "or", "so") when you begin a sentence
 
 === Contractions
 
-Avoid using contractions in Extension documentation. Contractions can cause ambiguity with translations.
+Avoid using contractions in your documentation. Contractions can cause ambiguity with translations. You don't have to avoid them completely though.
 
 === Ellipses
 
@@ -65,6 +69,10 @@ Avoid em dashes. An em dash -- so called because it is the length of an English 
 
 Do not use words such as "I" or "we", unless you are indeed speaking on behalf of all of RISC-V International.
 
+=== Friendly terminology
+
+It is RISC-V policy to use modern word choices for terminology that is friendly for everyone. See [Friendly Terminology](https://lf-riscv.atlassian.net/wiki/spaces/TAXX/pages/565510188/Friendly+Terminology) technical process for more information.
+
 === Gender neutral language
 
 Avoid using language that specifies a gender, such as "he" or "woman". Instead, use words such as "the author" or "human".
@@ -72,6 +80,8 @@ Avoid using language that specifies a gender, such as "he" or "woman". Instead, 
 === Heading punctuation
 
 Do not use punctuation in headings.
+
+////
 
 === Heading
 
@@ -81,6 +91,8 @@ Headings use Title case: all nouns, verbs, adjectives, and adverbs are capitaliz
 
 Do not use hyphens unless that usage is approved. See Spelling.
 
+////
+
 === Merge conflict markers
 
 Do not include any Git merge conflict markers in your source text. For example, `<<<<<<< HEAD`.
@@ -89,9 +101,13 @@ Do not include any Git merge conflict markers in your source text. For example, 
 
 Use the Oxford comma. It saves lives.
 
+////
+
 === Pascal case
 
 If you are using Pascal case (`PascalCase`), consider using backticks.
+
+////
 
 === Repeated words
 
