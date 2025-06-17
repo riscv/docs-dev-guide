@@ -24,3 +24,112 @@ Some of the errors that the AsciiDoc rules highlight include:
 
 The RISC-V style for Vale enforces the rules that are set by the RISC-V style guidelines. 
 
+=== Abbreviations
+
+Do not use punctuation in abbreviations. For example, IBM does not contain any periods.
+
+////
+
+=== Anthropomorphism
+
+Anthropomorphism is granting abilities to inanimate objects, such as "This code allows you to enable access." Instead, make the user the focus of the sentence: "You can use this code to enable access." 
+
+=== Camel case
+
+If you are using camel case (`camelCase`), consider using backticks.
+
+////
+
+=== Case sensitive terms
+
+Terms such as "RISC-V" and "GitHub" are case sensitive. If your usage is in code, then be sure to place back ticks around the code phrase.
+
+=== Conjunctions
+
+Do not overuse conjunctions ("and", "but", "or", "so") when you begin a sentence.
+
+* And
+* But
+
+=== Contractions
+
+Avoid using contractions in your documentation. Contractions can cause ambiguity with translations. You don't have to avoid them completely though.
+
+=== Ellipses
+
+Avoid ellipses (...) to indicated omitted words. Instead, spell out the complete phrase or use words such as "and so on" to indicate that a list is not complete.
+
+=== Em dashes
+
+Avoid em dashes. An em dash -- so called because it is the length of an English capital M -- sets off a comment in your text. Instead, use commas, parenthesis, or colons.
+
+=== First person
+
+Do not use words such as "I" or "we", unless you are indeed speaking on behalf of all of RISC-V International.
+
+=== Friendly terminology
+
+It is RISC-V policy to use modern word choices for terminology that is friendly for everyone. See [Friendly Terminology](https://lf-riscv.atlassian.net/wiki/spaces/TAXX/pages/565510188/Friendly+Terminology) technical process for more information.
+
+=== Gender neutral language
+
+Avoid using language that specifies a gender, such as "he" or "woman". Instead, use words such as "the author" or "human".
+
+=== Heading punctuation
+
+Do not use punctuation in headings.
+
+////
+
+=== Heading
+
+Headings use Title case: all nouns, verbs, adjectives, and adverbs are capitalized. Do not capitalize conjunctions, prepositions, or articles.
+
+=== Hyphens
+
+Do not use hyphens unless that usage is approved. See Spelling.
+
+////
+
+=== Merge conflict markers
+
+Do not include any Git merge conflict markers in your source text. For example, `<<<<<<< HEAD`.
+
+=== Oxford comma
+
+Use the Oxford comma. It saves lives.
+
+////
+
+=== Pascal case
+
+If you are using Pascal case (`PascalCase`), consider using backticks.
+
+////
+
+=== Repeated words
+
+Words such as "the" or "and" can end up duplicated in text. 
+
+=== Sentence length
+
+Try to keep sentences to an average of 32 words or fewer, and vary sentence lengths.
+
+=== Slash
+
+Rather than use a slash, use either "or" or "and".
+
+=== Spacing
+
+Use one space between words and after the end of sentences.
+
+=== Spelling
+
+The dictionary chosen for RISC-V International specification writing is Webster's New College dictionary. You can find it online at https://www.yourdictionary.com/about/websters-new-world-college-dictionary.html[Webster's New World College Dictionary].
+
+RISC-V International works with cutting edge technology and new words are to be expected. If you want to use a word that is not found in the Dictionary, you must first create an issue in the https://github.com/riscv-admin/riscv-vale/[Vale GitHub] repository. Your issue will be discussed at the Doc-Sig meeting. Please include the rationale for why your term should be included as well as any definitions that your term requires. If approved, your term will be added to the spelling exception list as well as to the https://github.com/riscv/riscv-glossary[RISC-V glossary].
+
+=== Using
+
+To avoid ambiguity, replace "using" with either "by using" or "that uses". Do not use articles and prepositions that can increase the clarity of a sentence.
+
