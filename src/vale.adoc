@@ -48,9 +48,6 @@ Terms such as "RISC-V" and "GitHub" are case sensitive. If your usage is in code
 
 Do not overuse conjunctions ("and", "but", "or", "so") when you begin a sentence.
 
-* And
-* But
-
 === Contractions
 
 Avoid using contractions in your documentation. Contractions can cause ambiguity with translations. You don't have to avoid them completely though.
