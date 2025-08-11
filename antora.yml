@@ -1,0 +1,5 @@
+name: docs-guide
+title: Authoring and Editing Specs
+version: v1.0
+nav:
+- modules/ROOT/nav.adoc

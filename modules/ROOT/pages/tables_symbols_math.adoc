@@ -1,0 +1,1 @@
+../../../src/tables_symbols_math.adoc
