@@ -1,0 +1,1 @@
+../../../../src/images/wavedrom/test4wvdrm.adoc

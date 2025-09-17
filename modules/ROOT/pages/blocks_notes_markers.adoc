@@ -1,1 +1,0 @@
-../../../src/blocks_notes_markers.adoc

@@ -2,8 +2,6 @@
 * xref:intro.adoc[Introduction]
 * xref:authoring.adoc[AsciiDoc authoring for RISC-V contributors]
 * xref:a_few_basics.adoc[AsciiDoc basics]
-* xref:tables_symbols_math.adoc[Tables]
-* xref:blocks_notes_markers.adoc[Admonition blocks]
 * xref:index_bib.adoc[Terms and Abbreviations]
 * xref:graphics.adoc[Index and Bibliography]
 * xref:vale.adoc[Vale at RISC-V]
@@ -12,3 +10,4 @@
 * xref:word-usage.adoc[Word Usage Guide]
 * xref:linting.adoc[Linting]
 * xref:build-infrastructure.adoc[Build Infrastructure]
+* xref:bibliography.adoc[Bibliography]
