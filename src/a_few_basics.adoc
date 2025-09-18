@@ -890,7 +890,7 @@ Sidebars provide for a form of commentary.
 ****
 This is content in a sidebar block.
 
-image:example-3.svg[]
+image::example-3.svg[]
 
 This is more content in the sidebar block.
 ****
@@ -901,7 +901,7 @@ This renders as follows:
 ****
 This is content in a sidebar block.
 
-image:example-3.svg[]
+image::example-3.svg[]
 
 This is more content in the sidebar block.
 ****

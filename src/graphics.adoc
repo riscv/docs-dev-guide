@@ -64,7 +64,7 @@ image::image_placeholder.png[]
 
 With the following result:
 
-include::images/wavedrom/instruction_formats.adoc[]
+include::ipartial$wavedrom/instruction_formats.adoc[]
 [[instruction_formats]]
 .Test for wavedrom
 image::image_placeholder.png[]
@@ -399,7 +399,7 @@ include::images/bytefield/examplebyte.adoc[]}
 After the build, it looks like this example:
 
 .Counter-enable (`mcounteren`) register.
-include::images/bytefield/examplebyte.adoc[]
+include::partial$bytefield/examplebyte.adoc[]
 
 
 === Editing Wavedrom diagrams for Unpriv

@@ -1,5 +1,5 @@
 name: docs-guide
-title: Authoring and Editing Specs
-version: v1.0
+title: RISC-V Authoring and Editing Guide
+version: v0.20
 nav:
 - modules/ROOT/nav.adoc
