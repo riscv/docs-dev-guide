@@ -183,7 +183,7 @@ _Key for sample litmus test_
 ----
 
 .Sample litmus test
-graphviz::images/graphviz/litmus_sample.txt[align="center"]
+partials::graphviz/litmus_sample.txt[align="center"]
 
 [cols="2,1"]
 _Key for sample litmus test_
@@ -554,7 +554,7 @@ Now the diagram should contain all of the content that exists within the LaTeX v
 
 ==== Caveats for editing wavedrom diagrams
 
-At the time of this writing, we have noticed the following unexpected results during diagram builds using the asciidoctor-pdf toolchain, as follows:
+At the time of this writing, we have noticed the following unexpected results during diagram builds that use the asciidoctor-pdf toolchain, as follows:
 
 * Some, but not all, unicode that works in AsciiDoc (see <<useful-unicode>> ) actually breaks the Wavedrom diagram build, and other unicode does not break the Wavedrom diagram build but still doesn't render properly.
 * Latexmath appears to not work at all in Wavedrom diagrams.

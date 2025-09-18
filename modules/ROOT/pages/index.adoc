@@ -1,8 +1,5 @@
-= RISC-V Authoring and Editing Guide for Specs
-
-RISC-V Authoring and Editing Guide for Specs landing page
 [.text-center]
-== The RISC-V Authoring and Editing Guide
+= RISC-V Authoring and Editing Guide
 :page-layout: default
 
 image::risc-v_logo.svg[]
