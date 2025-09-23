@@ -64,7 +64,7 @@ image::image_placeholder.png[]
 
 With the following result:
 
-include::ipartial$wavedrom/instruction_formats.adoc[]
+include::partial$wavedrom/instruction_formats.adoc[]
 [[instruction_formats]]
 .Test for wavedrom
 image::image_placeholder.png[]
