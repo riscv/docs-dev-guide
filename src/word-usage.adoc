@@ -33,6 +33,8 @@ Contractions:: Use common contractions as they set a conversational tone. For ex
 
 Following:: Don't use "following" by itself. Don't say "See the following". Instead, use "See the following list".
 
+Hyphenation:: Use hyphens in compound adjectives, but not in compound nouns. "This M-mode behavior happens only in M mode."
+
 If (whether):: Use "if" as a condition, such as logic. "If a, then b."
 Use "whether" to indicate choice or alternative. "Event a happens, whether event b does or not".
 
