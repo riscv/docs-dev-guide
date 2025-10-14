@@ -32,26 +32,42 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      # Step 1: Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           submodules: recursive
 
-      # Step 2: Pull the latest RISC-V Docs container image
+      - name: Normalize version input
+        id: ver
+        run: |
+          v='${{ github.event.inputs.version }}'
+          # Trim leading/trailing whitespace
+          v="$(echo "$v" | awk '{$1=$1; print}')"
+          # Drop leading 'v' or 'V'
+          v="${v#[Vv]}"
+          # Remove any internal spaces
+          v="${v//[[:space:]]/}"
+          echo "plain=$v" >> "$GITHUB_OUTPUT"
+          echo "tag=v$v" >> "$GITHUB_OUTPUT"
+
+      - name: Validate version format
+        run: |
+          v='${{ steps.ver.outputs.plain }}'
+          if ! [[ "$v" =~ ^[0-9]+(\.[0-9]+){1,2}(-[0-9A-Za-z.-]+)?$ ]]; then
+            echo "Invalid version '$v'. Use formats like 0.2, 0.2.0, or 0.2.0-rc1"
+            exit 1
+          fi
+
       - name: Pull Container
         run: docker pull riscvintl/riscv-docs-base-container-image:latest
 
-      # Step 3: Build Files
       - name: Build Files
         run: make
         env:
-          VERSION: v${{ github.event.inputs.version }}
+          VERSION: ${{ steps.ver.outputs.tag }}      # e.g., v0.2.0
           REVMARK: ${{ github.event.inputs.revision_mark }}
 
-      # Step 4: Upload the built PDF files as a single artifact
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -59,16 +75,16 @@ jobs:
           path: ${{ github.workspace }}/build/*.pdf
           retention-days: 30
 
-      # Create Release
       - name: Create Release
+        if: github.event_name == 'workflow_dispatch'
         uses: softprops/action-gh-release@v2
         with:
           files: ${{ github.workspace }}/build/*.pdf
-          tag_name: v${{ github.event.inputs.version }}
-          name: Release ${{ github.event.inputs.version }}
+          tag_name: ${{ steps.ver.outputs.tag }}     # e.g., v0.2.0
+          name: Release ${{ steps.ver.outputs.plain }}
           draft: ${{ github.event.inputs.draft }}
           prerelease: ${{ github.event.inputs.prerelease }}
+          target_commitish: ${{ github.sha }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GHTOKEN }}
-        if: github.event_name == 'workflow_dispatch'
-        # This condition ensures this step only runs for workflow_dispatch events.
+          # Prefer the default token unless you have a reason to use a PAT.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
