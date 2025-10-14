@@ -61,7 +61,7 @@ jobs:
 
       # Create Release
       - name: Create Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           files: ${{ github.workspace }}/build/*.pdf
           tag_name: v${{ github.event.inputs.version }}
