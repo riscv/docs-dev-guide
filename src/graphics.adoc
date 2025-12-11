@@ -7,10 +7,10 @@ While AsciiDoc can render graphics in all popular formats, by far the highest qu
 
 The https://docs.asciidoctor.org/diagram-extension/latest/[asciidoctor-diagram extension] supports numerous diagram types. Some types that are common are:
 
-* <<wavedrom>> Wavedrom diagrams
-* <<graphviz>> Graphviz diagrams
-* <<bytefield>> Bytefield diagrams
-* <<ditaa>> Ditaa diagrams
+* <<wavedrom>>
+* <<graphviz>>
+* <<bytefield>>
+* <<ditaa>>
 
 You can certainly use one of the other supported types, but know that they might cause issues with the build. Please contact the RISC-V docs team before using them.
 
