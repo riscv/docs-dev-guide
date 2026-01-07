@@ -1,0 +1,9 @@
+name: docs-guide
+title: RISC-V Authoring and Editing Guide
+version: v0.20
+nav:
+- modules/ROOT/nav.adoc
+
+asciidoc:
+  attributes:
+    page-pdf_url: https://github.com/riscv/docs-dev-guide/releases/tag/v0.2.0-example
