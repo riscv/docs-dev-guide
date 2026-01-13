@@ -56,22 +56,21 @@ The macro `[wavedrom, , ]` includes two commas and leaves a blank space as an im
 DO NOT make the mistake of simply using `[wavedrom,svg]`. Without the second comma, the build interprets 'svg' as a target name because it is the second value within the macro.
 ====
 
-// In the specifications, there are numerous instances in which several Wavedrom diagrams are grouped and presented as a single figure. To handle these cases while preserving consistency in how the build renders figure titles, use a minimalistic, white graphic with the filename `image_placeholder.png` that blends in with the page background. The following example shows the pattern of its use (minus the macro indicator `[]` in the first line):
-//
-// [source,adoc]
-// ....
-// include::images/wavedrom/instruction_formats.adoc
-// [[instruction_formats]]
-// .Test for wavedrom
-// image::image_placeholder.png[]
-// ....
-//
-// With the following result:
-//
-// include::images/wavedrom/instruction_formats.adoc[]
-// [[instruction_formats]]
-// .Test for wavedrom
-// image::images/image_placeholder.png[]
+In the specifications, there are numerous instances in which several Wavedrom diagrams are grouped and presented as a single figure. To handle these cases while preserving consistency in how the build renders figure titles, use a minimalistic, white graphic with the filename `image_placeholder.png` that blends in with the page background. The following example shows the pattern of its use (minus the macro indicator `[]` in the first line):
+
+[source,adoc]
+....
+include::images/wavedrom/instruction_formats.adoc
+[[instruction_formats]]
+.Test for wavedrom
+image::image_placeholder.png[]
+....
+With the following result:
+
+include::partial$wavedrom/instruction_formats.adoc[]
+[[instruction_formats]]
+.Test for wavedrom
+image::images/image_placeholder.png[]
 
 
 . Wavedrom code for all diagrams in this illustration are stored under `partials/wavedrom`; the generated SVGs land in `images/wavedrom` at build time.
