@@ -33,7 +33,10 @@ Wavedrom diagrams are used mainly for registers. To specify a wavedrom file, cre
 
 The following json-formatted script, when added within an AsciiDoc block with the macro indicators `[wavedrom, ,svg]`, embeds the diagram output into the PDF:
 
-[source,json]
+[source,adoc]
+----
+.Figure title
+[wavedrom,target="op-32-add-wavedrom",]
 ....
 {reg:[
     { bits:  7, name: 0x3b, attr: ['OP-32'] },
@@ -43,6 +46,7 @@ The following json-formatted script, when added within an AsciiDoc block with th
     { bits:  5, name: 'rs2' },
     { bits:  7, name: 0x04, attr: ['ADD.UW'] },
 ]}
+----
 ....
 
 [NOTE]
@@ -52,25 +56,25 @@ The macro `[wavedrom, , ]` includes two commas and leaves a blank space as an im
 DO NOT make the mistake of simply using `[wavedrom,svg]`. Without the second comma, the build interprets 'svg' as a target name because it is the second value within the macro.
 ====
 
-In the specifications, there are numerous instances in which several Wavedrom diagrams are grouped and presented as a single figure. To handle these cases while preserving consistency in how the build renders figure titles, we use a minimalistic, white graphic with the filename `image_placeholder.png` that blends in with the page background. The following example shows the pattern of its use (minus the macro indicator `[]` in the first line:
+// In the specifications, there are numerous instances in which several Wavedrom diagrams are grouped and presented as a single figure. To handle these cases while preserving consistency in how the build renders figure titles, use a minimalistic, white graphic with the filename `image_placeholder.png` that blends in with the page background. The following example shows the pattern of its use (minus the macro indicator `[]` in the first line):
 
-[source,adoc]
-....
-include::images/wavedrom/instruction_formats.adoc
-[[instruction_formats]]
-.Test for wavedrom
-image::image_placeholder.png[]
-....
+// [source,adoc]
+// ....
+// include::images/wavedrom/instruction_formats.adoc
+// [[instruction_formats]]
+// .Test for wavedrom
+// image::image_placeholder.png[]
+// ....
 
-With the following result:
+// With the following result:
 
-include::images/wavedrom/instruction_formats.adoc[]
-[[instruction_formats]]
-.Test for wavedrom
-image::image_placeholder.png[]
+// include::images/wavedrom/instruction_formats.adoc[]
+// [[instruction_formats]]
+// .Test for wavedrom
+// image::images/image_placeholder.png[]
 
 
-. Wavedrom code for all diagrams in this illustration are stored in `wavedrom` subdirectory within the `images` directory.
+. Wavedrom code for all diagrams in this illustration are stored under `partials/wavedrom`; the generated SVGs land in `images/wavedrom` at build time.
 . Link target that, along with settings in the `book_header` file, automates the inclusion, in the text, of the figure number and caption.
 . Figure caption.
 . "Invisible" placeholder needed for figure caption to display consistently and correctly.
@@ -142,7 +146,7 @@ The following string is lacking macro brackets (`[]`) that should appear after `
 
 [source,adoc]
 ----
-include::images/wavedrom/filename.adoc
+include::partial$wavedrom/filename.adoc
 ----
 ====
 
@@ -152,7 +156,7 @@ include::images/wavedrom/filename.adoc
 The Unpriv appendices contain Graphviz diagrams with associated keys that are arranged in tables. While in the LaTeX version, the diagrams and tables are arranged side-by-side, for the AsciiDoc version;
 
 * each Graphviz diagram should be directly above the key table.
-* store scripts for Graphviz diagrams in the images/graphviz directory, as <filename>.txt
+* store scripts for Graphviz diagrams in the examples/graphviz directory, as <filename>.txt
 * import the Graphviz by reference using the pattern in the following example.
 
 https://graphviz.gitlab.io/[Graphviz digrams]
@@ -160,7 +164,7 @@ https://graphviz.gitlab.io/[Graphviz digrams]
 [source,adoc]
 ----
 .Sample litmus test
-graphviz::images/graphviz/litmus_sample.txt[align="center"]
+graphviz::example$graphviz/litmus_sample.txt[align="center"]
 
 [cols="2,1"]
 _Key for sample litmus test_
@@ -183,7 +187,7 @@ _Key for sample litmus test_
 ----
 
 .Sample litmus test
-graphviz::images/graphviz/litmus_sample.txt[align="center"]
+graphviz::example$graphviz/litmus_sample.txt[align="center"]
 
 [cols="2,1"]
 _Key for sample litmus test_
@@ -214,14 +218,14 @@ Following is an example of Graphviz diagram source:
 .Graphviz s
 [graphviz, target="ethane",svg]
 ....
-graph ethane {
-     C_0 -- H_0 [type=s];
+Counter-enable (`mcounteren`) register.
+include::partial$bytefield/examplebyte.adoc[]}
      C_0 -- H_1 [type=s];
      C_0 -- H_2 [type=s];
      C_0 -- C_1 [type=s];
      C_1 -- H_3 [type=s];
      C_1 -- H_4 [type=s];
-     C_1 -- H_5 [type=s];
+include::partial$bytefield/examplebyte.adoc[]
 }
 ....
 ----
@@ -393,13 +397,13 @@ Then you can include it with the following statement (the `{}` are to keep it fr
 
 ----
 {.Counter-enable (`mcounteren`) register.
-include::images/bytefield/examplebyte.adoc[]}
+include::partial$bytefield/examplebyte.adoc[]}
 ----
 
 After the build, it looks like this example:
 
 .Counter-enable (`mcounteren`) register.
-include::images/bytefield/examplebyte.adoc[]
+include::partial$bytefield/examplebyte.adoc[]
 
 
 === Editing Wavedrom diagrams for Unpriv
@@ -543,9 +547,10 @@ Now the diagram should contain all of the content that exists within the LaTeX v
   {bits: 5, name: 'rs1',    type: 4, 	attr: ['5', 'src1','src1','src1','src1',], },
   {bits: 5, name: 'rs2',    type: 4, 	attr: ['5', 'src2','src2', 'src2', 'src2', ], },
   {bits: 2, name: 'fmt',    type: 8, 	attr: ['3', 'Q','Q','Q','Q',],    },
-  {bits: 5, name: 'rs3',    type: 8, 	attr: ['5', 'src3','src3','src3','src3',], },
+  {bits: 5, name: 'rs3',    type: 8, 	attr: ['5', 'src3','src3','src3','src3',], }
 ]}
 ....
+
 
 [start=4]
 . If you or a member of your team can build locally, please ensure that someone checks that the diagrams build without errors.

@@ -1,4 +1,6 @@
 .Authoring and Editing RISC-V Specs
+* xref:colophon.adoc[Preface]
+* xref:contributors.adoc[Contributors]
 * xref:intro.adoc[Introduction]
 * xref:authoring.adoc[AsciiDoc authoring for RISC-V contributors]
 * xref:a_few_basics.adoc[AsciiDoc basics]
@@ -10,4 +12,7 @@
 * xref:word-usage.adoc[Word Usage Guide]
 * xref:linting.adoc[Linting]
 * xref:build-infrastructure.adoc[Build Infrastructure]
+* xref:install-tools.adoc[Installing Authoring Tools]
+* xref:book-index.adoc[Index]
 * xref:bibliography.adoc[Bibliography]
+

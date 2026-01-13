@@ -1,13 +1,4 @@
 = Install Asciidoctor and use Asciidoc
-Elisa Sawyer
-:backend: reveal.js
-// :customjs: <javascript location>
-// :customcss: <css location>
-:navigation:
-:status:
-:split:
-
-== AsciiDoc needs Asciidoctor
 
 - To author in AsciiDoc, you must install Aciidoctor.
 
@@ -17,7 +8,7 @@ Elisa Sawyer
 
 == Install Ruby on Mac
 
-Asciidoctor's Web site recommends installing Ruby using RVM, and then Asciidoctor.
+Asciidoctor's Web site recommends installing Ruby by using RVM, and then Asciidoctor.
 
 RVM is essential for creating PDF files because the PDF build requires Ruby version 2.7.x.
 
@@ -133,14 +124,15 @@ https://octicons.github.com/
 - In your text editor, create a new file.
 - Assign a name and save with the .adoc extension.
 - In the first line, use a single "=" to indicate a document title and create the title.
-- Start with the settings above and change them as needed.
+- Start with the settings that were listed previously and change them as needed.
 :NOTE: Blank lines are not allowed in the headers.
-- You have the option of using one long file or adding files using includes like the following:
-----
-include::copyright.adoc[]
-include::intro.adoc[]
-include::requirements.adoc[]
-----
+- You have the option of creating one long file or adding files by using includes like the following:
+
+....
+`include::contributors.adoc[]`
+`include::intro.adoc[]`
+`include::writing.adoc[]`
+....
 
 == Build static documentation only
 
