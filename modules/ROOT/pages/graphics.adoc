@@ -523,7 +523,7 @@ Here's the result:
 . Check the LaTeX version of the diagram to check for the numerical values that are needed within the missing row:
 
 [source,adoc]
-----
+....
 {reg: [
   {bits: 7, name: 'opcode', type: 8,	attr: ['8', 'FMADD', 'FNMADD', 'FMSUB', 'FNMSUB'], },
   {bits: 5, name: 'rd',   	type: 2,	attr: ['6', 'dest','dest','dest','dest',], },
@@ -533,7 +533,7 @@ Here's the result:
   {bits: 2, name: 'fmt',    type: 8, 	attr: ['4', 'Q','Q','Q','Q',], },
   {bits: 5, name: 'rs3',    type: 8, 	attr: ['6', 'src3','src3','src3','src3',], },
 ]}
-----
+....
 
 Now the diagram should contain all of the content that exists within the LaTeX version:
 
