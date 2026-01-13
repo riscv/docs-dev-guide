@@ -46,7 +46,6 @@ The following json-formatted script, when added within an AsciiDoc block with th
     { bits:  5, name: 'rs2' },
     { bits:  7, name: 0x04, attr: ['ADD.UW'] },
 ]}
-----
 ....
 
 [NOTE]
