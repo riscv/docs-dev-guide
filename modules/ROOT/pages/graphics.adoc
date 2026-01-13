@@ -57,7 +57,7 @@ DO NOT make the mistake of simply using `[wavedrom,svg]`. Without the second com
 ====
 
 // In the specifications, there are numerous instances in which several Wavedrom diagrams are grouped and presented as a single figure. To handle these cases while preserving consistency in how the build renders figure titles, use a minimalistic, white graphic with the filename `image_placeholder.png` that blends in with the page background. The following example shows the pattern of its use (minus the macro indicator `[]` in the first line):
-
+//
 // [source,adoc]
 // ....
 // include::images/wavedrom/instruction_formats.adoc
@@ -65,9 +65,9 @@ DO NOT make the mistake of simply using `[wavedrom,svg]`. Without the second com
 // .Test for wavedrom
 // image::image_placeholder.png[]
 // ....
-
+//
 // With the following result:
-
+//
 // include::images/wavedrom/instruction_formats.adoc[]
 // [[instruction_formats]]
 // .Test for wavedrom
