@@ -1,7 +1,7 @@
 name: docs-guide
 title: RISC-V Authoring and Editing Guide
-version: v0.20
-display-version: 'v.20'
+version: v0.25
+display-version: 'v.25'
 start_page: ROOT:index.adoc
 nav:
 - modules/ROOT/nav.adoc

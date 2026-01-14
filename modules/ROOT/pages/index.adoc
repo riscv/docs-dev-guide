@@ -5,4 +5,4 @@
 [.space-above]
 image::risc-v_logo.svg[id="riscvlogo"xs,alt="RISCV"]
 
-Version 0.20: This document is not ratified.
+Version 0.25: This document is not ratified.
