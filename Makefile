@@ -14,7 +14,7 @@
 
 DATE ?= $(shell date +%Y-%m-%d)
 DOCKER_RUN := docker run --rm -v ${PWD}:/build -w /build \
-riscvintl/riscv-docs-base-container-image:latest
+ghcr.io/riscv/riscv-docs-base-container-image:latest
 
 # DO NOT SPECIFY A VERSION OR REVMARK HERE! The revision version and mark
 # (draft/release/etc) should be marked via the :revnumber: and :revremark: fields
