@@ -1,0 +1,115 @@
+= Creating a New Specification and Building with Antora
+
+Antora is a static site generator designed for creating documentation sites from multiple repositories. It uses AsciiDoc files and a structured content model to produce a cohesive site. This guide explains how to create a new specification and build it with Antora.
+
+== Basic Components of Antora
+Before we dive into creating a new specification, let's briefly review the structure and key components of an Antora documentation site:
+
+Your specification should have the following structure:
+
+----
+riscv-new-spec/
+├── antora.yml
+├── modules/
+│   └── ROOT/
+│       ├── images
+│       ├── pages/
+│       │   └── index.adoc
+│       ├── partials
+│       │   └── wavedrom
+│       │   └── bytefield
+│       ├── resources
+│       │   └── bibliography.bib
+│       └── nav.adoc
+└── src
+----
+
+playbook: A YAML file that defines the structure of the site, including content sources, UI bundle, and build settings. Each site has a single playbook.
+
+antora.yml: The component descriptor file that defines metadata about your specification, such as its name, title, version, and navigation structure. Example:
++
+----
+name: new-spec
+title: RISC-V New Specification
+version: 1.0
+nav:
+  - modules/ROOT/nav.adoc
+----
+
+index.adoc: The main AsciiDoc file for your specification, which will be rendered as the primary page.
+
+nav.adoc: The navigation file that defines the structure of the site's navigation menu for your specification.
+
+== Setting up a GitHub repo for Antora
+
+(waiting to decide how we want to recommend structuring spec repos before writing this section)
+
+
+
+== Working with Overview pages and groups
+
+If your specification belongs to an existing category of specs, for example, Platform Software, use the antora.yml file to specify the page group for your spec. This will ensure that your spec is grouped with related specs in the navigation and on overview pages. For example, if your spec is a platform software spec, you would set the page group to "platform-software" in your antora.yml file:
+
+asciidoc:
+  attributes:
+    page-group: platform-software
+
+== Building your Spec with Antora
+
+Your specification should have the following structure:
+
+----
+riscv-new-spec/
+├── antora.yml
+├── modules/
+│   └── ROOT/
+│       ├── pages/
+│       │   └── index.adoc
+│       └── nav.adoc
+└── docs-resources/ (optional)
+----
+
+* `antora.yml`: The component descriptor. Example:
++
+----
+name: new-spec
+title: RISC-V New Specification
+version: 1.0
+nav:
+  - modules/ROOT/nav.adoc
+----
+
+* `modules/ROOT/pages/index.adoc`: The main page for your spec.
+* `modules/ROOT/nav.adoc`: Navigation file for your spec.
+
+== 3. Add Content
+
+Write your specification content in AsciiDoc (`.adoc`) files under `modules/ROOT/pages/`.
+Update `nav.adoc` to include links to your pages.
+
+== 4. Add to Antora Playbook
+
+In your Antora playbook (e.g., `antora-playbook.yml`), add your spec as a content source:
++
+----
+content:
+  sources:
+    - url: ../riscv-new-spec
+      branches: HEAD
+      start_path: .
+----
+
+== 5. Build the Site
+
+Run Antora from the root of your documentation workspace:
++
+----
+npx antora antora-playbook.yml
+----
+
+The new specification should appear in the generated site.
+
+== 6. Tips
+
+
+* Follow existing spec repos for best practices on structure and metadata.

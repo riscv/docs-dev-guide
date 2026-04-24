@@ -6,6 +6,7 @@
 * xref:a_few_basics.adoc[AsciiDoc basics]
 * xref:index_bib.adoc[Index and Bibliography]
 * xref:graphics.adoc[Graphics]
+* xref:antora_usage.adoc[Using Antora to build your spec]
 * xref:vale.adoc[Vale at RISC-V]
 * xref:style-guidelines.adoc[RISC-V Style Guidelines]
 * xref:writing.adoc[Best Practice]
