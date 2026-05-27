@@ -8,4 +8,5 @@ nav:
 
 asciidoc:
   attributes:
+    page-group: hardware
     page-pdf_url: https://github.com/riscv/docs-dev-guide/releases/tag/v0.2.0-example
