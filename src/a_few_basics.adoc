@@ -88,7 +88,7 @@ The following example is a valid sequence of headers.
 Index
 ```
 
-NOTE: Settings in the header file (`book_header.adoc` in the docs-templates repo) trigger auto-generation of Appendix prefixes and of the Index (among other things).
+NOTE: Settings in the header file (`modules/ROOT/pages/spec-sample.adoc` in the docs-spec-template repo) trigger auto-generation of Appendix prefixes and of the Index (among other things).
 
 === Lists
 
@@ -331,7 +331,7 @@ Either table renders with table headers.
 
 ==== Table captions
 
-The `book_header.adoc` file in the docs-templates repo sets the `full` cross-reference attribute to enable captions to display from targets in the anchors. This ability allows you to set captions for tables, blocks, and illustrations. If you do not provide a caption, Asciidoctor defaults to the _basic_ cross reference style.
+The `modules/ROOT/pages/spec-sample.adoc` file in the docs-spec-template repo sets the `full` cross-reference attribute to enable captions to display from targets in the anchors. This ability allows you to set captions for tables, blocks, and illustrations. If you do not provide a caption, Asciidoctor defaults to the _basic_ cross reference style.
 
 To set a caption for a table or image, use the pattern as follows:
 
