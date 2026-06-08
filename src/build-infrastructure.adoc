@@ -4,6 +4,12 @@ Most RISC-V AsciiDoc documents use a `Makefile` to simplify the build process. F
 
 If Docker is already installed, the `Makefile` will invoke `docker` for the build process. Otherwise, it will build natively.
 
+=== Source directory
+
+In the Antora-based template, AsciiDoc source files live in `modules/ROOT/pages/` rather than a flat `src/` directory. The `Makefile` sets `SRC_DIR := modules/ROOT/pages` accordingly. The entry point for the PDF and HTML build is `modules/ROOT/pages/spec-sample.adoc`.
+
+For a full description of the Antora directory structure and how to register your specification with the RISC-V documentation site, see <<antora-structure>>.
+
 As an author of a document, there are some conventions to be aware of:
 
 - The version, date, and state (draft, frozen, ratified) of the document should be specified in the `.adoc` file for that document via use of the `:revnumber:` and `:revremark:` keywords. An example usage is the following:

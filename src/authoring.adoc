@@ -10,15 +10,24 @@ Asciidoctor toolchains:
 
 === RISC-V AsciiDoc authoring assets
 
-Please view the https://github.com/riscv/docs-templates[readme] in the docs-templates repo for information about the automated build processes.
+Please view the https://github.com/riscv/docs-spec-template[readme] in the docs-spec-template repo for information about the automated build processes.
 
-The docs-templates repo also contains assets, such as fonts, styles, directory structure, and themes that you need for RISC-V specifications, along with a https://github.com/riscv/docs-dev-guide/blob/main/local_build.md[document] that takes you through a local install process that supports all of the required features for a local build.
+The docs-spec-template repo contains assets such as fonts, styles, directory structure, and themes needed for RISC-V specifications. It uses an Antora-compatible directory structure with source files in `modules/ROOT/pages/`. See <<antora-structure>> for a full description of the layout.
 
-Although testing your markup by building a PDF is good practice, you can catch many common errors by simply downloading Asciidoctor and building the HTML output by using the following command:
+A https://github.com/riscv/docs-dev-guide/blob/main/local_build.md[local build guide] takes you through the local install process that supports all of the required features.
+
+Although testing your markup by building a PDF is good practice, you can catch many common errors by simply downloading Asciidoctor and building the HTML output using the following command from the repository root:
 
 [source,cmd]
 ----
-asciidoctor book_header.adoc
+asciidoctor modules/ROOT/pages/spec-sample.adoc
+----
+
+Or more simply, using the Makefile:
+
+[source,cmd]
+----
+make
 ----
 
 === Writing
