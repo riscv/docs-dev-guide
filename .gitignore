@@ -3,3 +3,5 @@
 git_sha.adoc
 images
 .*.swp
+.github/styles/*
+!.github/styles/.gitkeep
