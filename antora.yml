@@ -1,6 +1,6 @@
 name: docs-guide
 title: RISC-V Authoring and Editing Guide
-version: v0.20
+version: frozen
 display-version: 'v0.20'
 start_page: ROOT:index.adoc
 nav:
@@ -8,5 +8,5 @@ nav:
 
 asciidoc:
   attributes:
-    page-group: platforms
+    page-group: under-development
     page-pdf_url: https://github.com/riscv/docs-dev-guide/releases/tag/v0.2.0-example
