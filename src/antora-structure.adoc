@@ -19,18 +19,22 @@ modules/
       spec-sample.adoc
       intro.adoc
       chapter2.adoc
+      example.bib             <7>
       ...
+    partials/                 <8>
 ----
-<1> Antora component descriptor — identifies this repo as an Antora component.
+<1> Antora component descriptor — identifies this repo as an Antora component and provides component metadata and configuration.
 <2> Makefile — drives the PDF/HTML build.
 <3> Git submodule providing shared fonts, themes, and images.
 <4> Navigation file — defines the sidebar structure for the Antora site.
 <5> Symlink to `docs-resources/images` so Antora can find shared images.
 <6> All AsciiDoc source files live here.
+<7> BibTeX bibliography file. Referenced by `spec-sample.adoc` via the `:bibtex-file:` attribute.
+<8> Optional directory for reusable AsciiDoc fragments (partials), such as Wavedrom diagram source files or content shared across chapters. Reference partials with `include::partial$filename.adoc[]`.
 
 === antora.yml
 
-The `antora.yml` file at the repository root is the Antora https://docs.antora.org/antora/latest/component-version-descriptor/[component descriptor]. It identifies the repository as an Antora content component and provides metadata used when the site is assembled.
+The `antora.yml` file at the repository root is the Antora https://docs.antora.org/antora/latest/component-version-descriptor/[component descriptor]. It serves two purposes: it identifies the repository as an Antora content component, and it provides the component metadata and configuration (name, title, version, navigation, and AsciiDoc attributes) used when the documentation site is assembled.
 
 [source,yaml]
 ----
