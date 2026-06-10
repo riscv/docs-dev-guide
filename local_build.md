@@ -218,6 +218,26 @@ wavedrom-cli
 
 WARNING: For the MacOS, if you upgrade from a prior version to Big Sur, you must reinstall first the NPM and then the NPM version of the wavedrom-cli.
 
+## Run a local Kroki server for diagrams
+
+The RISC-V documentation site uses [Kroki](https://kroki.io) to render diagrams (including WaveDrom, Bytefield, Graphviz, and others) server-side. The dev playbook at `antora-dev.riscv.org` is configured to reach a local Kroki instance on port 9870.
+
+Start the Kroki server with Docker:
+
+```cmd
+docker run -d -p 9870:8000 yuzutech/kroki
+```
+
+The `-d` flag runs it in the background. The container will restart automatically on subsequent Docker starts unless explicitly stopped.
+
+To stop it:
+
+```cmd
+docker stop $(docker ps -q --filter ancestor=yuzutech/kroki)
+```
+
+The dev playbook already has `kroki-server-url: http://localhost:9870` set in its `asciidoc.attributes`, so no additional configuration is needed once the container is running.
+
 ## Graphviz is used for diagrams in some appendices
 
 To support graphviz on the Mac, use brew
@@ -264,47 +284,75 @@ You can then add a bibliography to your appendices and use bibtex conventions to
 Details of how to work with bibtex and the RISC-V bibliogrpahy are in the example.pdf file.
 
 
-## AsciiDoc book headers and styles
+## AsciiDoc document header and styles
 
-Attributes in the book headers for RISC-V AsciiDoc content control aspects of the pdf build. Together with the `risc-v_spec-pdf.yml` file, they enable, among other things, numbered headings, a TOC, running headers and footers, footnotes at chapter ends, custom fonts, admonitions, an index, and an optional colophon.
+Attributes in the document header for RISC-V AsciiDoc content control aspects of the pdf build. Together with the `docs-resources/themes/riscv-pdf.yml` file, they enable, among other things, numbered headings, a TOC, running headers and footers, footnotes at chapter ends, custom fonts, admonitions, an index, and an optional colophon.
 
-In addition, properties in the book header within this repo point to the `images` directory and also the `resources/riscv-spec.bib` file that contains the RISC-V `bibtex` entries for use in creating a bibliography as one of the appendices.
+The entry point for the build is `modules/ROOT/pages/spec-sample.adoc`. This file contains the document header attributes and uses `include::` directives to pull in the chapter files. The `docs-resources/global-config.adoc` submodule file provides shared attributes such as `:company:` and `:doctype:`.
 
-For shorter documents, you have the option of using a report header, however, we have not yet provided branding for it.
+NOTE: The header is already in the template. The only changes you normally need to make are to update `:revnumber:`, `:revremark:`, and author metadata, then add chapter files using `include::chapter.adoc[]` in the order you want them to appear.
 
-NOTE: The headers are already in the template files. The only changes you normally need to make are to add chapter-sized sections in using the syntax `include::filename.adoc[]` in the order by which you want them to appear.
+## Create and add a new chapter file
 
-## Create and name a new .adoc file
-
-- In your text editor, create a new file.
-- Assign a name and save with the .adoc extension.
-- In the first line, add `[file_name]` (using a meaningful string for the filename) and in the second line, use a double "==" to indicate a topic heading, add some content, and save the file with an `.adoc` file extension.
-- In the header file, add `include::file_name.adoc` and save it.
-
-NOTE: Blank lines are not allowed in between the `include::file_name.adoc` files.
+- In your text editor, create a new file in `modules/ROOT/pages/`.
+- Assign a meaningful name and save it with the `.adoc` extension.
+- Begin the file with a section heading (`==`) rather than a document title (`=`), since it will be included into `spec-sample.adoc`.
+- Add an `include::chapter-name.adoc[]` line in `modules/ROOT/pages/spec-sample.adoc` in the position where you want the chapter to appear.
+- Add an `xref:chapter-name.adoc[Chapter Title]` entry to `modules/ROOT/nav.adoc` so the chapter appears in the Antora site navigation.
 
 ## HTML build
 
 Building in HTML is a good way to check that your content under development builds properly.
 
-As soon as you have installed Asciidoctor, you can build HTML content from any `.adoc` file on your own machine--simply CD into the directory that contains your `.adoc` files and run the following:
+The simplest approach from the repository root is:
 
 ```cmd
-asciidoctor any_file_name.adoc
+make
 ```
-This generates a file named `any_file_name.html`.
 
-For pdf output, cd into this cloned directory and use this command:
+This builds both PDF and HTML output to the `build/` directory, using Docker if available or native tooling otherwise.
+
+To build HTML only without the Makefile, run:
 
 ```cmd
-asciidoctor-pdf -r asciidoctor-mathematical -a mathematical-format=svg -r asciidoctor-bibtex -r asciidoctor-diagram book_header.adoc -a pdf-style=resources/themes/riscv-pdf.yml -a pdf-fontsdir=resources/fonts/
+asciidoctor modules/ROOT/pages/spec-sample.adoc
 ```
 
-This generates a file named `book_header.pdf` that makes use of the graphics, styles, and fonts that is identical to example.pdf.
+For pdf output without the Makefile, cd into the repository root and use:
 
-ALERT: When copying/pasting commands for the CLI on the Windows OS, check that no substitutions are being made. We have seen the '=' get replaced with a '#', causing an error message about fonts.
+```cmd
+asciidoctor-pdf -r asciidoctor-mathematical -a mathematical-format=svg \
+  -r asciidoctor-bibtex -r asciidoctor-diagram \
+  -a pdf-theme=docs-resources/themes/riscv-pdf.yml \
+  -a pdf-fontsdir=docs-resources/fonts/ \
+  modules/ROOT/pages/spec-sample.adoc
+```
 
-For your own content, change the name of the header file to a meaningful file name, and change the `include::filename.adoc` as needed.
+ALERT: When copying/pasting commands for the CLI on the Windows OS, check that no substitutions are being made. We have seen the `=` get replaced with a `#`, causing an error message about fonts.
+
+## Antora site build
+
+To preview how the specification will appear as a multi-page HTML site (as it will be published on the RISC-V documentation site), use:
+
+```cmd
+make antora
+```
+
+Output is written to `build/site/`. This requires Node.js 18+ and either `antora` on your PATH or `npx` available.
+
+### Install Antora
+
+```cmd
+npm install -g antora
+```
+
+Verify:
+
+```cmd
+antora --version
+```
+
+If you prefer not to install globally, `make antora` will automatically fall back to `npx antora` if `antora` is not on your PATH.
 
 ## AsciiDoc  and Asciidoctor toolchain documentation
 

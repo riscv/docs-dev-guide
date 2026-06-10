@@ -4,6 +4,12 @@ Most RISC-V AsciiDoc documents use a `Makefile` to simplify the build process. F
 
 If Docker is already installed, the `Makefile` will invoke `docker` for the build process. Otherwise, it will build natively.
 
+=== Source directory
+
+In the Antora-based template, AsciiDoc source files live in `modules/ROOT/pages/` rather than a flat `src/` directory. The `Makefile` sets `SRC_DIR := modules/ROOT/pages` accordingly. The entry point for the PDF and HTML build is `modules/ROOT/pages/spec-sample.adoc`.
+
+For a full description of the Antora directory structure and how to register your specification with the RISC-V documentation site, see <<antora-structure>>.
+
 As an author of a document, there are some conventions to be aware of:
 
 - The version, date, and state (draft, frozen, ratified) of the document should be specified in the `.adoc` file for that document via use of the `:revnumber:` and `:revremark:` keywords. An example usage is the following:
@@ -69,3 +75,58 @@ errors. This can be adjusted by altering the `asciidoc` invocation in the `Makef
 
 This document repository currently adheres to all of these conventions, and
 may be a useful starting point for other specifications.
+
+[[spec-types]]
+=== ISA vs. non-ISA specifications
+
+How a specification is authored and where it lives depends on whether it is an ISA or non-ISA specification.
+
+ISA specifications::
+Extensions to the RISC-V Unprivileged or Privileged ISA are authored as chapters within a branch or fork of the https://github.com/riscv/riscv-isa-manual[riscv-isa-manual] repository. The specification state and revision information are set within the relevant chapter file(s) in that branch, consistent with the conventions of the ISA manual.
+
+Non-ISA specifications::
+All other RISC-V specifications are authored in their own autonomous GitHub repository, using the https://github.com/riscv/docs-spec-template[docs-spec-template] as the starting point. The repository layout, build infrastructure, and GitHub Actions workflows are all provided by the template.
+
+[[spec-lifecycle]]
+=== Specification lifecycle
+
+RISC-V specifications progress through four defined states. The current state is set via the `:revremark:` attribute in the document header and is displayed on the cover page of every build. The canonical definitions of each state are maintained at https://riscv.org/spec-state[riscv.org/spec-state].
+
+Draft::
+The specification is under active development. Everything is subject to change. Use `:revremark: This document is in the link:http://riscv.org/spec-state[Development state]` or simply `:revremark: Draft`.
+
+Stable::
+The specification is feature-complete but may still change in response to public review feedback. Use `:revremark: Stable`.
+
+Frozen::
+The specification has completed public review. Only critical bug fixes are permitted. Implementations based on this version may proceed at the implementer's risk. Use `:revremark: Frozen`.
+
+Ratified::
+The specification has been formally ratified by RISC-V International. No further changes will be made to this version. Use `:revremark: Ratified`.
+
+==== State advancement is manual
+
+State advancement is *not* automated. No process or workflow automatically promotes a specification from one state to the next. Authors must update `:revremark:` in the source document by hand, following approval through the appropriate RISC-V governance process.
+
+==== Non-ISA specifications: releasing a new state
+
+For non-ISA specifications, each state transition should be accompanied by a corresponding GitHub release so the published PDF is permanently associated with that state. The `build-pdf.yml` GitHub Actions workflow supports this via a manual `workflow_dispatch` trigger.
+
+To publish a release at a new state:
+
+. Update `:revremark:` in `modules/ROOT/pages/spec-sample.adoc` to the new state.
+. Update `:revnumber:` to the appropriate version string.
+. Commit and push the changes.
+. In GitHub, navigate to *Actions → Create Specification Document → Run workflow*.
+. Select the matching `revision_mark` (Draft, Stable, Frozen, or Ratified).
+. Set `prerelease` and `draft` flags as appropriate.
+. Run the workflow — it will build the PDF, create a git tag, and publish a GitHub release.
+
+[NOTE]
+====
+The `revision_mark` selected in the workflow dispatch sets the `REVMARK` environment variable passed to `make`, which overrides `:revremark:` in the built PDF. Ensure the value you select matches what is set in the source document so the two are consistent.
+====
+
+==== ISA specifications: state within the ISA manual
+
+For ISA specifications, the specification state is not tracked via a standalone GitHub release workflow. Instead, the state is reflected within the chapter(s) of the relevant ISA manual — either the Unprivileged or Privileged specification — in the branch of https://github.com/riscv/riscv-isa-manual[riscv-isa-manual] where the author is working. The state and revision information should follow the conventions established within that repository and be consistent with the overall state of the ISA manual branch.
