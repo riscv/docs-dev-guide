@@ -16,7 +16,7 @@ The docs-spec-template repo contains assets such as fonts, styles, directory str
 
 A https://github.com/riscv/docs-dev-guide/blob/main/local_build.md[local build guide] takes you through the local install process that supports all of the required features.
 
-Although testing your markup by building a PDF is good practice, you can catch many common errors by simply downloading Asciidoctor and building the HTML output using the following command from the repository root:
+Although testing your markup by building a PDF is a good practice, you can catch many common errors by downloading Asciidoctor and building the HTML output using the following command from the repository root:
 
 [source,cmd]
 ----
