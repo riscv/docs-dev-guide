@@ -1,7 +1,7 @@
 name: docs-guide
 title: RISC-V Authoring and Editing Guide
 version: frozen
-display-version: 'v0.20'
+display-version: 'frozen'
 start_page: ROOT:index.adoc
 nav:
 - modules/ROOT/nav.adoc
