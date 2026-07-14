@@ -49,7 +49,7 @@ nav:
 <3> `~` means unversioned. Set to a version string (e.g., `1.0`) when you release the specification. During development, use standard two digit versioning such as 0.1, 0.2, etc.
 <4> nav: Path to the navigation file, relative to `antora.yml`.  Using the template for non-ISA specifications, this should always be the same path, i.e. modules/ROOT/nav.adoc.
 
-When creating a new specification repository from the template, at minimum rename `name` and `title` to match your specification. For example, the Debug Specification uses:
+When creating a new specification repository from the template, set the page-group attribute to "development" and update it to reflect specification state through the specification lifecycle. Update the `name` and `title` attributes to match your specification. For example, the Debug Specification uses:
 
 name: debug
 title: Debug Specification
