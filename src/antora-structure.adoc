@@ -119,7 +119,7 @@ The `component` name in the comment must match the `name` field in your `antora.
 
 ==== Adding numbering rules
 
-The playbook uses custom extensions to number chapters and appendices in the site navigation. Add a corresponding entry for your specification to both the `nav_numbering_extension` and `section_numbering_extension` blocks. Both blocks share the same rules via a YAML anchor (`&numbering_rules` / `*numbering_rules`), so you only need to add your entry once, in the `nav_numbering_extension` block:
+The playbook uses custom extensions to number chapters and appendixes in the site navigation. Add a corresponding entry for your specification to both the `nav_numbering_extension` and `section_numbering_extension` blocks. Both blocks share the same rules via a YAML anchor (`&numbering_rules` / `*numbering_rules`), so you only need to add your entry once, in the `nav_numbering_extension` block:
 
 [source,yaml]
 ----
@@ -134,7 +134,7 @@ The playbook uses custom extensions to number chapters and appendices in the sit
 <2> Use `ROOT` for single-module specifications (the standard case).
 <3> Must match the branch name(s) listed in your `content.sources` entry.
 <4> The range of nav entries (top-level `*` items in `nav.adoc`) that are numbered chapters. Count from the first entry in `nav.adoc` — entries before your first chapter (e.g., a preface or overview page) are typically at position 1–4.
-<5> Omit this line entirely if your specification has no appendices.
+<5> Omit this line entirely if your specification has no appendixes.
 
 ==== Submitting the pull request
 

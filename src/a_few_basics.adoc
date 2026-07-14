@@ -331,7 +331,7 @@ Either table renders with table headers.
 
 ==== Table captions
 
-The `modules/ROOT/pages/spec-sample.adoc` file in the docs-spec-template repository sets the `full` cross-reference attribute to enable captions to display from targets in the anchors. This ability allows you to set captions for tables, blocks, and illustrations. If you do not provide a caption, Asciidoctor defaults to the _basic_ cross reference style.
+The `modules/ROOT/pages/spec-sample.adoc` file in the docs-spec-template repository sets the `full` cross-reference attribute to enable captions to display from targets in the anchors. You can set captions for tables, blocks, and illustrations. If you do not offer a caption, Asciidoctor defaults to the _basic_ cross-reference style.
 
 To set a caption for a table or image, use the pattern as follows:
 
