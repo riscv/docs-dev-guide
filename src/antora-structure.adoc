@@ -1,11 +1,11 @@
 [[antora-structure]]
 == Antora repository structure
 
-RISC-V specification repositories use an https://docs.antora.org[Antora]-compatible directory structure. This enables individual specification repositories to be assembled into the RISC-V documentation site by Antora while also supporting a standalone PDF and HTML build via `make`.
+RISC-V specification repositories use an https://docs.antora.org[Antora]-compatible directory structure. This enables Antora to assemble individual specification repositories into the RISC-V documentation site while also supporting a standalone PDF and HTML build using `make`.
 
 === Repository layout
 
-A specification repository contains the following top-level files and directories:
+A specification repository has the following top-level files and directories:
 
 ----
 antora.yml                    <1>
@@ -23,10 +23,10 @@ modules/
       ...
     partials/                 <8>
 ----
-<1> Antora component descriptor — identifies this repo as an Antora component and provides component metadata and configuration.
-<2> Makefile — drives the PDF/HTML build.
+<1> Antora component descriptor: identifies this repo as an Antora component and provides component metadata and configuration.
+<2> Makefile: drives the PDF/HTML build.
 <3> Git submodule providing shared fonts, themes, and images.
-<4> Navigation file — defines the sidebar structure for the Antora site.
+<4> Navigation file: defines the sidebar structure for the Antora site.
 <5> Symlink to `docs-resources/images` so Antora can find shared images.
 <6> All AsciiDoc source files live here.
 <7> BibTeX bibliography file. Referenced by `spec-sample.adoc` via the `:bibtex-file:` attribute.
@@ -34,7 +34,7 @@ modules/
 
 === antora.yml
 
-The `antora.yml` file at the repository root is the Antora https://docs.antora.org/antora/latest/component-version-descriptor/[component descriptor]. It serves two purposes: it identifies the repository as an Antora content component, and it provides the component metadata and configuration (name, title, version, navigation, and AsciiDoc attributes) used when the documentation site is assembled.
+The `antora.yml` file at the repository root is the Antora https://docs.antora.org/antora/latest/component-version-descriptor/[component descriptor] and serves two purposes: it identifies the repository as an Antora content component, and it provides the component metadata and configuration (name, title, version, navigation, and AsciiDoc attributes) that Antora uses to assemble the documentation site.
 
 [source,yaml]
 ----
@@ -44,9 +44,9 @@ version: ~                   <3>
 nav:
   - modules/ROOT/nav.adoc   <4>
 ----
-<1> Component name — used in Antora cross-references from other components (`xref:spec-sample:page.adoc[]`). Rename to match your specification.
+<1> Component name: used in Antora cross-references from other components (`xref:spec-sample:page.adoc[]`). Rename to match your specification.
 <2> Human-readable title shown in the site UI. Update this for your specification.
-<3> `~` means unversioned. Set to a version string (e.g., `1.0`) once the specification is released.
+<3> `~` means unversioned. Set to a version string (e.g., `1.0`) when you release the specification.
 <4> Path to the navigation file, relative to `antora.yml`.
 
 When creating a new specification repository from the template, at minimum rename `name` and `title` to match your specification.
@@ -80,25 +80,25 @@ Add a new entry here each time you add a chapter to `pages/`. The order of entri
 
 === modules/ROOT/images/
 
-This directory is a symlink to `docs-resources/images`, which contains the shared RISC-V logo and other common images. Antora requires images to be located within the module directory tree, which is why the symlink exists rather than referencing `docs-resources/` directly.
+This directory is a symlink to `docs-resources/images`, which hasshared RISC-V logo and other common images. Antora requries locating images in the module directory tree, which is why the symlink exists rather than referencing `docs-resources/` directly.
 
-Place any specification-specific images in this directory alongside the symlinked shared images, or manage them via the symlink target in `docs-resources/`.
+Place any specification-specific images in this directory alongside the symlinked shared images, or manage them by using the symlink target in `docs-resources/`.
 
 [[dev-playbook]]
 === Publishing to the RISC-V documentation site
 
-The RISC-V documentation site is assembled from all specification repositories by a central Antora playbook maintained at https://github.com/riscv-admin/antora-dev.riscv.org[riscv-admin/antora-dev.riscv.org]. Specification authors do not manage their own playbook — instead, they submit a pull request to that repository to register their specification as a content source.
+A central Antora playbook maintained at https://github.com/riscv-admin/antora-dev.riscv.org[riscv-admin/antora-dev.riscv.org] assembles the RISC-V documentation site from all specification repositories. Specification authors do not manage their own playbook. Instead, they submit a pull request to that repository to register their specification as a content source.
 
 ==== Naming your branch
 
-By convention, Antora-ready branches are named with the version and an `-antora` suffix:
+By convention, name Antora-ready branches with the version and an `-antora` suffix:
 
 ----
 v1.0-antora
 v20250312-antora
 ----
 
-Create this branch from your specification's release tag or working branch once the Antora directory structure is in place.
+Create this branch from your specification's release tag or working branch after the Antora directory structure is in place.
 
 ==== Adding a content source
 
@@ -115,11 +115,11 @@ In the playbook at `antora/antora-playbook.yml`, add an entry to the `content.so
   submodules: true
 ----
 
-The `component` name in the comment must match the `name` field in your `antora.yml`. Set `submodules: true` if your repository uses git submodules (e.g., `docs-resources`). Set `worktrees: true` if your repository contains symlinks.
+The `component` name in the comment must match the `name` field in your `antora.yml`. Set `submodules: true` if your repository uses git submodules (e.g., `docs-resources`). Set `worktrees: true` if your repository has symlinks.
 
 ==== Adding numbering rules
 
-The playbook uses custom extensions to number chapters and appendixes in the site navigation. Add a corresponding entry for your specification to both the `nav_numbering_extension` and `section_numbering_extension` blocks. Both blocks share the same rules via a YAML anchor (`&numbering_rules` / `*numbering_rules`), so you only need to add your entry once, in the `nav_numbering_extension` block:
+The playbook uses custom extensions to number chapters and appendixes in the site navigation. Add a corresponding entry for your specification to both the `nav_numbering_extension` and `section_numbering_extension` blocks. Both blocks share the same rules from a YAML anchor (`&numbering_rules` / `*numbering_rules`), so you only need to add a single entry in the 'nav_numbering_extension` block:
 
 [source,yaml]
 ----
@@ -133,19 +133,19 @@ The playbook uses custom extensions to number chapters and appendixes in the sit
 <1> Must match the `name` in your `antora.yml`.
 <2> Use `ROOT` for single-module specifications (the standard case).
 <3> Must match the branch name(s) listed in your `content.sources` entry.
-<4> The range of nav entries (top-level `*` items in `nav.adoc`) that are numbered chapters. Count from the first entry in `nav.adoc` — entries before your first chapter (e.g., a preface or overview page) are typically at position 1–4.
+<4> The range of nav entries (top-level `*` items in `nav.adoc`) to number as chapters. Count from the first entry in `nav.adoc` — entries before your first chapter (e.g., a preface or overview page) are typically at position 1 through 4.
 <5> Omit this line entirely if your specification has no appendixes.
 
 ==== Submitting the pull request
 
 . Fork or branch https://github.com/riscv-admin/antora-dev.riscv.org[riscv-admin/antora-dev.riscv.org].
 . Add your content source and numbering rules to `antora/antora-playbook.yml` as described above.
-. Open a pull request against the `main` branch with a brief description of the specification being added.
+. Open a pull request against the `main` branch with a brief description of the specification added.
 
 [[install-antora]]
 === Installing Antora
 
-Antora is needed to run a local site preview. It requires Node.js version 18 or later. Once Node.js is installed, install Antora globally:
+You need Antora to run a local site preview. It requires Node.js version 18 or later. Once you install Node.js, install Antora globally:
 
 [source,cmd]
 ----
