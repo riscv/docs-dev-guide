@@ -68,7 +68,7 @@ When adding a new chapter:
 
 === modules/ROOT/nav.adoc
 
-The `nav.adoc` file defines the navigation sidebar shown in the Antora site. It uses a nested list of `xref:` macros.
+The `nav.adoc` file defines the navigation sidebar shown in the Antora site.
 
 [source,adoc]
 ----
@@ -79,7 +79,7 @@ The `nav.adoc` file defines the navigation sidebar shown in the Antora site. It 
 ** xref:bibliography.adoc[Bibliography]
 ----
 
-Add a new entry here each time you add a chapter to `pages/`. The order of entries controls the sidebar order.
+Add a new entry here each time you add a chapter to `pages/`. The order of entries controls the left navigation order in the HTML version in the RISC-V Specifications Library.
 
 === modules/ROOT/images/
 
