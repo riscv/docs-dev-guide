@@ -83,9 +83,7 @@ Add a new entry here each time you add a chapter to `pages/`. The order of entri
 
 === modules/ROOT/images/
 
-This directory is a symlink to `docs-resources/images`, which hasshared RISC-V logo and other common images. Antora requries locating images in the module directory tree, which is why the symlink exists rather than referencing `docs-resources/` directly.
-
-Place any specification-specific images in this directory alongside the symlinked shared images, or manage them by using the symlink target in `docs-resources/`.
+Antora locates images in the module directory tree.  Images used in the specification will be stored in the images directory.
 
 [[dev-playbook]]
 === Publishing to the RISC-V documentation site
