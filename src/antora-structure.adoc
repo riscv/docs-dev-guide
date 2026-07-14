@@ -46,10 +46,10 @@ nav:
 ----
 <1> Component name: used in Antora cross-references from other components (`xref:spec-sample:page.adoc[]`). Rename to match your specification. This attribute is used in the URL.
 <2> Human-readable title shown in the site UI. Update this for your specification.
-<3> `~` means unversioned. Set to a version string (e.g., `1.0`) when you release the specification.
+<3> `~` means unversioned. Set to a version string (e.g., `1.0`) when you release the specification. During development, use standard two digit versioning such as 0.1, 0.2, etc.
 <4> Path to the navigation file, relative to `antora.yml`.
 
-When creating a new specification repository from the template, at minimum rename `name` and `title` to match your specification.  For example, the Debug Specification uses:
+When creating a new specification repository from the template, at minimum rename `name` and `title` to match your specification. For example, the Debug Specification uses:
 
 name: debug
 title: Debug Specification
