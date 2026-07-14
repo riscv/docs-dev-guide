@@ -27,10 +27,10 @@ modules/
 <2> Makefile: drives the PDF/HTML build.
 <3> docs-resources: Git submodule providing shared fonts, themes, and images.
 <4> nav.adoc file: the navigation file that defines the sidebar structure for the Antora site.
-<5> Symlink to `docs-resources/images` so Antora can find shared images.
+<5> Images: Symlink to `docs-resources/images` so Antora can find shared images.
 <6> Pages directory: all AsciiDoc source files live here.
 <7> Resources directory: resource files that are not asciidoc or images such as the bibliography file. Referenced by `spec-sample.adoc` via the `:bibtex-file:` attribute.
-<8> Optional directory for reusable AsciiDoc fragments (partials), such as Wavedrom diagram source files or content shared across chapters. Reference partials with `include::partial$filename.adoc[]`.
+<8> Partials directory: Optional directory for reusable AsciiDoc fragments (partials), such as Wavedrom diagram source files or content shared across chapters. Reference partials with `include::partial$filename.adoc[]`.
 
 === antora.yml
 
@@ -44,12 +44,15 @@ version: ~                   <3>
 nav:
   - modules/ROOT/nav.adoc   <4>
 ----
-<1> Component name: used in Antora cross-references from other components (`xref:spec-sample:page.adoc[]`). Rename to match your specification.
+<1> Component name: used in Antora cross-references from other components (`xref:spec-sample:page.adoc[]`). Rename to match your specification. This attribute is used in the URL.
 <2> Human-readable title shown in the site UI. Update this for your specification.
 <3> `~` means unversioned. Set to a version string (e.g., `1.0`) when you release the specification.
 <4> Path to the navigation file, relative to `antora.yml`.
 
-When creating a new specification repository from the template, at minimum rename `name` and `title` to match your specification.
+When creating a new specification repository from the template, at minimum rename `name` and `title` to match your specification.  For example, the Debug Specification uses:
+
+name: debug
+title: Debug Specification
 
 === modules/ROOT/pages/
 
