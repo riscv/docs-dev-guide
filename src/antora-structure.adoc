@@ -28,7 +28,7 @@ modules/
 <3> docs-resources: Git submodule providing shared fonts, themes, and images.
 <4> nav.adoc file: the navigation file that defines the sidebar structure for the Antora site.
 <5> Symlink to `docs-resources/images` so Antora can find shared images.
-<6> All AsciiDoc source files live here.
+<6> Pages direcotory: all AsciiDoc source files live here.
 <7> BibTeX bibliography file. Referenced by `spec-sample.adoc` via the `:bibtex-file:` attribute.
 <8> Optional directory for reusable AsciiDoc fragments (partials), such as Wavedrom diagram source files or content shared across chapters. Reference partials with `include::partial$filename.adoc[]`.
 
