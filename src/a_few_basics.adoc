@@ -357,7 +357,7 @@ kind of trap.
 .Characteristics of traps.
 [cols="<,^,^,^,^",options="header",]
 |===
-| |Contained |Requested |Invisible |Fatal
+| |Contained |Requested |Invisible |Unrecoverable
 |Execution terminates |No |Nolatexmath:[$^{1}$] |No |Yes
 |Software is oblivious |No |No |Yes |Yeslatexmath:[$^{2}$]
 |Handled by environment |No |Yes |Yes |Yes
