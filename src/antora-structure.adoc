@@ -25,7 +25,7 @@ modules/
 ----
 <1> Antora component descriptor: identifies this repo as an Antora component and provides component metadata and configuration.
 <2> Makefile: drives the PDF/HTML build.
-<3> Git submodule providing shared fonts, themes, and images.
+<3> docs-resources: Git submodule providing shared fonts, themes, and images.
 <4> Navigation file: defines the sidebar structure for the Antora site.
 <5> Symlink to `docs-resources/images` so Antora can find shared images.
 <6> All AsciiDoc source files live here.
