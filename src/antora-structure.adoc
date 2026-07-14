@@ -83,7 +83,7 @@ Add a new entry here each time you add a chapter to `pages/`. The order of entri
 
 === modules/ROOT/images/
 
-Antora locates images in the module directory tree.  Images used in the specification will be stored in the images directory.
+Antora locates images in the module directory tree. Store images used in the specification in the images directory.
 
 [[dev-playbook]]
 === Publishing to the RISC-V documentation site

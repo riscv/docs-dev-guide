@@ -236,8 +236,6 @@ To stop it:
 docker stop $(docker ps -q --filter ancestor=yuzutech/kroki)
 ```
 
-The dev playbook already has `kroki-server-url: http://localhost:9870` set in its `asciidoc.attributes`, so no additional configuration is needed once the container is running.
-
 ## Graphviz is used for diagrams in some appendices
 
 To support graphviz on the Mac, use brew
