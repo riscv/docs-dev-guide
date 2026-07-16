@@ -72,6 +72,8 @@ include::colophon.adoc[]
 //While some documents need several levels of introductory material, other documents need only a brief introduction. You can choose to have either colophon or an overview, or to have both.
 include::intro.adoc[]
 
+include::author-quickstart.adoc[]
+
 include::authoring.adoc[]
 
 include::a_few_basics.adoc[]

@@ -1,0 +1,206 @@
+[[author-quickstart]]
+== Author Quickstart: Writing a Spec from the Template
+
+This guide is for a specification author who has just been given a repository an
+administrator created from `docs-spec-template`. It covers where content goes,
+why you never duplicate it, and the manual steps that keep the ARC submission
+PDF and the Antora site in lockstep.
+
+The single most important idea: your chapter content lives **once**, in
+`modules/ROOT/pages/`. Both the PDF and the site read those same files. What you
+maintain by hand is a one-line _pointer_ to each chapter in two glue files -- not
+a second copy of the content.
+
+=== Before you write: rename the template
+
+The admin created the repo, but the example "spec-sample" identity is still baked
+in. Do this one-time rename pass first.
+
+[cols="1,2,3",options="header"]
+|===
+| What | File | Change
+
+| Component name (site path)
+| `antora.yml` -> `name:`
+| `spec-sample` -> your short name (e.g. `zilch`)
+
+| Component title
+| `antora.yml` -> `title:`
+| Your spec's title
+
+| PDF assembler filename
+| `src/spec-sample.adoc`
+| Rename the file; the Makefile derives the PDF name from its basename
+
+| Makefile source pointer
+| `Makefile` -> `DOCS :=`
+| Point at your renamed assembler file
+
+| Assembler title / authors
+| `src/spec-sample.adoc` (lines 1-2)
+| Your title and author list
+
+| Bibliography database
+| `modules/ROOT/resources/riscv-spec.bib`
+| Your citations
+
+| README title
+| `README.adoc`
+| Your spec
+|===
+
+The released PDF filename (`<short>-vX.Y.Z-YYYYMMDD.pdf`) is derived
+automatically from the assembler's basename via `SPEC_SHORT`, so renaming that
+file is all that's needed.
+
+Also confirm the template mode in `.docmode`:
+
+* `spec` (default) -- a ratified RISC-V specification on the ARC / Policies &
+  Procedures process (milestone phases, "Document State" preface, ARC PDF).
+* `doc` -- non-ratified documentation that still needs the PDF, Makefile HTML,
+  and Antora site, but none of the ratification layer.
+
+The admin normally sets this. If it is wrong, run `make set-mode MODE=doc` (or
+`MODE=spec`) -- you do **not** need to recreate the repo.
+
+=== Where the content files go
+
+All chapter content goes in `modules/ROOT/pages/`, one file per chapter. Each
+page is a standalone Antora page that starts with a **level-0 title**
+(`= Chapter Title`). That file is the single source of truth for that chapter.
+
+[source]
+----
+modules/ROOT/pages/
+  index.adoc          <1>
+  intro.adoc          <2>
+  chapter2.adoc
+  contributors.adoc   <3>
+  bibliography.adoc    <4>
+modules/ROOT/resources/riscv-spec.bib   <5>
+src/spec-sample.adoc                    <6>
+----
+<1> Site landing / cover page. Site-only -- **not** part of the PDF. Edit freely.
+<2> A chapter. Becomes "Chapter 1" in the PDF.
+<3> Front matter.
+<4> Back matter.
+<5> Bibliography database.
+<6> PDF assembler -- glue, not content (see below).
+
+=== You do NOT duplicate the .adoc files
+
+This is the core design of the template. The content exists once; both outputs
+read it.
+
+* The **Antora site** reads the pages in `modules/ROOT/pages/` directly.
+* The **PDF** is assembled by `src/spec-sample.adoc`, which pulls each page in
+  with `include::../modules/ROOT/pages/intro.adoc[leveloffset=+1]`. The
+  `leveloffset=+1` demotes the page's level-0 `= Title` to a level-1 chapter
+  heading, reproducing the historical PDF chapter numbering.
+
+So there is no copy to keep in sync. What you _do_ maintain is a one-line pointer
+to each page in **two** glue files. Whenever you add, remove, or reorder a
+chapter, edit both:
+
+. `modules/ROOT/nav.adoc` -- add an `xref:` line (site navigation and numbering).
+. `src/spec-sample.adoc` -- add an `include::...[leveloffset=+1]` line (PDF
+  assembly order).
+
+[WARNING]
+====
+Miss the `include::` and the chapter is on the site but missing from the PDF.
+Miss the `xref:` and it's in the PDF but absent from the site navigation. Update
+both together.
+====
+
+==== Keep PDF-only constructs out of pages
+
+Pages must stay portable AsciiDoc so Antora can render them. PDF-only constructs
+live only in the assembler (`src/spec-sample.adoc`), never in a page:
+
+* `include::../docs-resources/global-config.adoc[]` -- a cross-repo relative
+  include that breaks under Antora.
+* the back-of-book `[index] == Index` macro (Antora generates no index).
+* `:title-logo-image:`, `:pdf-theme:`, `:pdf-fontsdir:`, `:doctype: book`, and
+  similar PDF attributes.
+
+=== What is manual
+
+==== Every time you change chapter structure
+
+Update the **central playbook's numbering rule.** This is the easiest step to
+forget. Site chapter numbers are assigned by the RISC-V central playbook
+(`riscv-admin/antora.riscv.org`), keyed to the **line numbers of the `xref`
+entries in `modules/ROOT/nav.adoc`** -- not by anything in your repo. When your
+nav lines shift, the matching `chapters: {start, end}` entry in the playbook's
+`numbering_rules` must be updated in lockstep, or site numbering silently drifts.
+This needs a change to the central playbook repo, so coordinate with an admin.
+See the "Section numbering" section of `ANTORA.md` for the exact rule format.
+
+==== One-time site registration
+
+Your spec must be added as a `content.sources:` entry in the central playbook
+(the dev mirror first). Antora fetches from GitHub, so **push your branch before
+expecting the spec to appear** on the site. See "Registering this spec" in
+`ANTORA.md`.
+
+==== At release time (the version bridge)
+
+The site version must match the PDF version exactly -- the `vX.Y.Z` release tag,
+an ARC requirement. Antora reads a _static_ `version:` from `antora.yml`, so it
+gets **stamped**:
+
+[source,shell]
+----
+make stamp-antora VERSION=vX.Y.Z   # then commit antora.yml
+----
+
+In normal CI this is automated: the release build stamps `antora.yml` and opens a
+PR against `main`. **Merging that PR is part of cutting the release.** Never
+hand-edit the `version:` or `page-*` keys in `antora.yml` -- they are stamped
+from the same source the PDF uses.
+
+==== Content you edit as ordinary files
+
+No dual-source concern -- just edit these directly:
+
+* `modules/ROOT/pages/index.adoc` -- the site cover / landing page. Replace the
+  abstract placeholder; leave the stamped version and phase attribute lines
+  alone.
+* `MAINTAINERS.md`, `CONTRIBUTING.md`, the contributors page, the bib database.
+
+==== Mostly automatic -- don't do these by hand
+
+* **Version bumps.** Pushing `src/**` changes to `main` triggers the version bot,
+  which creates the next patch tag, builds the PDF, and publishes a GitHub
+  Release. Milestone phases (`Developed` / `Stable` / `Frozen` /
+  `Ratification-Ready` / `Ratified`) are derived from the version.
+
+=== Local build and preview loop
+
+[source,shell]
+----
+make                          # ARC PDF (+ HTML) into build/  (Docker-based)
+
+npm install                   # once: Antora + kroki/mathjax preview extensions
+docker compose up -d kroki    # local diagram server on :9870
+npm run preview               # builds the site into build/site/
+docker compose down           # stop Kroki when done
+----
+
+Two expected local-preview gaps -- neither is a build error:
+
+* **Citations and `bibliography::[]` render as raw text** locally. The ASAM
+  bibliography extension exists only in the central playbook. Check citations in
+  the `make` PDF or on the dev site.
+* **The cover logo** (`common::risc-v_logo.svg`) logs one unresolved-image
+  warning locally, because the shared `common` component only exists on the
+  central build.
+
+=== See also
+
+* `ANTORA.md` -- how the dual build works and why, plus the section-numbering
+  rule and site-registration details.
+* `MIGRATION.md` -- checklist for bringing an existing repo in line with this
+  toolchain.
+* `ARC_SUBMISSION.md` -- ARC submission conventions (spec mode).
