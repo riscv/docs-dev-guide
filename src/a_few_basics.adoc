@@ -1,10 +1,7 @@
 [[a_few_basics]]
 == AsciiDoc basics
 
-pseudoinstruction
-pseudo-instruction
-
-AsciiDoc is fully documented, and its documentation is actively maintained. This document contains some information on AsciiDoc markup to get you started.
+AsciiDoc is fully documented, and its documentation is actively maintained. This document has information about AsciiDoc markup to get you started.
 
 For details and additional options, see:
 
@@ -14,7 +11,7 @@ For details and additional options, see:
 
 In addition, you can ask questions in <https://asciidoctor.zulipchat.com/>
 
-Best practice is to test the PDF build frequently to ensure that you have not accidentally introduced something that breaks the build.
+Best practice is to test the PDF build often to ensure that you have not accidentally introduced something that breaks the build.
 
 [NOTE]
 ====
@@ -25,7 +22,7 @@ Send questions to help@riscv.org.
 
 In AsciiDoc, normal paragraphs do not require markup.
 
-To create a new paragraph, put a space after the previous line of text and continue.
+To create a new paragraph, put a space after the earlier line of text and continue.
 
 ==== Basics of blocks and indents
 
@@ -33,12 +30,12 @@ To create a new paragraph, put a space after the previous line of text and conti
 
 * You can add indented, explanatory paragraphs to lists.
 +
-Add a `+` directly above the line of text that you want to be indented within the list.
+Add a `+` directly preceding the line of text that you want to indent within the list.
 * Another point.
 +
 Using the `+` to create an indented paragraph works only within the context of a numbered or bulleted list.
 
-AsciiDoc/Asciidoctor supports code blocks with syntax highlighting for many languages. You can use either periods or dashes to indicate code blocks, and use macros to indicate that the block contains code in the specified language, as in the following example:
+AsciiDoc/Asciidoctor supports code blocks with syntax highlighting for many languages. You can use either periods or dashes to indicate code blocks, and use macros to indicate that the block has code in the specified language, as in the following example:
 
 
 [source,adoc]
@@ -88,11 +85,11 @@ The following example is a valid sequence of headers.
 Index
 ```
 
-NOTE: Settings in the header file (`book_header.adoc` in the docs-templates repo) trigger auto-generation of Appendix prefixes and of the Index (among other things).
+NOTE: Settings in the header file (`modules/ROOT/pages/spec-sample.adoc` in the docs-spec-template repository) trigger auto-generation of Appendix prefixes and of the Index (among other things).
 
 === Lists
 
-Unordered lists are created with the `*` before the list item. Ordered lists require a `.` Add a space between any supporting text at the beginning of a list.
+Create unordered lists with the `*` before the list item. Ordered lists require a `.` Add a space between any supporting text at the beginning of a list.
 
 ==== Unordered list
 
@@ -167,7 +164,7 @@ Example output:
 .. second nested item
 . back to original level.
 
-You can also create an unordered list that contains a nested ordered list (or an ordered list that contains a nested unordered list).
+You can also create an unordered list that has a nested ordered list (or an ordered list that has a nested unordered list).
 
 [source,adoc]
 ----
@@ -249,9 +246,9 @@ Follow these general rules when you create a table.
 
 * Avoid tables in the middle of lists.
 * Do not use tables to lay out a page. For example, if you have a long list of items, do not use a 2 column table to save space. The information should make sense side by side.
-* Do not create a table that has a single row or a single column, unless you are following a previous layout. For example, if each section in a chapter includes a table of options, then use a table even if one of the sections has only a single option.
+* Do not create a table that has a single row or a single column, unless you are following an earlier layout. For example, if each section in a chapter includes a table of options, then use a table even if one of the sections has only a single option.
 * Always use table headers and captions to make your tables more accessible.
-* Use introductory sentences for your table. For example, "The following table contains the options for the CSR." You can use either a period or a colon for your introductory sentence.
+* Use introductory sentences for your table. For example, "The following table has the options for the CSR." You can use either a period or a colon for your introductory sentence.
 * Do not refer to the "table above" or the "below table". Use words such as "The following table" or "The preceeding table".
 
 [WARNING]
@@ -331,7 +328,7 @@ Either table renders with table headers.
 
 ==== Table captions
 
-The `book_header.adoc` file in the docs-templates repo sets the `full` cross-reference attribute to enable captions to display from targets in the anchors. This ability allows you to set captions for tables, blocks, and illustrations. If you do not provide a caption, Asciidoctor defaults to the _basic_ cross reference style.
+The `modules/ROOT/pages/spec-sample.adoc` file in the docs-spec-template repository sets the `full` cross-reference attribute to enable captions to display from targets in the anchors. You can set captions for tables, blocks, and illustrations. If you do not offer a caption, Asciidoctor defaults to the _basic_ cross-reference style.
 
 To set a caption for a table or image, use the pattern as follows:
 
@@ -360,7 +357,7 @@ kind of trap.
 .Characteristics of traps.
 [cols="<,^,^,^,^",options="header",]
 |===
-| |Contained |Requested |Invisible |Fatal
+| |Contained |Requested |Invisible |Unrecoverable
 |Execution terminates |No |Nolatexmath:[$^{1}$] |No |Yes
 |Software is oblivious |No |No |Yes |Yeslatexmath:[$^{2}$]
 |Handled by environment |No |Yes |Yes |Yes
@@ -369,7 +366,7 @@ kind of trap.
 
 ==== AsciiDoc tables from CSV data.
 
-AsciiDoc tables can also be created directly from CSV data. Set the format block attribute to `csv` and insert the data inside the block delimiters directly:
+You can also create AsciiDoc tables directly from CSV data. Set the format block attribute to `csv` and insert the data inside the block delimiters directly:
 
 [source,adoc]
 ----
@@ -381,7 +378,7 @@ The Lumineers,Ho Hey,Folk Rock
 |===
 ----
 
-The previous example renders as follows:
+The prior example renders as follows:
 
 [%header,format=csv]
 |===
@@ -391,7 +388,7 @@ The Lumineers,Ho Hey,Folk Rock
 |===
 
 
-There are numerous formatting options available. While some of the property settings are cryptic, they can be quite useful. There are numerous examples available at https://asciidoc.org/newtables.html. Here one example of what can be done with spans alignment in tables from that page:
+There are many formatting options available. While some of the property settings are cryptic, they can be quite useful. There are examples available at https://asciidoc.org/newtables.html. Here is an example showing spans alignment in tables from that page:
 
 [source,adoc]
 ----
@@ -416,7 +413,7 @@ Which renders as follows:
 
 The following example is code for a numbered encoding table with link target.
 
-NOTE: Annotations have been added to the code to illustrate their use.
+NOTE: We have added annotations to the code to illustrate their use.
 
 [source,adoc]
 ----
@@ -435,7 +432,7 @@ NOTE: Annotations have been added to the code to illustrate their use.
 . Link target.
 . Numbered table title.
 
-The previous example results in the following table.
+The earlier example results in the following table.
 
 [#proposed-16bit-encodings-1]
 .proposed 16-bit encodings-1
@@ -451,11 +448,11 @@ The previous example results in the following table.
 
 === Unicode symbols
 
-For PDFs, five-digit unicode symbols generally don't work and some other unicode symbols are buggy. This failure happens because the Ruby asciidoctor-pdf toolchain makes use of Prawn to build PDFs and it's Prawn that has the problems.
+For PDFs, five-digit unicode symbols generally do not work and some other unicode symbols are buggy. This failure happens because the Ruby asciidoctor-pdf toolchain makes use of Prawn to build PDFs and it is Prawn that has the problems.
 
 Here are a few unicode examples from https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references that might be useful:
 
-As an example, &#9830; is encoded as follows:
+As an example, encode &#9830; as follows:
 
 ```unicode
 &#9830;
@@ -510,7 +507,7 @@ sym,num,name
 
 === Mathematical notations
 
-WARNING: Asciidoctor-mathematical has some limitations. For inline expressions, the graphical representations appear small and they are centered vertically. In some cases where there is a single-character Asciidoctor-mathematical expression, it unintentionally looks like a superscript. For this reason, always use viable alternatives like _italics_ or unicode (see <<Unicode symbols>>).
+WARNING: Asciidoctor-mathematical has some limitations. For inline expressions, the graphical representations are displayed small and center vertically. In some cases where there is a single-character Asciidoctor-mathematical expression, it unintentionally is displayed as a superscript. For this reason, always use viable options such as _italics_ or unicode (see <<Unicode symbols>>).
 
 
 ==== Superscripts and subscripts
@@ -572,14 +569,14 @@ latexmath:[$C = \alpha + \beta Y^{\gamma} + \epsilon$]
 
 [TIP]
 ====
-Latexmath rendering has some limitations with respect to sizing and placement inline. This happens because of how the images for the mathematical symbols are rendered within the build process. For this reason, please avoid using single character latexmath expressions inline and preferentially make use of unicode or superscripts and subscripts when possible.
+Latexmath rendering has some limitations with respect to sizing and placement inline. This happens because of how the images for the mathematical renders symbols within the build process. For this reason, avoid using single character latexmath expressions inline and preferentially make use of unicode or superscripts and subscripts when possible.
 ====
 
 ==== Stem content
 
 The `:stem: latexmath` setting makes use of asciidoctor-mathematical for asciidoctor-pdf output.
 
-Asciidoctor Mathematical is a Ruby gem that uses native extensions. It has a few system prerequisites which limit installation to Linux and macOS. Please refer to the https://github.com/riscv/docs-templates[README in the RISC-V docs-templates repo] for information on the asciidoctor-mathematical install.
+Asciidoctor Mathematical is a Ruby gem that uses native extensions. It has a few system prerequisites that limit installation to Linux and macOS. See the https://github.com/riscv/docs-templates[README in the RISC-V docs-templates repo] for information on the asciidoctor-mathematical install.
 
 [source,adoc]
 ----
@@ -594,7 +591,7 @@ sqrt(4) = 2
 sqrt(4) = 2
 ++++
 
-In some cases, you might want to make use of unicode characters. Keep in mind that asciidoctor-pdf supports only decimal character references. See https://github.com/asciidoctor/asciidoctor-pdf/issues/486
+In some cases, you might want to make use of unicode characters. Remember that asciidoctor-pdf supports only decimal character references. See https://github.com/asciidoctor/asciidoctor-pdf/issues/486
 
 For updates to asciidoctor-pdf, see https://github.com/asciidoctor/asciidoctor-pdf.
 
@@ -621,14 +618,14 @@ Important:: Information that a user must have. For example, "After you set your 
 
 IMPORTANT: example of important type
 
-Tip:: Used for Non-normative text such as clarification or hints for implementers or to convey design rationale and why other options were discontinued. RISC-V tech team is working on a solution that will allow these admonitions to be turned off.
+Tip:: Used for Non-normative text such as clarification or hints for implementers or to convey design rationale and why the team discontinued other options. RISC-V tech team is working on a solution that enables users to turn off these admonitions.
 
 TIP: example of tip type
 
 As a general rule, follow these guidelines for admonitions:
 
 * Understand that admonitions are interruptions. They should be relevant to the topic, but not necessary. If the reader skips reading it, they can still succeed.
-* If the information is necessary, make it part of the topic and even add a heading. Don't put it in an admonition.
+* If the information is necessary, make it part of the topic and even add a heading. do not put it in an admonition.
 * Limit admonitions to a maximum of 3 on a page (standard PDF page - longer HTML pages can use more.)
 * Do not include results, steps, or prerequisites in admonitions.
 * Make your admonition clear and concise.
@@ -642,7 +639,7 @@ For a single paragraph admonition, use a double colon:
 NOTE: Note content.
 ----
 
-which renders as:
+that renders as:
 
 NOTE: Note content.
 
@@ -664,14 +661,14 @@ As a general rule, follow these guidelines for admonitions:
 ====
 ----
 
-which renders as:
+that renders as:
 
 [IMPORTANT]
 ====
 As a general rule, follow these guidelines for admonitions:
 
 * Understand that admonitions are interruptions. They should be relevant to the topic, but not necessary. If the reader skips reading it, they can still succeed.
-* If the information is necessary, make it part of the topic and even add a heading. Don't put it in an admonition.
+* If the information is necessary, make it part of the topic and even add a heading. do not put it in an admonition.
 * Limit admonitions to a maximum of 3 on a page (standard PDF page - longer HTML pages can use more.)
 * Do not include results, steps, or prerequisites in admonitions.
 * Make your admonition clear and concise.
@@ -686,7 +683,7 @@ You can add a title to your admonition block.
 [WARNING]
 .Security vulnerability
 ====
-*Be aware that RLB introduces a security vulnerability if it is set after the boot process is over.* Use with caution, even when you use it temporarily. Editable PMP rules in M-mode gives a false sense of security since it only takes a few malicious instructions to lift any PMP restrictions this way. It doesn’t make sense to have a security control in place and leave it unprotected. Rule Locking Bypass is only meant as a way to optimize the allocation of PMP rules, catch errors durring debugging, and allow the bootrom/firmware to register executable _Shared-Region_ rules. If developers / vendors have no use for such functionality, they should never set ``mseccfg.RLB`` and if possible hard-wire it to 0. In any case *RLB should be disabled and locked as soon as possible*.
+*Be aware that RLB introduces a security vulnerability if you set iiiiiit after the boot process is over.* Use with caution, even when you use it temporarily. Editable PMP rules in M-mode gives a false sense of security since it only takes a few malicious instructions to lift any PMP restrictions this way. It doesn't make sense to have a security control in place and leave it unprotected. Rule Locking Bypass is only meant as a way to optimize the allocation of PMP rules, catch errors durring debugging, and allow the bootrom/firmware to register executable _Shared-Region_ rules. If developers / vendors have no use for such functionality, they should never set ``mseccfg.RLB`` and if possible hard-wire it to 0. In any case *RLB should be disabled and locked as soon as possible*.
 ====
 ----
 
@@ -695,7 +692,7 @@ Rendered:
 [WARNING]
 .Security vulnerability
 ====
-*Be aware that RLB introduces a security vulnerability if it is set after the boot process is over.* Use with caution, even when you use it temporarily. Editable PMP rules in M-mode gives a false sense of security since it only takes a few malicious instructions to lift any PMP restrictions this way. It doesn’t make sense to have a security control in place and leave it unprotected. Rule Locking Bypass is only meant as a way to optimize the allocation of PMP rules, catch errors durring debugging, and allow the bootrom/firmware to register executable _Shared-Region_ rules. If developers / vendors have no use for such functionality, they should never set ``mseccfg.RLB`` and if possible hard-wire it to 0. In any case *RLB should be disabled and locked as soon as possible*.
+*Be aware that RLB introduces a security vulnerability if you set it after the boot process is over.* Use with caution, even when you use it temporarily. Editable PMP rules in M-mode gives a false sense of security since it only takes a few malicious instructions to lift any PMP restrictions this way. It does not make sense to have a security control in place and leave it unprotected. Rule Locking Bypass is only meant as a way to optimize the allocation of PMP rules, catch errors durring debugging, and allow the bootrom/firmware to register executable _Shared-Region_ rules. If developers / vendors have no use for such functionality, they should never set ``mseccfg.RLB`` and if possible hard-wire it to 0. In any case *RLB should be disabled and locked as soon as possible*.
 ====
 
 ==== RISC-V admonition icon colors
@@ -944,4 +941,3 @@ TIP: They can contain any type of content, including admonitions like this, and 
 const { expect, expectCalledWith, heredoc } = require('../test/test-utils')
 ----
 ****
-

@@ -17,3 +17,20 @@ RISC-V documentation contributors:
 
 - Create a Linux foundation ID with https://lfx.linuxfoundation.org/[LFX].
 - Become a https://riscv.org/membership/[member of the RISC-V International] organization.
+
+[[getting-help]]
+=== Getting help
+
+If you have questions about authoring, the build toolchain, or the Antora documentation site, the following resources are available:
+
+https://lists.riscv.org/g/sig-documentation[sig-documentation mailing list]::
+The primary venue for discussion about RISC-V documentation tooling, processes, and the Antora site. Post here for questions about the build infrastructure, the dev playbook, or contributing a new specification.
+
+mailto:help@riscv.org[help@riscv.org]::
+General RISC-V support address for questions that don't fit the mailing list.
+
+https://github.com/riscv/docs-dev-guide/issues[docs-dev-guide GitHub issues]::
+File an issue here if you find something incorrect or missing in this guide.
+
+https://github.com/riscv-admin/antora-dev.riscv.org/issues[antora-dev.riscv.org GitHub issues]::
+File an issue here for problems with the RISC-V Antora documentation site or the dev playbook.
