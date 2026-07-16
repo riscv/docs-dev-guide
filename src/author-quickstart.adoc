@@ -8,8 +8,10 @@ PDF and the Antora site in lockstep.
 
 The single most important idea: your chapter content lives **once**, in
 `modules/ROOT/pages/`. Both the PDF and the site read those same files. What you
-maintain by hand is a one-line _pointer_ to each chapter in two glue files -- not
-a second copy of the content.
+maintain by hand is a one-line _pointer_ to each chapter in two glue files -- the
+site navigation (`modules/ROOT/nav.adoc`) and the book header file
+(`src/<your-spec>.adoc`, the master document that assembles the PDF) -- not a
+second copy of the content.
 
 === Before you write: rename the template
 
@@ -28,15 +30,15 @@ in. Do this one-time rename pass first.
 | `antora.yml` -> `title:`
 | Your spec's title
 
-| PDF assembler filename
+| Book header file (PDF master document)
 | `src/spec-sample.adoc`
 | Rename the file; the Makefile derives the PDF name from its basename
 
 | Makefile source pointer
 | `Makefile` -> `DOCS :=`
-| Point at your renamed assembler file
+| Point at your renamed header file
 
-| Assembler title / authors
+| Header file title / authors
 | `src/spec-sample.adoc` (lines 1-2)
 | Your title and author list
 
@@ -50,7 +52,7 @@ in. Do this one-time rename pass first.
 |===
 
 The released PDF filename (`<short>-vX.Y.Z-YYYYMMDD.pdf`) is derived
-automatically from the assembler's basename via `SPEC_SHORT`, so renaming that
+automatically from the header file's basename via `SPEC_SHORT`, so renaming that
 file is all that's needed.
 
 Also confirm the template mode in `.docmode`:
@@ -67,7 +69,11 @@ The admin normally sets this. If it is wrong, run `make set-mode MODE=doc` (or
 
 All chapter content goes in `modules/ROOT/pages/`, one file per chapter. Each
 page is a standalone Antora page that starts with a **level-0 title**
-(`= Chapter Title`). That file is the single source of truth for that chapter.
+(`= Chapter Title`) -- Antora requires exactly one per page. When the PDF is
+built, `leveloffset=+1` demotes that level-0 title to a level-1 book chapter
+(`== Chapter Title`), so it reads as a numbered chapter in the PDF even though
+the page source is level-0. That file is the single source of truth for that
+chapter.
 
 [source]
 ----
@@ -85,7 +91,7 @@ src/spec-sample.adoc                    <6>
 <3> Front matter.
 <4> Back matter.
 <5> Bibliography database.
-<6> PDF assembler -- glue, not content (see below).
+<6> Book header file -- glue, not content (see below).
 
 === You do NOT duplicate the .adoc files
 
@@ -93,8 +99,9 @@ This is the core design of the template. The content exists once; both outputs
 read it.
 
 * The **Antora site** reads the pages in `modules/ROOT/pages/` directly.
-* The **PDF** is assembled by `src/spec-sample.adoc`, which pulls each page in
-  with `include::../modules/ROOT/pages/intro.adoc[leveloffset=+1]`. The
+* The **PDF** is assembled by the book header file (`src/spec-sample.adoc`), the
+  master document that pulls each page in with
+  `include::../modules/ROOT/pages/intro.adoc[leveloffset=+1]`. The
   `leveloffset=+1` demotes the page's level-0 `= Title` to a level-1 chapter
   heading, reproducing the historical PDF chapter numbering.
 
@@ -103,8 +110,8 @@ to each page in **two** glue files. Whenever you add, remove, or reorder a
 chapter, edit both:
 
 . `modules/ROOT/nav.adoc` -- add an `xref:` line (site navigation and numbering).
-. `src/spec-sample.adoc` -- add an `include::...[leveloffset=+1]` line (PDF
-  assembly order).
+. `src/spec-sample.adoc` (the book header file) -- add an
+  `include::...[leveloffset=+1]` line (PDF assembly order).
 
 [WARNING]
 ====
@@ -116,7 +123,7 @@ both together.
 ==== Keep PDF-only constructs out of pages
 
 Pages must stay portable AsciiDoc so Antora can render them. PDF-only constructs
-live only in the assembler (`src/spec-sample.adoc`), never in a page:
+live only in the book header file (`src/spec-sample.adoc`), never in a page:
 
 * `include::../docs-resources/global-config.adoc[]` -- a cross-repo relative
   include that breaks under Antora.
@@ -125,17 +132,6 @@ live only in the assembler (`src/spec-sample.adoc`), never in a page:
   similar PDF attributes.
 
 === What is manual
-
-==== Every time you change chapter structure
-
-Update the **central playbook's numbering rule.** This is the easiest step to
-forget. Site chapter numbers are assigned by the RISC-V central playbook
-(`riscv-admin/antora.riscv.org`), keyed to the **line numbers of the `xref`
-entries in `modules/ROOT/nav.adoc`** -- not by anything in your repo. When your
-nav lines shift, the matching `chapters: {start, end}` entry in the playbook's
-`numbering_rules` must be updated in lockstep, or site numbering silently drifts.
-This needs a change to the central playbook repo, so coordinate with an admin.
-See the "Section numbering" section of `ANTORA.md` for the exact rule format.
 
 ==== One-time site registration
 
@@ -148,28 +144,35 @@ expecting the spec to appear** on the site. See "Registering this spec" in
 
 The site version must match the PDF version exactly -- the `vX.Y.Z` release tag,
 an ARC requirement. Antora reads a _static_ `version:` from `antora.yml`, so it
-gets **stamped**:
+must be **stamped** to match.
+
+CI does this for you: the release build stamps `antora.yml` and opens a PR
+against `main`. **The one manual step is merging that PR** -- it is part of
+cutting the release. Never hand-edit the `version:` or `page-*` keys in
+`antora.yml` yourself; they are stamped from the same source the PDF uses.
+
+If you ever need to stamp by hand (fallback only):
 
 [source,shell]
 ----
 make stamp-antora VERSION=vX.Y.Z   # then commit antora.yml
 ----
 
-In normal CI this is automated: the release build stamps `antora.yml` and opens a
-PR against `main`. **Merging that PR is part of cutting the release.** Never
-hand-edit the `version:` or `page-*` keys in `antora.yml` -- they are stamped
-from the same source the PDF uses.
-
 ==== Content you edit as ordinary files
 
 No dual-source concern -- just edit these directly:
 
 * `modules/ROOT/pages/index.adoc` -- the site cover / landing page. Replace the
-  abstract placeholder; leave the stamped version and phase attribute lines
-  alone.
-* `MAINTAINERS.md`, `CONTRIBUTING.md`, the contributors page, the bib database.
+  placeholder paragraph (it begins "Replace this text with a short abstract...")
+  with your spec's abstract and links into your chapters. Leave the stamped
+  revision line (`Version {page-revnumber}, {page-revdate}...`) and the phase
+  banner (the `{page-phase-*}` attributes) alone -- those come from `antora.yml`.
+* `MAINTAINERS.md` and `CONTRIBUTING.md` (project metadata), the contributors
+  page (`modules/ROOT/pages/contributors.adoc`), and the bibliography database
+  (`modules/ROOT/resources/riscv-spec.bib` -- the BibTeX file your citations
+  live in, not `bibliography.adoc`, which just renders it).
 
-==== Mostly automatic -- don't do these by hand
+==== Versioning -- don't do these by hand
 
 * **Version bumps.** Pushing `src/**` changes to `main` triggers the version bot,
   which creates the next patch tag, builds the PDF, and publishes a GitHub
