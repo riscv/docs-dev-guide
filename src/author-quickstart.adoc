@@ -1,22 +1,15 @@
 [[author-quickstart]]
-== Author Quickstart: Writing a Spec from the Template
+== Template Quickstart: Writing a Spec
 
-This guide is for a specification author who has just been given a repository an
-administrator created from `docs-spec-template`. It covers where content goes,
-why you never duplicate it, and the manual steps that keep the ARC submission
-PDF and the Antora site in lockstep.
+This guide is for a specification author who has a GitHub repository that was created from the `docs-spec-template` repository. By using this template, you can single source your content for both PDF and the HTML output. You can use the GitHub repository actions to create build versions, interim releases, and milestone releases. Finally, you can build both the PDF and HTML output locally by using the Makefile.
 
-The single most important idea: your chapter content lives **once**, in
-`modules/ROOT/pages/`. Both the PDF and the site read those same files. What you
-maintain by hand is a one-line _pointer_ to each chapter in two glue files -- the
-site navigation (`modules/ROOT/nav.adoc`) and the book header file
-(`src/<your-spec>.adoc`, the master document that assembles the PDF) -- not a
-second copy of the content.
+=== Before you begin
 
-=== Before you write: rename the template
+When your GitHub repository was created, the "spec-sample" identity is still baked in. Rename the files and update the metadata to reflect your spec's identity.
 
-The admin created the repo, but the example "spec-sample" identity is still baked
-in. Do this one-time rename pass first.
+==== Rename your files
+
+The following table shows the files that you need to edit.
 
 [cols="1,2,3",options="header"]
 |===
@@ -42,18 +35,14 @@ in. Do this one-time rename pass first.
 | `src/spec-sample.adoc` (lines 1-2)
 | Your title and author list
 
-| Bibliography database
-| `modules/ROOT/resources/riscv-spec.bib`
-| Your citations
-
 | README title
 | `README.adoc`
 | Your spec
 |===
 
-The released PDF filename (`<short>-vX.Y.Z-YYYYMMDD.pdf`) is derived
-automatically from the header file's basename via `SPEC_SHORT`, so renaming that
-file is all that's needed.
+When a PDF file is build, the full title is derived from the shortname, the version, and the build date (`<short>-vX.Y-YYYYMMDD.pdf`) automatically.
+
+==== Confirm your template mode
 
 Also confirm the template mode in `.docmode`:
 
@@ -63,77 +52,83 @@ Also confirm the template mode in `.docmode`:
   and Antora site, but none of the ratification layer.
 
 The admin normally sets this. If it is wrong, run `make set-mode MODE=doc` (or
-`MODE=spec`) -- you do **not** need to recreate the repo.
+`MODE=spec`) -- you do **not** need to re-create the repo.
 
-=== Where the content files go
+=== Understand file structure
 
-All chapter content goes in `modules/ROOT/pages/`, one file per chapter. Each
-page is a standalone Antora page that starts with a **level-0 title**
-(`= Chapter Title`) -- Antora requires exactly one per page. When the PDF is
-built, `leveloffset=+1` demotes that level-0 title to a level-1 book chapter
-(`== Chapter Title`), so it reads as a numbered chapter in the PDF even though
-the page source is level-0. That file is the single source of truth for that
-chapter.
+Create your chapter content `.adoc` files in the `modules/ROOT/pages/` location. Both the PDF and the HTML read these same files. The PDF is assembled by using the book header file (`src/<your-spec>.adoc`), which uses `include:` references to each chapter `.adoc` file. The HTML site navigation uses a navigation file (`modules/ROOT/nav.adoc`) to build HTML content. Update both of these files to keep the PDF and HTML content in synch. Otherwise, the source files remain the same for both PDF and HTML output. 
 
 [source]
 ----
+modules/ROOT/images. <1>
+  risc-v_logo.svg
 modules/ROOT/pages/
-  index.adoc          <1>
-  intro.adoc          <2>
+  index.adoc          <2>
+  intro.adoc          <3>
   chapter2.adoc
-  contributors.adoc   <3>
-  bibliography.adoc    <4>
-modules/ROOT/resources/riscv-spec.bib   <5>
-src/spec-sample.adoc                    <6>
+  contributors.adoc   <4>
+  copyright.adoc      <5>
+  bibliography.adoc    <6>
+modules/ROOT/resources/riscv-spec.bib   <7>
+modules/ROOT/nav.adoc        <8>
+src/spec-sample.adoc                    <9>
 ----
-<1> Site landing / cover page. Site-only -- **not** part of the PDF. Edit freely.
-<2> A chapter. Becomes "Chapter 1" in the PDF.
-<3> Front matter.
-<4> Back matter.
-<5> Bibliography database.
-<6> Book header file -- glue, not content (see below).
-
-=== You do NOT duplicate the .adoc files
-
-This is the core design of the template. The content exists once; both outputs
-read it.
-
-* The **Antora site** reads the pages in `modules/ROOT/pages/` directly.
-* The **PDF** is assembled by the book header file (`src/spec-sample.adoc`), the
-  master document that pulls each page in with
-  `include::../modules/ROOT/pages/intro.adoc[leveloffset=+1]`. The
-  `leveloffset=+1` demotes the page's level-0 `= Title` to a level-1 chapter
-  heading, reproducing the historical PDF chapter numbering.
-
-So there is no copy to keep in sync. What you _do_ maintain is a one-line pointer
-to each page in **two** glue files. Whenever you add, remove, or reorder a
-chapter, edit both:
-
-. `modules/ROOT/nav.adoc` -- add an `xref:` line (site navigation and numbering).
-. `src/spec-sample.adoc` (the book header file) -- add an
-  `include::...[leveloffset=+1]` line (PDF assembly order).
+<1> Images used in the spec. These are referenced from the chapter files and included in both PDF and HTML output.
+<2> Site landing / cover page. HTML-only -- **not** part of the PDF. Follow the instructions in this file to update the content.
+<3> The introduction chapter. Becomes "Chapter 1" in the PDF.
+<4> Front matter that lists contributors. HTML only -- **not** part of the PDF. Follow the instructions in this file to update the content.
+<5> Copyright and license information. HTML only -- **not** part of the PDF. Follow the instructions in this file to update the content.
+<6> Bibliography main page. Included in both PDF and HTML and uses the bibliography database (`riscv-spec.bib`) to render the references.
+<7> Bibliography database.
+<8> HTML navigation file -- Update references to your chapter files here. This is the site navigation that builds the HTML output.
+<9> Book header file -- Update references to your chapter files here. This is the PDF master document that assembles the PDF from the chapter files.
 
 [WARNING]
 ====
-Miss the `include::` and the chapter is on the site but missing from the PDF.
-Miss the `xref:` and it's in the PDF but absent from the site navigation. Update
-both together.
+You must add files to both the nav.adoc file and the book header file (`*your-spec-name*.adoc` file in the src directory). If you miss an `include::` entry in the book header file and the chapter is rendered in HTML, but missing from the PDF.
+Miss an `xref:` entry in the nav.adoc file and the chapter appears in the PDF but absent from the HTML. Be sure to update both together.
 ====
 
-==== Keep PDF-only constructs out of pages
+Do not add PDF-only constructs or styling to the content chapter files. These types of changes are included in only the book header file. HTML styling is included in the Antora playbook as well as the Antora UI repository. 
 
-Pages must stay portable AsciiDoc so Antora can render them. PDF-only constructs
-live only in the book header file (`src/spec-sample.adoc`), never in a page:
+=== Building your content locally
 
-* `include::../docs-resources/global-config.adoc[]` -- a cross-repo relative
-  include that breaks under Antora.
-* the back-of-book `[index] == Index` macro (Antora generates no index).
-* `:title-logo-image:`, `:pdf-theme:`, `:pdf-fontsdir:`, `:doctype: book`, and
-  similar PDF attributes.
+To build and view your content locally, run the following commands in your local repository:
 
-=== What is manual
+[source,shell]
+----
+make                          # ARC PDF (+ HTML) into build/  (Docker-based)
 
-==== One-time site registration
+npm install                   # once: Antora + kroki/mathjax preview extensions
+docker compose up -d kroki    # local diagram server on :9870
+npm run preview               # builds the site into build/site/
+docker compose down           # stop Kroki when done
+----
+
+Two expected local-preview gaps -- neither is a build error:
+
+* **Citations and `bibliography::[]` render as raw text** locally. The ASAM
+  bibliography extension exists only in the central playbook. Check citations in
+  the `make` PDF or on the dev site.
+* **The cover logo** (`common::risc-v_logo.svg`) logs one unresolved-image
+  warning locally, because the shared `common` component only exists on the
+  central build.
+
+=== GitHub Action builds
+
+When you build your spec on GitHub, the Actions workflow runs the following actions:
+
+The build artifacts are published to GitHub Releases.
+
+
+=== Understanding versioning
+
+* **Version bumps.** Pushing `src/**` changes to `main` triggers the version bot,
+  which creates the next patch tag, builds the PDF, and publishes a GitHub
+  Release. Milestone phases (`Developed` / `Stable` / `Frozen` /
+  `Ratification-Ready` / `Ratified`) are derived from the version.
+
+=== Ratification ready
 
 Your spec must be added as a `content.sources:` entry in the central playbook
 (the dev mirror first). Antora fetches from GitHub, so **push your branch before
@@ -172,33 +167,6 @@ No dual-source concern -- just edit these directly:
   (`modules/ROOT/resources/riscv-spec.bib` -- the BibTeX file your citations
   live in, not `bibliography.adoc`, which just renders it).
 
-==== Versioning -- don't do these by hand
-
-* **Version bumps.** Pushing `src/**` changes to `main` triggers the version bot,
-  which creates the next patch tag, builds the PDF, and publishes a GitHub
-  Release. Milestone phases (`Developed` / `Stable` / `Frozen` /
-  `Ratification-Ready` / `Ratified`) are derived from the version.
-
-=== Local build and preview loop
-
-[source,shell]
-----
-make                          # ARC PDF (+ HTML) into build/  (Docker-based)
-
-npm install                   # once: Antora + kroki/mathjax preview extensions
-docker compose up -d kroki    # local diagram server on :9870
-npm run preview               # builds the site into build/site/
-docker compose down           # stop Kroki when done
-----
-
-Two expected local-preview gaps -- neither is a build error:
-
-* **Citations and `bibliography::[]` render as raw text** locally. The ASAM
-  bibliography extension exists only in the central playbook. Check citations in
-  the `make` PDF or on the dev site.
-* **The cover logo** (`common::risc-v_logo.svg`) logs one unresolved-image
-  warning locally, because the shared `common` component only exists on the
-  central build.
 
 === See also
 
