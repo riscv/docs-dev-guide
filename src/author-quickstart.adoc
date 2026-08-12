@@ -40,7 +40,7 @@ The following table shows the files that you need to edit.
 | Your spec
 |===
 
-When a PDF file is build, the full title is derived from the shortname, the version, and the build date (`<short>-vX.Y-YYYYMMDD.pdf`) automatically.
+When a PDF file is build, the full title is derived from the short name, the version, and the build date (`<short>-vX.Y-YYYYMMDD.pdf`) automatically.
 
 ==== Confirm your template mode
 
