@@ -23,6 +23,10 @@ The following table shows the files that you need to edit.
 | `antora.yml` -> `title:`
 | Your spec's title
 
+| Component title HTML
+| `antora-playbook.yml` (lines 16)
+| Change spec-sample::index.adoc to be <your short name>::index.adoc
+
 | Book header file (PDF master document)
 | `src/spec-sample.adoc`
 | Rename the file; the Makefile derives the PDF name from its basename
@@ -31,7 +35,11 @@ The following table shows the files that you need to edit.
 | `Makefile` -> `DOCS :=`
 | Point at your renamed header file
 
-| Header file title / authors
+| HTML index file
+| `modules/ROOT/pages/index.adoc` (~line 27)
+| Change `RISC-V Example Specification (Zexmpl)` to be the name of your spec. Do not edit anything else in this file.
+
+|  / authors
 | `src/spec-sample.adoc` (lines 1-2)
 | Your title and author list
 
@@ -41,6 +49,8 @@ The following table shows the files that you need to edit.
 |===
 
 When a PDF file is build, the full title is derived from the short name, the version, and the build date (`<short>-vX.Y-YYYYMMDD.pdf`) automatically.
+
+As a reminder, be sure to update the copyright.adoc file and the contributors.adoc file with the same information that you update in the book header file.
 
 ==== Confirm your template mode
 
@@ -53,6 +63,17 @@ Also confirm the template mode in `.docmode`:
 
 The admin normally sets this. If it is wrong, run `make set-mode MODE=doc` (or
 `MODE=spec`) -- you do **not** need to re-create the repo.
+
+==== Initialize the docs-resources repo
+
+The docs-resources repo contains common utilities, graphics, and styling. Before you can use this repository, you must initialize it with the following command:
+
+[source,shell]
+----
+git submodule update -remote --init
+----
+
+After your submodule populates locally, you can use the repo contents to build your content locally.
 
 === Understand file structure
 
@@ -105,14 +126,9 @@ npm run preview               # builds the site into build/site/
 docker compose down           # stop Kroki when done
 ----
 
-Two expected local-preview gaps -- neither is a build error:
-
-* **Citations and `bibliography::[]` render as raw text** locally. The ASAM
-  bibliography extension exists only in the central playbook. Check citations in
-  the `make` PDF or on the dev site.
-* **The cover logo** (`common::risc-v_logo.svg`) logs one unresolved-image
-  warning locally, because the shared `common` component only exists on the
-  central build.
+Note that your Citations and `bibliography::[]` render as raw text** locally. The ASAM 
+bibliography extension exists only in the central playbook. Check citations in 
+the `make` PDF or on the dev site.
 
 === GitHub Action builds
 
