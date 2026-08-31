@@ -27,6 +27,14 @@ The following table shows the files that you need to edit.
 | `antora-playbook.yml` (lines 16)
 | Change spec-sample::index.adoc to be <your short name>::index.adoc
 
+| HTML index file
+| `modules/ROOT/pages/index.adoc` (~line 27)
+| Change `RISC-V Example Specification (Zexmpl)` to be the name of your spec. Do not edit anything else in this file.
+
+| HTML navigation file
+| `modules/ROOT/nav.adoc` (~line 13)
+| Change `RISC-V Example Specification` to be the name of your spec. This is the name that will appear in HTML navigation.
+
 | Book header file (PDF master document)
 | `src/spec-sample.adoc`
 | Rename the file; the Makefile derives the PDF name from its basename
@@ -35,11 +43,7 @@ The following table shows the files that you need to edit.
 | `Makefile` -> `DOCS :=`
 | Point at your renamed header file
 
-| HTML index file
-| `modules/ROOT/pages/index.adoc` (~line 27)
-| Change `RISC-V Example Specification (Zexmpl)` to be the name of your spec. Do not edit anything else in this file.
-
-|  / authors
+| Author list
 | `src/spec-sample.adoc` (lines 1-2)
 | Your title and author list
 
@@ -50,19 +54,19 @@ The following table shows the files that you need to edit.
 
 When a PDF file is build, the full title is derived from the short name, the version, and the build date (`<short>-vX.Y-YYYYMMDD.pdf`) automatically.
 
-As a reminder, be sure to update the copyright.adoc file and the contributors.adoc file with the same information that you update in the book header file.
+As a reminder, be sure to update the `copyright.adoc` file and the `contributors.adoc file with the same information that you update in the book header file.
 
-==== Confirm your template mode
+// ==== Confirm your template mode
 
-Also confirm the template mode in `.docmode`:
+// Also confirm the template mode in `.docmode`:
 
-* `spec` (default) -- a ratified RISC-V specification on the ARC / Policies &
-  Procedures process (milestone phases, "Document State" preface, ARC PDF).
-* `doc` -- non-ratified documentation that still needs the PDF, Makefile HTML,
-  and Antora site, but none of the ratification layer.
+// * `spec` (default) -- a ratified RISC-V specification on the ARC / Policies &
+//   Procedures process (milestone phases, "Document State" preface, ARC PDF).
+// * `doc` -- non-ratified documentation that still needs the PDF, Makefile HTML,
+//   and Antora site, but none of the ratification layer.
 
-The admin normally sets this. If it is wrong, run `make set-mode MODE=doc` (or
-`MODE=spec`) -- you do **not** need to re-create the repo.
+// The admin normally sets this. If it is wrong, run `make set-mode MODE=doc` (or
+// `MODE=spec`) -- you do **not** need to re-create the repo.
 
 ==== Initialize the docs-resources repo
 
@@ -70,7 +74,7 @@ The docs-resources repo contains common utilities, graphics, and styling. Before
 
 [source,shell]
 ----
-git submodule update -remote --init
+git submodule update --remote --init
 ----
 
 After your submodule populates locally, you can use the repo contents to build your content locally.
@@ -106,7 +110,7 @@ src/spec-sample.adoc                    <9>
 
 [WARNING]
 ====
-You must add files to both the nav.adoc file and the book header file (`*your-spec-name*.adoc` file in the src directory). If you miss an `include::` entry in the book header file and the chapter is rendered in HTML, but missing from the PDF.
+You must add files to both the `nav.adoc` file and the book header file (`*your-spec-name*.adoc` file in the src directory). If you miss an `include::` entry in the book header file and the chapter is rendered in HTML, but missing from the PDF.
 Miss an `xref:` entry in the nav.adoc file and the chapter appears in the PDF but absent from the HTML. Be sure to update both together.
 ====
 
@@ -132,57 +136,67 @@ the `make` PDF or on the dev site.
 
 === GitHub Action builds
 
-When you build your spec on GitHub, the Actions workflow runs the following actions:
-
-The build artifacts are published to GitHub Releases.
-
+When you build your spec on GitHub, whether you are creating a PR or merging directly to main, the Actions workflow runs several actions, including building a PDF. It will not, however, increment your PDF version.
 
 === Understanding versioning
 
-* **Version bumps.** Pushing `src/**` changes to `main` triggers the version bot,
-  which creates the next patch tag, builds the PDF, and publishes a GitHub
-  Release. Milestone phases (`Developed` / `Stable` / `Frozen` /
-  `Ratification-Ready` / `Ratified`) are derived from the version.
+Versions are updated by using the Version-bot action in GitHub. After you run the Version-bot, a PR is created to update the version in the `antora.yml` file. Do not update the version manually; always run the Version-bot to change the version. Merge the Stamp Antora site version PDF as soon as possible.
+
+----
+[%header,cols="1,1,1"]
+|===
+|Version floor
+|Phase
+|Change control
+
+|v0.0
+|draft-and-development
+|Everything subject to change
+
+|v0.6
+|development-complete
+|(same notice text)
+
+|v0.8
+|stabilized
+|Limited scope changes
+
+|v0.9
+|frozen
+|Critical issues only
+
+|v0.99
+|ratification-ready
+|Ratification-blocking only
+
+|v1.0
+|ratified
+|No changes; follow-on extension only. Only members of the RISC-V team can create a ratified version of a specification.
+|===
+----
+
 
 === Ratification ready
 
-Your spec must be added as a `content.sources:` entry in the central playbook
-(the dev mirror first). Antora fetches from GitHub, so **push your branch before
-expecting the spec to appear** on the site. See "Registering this spec" in
-`ANTORA.md`.
+When your spec development is complete and ratified, the RISC-V team creates a ratified version and publishes the document in the docs.riscv website.
 
-==== At release time (the version bridge)
+// ==== At release time (the version bridge)
 
-The site version must match the PDF version exactly -- the `vX.Y.Z` release tag,
-an ARC requirement. Antora reads a _static_ `version:` from `antora.yml`, so it
-must be **stamped** to match.
+// The site version must match the PDF version exactly -- the `vX.Y.Z` release tag,
+// an ARC requirement. Antora reads a _static_ `version:` from `antora.yml`, so it
+// must be **stamped** to match.
 
-CI does this for you: the release build stamps `antora.yml` and opens a PR
-against `main`. **The one manual step is merging that PR** -- it is part of
-cutting the release. Never hand-edit the `version:` or `page-*` keys in
-`antora.yml` yourself; they are stamped from the same source the PDF uses.
+// CI does this for you: the release build stamps `antora.yml` and opens a PR
+// against `main`. **The one manual step is merging that PR** -- it is part of
+// cutting the release. Never hand-edit the `version:` or `page-*` keys in
+// `antora.yml` yourself; they are stamped from the same source the PDF uses.
 
-If you ever need to stamp by hand (fallback only):
+// If you ever need to stamp by hand (fallback only):
 
-[source,shell]
-----
-make stamp-antora VERSION=vX.Y.Z   # then commit antora.yml
-----
-
-==== Content you edit as ordinary files
-
-No dual-source concern -- just edit these directly:
-
-* `modules/ROOT/pages/index.adoc` -- the site cover / landing page. Replace the
-  placeholder paragraph (it begins "Replace this text with a short abstract...")
-  with your spec's abstract and links into your chapters. Leave the stamped
-  revision line (`Version {page-revnumber}, {page-revdate}...`) and the phase
-  banner (the `{page-phase-*}` attributes) alone -- those come from `antora.yml`.
-* `MAINTAINERS.md` and `CONTRIBUTING.md` (project metadata), the contributors
-  page (`modules/ROOT/pages/contributors.adoc`), and the bibliography database
-  (`modules/ROOT/resources/riscv-spec.bib` -- the BibTeX file your citations
-  live in, not `bibliography.adoc`, which just renders it).
-
+// [source,shell]
+// ----
+// make stamp-antora VERSION=vX.Y.Z   # then commit antora.yml
+// ----
 
 === See also
 
