@@ -1,7 +1,7 @@
 [[author-quickstart]]
 == Template Quickstart: Writing a Spec
 
-This guide is for a specification author who has a GitHub repository that was created from the `docs-spec-template` repository. By using this template, you can single source your content for both PDF and the HTML output. You can use the GitHub repository actions to create build versions, interim releases, and milestone releases. Finally, you can build both the PDF and HTML output locally by using the Makefile.
+This guide is for a specification author who has a GitHub repository that was created from the `docs-spec-template` repository. By using this template, you can single source your content for both PDF and the HTML output. You can use the GitHub repository actions to create build versions, interim releases, and milestone releases. Finally, you can build both the PDF and Antora HTML output locally by running the `makefile` and `npm` commands.
 
 === Before you begin
 
@@ -52,7 +52,7 @@ The following table shows the files that you need to edit.
 | Your spec
 |===
 
-When a PDF file is build, the full title is derived from the short name, the version, and the build date (`<short>-vX.Y-YYYYMMDD.pdf`) automatically.
+When a PDF file is built, the full title is derived from the short name, the version, and the build date (`<short>-vX.Y-YYYYMMDD.pdf`) automatically.
 
 As a reminder, be sure to update the `copyright.adoc` file and the `contributors.adoc file with the same information that you update in the book header file.
 
@@ -132,7 +132,7 @@ docker compose down           # stop Kroki when done
 
 Note that your Citations and `bibliography::[]` render as raw text** locally. The ASAM 
 bibliography extension exists only in the central playbook. Check citations in 
-the `make` PDF or on the dev site.
+the `make` PDF or on the HTML development site.
 
 === GitHub Action builds
 
@@ -178,7 +178,7 @@ Versions are updated by using the Version-bot action in GitHub. After you run th
 
 === Ratification ready
 
-When your spec development is complete and ratified, the RISC-V team creates a ratified version and publishes the document in the docs.riscv website.
+When your spec development is complete and ratified, the RISC-V team creates a ratified version and publishes the document in the https://docs.riscv.org/[Ratified Specifications library].
 
 // ==== At release time (the version bridge)
 
