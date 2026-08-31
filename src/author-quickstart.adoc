@@ -122,7 +122,7 @@ Do not add PDF-only constructs or styling to the content chapter files. These ty
 
 === Building your content locally
 
-To build and view your content locally, run the following commands in your local repository:
+To build and view your content locally, run the following commands in your local repository. Start your docker instance before running these commands.
 
 [source,shell]
 ----
