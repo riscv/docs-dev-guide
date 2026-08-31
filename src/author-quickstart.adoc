@@ -23,9 +23,13 @@ The following table shows the files that you need to edit.
 | `antora.yml` -> `title:`
 | Your spec's title
 
+| Component name HTML
+| `antora-playbook.yml` (lines 16)
+| Change `title: RISC-V Specification` to be `title: RISC-V <your title>`
+
 | Component title HTML
 | `antora-playbook.yml` (lines 16)
-| Change spec-sample::index.adoc to be <your short name>::index.adoc
+| Change `start_page: spec-sample::index.adoc` to be `start_page: <your short name>::index.adoc`
 
 | HTML index file
 | `modules/ROOT/pages/index.adoc` (~line 27)
