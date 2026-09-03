@@ -134,9 +134,11 @@ npm run preview               # builds the site into build/site/
 docker compose down           # stop Kroki when done
 ----
 
-Note that your Citations and `bibliography::[]` render as raw text** locally. The ASAM 
+Note that your Citations and `bibliography::[]` render as raw text locally. The ASAM 
 bibliography extension exists only in the central playbook. Check citations in 
 the `make` PDF or on the HTML development site.
+
+To open your website locally, go to the `build` folder in your local specification directory and open the `index.html` file.
 
 === GitHub Action builds
 
