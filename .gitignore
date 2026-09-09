@@ -1,7 +1,16 @@
 /build/*
-/images/stem*
-git_sha.adoc
-images
-.*.swp
-.github/styles/*
-!.github/styles/.gitkeep
+/images/*
+.DS_Store
+**/.DS_Store
+# Local Antora preview tooling (see package.json / ANTORA.md Phase 5)
+/node_modules/
+/.cache/
+# Generated diagram/math artifacts (kroki fetch + asciidoctor-mathematical);
+# regenerated every build, never committed.
+_images/
+/src/images/
+# GitHub Pages build artifacts (scripts/build-pages-site.sh): the playbook it
+# derives from antora-playbook.yml, and the cover logo it stages out of the
+# docs-resources submodule. Both are regenerated on every build.
+/antora-pages-playbook.yml
+/modules/ROOT/images/risc-v_logo.svg

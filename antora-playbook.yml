@@ -1,0 +1,95 @@
+---
+# Antora Playbook
+# https://docs.antora.org/antora/latest/playbook/
+#
+# LOCAL PREVIEW ONLY -- run via `npm run preview` (see package.json), with a
+# local Kroki up (`docker compose up -d kroki`). It mirrors the central playbook's
+# extensions and attributes so what you see here matches production.
+#
+# It does NOT build the published site: the real site is assembled by the central
+# playbook (github.com/riscv-admin/antora.riscv.org), which consumes this repo as
+# one content source by URL. See ANTORA.md "Production model".
+
+site:
+  title: RISC-V Documentation Developer Guide
+  url: https://github.com/riscv/docs-dev-guide
+  start_page: docs-guide::index.adoc
+
+content:
+  sources:
+    - url: .
+      branches: HEAD
+
+  # Shared assets - component: common (from external docs-resources repo)
+    - url: https://github.com/riscv/docs-resources.git
+      branches: main
+      start_path: /
+      name: common
+
+# Shared AsciiDoc rendering attributes, MIRRORED from the central playbook's
+# `asciidoc.attributes` block (github.com/riscv-admin/antora.riscv.org). These
+# live here, in the LOCAL preview playbook -- NOT in antora.yml, where they would
+# override the central playbook and desync this spec (see ANTORA.md, design rule
+# #2). Purpose: make `antora antora-playbook.yml` preview render like production.
+# Keep in sync with the central block when it changes. The extensions that some
+# of these configure are wired below (asciidoctor-kroki, mathjax). The ASAM
+# bibliography extension is custom/vendored in the central playbook (not on npm),
+# so it is NOT mirrored here: `cite:`/`bibliography::[]` render on the central
+# site and in the `make` PDF/HTML (asciidoctor-bibtex gem), not in this preview.
+asciidoc:
+  extensions:
+    # Mirror the central playbook's asciidoc extensions so local preview renders
+    # like production. Installed via package.json (`npm install`). Diagrams
+    # (incl. wavedrom) need a Kroki server -- see docker-compose.yml and the
+    # kroki-server-url attribute below.
+    - asciidoctor-kroki
+    - '@djencks/asciidoctor-mathjax'
+  attributes:
+    doctype: book
+    experimental: ''
+    icons: font
+    idprefix: ''
+    idseparator: '-'
+    page-pagination: ''
+    # Use "Table"/"Figure" short names in cross references
+    xrefstyle: short
+    source-highlighter: highlight.js
+    toclevels: 5
+    outlinelevels: 5
+    part-signifier: Chapter
+    setanchors:
+    # Kroki (diagrams/wavedrom) -- consumed by the asciidoctor-kroki extension
+    # wired up under `asciidoc.extensions` above. Requires a local Kroki server:
+    # `docker compose up -d kroki`.
+    kroki-server-url: http://localhost:9870
+    kroki-fetch-diagram: true
+    kroki-cache-path: ./.cache/kroki
+    incexample: example$
+    incimage: ../images/
+    fiximages: ../images
+    # Math, comparison operators, and special characters
+    le: '&#8804;'
+    ge: '&#8805;'
+    ne: '&#8800;'
+    approx: '&#8776;'
+    inf: '&#8734;'
+    circ: ○
+    bullet: ∙
+    times: ×
+    pm: ±
+    prime: ′
+    check: ✓
+    rightarrow: →
+    interpunct: ·
+    vertical-ellipsis: ⋮
+    ellipsis: …
+
+ui:
+  bundle:
+    # RISC-V production UI, so local preview matches https://docs.riscv.org.
+    # This is the same bundle the central antora.riscv.org playbook uses.
+    url: https://github.com/riscv-admin/riscv-antora-only-ui/releases/download/latest/ui-bundle.zip
+    snapshot: true
+
+output:
+  dir: ./build/site

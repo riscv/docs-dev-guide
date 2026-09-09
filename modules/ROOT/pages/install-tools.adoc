@@ -1,19 +1,12 @@
 = Install Asciidoctor and use Asciidoc
-Elisa Sawyer
-:backend: reveal.js
-// :customjs: <javascript location>
-// :customcss: <css location>
-:navigation:
-:status:
-:split:
 
 == AsciiDoc needs Asciidoctor
 
-- To author in AsciiDoc, you must install Aciidoctor.
+- To author in AsciiDoc, you must install Asciidoctor.
 
 - To install Asciidoctor, you must install Ruby.
 
-- To create a pdf from AsciiDoc, you must insall asciidoctor-pdf and a few additional rubies.
+- To create a pdf from AsciiDoc, you must install asciidoctor-pdf and a few additional rubies.
 
 == Install Ruby on Mac
 
@@ -50,7 +43,7 @@ When using RVM, you can switch between the system-wide Ruby and RVM-managed Ruby
 $ rvm use system
 ----
 
-- Switch to RVM-managed verions 2.7.2 for use in building pdf:
+- Switch to RVM-managed versions 2.7.2 for use in building pdf:
 ----
 $ rvm use 2.7.2
 ----
@@ -67,10 +60,10 @@ $ gem install asciidoctor
 $ asciidoctor --version
 ----
 
-If you see the Asciidoctor version information printed in the terminal, then you’re already able to build html from an .adoc file using:
+If you see the Asciidoctor version information printed in the terminal, then you're already able to build html from an .adoc file using:
 
 ----
-asciidcotor filename.adoc
+asciidoctor filename.adoc
 ----
 
 == Windows--install Ruby with RVM
@@ -98,7 +91,7 @@ https://rubygems.org/gems/asciidoctor/
 - In Powershell, use the following command to install the Asciidoctor gem:
 
 ----
-$ gem install asciidoctor <path-to-dowloaded-gem>
+$ gem install asciidoctor <path-to-downloaded-gem>
 ----
 
 == Both Win and Mac, for pdf's
@@ -125,8 +118,10 @@ https://octicons.github.com/
 
 == AsciiDoc headers
 
-
-:NOTE: The headers are already in the template files, so there's no need to add or change anything in them.
+[NOTE]
+====
+The headers are already in the template files, so there's no need to add or change anything in them.
+====
 
 == Create and name a new .adoc file
 
@@ -134,12 +129,18 @@ https://octicons.github.com/
 - Assign a name and save with the .adoc extension.
 - In the first line, use a single "=" to indicate a document title and create the title.
 - Start with the settings above and change them as needed.
-:NOTE: Blank lines are not allowed in the headers.
 - You have the option of using one long file or adding files using includes like the following:
+
+[NOTE]
+====
+Blank lines are not allowed in the headers.
+====
+
+[source,adoc]
 ----
-include::copyright.adoc[]
-include::intro.adoc[]
-include::requirements.adoc[]
+\include::copyright.adoc[]
+\include::intro.adoc[]
+\include::requirements.adoc[]
 ----
 
 == Build static documentation only

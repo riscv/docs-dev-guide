@@ -56,7 +56,7 @@ In the specifications, there are numerous instances in which several Wavedrom di
 
 [source,adoc]
 ....
-include::images/wavedrom/instruction_formats.adoc
+include::../partials/wavedrom/instruction_formats.adoc
 [[instruction_formats]]
 .Test for wavedrom
 image::image_placeholder.png[]
@@ -64,13 +64,13 @@ image::image_placeholder.png[]
 
 With the following result:
 
-include::images/wavedrom/instruction_formats.adoc[]
+include::../partials/wavedrom/instruction_formats.adoc[]
 [[instruction_formats]]
 .Test for wavedrom
 image::image_placeholder.png[]
 
 
-. Wavedrom code for all diagrams in this illustration are stored in `wavedrom` subdirectory within the `images` directory.
+. Wavedrom code for all diagrams in this illustration are stored in `../partials/wavedrom` subdirectory within the partials directory.
 . Link target that, along with settings in the `book_header` file, automates the inclusion, in the text, of the figure number and caption.
 . Figure caption.
 . "Invisible" placeholder needed for figure caption to display consistently and correctly.
@@ -142,7 +142,7 @@ The following string is lacking macro brackets (`[]`) that should appear after `
 
 [source,adoc]
 ----
-include::images/wavedrom/filename.adoc
+include::../partials/wavedrom/filename.adoc
 ----
 ====
 
@@ -152,7 +152,7 @@ include::images/wavedrom/filename.adoc
 The Unpriv appendices contain Graphviz diagrams with associated keys that are arranged in tables. While in the LaTeX version, the diagrams and tables are arranged side-by-side, for the AsciiDoc version;
 
 * each Graphviz diagram should be directly above the key table.
-* store scripts for Graphviz diagrams in the images/graphviz directory, as <filename>.txt
+* store scripts for Graphviz diagrams in the `graphviz` subdirectory within the images directory (modules/ROOT/images/graphviz/), as <filename>.txt
 * import the Graphviz by reference using the pattern in the following example.
 
 https://graphviz.gitlab.io/[Graphviz digrams]
@@ -393,13 +393,13 @@ Then you can include it with the following statement (the `{}` are to keep it fr
 
 ----
 {.Counter-enable (`mcounteren`) register.
-include::images/bytefield/examplebyte.adoc[]}
+include::../partials/bytefield/examplebyte.adoc[]}
 ----
 
 After the build, it looks like this example:
 
 .Counter-enable (`mcounteren`) register.
-include::images/bytefield/examplebyte.adoc[]
+include::../partials/bytefield/examplebyte.adoc[]
 
 
 === Editing Wavedrom diagrams for Unpriv

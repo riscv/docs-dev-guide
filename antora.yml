@@ -1,9 +1,31 @@
+---
+# Antora Component Descriptor
+# https://docs.antora.org/antora/latest/component-version-descriptor/
+#
+# This file defines the Antora component for the RISC-V Documentation Developer Guide.
+# This is a GUIDE (not a ratified specification), so it uses simplified versioning
+# without ARC submission workflow or milestone gating.
+#
+# Keep this file minimal. When this repo is published as a content source in the
+# central playbook (github.com/riscv-admin/antora.riscv.org), that playbook
+# supplies the shared AsciiDoc attributes (doctype, icons, xrefstyle,
+# source-highlighter, kroki config, math entities, ...) and the extensions
+# (asciidoctor-kroki, mathjax, bibliography, section/nav numbering) uniformly to
+# every spec and guide. Attributes set HERE would override the playbook and desync
+# this guide from the rest of the library -- notably `sectnums`, which the central
+# section-numbering extension controls per component. Put preview-only rendering
+# config in antora-playbook.yml (which mirrors production), not here.
+
 name: docs-guide
 title: RISC-V Authoring and Editing Guide
+# Simple version for guide (not ARC-gated). Updates as releases are cut.
 version: v0.20
+
 nav:
-- modules/ROOT/nav.adoc
+  - modules/ROOT/nav.adoc
 
 asciidoc:
   attributes:
+    page-group: guide
+    asamBibliography: ROOT:resources/riscv-spec.bib
     page-pdf_url: https://github.com/riscv/docs-dev-guide/releases/tag/v0.2.0-example

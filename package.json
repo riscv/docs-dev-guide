@@ -1,0 +1,15 @@
+{
+  "name": "docs-dev-guide-antora-preview",
+  "version": "0.20.0",
+  "private": true,
+  "description": "Local Antora preview tooling for the RISC-V Documentation Developer Guide. The PRODUCTION site is built by the central playbook (github.com/riscv-admin/antora.riscv.org), which supplies its own Antora, UI, extensions, and attributes. These devDependencies exist ONLY so `npm run preview` (antora antora-playbook.yml) renders locally the way production does -- diagrams via asciidoctor-kroki, math via @djencks/asciidoctor-mathjax. Keep the extension list in sync with antora-playbook.yml.",
+  "scripts": {
+    "preview": "antora --fetch antora-playbook.yml"
+  },
+  "devDependencies": {
+    "@antora/cli": "3.1.15",
+    "@antora/site-generator": "3.1.15",
+    "@djencks/asciidoctor-mathjax": "0.0.9",
+    "asciidoctor-kroki": "0.18.1"
+  }
+}
