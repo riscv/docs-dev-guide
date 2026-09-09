@@ -1,0 +1,194 @@
+---
+name: Validate Antora content source
+
+# This repo is ONE content source. The real site is assembled elsewhere by the
+# central playbook (github.com/riscv-admin/antora.riscv.org) from 20+ sources --
+# this job does NOT build or deploy that site.
+#
+# What it does: build THIS component in isolation via the local
+# antora-playbook.yml (same extensions/attributes as production) as a PR gate, so
+# broken AsciiDoc, unresolved intra-component xrefs/includes, or extension errors
+# fail here instead of stalling the shared central library build once the branch
+# is consumed.
+#
+# What it CANNOT check: cross-component references (e.g. `common::risc-v_logo.svg`
+# or xrefs into other specs) resolve only in the central multi-source build, so
+# they are expected to be unresolved here and are exception-listed below.
+#
+# The release-time version stamp (make stamp-antora -> antora.yml) is NOT part of
+# this gate; it runs from build-pdf.yml on release. See ANTORA.md Phase 4/6.
+#
+# The gate's build output is also KEPT, as a downloadable artifact, so reviewers
+# can see a content change rendered instead of reading the AsciiDoc diff. The site
+# was already being built here on every PR and thrown away; retaining it costs no
+# build time. This is a HEAD-only preview -- no version selector, no release
+# history -- and it is not a deployment: see the issue trail on why a real per-PR
+# preview host is out of scope for this template (the RISC-V org refuses Pages
+# site creation to the workflow token, and fork PRs cannot hold deploy secrets).
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+# Read-only: this job builds and inspects the component, it never writes to the
+# repo or publishes anything.
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    # Local Kroki server for asciidoctor-kroki (wavedrom etc.). Matches the
+    # kroki-server-url: http://localhost:9870 attribute in antora-playbook.yml.
+    # Pinned: a floating `latest` can change diagram output (or break) between
+    # runs with no change in this repo. Keep in sync with docker-compose.yml.
+    services:
+      kroki:
+        image: yuzutech/kroki:0.31.1
+        ports:
+          - 9870:8000
+
+    steps:
+      # submodules -- docs-resources supplies the cover logo staged below. The
+      # gate itself does not need it; the preview artifact does.
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install preview tooling
+        run: npm ci
+
+      # The service container is "started" before it can serve; without this the
+      # Antora build can race Kroki's JVM startup and fail on diagram rendering.
+      # Polled from the runner (which has curl) rather than via a container
+      # healthcheck, since the Kroki image ships no HTTP client to probe itself.
+      - name: Wait for Kroki
+        run: |
+          set -euo pipefail
+          for i in $(seq 1 30); do
+            if curl -fsS http://localhost:9870/health >/dev/null 2>&1; then
+              echo "Kroki is up after ${i} attempt(s)."
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "::error::Kroki did not become healthy within 60s"
+          exit 1
+
+      # antora.yml sets `cover-logo: common::risc-v_logo.svg` -- a shared asset
+      # from the central `common` component, which does not exist in a
+      # single-component build, so index.adoc (the start page) renders a broken
+      # image. Tolerable when this job was only a pass/fail gate; not tolerable
+      # now that its output is published as a preview, because index.adoc is the
+      # FIRST page a reviewer opens. Vendor the SVG and hard-set the attribute,
+      # exactly as scripts/build-pages-site.sh does for the Pages build.
+      # modules/ROOT/images/risc-v_logo.svg is gitignored; this only ever touches
+      # the runner's worktree.
+      - name: Stage cover logo
+        id: cover
+        run: |
+          set -euo pipefail
+          src=docs-resources/images/risc-v_logo.svg
+          if [ -f "$src" ]; then
+            mkdir -p modules/ROOT/images
+            cp "$src" modules/ROOT/images/risc-v_logo.svg
+            echo "cover_logo=risc-v_logo.svg" >> "$GITHUB_OUTPUT"
+            echo "Staged cover logo from docs-resources."
+          else
+            echo "::warning::$src not found (submodule not initialized?) -- the"
+            echo "::warning::preview cover image will be unresolved."
+            echo "cover_logo=" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build component (isolated)
+        env:
+          COVER_LOGO: ${{ steps.cover.outputs.cover_logo }}
+        run: |
+          # Hard-set (playbook-level) so it overrides the antora.yml default.
+          # Omitted entirely if staging failed, leaving the pre-existing
+          # unresolved-`common::` behaviour that the exception below covers.
+          attrs=()
+          if [ -n "$COVER_LOGO" ]; then
+            attrs+=(--attribute "cover-logo=$COVER_LOGO")
+          fi
+
+          # Run the pinned local binary rather than `npx antora`, matching
+          # scripts/build-pages-site.sh. npx routes argv through npm's own
+          # option parser, which claims bare `key=value` arguments -- it warns
+          # `"cover-logo=..." is being parsed as a normal command line argument`
+          # -- so the attribute above is safer passed straight to the CLI.
+          antora_bin=./node_modules/.bin/antora
+
+          set +e
+          "$antora_bin" --fetch --log-format=json "${attrs[@]}" antora-playbook.yml 2>&1 | tee antora-build.log
+          status=${PIPESTATUS[0]}
+          set -e
+
+          if [ "$status" -ne 0 ]; then
+            echo "::error::Antora exited with status $status"
+            exit "$status"
+          fi
+
+          # Antora logs unresolved xrefs/includes/images at error level without
+          # failing the build. Treat those as failures -- EXCEPT cross-component
+          # references that only resolve in the central multi-source build.
+          #
+          # The cover-logo exception is now the FALLBACK path only: with the logo
+          # staged above the reference resolves and this filter matches nothing,
+          # so the gate actually validates the image macro (it previously could
+          # not -- see modules/ROOT/pages/index.adoc). It stays so an unavailable
+          # submodule degrades to a warning instead of a red gate.
+          unexpected="$(grep -E '"level":"(error|fatal)"' antora-build.log \
+            | grep -v 'common::risc-v_logo.svg' || true)"
+          if [ -n "$unexpected" ]; then
+            echo "::error::Antora reported unexpected errors:"
+            echo "$unexpected"
+            exit 1
+          fi
+          echo "Component builds clean (ignoring expected cross-component refs)."
+
+      # The site the gate just built, kept instead of discarded (~4 MB, ~70
+      # files). Uploaded only on a clean gate: a site built from a tree that
+      # failed validation would misrepresent the change.
+      - name: Upload rendered site
+        id: upload
+        uses: actions/upload-artifact@v6
+        with:
+          name: Rendered site (Antora)
+          path: build/site
+          retention-days: 14
+
+      # Put a direct link in the run summary. `artifact-url` is an output of
+      # upload-artifact -- GitHub documents it precisely for this. This is the
+      # cheap half of discoverability: it needs no permissions and works on fork
+      # PRs, where the pull_request GITHUB_TOKEN is read-only and a step here
+      # could not post a PR comment. A comment in the PR conversation needs a
+      # separate workflow_run-triggered workflow; that is deliberately not in
+      # this change.
+      - name: Link the rendered site in the run summary
+        if: steps.upload.outputs.artifact-url != ''
+        env:
+          ARTIFACT_URL: ${{ steps.upload.outputs.artifact-url }}
+        run: |
+          set -euo pipefail
+          {
+            echo "### Rendered site (preview)"
+            echo
+            echo "[Download the rendered Antora site]($ARTIFACT_URL) — unzip, open \`index.html\`."
+            echo
+            echo "- Preview of this branch's HEAD only: no version selector, no release history."
+            echo "- Downloading requires being signed in to GitHub (an Actions limitation)."
+            echo "- Cross-component references into other specs still resolve only on the central site."
+          } >> "$GITHUB_STEP_SUMMARY"

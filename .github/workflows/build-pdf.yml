@@ -1,90 +1,345 @@
 ---
 name: Create Specification Document
 
-# The workflow is triggered by pull request, push to main, and manual dispatch.
+# Cutting a release goes through version-bot.yml, which owns the version
+# arithmetic, the monotonic guard, SPEC_STATE.md and the milestone PR. It calls
+# this workflow directly rather than leaning on its tag push to trigger one, so
+# the release chain runs on the built-in GITHUB_TOKEN and needs no PAT.
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
-      version:
-        description: 'Release version, e.g. X.Y.Z:'
+      release_version:
+        description: Exact version to build and release (e.g. v0.62). Must already be tagged.
         required: true
         type: string
-      revision_mark:
-        description: 'Set revision mark as Draft, Release or Stable:'
-        required: true
-        type: string
-        default: Draft
-      prerelease:
-        description: Tag as a pre-release?
-        required: false
-        type: boolean
-        default: true
       draft:
-        description: Create release as a draft?
+        description: Create the GitHub Release as a draft.
         required: false
         type: boolean
         default: false
- # pull_request:
- # push:
- #   branches:
- #     - main
+
+  # Preview only: builds the PDF and HTML for the current ref and publishes
+  # nothing. This used to accept release_version/target_phase/draft and cut a
+  # release of its own -- a second door that bypassed version-bot, so a milestone
+  # cut here got a tag and a release but no SPEC_STATE transition and no
+  # milestone PR. Releasing now has exactly one entry point.
+  workflow_dispatch:
+
+  pull_request:
+  push:
+    branches:
+      - main
+    # A tag pushed by hand still builds and releases. version-bot's own tag push
+    # deliberately uses GITHUB_TOKEN -- which GitHub refuses to let start a
+    # workflow run -- so this cannot double-fire alongside the workflow_call
+    # above and re-release the same version.
+    tags:
+      - v*
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    # Expose the resolved version/date so the stamp-site-version job can keep
+    # antora.yml (the HTML site version) in exact lockstep with this PDF build.
+    outputs:
+      version: ${{ steps.set_build_version.outputs.version }}
+      date: ${{ steps.set_build_version.outputs.date }}
+      releasable: ${{ steps.classify.outputs.releasable }}
+
     steps:
+      # Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v6
         with:
+          # When version-bot calls us, build the TAGGED commit, not whatever main
+          # happens to point at by the time this job starts.
+          ref: ${{ inputs.release_version || github.ref }}
+          fetch-depth: 0
           submodules: recursive
 
-      - name: Normalize version input
-        id: ver
-        run: |
-          v='${{ github.event.inputs.version }}'
-          # Trim leading/trailing whitespace
-          v="$(echo "$v" | awk '{$1=$1; print}')"
-          # Drop leading 'v' or 'V'
-          v="${v#[Vv]}"
-          # Remove any internal spaces
-          v="${v//[[:space:]]/}"
-          echo "plain=$v" >> "$GITHUB_OUTPUT"
-          echo "tag=v$v" >> "$GITHUB_OUTPUT"
-
-      - name: Validate version format
-        run: |
-          v='${{ steps.ver.outputs.plain }}'
-          if ! [[ "$v" =~ ^[0-9]+(\.[0-9]+){1,2}(-[0-9A-Za-z.-]+)?$ ]]; then
-            echo "Invalid version '$v'. Use formats like 0.2, 0.2.0, or 0.2.0-rc1"
-            exit 1
-          fi
-
+      # Pull the latest RISC-V Docs container image
       - name: Pull Container
         run: docker pull riscvintl/riscv-docs-base-container-image:latest
 
-      - name: Build Files
-        run: make
-        env:
-          VERSION: ${{ steps.ver.outputs.tag }}      # e.g., v0.2.0
-          REVMARK: ${{ github.event.inputs.revision_mark }}
+      # Set VERSION and DATE for this build.
+      #
+      # RELEASE builds are a version-bot call (inputs.release_version) or a
+      # hand-pushed tag. Both name an existing tag, so DATE comes from the TAGGED
+      # COMMIT rather than "today": rebuilding a tag then reproduces an identical
+      # PDF filename and an identical antora.yml stamp, instead of churning a
+      # stamp PR whose entire diff is page-revdate.
+      #
+      # Everything else is a DEVELOPMENT build (pull request, push to main,
+      # preview dispatch) and resolves to <latest-tag>-<sha> via release-info.sh
+      # -- byte-for-byte what a local `make` produces. Development builds must NOT
+      # compute `next`: a preview stamped with the next release number spends a
+      # version that has not been cut, so the eventual real release ships a
+      # second, different document under the same name. Nothing is released from
+      # them; see RELEASABLE below.
+      - name: Set build version
+        id: set_build_version
+        run: |
+          set -euo pipefail
 
+          # Empty unless a tag pins it; filled in below.
+          date=""
+          tag=""
+
+          if [ -n "${{ inputs.release_version }}" ]; then
+            tag="$(./scripts/release-info.sh normalize "${{ inputs.release_version }}")"
+          elif [ "${{ github.ref_type }}" = "tag" ]; then
+            tag="$(./scripts/release-info.sh normalize "${{ github.ref_name }}")"
+          fi
+
+          if [ -n "$tag" ]; then
+            version="$tag"
+            release_build=true
+            if ! date="$(git log -1 --format=%cs "$tag" 2>/dev/null)"; then
+              echo "::error::$tag is not a tag in this repository; a release build must name an existing tag."
+              exit 1
+            fi
+          else
+            version="$(./scripts/release-info.sh version)"
+            # NOT derivable from the version string: release-info.sh returns a
+            # bare vX.YY (no -<sha>) whenever HEAD happens to carry a tag, so a
+            # push to main or a preview dispatch landing on a freshly tagged
+            # commit would otherwise look releasable and re-cut that release.
+            release_build=false
+          fi
+
+          # Resolve the date ONCE so the PDF and the Antora version stamp share it
+          # exactly (no midnight-boundary drift between separate steps).
+          date="${date:-$(date +%Y-%m-%d)}"
+
+          echo "VERSION=$version" >> "$GITHUB_ENV"
+          echo "DATE=$date" >> "$GITHUB_ENV"
+          echo "RELEASE_BUILD=$release_build" >> "$GITHUB_ENV"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "date=$date" >> "$GITHUB_OUTPUT"
+
+      - name: Classify release type
+        id: classify
+        run: |
+          set -euo pipefail
+
+          # Two independent conditions, both required, and neither of them the
+          # event name -- under workflow_call `github.event_name` describes the
+          # CALLER, so an event test would misclassify every version-bot release.
+          #
+          #   RELEASE_BUILD  this run was asked for a specific tag
+          #   no -<sha>      the resolved version is not a development version
+          #
+          # The second alone is not enough (a preview can land on a tagged commit
+          # and resolve to a bare version); the first alone is not enough either
+          # (it is the last line of defence against ever releasing a -<sha>
+          # version). Every release step and the stamp job gate on the result.
+          if [ "$RELEASE_BUILD" = "true" ] && [ "${VERSION#*-}" = "${VERSION}" ]; then
+            releasable=true
+          else
+            releasable=false
+            echo "$VERSION is a development build; this run publishes nothing."
+          fi
+          echo "RELEASABLE=$releasable" >> "$GITHUB_ENV"
+          echo "releasable=$releasable" >> "$GITHUB_OUTPUT"
+
+          # Milestone-gate tags (v0.6, v0.8, v0.9, v0.99, v1.0) get a
+          # non-prerelease GitHub Release. release-info.sh is the single source of
+          # truth for which versions are milestones.
+          if ./scripts/release-info.sh is-milestone "${VERSION}"; then
+            echo "OFFICIAL_RELEASE=true" >> "$GITHUB_ENV"
+          else
+            echo "OFFICIAL_RELEASE=false" >> "$GITHUB_ENV"
+          fi
+
+      # Build Files. VERSION and DATE are exported so the Makefile and
+      # release-info.sh produce ARC-compliant PDF names: <short>-v<ver>-<YYYYMMDD>.pdf
+      - name: Build Files
+        run: |
+          set -euo pipefail
+          export VERSION="${VERSION}"
+          export DATE="${DATE}"
+          echo "Building ${VERSION} (${DATE})"
+          make
+
+      # Upload the built documents as a single artifact.
+      #
+      # The HTML is rendered on every run whether or not we keep it -- build-docs
+      # depends on $(DOCS_HTML) as well as $(DOCS_PDF) -- so retaining it costs no
+      # extra build time, and reviewers get the rendered document instead of only
+      # the PDF. It travels as one file: the spec sets :data-uri:, so images and
+      # the stylesheet are inlined and nothing sidecar has to ship with it.
+      #
+      # `*` does not cross directory separators, so this cannot sweep up an Antora
+      # build/site/ or build/pages-site/ tree if one ever lands in this job.
+      #
+      # Release assets stay PDF-only on purpose (see the steps below): the ARC
+      # submission artifact is the PDF, and the published HTML is the Antora site.
       - name: Upload Build Artifacts
+        id: upload
         uses: actions/upload-artifact@v6
         with:
           name: Build Artifacts
-          path: ${{ github.workspace }}/build/*.pdf
+          path: |
+            ${{ github.workspace }}/build/*.pdf
+            ${{ github.workspace }}/build/*.html
           retention-days: 30
 
-      - name: Create Release
-        if: github.event_name == 'workflow_dispatch'
+      # Put a direct link in the run summary, so reaching the build output is one
+      # click from the Checks tab rather than a hunt down the summary page. Same
+      # reasoning as validate-content-source.yml: needs no permissions and works
+      # on fork PRs, unlike a PR comment.
+      - name: Link the build artifacts in the run summary
+        if: steps.upload.outputs.artifact-url != ''
+        env:
+          ARTIFACT_URL: ${{ steps.upload.outputs.artifact-url }}
+        run: |
+          set -euo pipefail
+          {
+            echo "### Built document"
+            echo
+            echo "[Download the build artifacts]($ARTIFACT_URL) — \`${VERSION}\` (${DATE})."
+            echo
+            echo "- Downloading requires being signed in to GitHub (an Actions limitation)."
+            echo "- Retained for 30 days."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # Publish the GitHub Release.
+      #
+      # There used to be four of these -- official/prerelease x tag-push/manual --
+      # because a manual dispatch could cut its own release. Releasing now has one
+      # entry point (a tag, whether version-bot pushed it or a maintainer did), so
+      # the only remaining axis is milestone vs interim. RELEASABLE, not the event
+      # name, decides whether a release happens at all.
+      - name: Create Release (Official)
         uses: softprops/action-gh-release@v2
         with:
           files: ${{ github.workspace }}/build/*.pdf
-          tag_name: ${{ steps.ver.outputs.tag }}     # e.g., v0.2.0
-          name: Release ${{ steps.ver.outputs.plain }}
-          draft: ${{ github.event.inputs.draft }}
-          prerelease: ${{ github.event.inputs.prerelease }}
-          target_commitish: ${{ github.sha }}
+          tag_name: ${{ env.VERSION }}
+          name: Release ${{ env.VERSION }}
+          draft: ${{ inputs.draft || false }}
+          prerelease: false
         env:
-          # Prefer the default token unless you have a reason to use a PAT.
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GHTOKEN || secrets.GITHUB_TOKEN }}
+        if: env.RELEASABLE == 'true' && env.OFFICIAL_RELEASE == 'true'
+
+      - name: Create Release (Pre-release)
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ github.workspace }}/build/*.pdf
+          tag_name: ${{ env.VERSION }}
+          name: Release ${{ env.VERSION }}
+          draft: ${{ inputs.draft || false }}
+          prerelease: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GHTOKEN || secrets.GITHUB_TOKEN }}
+        if: env.RELEASABLE == 'true' && env.OFFICIAL_RELEASE != 'true'
+
+  # Keep the Antora HTML site version in EXACT lockstep with the PDF this run just
+  # built: stamp the SAME resolved version/date into antora.yml on main, so the
+  # central playbook publishes the version the PDF carries. The PDF and this stamp
+  # come from one build job (same source, same VERSION/DATE) -- they cannot drift.
+  #
+  # Runs only for real releases: not PR previews (nothing to publish) and not
+  # drafts (not public yet). Never moves main's version backwards, so rebuilding
+  # an older tag will not regress the site.
+  #
+  # The stamp lands as a REVIEW PR, not a direct push to `main`. This template is
+  # seeded into many spec repos whose branch protection we do not control, and a
+  # rejected push would leave the release green while the site version silently
+  # lagged the PDF -- the exact divergence this job exists to prevent. Opening a
+  # PR works under any protection setting and matches the milestone-PR idiom in
+  # version-bot.yml. Cost: a maintainer must merge it for the site to catch up,
+  # so treat that merge as part of cutting a release (see MIGRATION.md Step 14).
+  stamp-site-version:
+    needs: build
+    runs-on: ubuntu-latest
+    #
+    # Gated purely on the build job's own verdict: under workflow_call
+    # `github.event_name` and `github.ref_type` describe the CALLER, so testing
+    # them here would stamp on preview runs and skip real releases.
+    if: >-
+      needs.build.outputs.releasable == 'true' &&
+      inputs.draft != true
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.GHTOKEN || secrets.GITHUB_TOKEN }}
+          # Do not persist the token as a git extraheader. create-pull-request
+          # injects its own auth header; a persisted one here makes git send two
+          # Authorization headers -> GitHub 400 "Duplicate header: Authorization".
+          persist-credentials: false
+
+      - name: Stamp antora.yml to match the released PDF version
+        id: stamp
+        env:
+          VERSION: ${{ needs.build.outputs.version }}
+          DATE: ${{ needs.build.outputs.date }}
+        run: |
+          set -euo pipefail
+
+          current="$(grep -E '^version:' antora.yml | awk '{print $2}')"
+          echo "main antora.yml version: ${current:-<none>}; released version: $VERSION"
+
+          # Monotonic guard: never stamp main backwards (e.g. when an old tag is
+          # rebuilt). Compare by DECIMAL order via release-info.sh -- `sort -V`
+          # would rank v0.8 below v0.61 and stamp the site backwards.
+          #
+          # Skip at >=, not just at >. At an EQUAL version the only field that can
+          # still differ is page-revdate, and a PR that moves a released version's
+          # date forward is pure churn that also misdates the release. (Rebuilding
+          # v0.01 a day later opened exactly such a PR; the tag-derived DATE in the
+          # build job closes the other half of that hole.)
+          if [ -n "$current" ] && [ "$current" != "~" ]; then
+            if [ "$(./scripts/release-info.sh compare "$current" "$VERSION")" != "-1" ]; then
+              echo "main is already at $current (>= $VERSION); skipping stamp."
+              echo "changed=false" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          fi
+
+          # Leaves antora.yml modified in the worktree; create-pull-request below
+          # is what commits it. stamp-antora fails loudly if it cannot stamp, so a
+          # no-op here means "already correct", never "silently did nothing".
+          make stamp-antora VERSION="$VERSION" DATE="$DATE"
+
+          if git diff --quiet -- antora.yml; then
+            echo "antora.yml already matches $VERSION; nothing to commit."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Open site version stamp PR
+        if: steps.stamp.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GHTOKEN || secrets.GITHUB_TOKEN }}
+          base: main
+          commit-message: 'chore(site): stamp Antora version ${{ needs.build.outputs.version }} to match PDF'
+          branch: gitbot/stamp-site-${{ needs.build.outputs.version }}
+          delete-branch: true
+          title: Stamp Antora site version ${{ needs.build.outputs.version }} to match released PDF
+          body: |
+            This PR was opened automatically by the `${{ needs.build.outputs.version }}` release build.
+
+            The ARC Author Guide requires the published HTML site version to match
+            the submission PDF exactly. Antora reads a static `version:` from the
+            committed `antora.yml`, so a release has to stamp that file.
+
+            Released PDF version: `${{ needs.build.outputs.version }}` (${{ needs.build.outputs.date }})
+
+            **Until this merges, the site version lags the released PDF.** The
+            values come from `scripts/release-info.sh` -- the same source the PDF
+            build uses -- so this needs a merge, not an edit.
+          labels: |
+            site-version
+            automated
+          add-paths: |
+            antora.yml

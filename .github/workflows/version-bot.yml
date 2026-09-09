@@ -1,0 +1,267 @@
+---
+name: Version Bot
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_phase:
+        description: Force-jump to the milestone floor version for this phase
+        required: false
+        type: choice
+        default: auto-next
+        options:
+          - auto-next
+          - draft-and-development
+          - development-complete
+          - stabilized
+          - frozen
+          - ratification-ready
+          - ratified
+      release_version:
+        description: Explicit version override (e.g., v0.9). If set, target_phase is ignored.
+        required: false
+        type: string
+      allow_non_monotonic:
+        description: Allow jumps lower than the latest existing version tag
+        required: false
+        type: boolean
+        default: false
+      draft:
+        description: Create the GitHub Release as a draft
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  tag-version:
+    runs-on: ubuntu-latest
+    outputs:
+      previous_version: ${{ steps.version.outputs.previous_version }}
+      next_version: ${{ steps.version.outputs.next_version }}
+      previous_phase: ${{ steps.version.outputs.previous_phase }}
+      next_phase: ${{ steps.version.outputs.next_phase }}
+      milestone_transition: ${{ steps.version.outputs.milestone_transition }}
+      mode: ${{ steps.version.outputs.mode }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          # Deliberately the built-in GITHUB_TOKEN, even when GHTOKEN exists.
+          #
+          # A tag pushed by GITHUB_TOKEN cannot start a `push: tags: v*` run.
+          # That used to be the problem -- the tag landed and nothing built, so
+          # the whole release chain silently required a PAT. It is now the
+          # mechanism: the release-pdf and publish-site jobs below invoke those
+          # workflows directly, and an inert tag push is what keeps them from
+          # ALSO firing on the tag and cutting the same release twice.
+          #
+          # Unlike milestone-pr, this job does not use create-pull-request, so
+          # persisting credentials here is safe.
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # The release chain no longer depends on GHTOKEN: this workflow calls
+      # build-pdf.yml and publish-site.yml directly rather than hoping its tag
+      # push triggers them. What still depends on it is the CHECKS on the PRs
+      # this template's bots open (the milestone PR, the site version stamp PR):
+      # GitHub refuses to let a GITHUB_TOKEN-authored PR start workflow runs, so
+      # those checks sit in 'action_required' until a maintainer approves them.
+      # Warn rather than fail -- the tag, the release and the PRs are all still
+      # correct.
+      - name: Check for bot token
+        env:
+          GHTOKEN: ${{ secrets.GHTOKEN }}
+        run: |
+          set -euo pipefail
+
+          if [[ -z "$GHTOKEN" ]]; then
+            echo "::warning::GHTOKEN is not set. The release itself will proceed, but checks on any PR this workflow opens will sit in 'action_required' until approved by hand. See README.adoc, 'Recommended repository secret'."
+          fi
+
+      - name: Compute and tag next version
+        id: version
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          TARGET_PHASE: ${{ github.event.inputs.target_phase }}
+          RELEASE_VERSION: ${{ github.event.inputs.release_version }}
+          ALLOW_NON_MONOTONIC: ${{ github.event.inputs.allow_non_monotonic }}
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+
+          git fetch --tags --force
+
+          # Highest existing tag by DECIMAL order. Never use `git ... --sort` or
+          # `sort -V` here: they order the fractional part component-wise and rank
+          # v0.8 below v0.61. release-info.sh compares by centi-value.
+          latest="$(./scripts/release-info.sh latest)"
+
+          # Auto-increment (`next`) refuses at a milestone gate with rc=10: the
+          # 0.01 band before the next manual milestone is exhausted. That is not
+          # an error -- it means "a maintainer must cut the milestone" -- so we
+          # emit a notice and finish without tagging. Sets the global `next`;
+          # returns non-zero (band exhausted) to signal "stop, no tag". Kept out
+          # of $(...) so the ::notice:: reaches the workflow log.
+          compute_next() {
+            local base="$1" out rc
+            # Capture rc from the substitution itself (a bare `if ...; fi` with no
+            # else would leave $? as the if-statement's 0, masking rc=10).
+            out="$(./scripts/release-info.sh next "$base" 2>/tmp/next.err)" && rc=0 || rc=$?
+            if [[ "$rc" -eq 0 ]]; then
+              next="$out"
+              return 0
+            fi
+            if [[ "$rc" -eq 10 ]]; then
+              echo "::notice::$(cat /tmp/next.err) No tag created."
+              return 1
+            fi
+            cat /tmp/next.err >&2
+            exit "$rc"
+          }
+
+          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
+            if [[ "$REF_NAME" != "main" ]]; then
+              echo "Manual version jump must run against main." >&2
+              exit 1
+            fi
+
+            if [[ -n "${RELEASE_VERSION:-}" ]]; then
+              next="$(./scripts/release-info.sh normalize "$RELEASE_VERSION")"
+            elif [[ -n "${TARGET_PHASE:-}" && "$TARGET_PHASE" != "auto-next" ]]; then
+              next="$(./scripts/release-info.sh phase-floor-version "$TARGET_PHASE")"
+            else
+              compute_next "$latest" || exit 0
+            fi
+          else
+            existing="$(git tag --points-at HEAD --list 'v*' | head -n1 || true)"
+            if [[ -n "$existing" ]]; then
+              next="$(./scripts/release-info.sh normalize "$existing")"
+            else
+              compute_next "$latest" || exit 0
+            fi
+          fi
+
+          if [[ "${ALLOW_NON_MONOTONIC:-false}" != "true" ]]; then
+            if [[ "$(./scripts/release-info.sh compare "$next" "$latest")" == "-1" ]]; then
+              echo "Refusing non-monotonic jump from $latest to $next. Set allow_non_monotonic=true to override." >&2
+              exit 1
+            fi
+          fi
+
+          if git rev-parse -q --verify "refs/tags/$next" >/dev/null; then
+            tag_sha="$(git rev-list -n1 "$next")"
+            head_sha="$(git rev-parse HEAD)"
+            if [[ "$tag_sha" != "$head_sha" ]]; then
+              echo "Tag $next already exists on another commit ($tag_sha)." >&2
+              exit 1
+            fi
+            echo "Tag $next already exists on HEAD; reusing."
+          else
+            git config user.name "riscv-gitbot"
+            git config user.email "actions@users.noreply.github.com"
+            git tag -a "$next" -m "Automated version tag for ${GITHUB_SHA}"
+            git push origin "$next"
+          fi
+
+          prev_phase="$(./scripts/release-info.sh phase "$latest")"
+          next_phase="$(./scripts/release-info.sh phase "$next")"
+
+          milestone_transition=false
+          if [[ "$prev_phase" != "$next_phase" ]]; then
+            milestone_transition=true
+          fi
+
+          echo "previous_version=$latest" >> "$GITHUB_OUTPUT"
+          echo "next_version=$next" >> "$GITHUB_OUTPUT"
+          echo "previous_phase=$prev_phase" >> "$GITHUB_OUTPUT"
+          echo "next_phase=$next_phase" >> "$GITHUB_OUTPUT"
+          echo "milestone_transition=$milestone_transition" >> "$GITHUB_OUTPUT"
+          echo "mode=$(./scripts/release-info.sh mode)" >> "$GITHUB_OUTPUT"
+
+  # Build and release the PDF for the tag just cut, then publish the Antora site
+  # for it. These run as workflow_call rather than waiting on the tag push, which
+  # is inert by design (see the checkout comment above) -- so the release chain
+  # completes on the built-in GITHUB_TOKEN, with no PAT to provision in every
+  # repository seeded from this template.
+  #
+  # `if` guards the milestone-gate case: compute_next exits the job without
+  # setting next_version when the 0.01 band is exhausted, and there is then no
+  # tag to build.
+  release-pdf:
+    needs: tag-version
+    if: needs.tag-version.outputs.next_version != ''
+    uses: ./.github/workflows/build-pdf.yml
+    permissions:
+      contents: write
+      pull-requests: write
+    secrets: inherit
+    with:
+      release_version: ${{ needs.tag-version.outputs.next_version }}
+      draft: ${{ inputs.draft }}
+
+  # Sequenced after release-pdf so a failed build does not publish a site for a
+  # version that has no PDF.
+  publish-site:
+    needs: [tag-version, release-pdf]
+    if: needs.tag-version.outputs.next_version != ''
+    uses: ./.github/workflows/publish-site.yml
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    secrets: inherit
+    with:
+      release_version: ${{ needs.tag-version.outputs.next_version }}
+
+  milestone-pr:
+    runs-on: ubuntu-latest
+    needs: tag-version
+    # SPEC_STATE.md is a ratification-layer artifact (milestone/phase labels),
+    # meaningless for a doc-mode repo, which has no milestones. See
+    # scripts/release-info.sh's .docmode / "mode" output above.
+    if: needs.tag-version.outputs.milestone_transition == 'true' && needs.tag-version.outputs.mode == 'spec'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          # See build-pdf.yml: create-pull-request adds its own auth header, so a
+          # persisted token here yields a duplicate Authorization header (400).
+          persist-credentials: false
+
+      - name: Update specification state
+        run: |
+          set -euo pipefail
+          ./scripts/update-spec-state.sh "${{ needs.tag-version.outputs.next_version }}" "$(date +%Y-%m-%d)"
+
+      - name: Create milestone review PR
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GHTOKEN || secrets.GITHUB_TOKEN }}
+          commit-message: 'docs: milestone transition to ${{ needs.tag-version.outputs.next_phase }}'
+          branch: gitbot/milestone-${{ needs.tag-version.outputs.next_version }}
+          delete-branch: true
+          title: 'Milestone reached: ${{ needs.tag-version.outputs.next_phase }} (${{ needs.tag-version.outputs.next_version }})'
+          body: |
+            This PR was opened automatically after a version milestone transition.
+
+            Previous version/state: `${{ needs.tag-version.outputs.previous_version }}` / `${{ needs.tag-version.outputs.previous_phase }}`
+            New version/state: `${{ needs.tag-version.outputs.next_version }}` / `${{ needs.tag-version.outputs.next_phase }}`
+
+            Please review and apply any governance/process updates required for this state transition.
+
+            Suggested maintainer checklist:
+            - Confirm the state transition is intentional.
+            - Confirm change-control policy for the new state is enforced.
+            - Confirm communication to contributors and implementers.
+          labels: |
+            milestone
+            spec-state
+          add-paths: |
+            SPEC_STATE.md
