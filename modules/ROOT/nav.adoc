@@ -14,3 +14,9 @@
 * xref:linting.adoc[Linting]
 * xref:build-infrastructure.adoc[Build Infrastructure]
 * xref:bibliography.adoc[Bibliography]
+// Back matter. Appended rather than placed up front (where the template puts
+// them) so the chapter line numbers above do not shift: the central playbook's
+// numbering_rules entry for this component keys chapters off LINE NUMBERS in
+// this file. See MIGRATION.md Step 11.
+* xref:contributors.adoc[Contributors]
+* xref:copyright.adoc[Copyright and license information]

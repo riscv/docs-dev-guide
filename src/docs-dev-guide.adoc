@@ -9,11 +9,13 @@ ifndef::revnumber[:revnumber: v0.0]
 ifndef::revdate[:revdate: 1970-01-01]
 ifndef::spec_short[:spec_short: docs-dev-guide]
 :revinfo:
+// Shared RISC-V attributes (:company:, :url-riscv:, :doctype: book) from the
+// docs-resources submodule, so this document picks up changes to them centrally.
+// PDF-ONLY: this cross-repo relative include cannot resolve under Antora, which
+// is why it lives in the assembler and never in a page. See MIGRATION.md Step 7.
+include::../docs-resources/global-config.adoc[]
 //:title-logo-image: image:risc-v_logo.png[pdfwidth=3.25in,align=center]
 :description: A working template for documenting RISC-V architecture in asciidoc
-:company: RISC-V.org
-:url-riscv: http://riscv.org
-:doctype: book
 //:preface-title: Preamble
 //:colophon:
 //:appendix-caption: Appendix
@@ -34,7 +36,10 @@ ifndef::spec_short[:spec_short: docs-dev-guide]
 :lang: en
 :listing-caption: Listing
 :sectnums:
-:toc: left
+// `macro` rather than `left` so the toc::[] call below controls placement -- the
+// TOC follows the front matter, as in the template's assembler.
+:toc: macro
+:toc-title: Table of Contents
 :toclevels: 4
 :source-highlighter: pygments
 ifdef::backend-pdf[]
@@ -56,6 +61,27 @@ endif::[]
 //For this book example, I have copied information directly from several Web sites that are hosted by asciidoctor.org and devoted to providing Asciidoc/Asciidoctor documentation, and have authored some explanations. Graphics used are either explicitly available for free, are property of RISC-V International, or were created using Wavedrom.
 
 //This document is released under a Creative Commons Attribution 4.0 International License.
+
+// This repo runs in doc mode, so there is no "Document State" preface to render
+// ahead of the TOC -- see MIGRATION.md "Doc mode".
+toc::[]
+
+[preface]
+== List of figures
+list-of::image[hide_empty_section=true, enhanced_rendering=true]
+
+[preface]
+== List of tables
+list-of::table[hide_empty_section=true, enhanced_rendering=true]
+
+[preface]
+== List of listings
+list-of::listing[hide_empty_section=true, enhanced_rendering=true]
+
+include::../modules/ROOT/pages/copyright.adoc[]
+
+[preface]
+include::../modules/ROOT/pages/contributors.adoc[]
 
 include::../modules/ROOT/pages/intro.adoc[]
 
@@ -82,5 +108,11 @@ include::../modules/ROOT/pages/word-usage.adoc[]
 include::../modules/ROOT/pages/linting.adoc[]
 
 include::../modules/ROOT/pages/build-infrastructure.adoc[]
+
+// The index must precede the bibliography. The index macro is PDF-only (Antora
+// does not generate a back-of-book index), so it lives here in the assembler
+// rather than in a page.
+[index]
+== Index
 
 include::../modules/ROOT/pages/bibliography.adoc[]
