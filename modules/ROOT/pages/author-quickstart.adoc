@@ -105,8 +105,8 @@ src/spec-sample.adoc                    <9>
 <1> Images used in the spec. These are referenced from the chapter files and included in both PDF and HTML output.
 <2> Site landing / cover page. HTML-only -- **not** part of the PDF. Follow the instructions in this file to update the content.
 <3> The introduction chapter. Becomes "Chapter 1" in the PDF.
-<4> Front matter that lists contributors. HTML only -- **not** part of the PDF. Follow the instructions in this file to update the content.
-<5> Copyright and license information. HTML only -- **not** part of the PDF. Follow the instructions in this file to update the content.
+<4> Front matter that lists contributors. Included in both PDF and HTML: the site navigation renders it as a page, and the PDF assembler includes it as a `[preface]` ahead of the first chapter. Follow the instructions in this file to update the content.
+<5> Copyright and license information. Included in both PDF and HTML, the same way as the contributors file. Follow the instructions in this file to update the content.
 <6> Bibliography main page. Included in both PDF and HTML and uses the bibliography database (`riscv-spec.bib`) to render the references.
 <7> Bibliography database.
 <8> HTML navigation file -- Update references to your chapter files here. This is the site navigation that builds the HTML output.

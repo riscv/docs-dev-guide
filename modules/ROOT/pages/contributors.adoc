@@ -1,0 +1,16 @@
+== Contributors
+
+This guide has been contributed to directly or indirectly by:
+
+[%hardbreaks]
+* Kevin Broch
+* Stephano Cetola
+* Paul A. Clarke
+* Brian Grayson
+* Jeff Osier-Mixon
+* Kersten Richter
+* Elisa Sawyer
+* Jeff Scheel
+* Josh Scheid
+* Rafael Sene
+* Bill Traynor
