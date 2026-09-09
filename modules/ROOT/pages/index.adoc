@@ -1,8 +1,8 @@
-= RISC-V Authoring and Editing Guide
-:page-layout: default
-:hardbreaks:
+[.space-below]
+image::common::risc-v_logo.svg[id="riscvlogo"xs,alt="RISCV"]
 
-[.space-above]
-image::risc-v_logo.svg[]
+[.space-below]
+== RISC-V Authoring and Editing Guide
 
-Version 0.20: This document is not ratified.
+Version v0.20, Revised 2026-09-09
+

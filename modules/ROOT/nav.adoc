@@ -1,6 +1,9 @@
 .Authoring and Editing RISC-V Specs
 * xref:intro.adoc[Introduction]
 * xref:authoring.adoc[AsciiDoc authoring for RISC-V contributors]
+* xref:install-tools.adoc[Installing Asciidoctor and using AsciiDoc]
+* xref:author-quickstart.adoc[Template Quickstart: Writing a Spec]
+* xref:antora-structure.adoc[Antora directory structure]
 * xref:a_few_basics.adoc[AsciiDoc basics]
 * xref:index_bib.adoc[Index and Bibliography]
 * xref:graphics.adoc[Graphics]
