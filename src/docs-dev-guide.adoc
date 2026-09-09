@@ -1,5 +1,14 @@
 [[riscv-authoring]]
 = Authoring and Editing RISC-V Specifications
+// Fallbacks for a bare `asciidoctor` invocation. The Makefile always passes
+// -a revnumber/-a revdate (from scripts/release-info.sh, the same source that
+// stamps antora.yml), so the PDF title page and the site cover cannot diverge.
+// This repo runs in doc mode (.docmode), so there are no phase/milestone
+// attribute defaults to declare -- see MIGRATION.md "Doc mode".
+ifndef::revnumber[:revnumber: v0.0]
+ifndef::revdate[:revdate: 1970-01-01]
+ifndef::spec_short[:spec_short: docs-dev-guide]
+:revinfo:
 //:title-logo-image: image:risc-v_logo.png[pdfwidth=3.25in,align=center]
 :description: A working template for documenting RISC-V architecture in asciidoc
 :company: RISC-V.org

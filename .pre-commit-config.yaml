@@ -7,10 +7,13 @@ repos:
       - id: check-symlinks
       - id: check-yaml
       - id: end-of-file-fixer
-        exclude: \.svg$
+        exclude: \.patch$
       - id: trailing-whitespace
         args: [--markdown-linebreak-ext=md]
-        exclude: \.svg$
+        # Patch files are byte-sensitive: context lines carry a leading space and
+        # blank context lines are a single space. Reformatting them can corrupt
+        # the patch.
+        exclude: \.patch$
 
   - repo: local
     hooks:
@@ -26,3 +29,8 @@ repos:
     hooks:
       - id: yamlfmt
         args: [--mapping, '2', --sequence, '4', --offset, '2']
+        # antora.yml is rewritten at release time by scripts/stamp-antora-version.sh,
+        # which replaces values line by line. yamlfmt line-wraps long plain scalars
+        # (e.g. page-phase-notice), which splits a value across two lines and makes
+        # the stamp emit invalid YAML. Leave this file alone.
+        exclude: ^antora\.yml$

@@ -1,8 +1,20 @@
 [.space-below]
-image::common::risc-v_logo.svg[id="riscvlogo"xs,alt="RISCV"]
+image::{cover-logo}[id="riscvlogo",role="xs",alt="RISCV"]
 
 [.space-below]
 == RISC-V Authoring and Editing Guide
 
-Version v0.20, Revised 2026-09-09
+ifndef::doc-mode[]
+Version {page-revnumber}, {page-revdate}: {page-phase-display}
+endif::doc-mode[]
+ifdef::doc-mode[]
+Version {page-revnumber}, {page-revdate}
+endif::doc-mode[]
 
+ifndef::doc-mode[]
+[NOTE]
+.This document is in the link:http://riscv.org/spec-state[{page-phase-display} state]
+====
+{page-phase-notice}
+====
+endif::doc-mode[]

@@ -2,9 +2,10 @@
 # Antora Component Descriptor
 # https://docs.antora.org/antora/latest/component-version-descriptor/
 #
-# This file defines the Antora component for the RISC-V Documentation Developer Guide.
-# This is a GUIDE (not a ratified specification), so it uses simplified versioning
-# without ARC submission workflow or milestone gating.
+# This file defines the Antora component for the RISC-V Documentation Developer
+# Guide. This is a GUIDE, not a ratified specification, so the repo runs in doc
+# mode (see .docmode and scripts/release-info.sh): version identity still comes
+# from semver git tags, but there is no ARC phase or milestone surface.
 #
 # Keep this file minimal. When this repo is published as a content source in the
 # central playbook (github.com/riscv-admin/antora.riscv.org), that playbook
@@ -18,7 +19,11 @@
 
 name: docs-guide
 title: RISC-V Authoring and Editing Guide
-# Simple version for guide (not ARC-gated). Updates as releases are cut.
+# The site version is kept in lockstep with the release PDF: it is the vX.Y
+# release tag. Do not hand-edit -- it is stamped from scripts/release-info.sh
+# (the same source the PDF build uses) by scripts/stamp-antora-version.sh /
+# `make stamp-antora`, so the site path (/docs-guide/<version>/) and the released
+# PDF filename always match.
 version: v0.20
 
 nav:
@@ -27,5 +32,31 @@ nav:
 asciidoc:
   attributes:
     page-group: guide
+    # Doc mode: this repo is documentation, not a spec headed for ratification.
+    # Consumed by src/docs-dev-guide.adoc to drop the Document State preface and
+    # the phase attribute defaults. Mirrors the .docmode file that
+    # scripts/release-info.sh reads.
+    doc-mode: 'true'
+    # Path (Antora resource ID) to this guide's BibTeX database, consumed by the
+    # central playbook's ASAM bibliography extension to resolve `cite:` macros and
+    # render `bibliography::[]`. Without it the extension no-ops and those appear
+    # as raw text. This is a repo-SPECIFIC resource the central playbook cannot
+    # supply, so it legitimately belongs here (not a rendering-attribute override).
     asamBibliography: ROOT:resources/riscv-spec.bib
-    page-pdf_url: https://github.com/riscv/docs-dev-guide/releases/tag/v0.2.0-example
+    # Cover logo for index.adoc, as an Antora resource ID. The default is the
+    # shared asset from the central `common` component, which is what the
+    # riscv.org production build uses. A single-repo build has no `common`
+    # component, so scripts/build-pages-site.sh (GitHub Pages) hard-sets this in
+    # its generated playbook to a copy vendored from the docs-resources
+    # submodule. Indirection lives here so neither build has to special-case the
+    # page itself.
+    cover-logo: common::risc-v_logo.svg
+    # Release metadata for the cover page (index.adoc), kept in lockstep with the
+    # PDF title page. Repo-SPECIFIC (the central playbook cannot know this guide's
+    # version), so it belongs here -- like asamBibliography above, not a
+    # shared-rendering override. Stamped by scripts/stamp-antora-version.sh; the
+    # `version:` key above is the authoritative version and page-revnumber mirrors
+    # it for display. Do not hand-edit. Doc mode stamps only these two keys --
+    # there is no page-phase surface.
+    page-revnumber: v0.20
+    page-revdate: 2026-09-09

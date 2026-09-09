@@ -1,8 +1,9 @@
 ---
 # Local Kroki server for Antora preview (`npm run preview` /
 # `antora antora-playbook.yml`). asciidoctor-kroki sends each diagram's source to
-# this server at build time and embeds the rendered SVG, so diagrams render
-# locally without shipping source to a public Kroki instance.
+# this server at build time and embeds the rendered SVG, so diagrams -- including
+# the wavedrom example in modules/ROOT/pages/intro.adoc -- render locally without
+# shipping source to a public Kroki instance.
 #
 # The local playbook sets `kroki-server-url: http://localhost:9870` (the same
 # port the central CI setup uses), so the port mapping below must stay 9870->8000.
@@ -12,10 +13,12 @@
 #
 # The core image renders wavedrom, PlantUML, Graphviz, etc. Diagram types that
 # need companion services (mermaid, bpmn, excalidraw) require extra containers;
-# add them here if needed.
+# add them here if this spec starts using those.
 services:
   kroki:
-    # Pinned rather than `latest` so a local preview renders what CI renders
+    # Pinned rather than `latest` so a local preview renders what CI renders --
+    # keep in sync with the kroki service in
+    # .github/workflows/validate-content-source.yml.
     image: yuzutech/kroki:0.31.1
     ports:
       - 9870:8000
