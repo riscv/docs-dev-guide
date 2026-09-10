@@ -9,7 +9,26 @@
 set -uo pipefail
 
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-RI="$here/../scripts/release-info.sh"
+
+# These assertions describe SPEC-mode behaviour, and release-info.sh resolves
+# .docmode relative to its OWN location (repo_root = script dir/..), not the
+# caller's cwd. Running the script in place would therefore inherit whatever
+# mode THIS repository is in -- in a doc-mode repo every phase/display/floor
+# assertion below would compare against the empty string that doc mode is
+# supposed to return, and the suite would report failures for correct behaviour
+# (see issue #152).
+#
+# So drive a copy of the script from a scratch repo with no .docmode: mode is
+# pinned to spec no matter where the suite runs. The doc-mode assertions at the
+# bottom keep their own scratch repo and opt IN to doc mode explicitly, which is
+# the same pattern -- this just applies it to the whole suite. Nothing here
+# needs the template's git history: the two blocks that DO need a repo (the
+# untagged-build and .docmode sections) build their own.
+specrepo="$(mktemp -d)"
+mkdir -p "$specrepo/scripts"
+cp "$here/../scripts/release-info.sh" "$specrepo/scripts/release-info.sh"
+RI="$specrepo/scripts/release-info.sh"
+trap 'rm -rf "$specrepo"' EXIT
 
 pass=0
 fail=0

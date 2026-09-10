@@ -69,11 +69,12 @@ preface, the phase/milestone attributes, and `SPEC_STATE.md` tracking.
       `phase-floor-version` all resolve to `""` in doc mode automatically.
 - [ ] In Step 3/4's `build-pdf.yml`/`version-bot.yml`, the `target_phase`
       enum and milestone gating stay as-is (they're pure version arithmetic,
-      not ratification), but a doc-mode `version-bot.yml`'s `milestone-pr`
-      job (which regenerates `SPEC_STATE.md`) should be gated the same way
-      upstream's is: add `&& needs.tag-version.outputs.mode == 'spec'` to its
-      `if:` (and add a `mode` output to `tag-version`, from
-      `release-info.sh mode`).
+      not ratification). No doc-mode edit is needed on top of that: upstream's
+      `version-bot.yml` already exports a `mode` output from `tag-version`
+      (`release-info.sh mode`) and already gates the `milestone-pr` job --
+      the one that regenerates `SPEC_STATE.md` -- on
+      `needs.tag-version.outputs.mode == 'spec'`. Take the upstream file as
+      written and the gate comes with it. Do not re-apply that edit by hand.
 - [ ] Skip Step 5's Document State preface and phase-attribute defaults
       entirely — a doc-mode top-level `.adoc` needs neither; the upstream
       file already guards them behind `ifndef::doc-mode[]`.

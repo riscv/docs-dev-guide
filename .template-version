@@ -4,9 +4,10 @@
 # v* git tags created by the version-bot.yml workflow.
 #
 # Baseline is template main rather than a release tag: doc mode (the posture
-# this repo runs in, see .docmode) landed in template PR #150 and is not in any
-# tagged release yet. The template's tag namespace also mixes real releases with
-# version-bot test tags, so the SHA is the authoritative record.
+# this repo runs in, see .docmode) landed in template PR #150, and the fixes for
+# the issues this repo raised (#151, #152) landed in PRs #153 and #154. None of
+# that is in a tagged release yet. The template's tag namespace also mixes real
+# releases with version-bot test tags, so the SHA is the authoritative record.
 template_ref: main
-template_sha: 74566374080a11fd7abe482b1246a87a12158f8b
-upgraded_on: 2026-09-09
+template_sha: 5a3a96eb1d9bab1332c74ebdda046a3d0b80030f
+upgraded_on: 2026-09-10

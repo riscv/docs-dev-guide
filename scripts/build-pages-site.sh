@@ -176,4 +176,35 @@ antora_bin="$repo_root/node_modules/.bin/antora"
 [ -x "$antora_bin" ] || antora_bin="npx antora"
 $antora_bin --fetch "$generated_playbook"
 
+# The shared RISC-V UI bundle links to `home/index.html` from every page: the
+# header logo, the "RISC-V Specifications" breadcrumb, and the nav-tree root.
+# That path is the `home` component on the central docs.riscv.org site, which a
+# single-repo build does not have -- so without this file every page here 404s
+# on the logo and the breadcrumb.
+#
+# This CANNOT be fixed in the generated playbook. Of the three references, only
+# partials/nav.hbs is configurable (via site.keys.toc_home_link_path);
+# partials/header-content.hbs and partials/breadcrumbs.hbs hardcode the path.
+# Emitting the file is the only lever a standalone build has.
+#
+# Antora has already written the site-root index.html -- a redirect to
+# `start_page` -- so one hop from here lands the reader on the component start
+# page, which is where the central site's `home` component would have taken
+# them. Guarded so a repo that genuinely ships its own `home` component keeps it.
+if [ -e "$output_dir/home/index.html" ]; then
+  echo "==> Keeping existing home/index.html (this build has a 'home' component)"
+else
+  echo "==> Emitting home/index.html redirect for the shared UI's fixed links"
+  mkdir -p "$output_dir/home"
+  cat > "$output_dir/home/index.html" <<'HTML'
+<!DOCTYPE html>
+<meta charset="utf-8">
+<script>location="../index.html"</script>
+<meta http-equiv="refresh" content="0; url=../index.html">
+<meta name="robots" content="noindex">
+<title>Redirect Notice</title>
+<p>This documentation is <a href="../index.html">here</a>.</p>
+HTML
+fi
+
 echo "==> Done: $output_dir"

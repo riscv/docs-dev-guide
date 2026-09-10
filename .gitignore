@@ -4,6 +4,9 @@
 **/.DS_Store
 # Local Antora preview tooling (see package.json / ANTORA.md Phase 5)
 /node_modules/
+# Vale style packages, downloaded into StylesPath by `vale sync` at lint time
+# (see .vale.ini). Fetched on every run, never committed.
+/.github/styles/
 /.cache/
 # Generated diagram/math artifacts (kroki fetch + asciidoctor-mathematical);
 # regenerated every build, never committed.
