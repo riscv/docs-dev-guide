@@ -215,7 +215,7 @@ history required:
 git checkout $TARGET -- \
   scripts/ tests/ \
   .github/workflows/ .github/dependabot.yml \
-  .pre-commit-config.yaml .vale.ini docker-compose.yml \
+  .pre-commit-config.yaml docker-compose.yml \
   ANTORA.md MIGRATION.md ARC_SUBMISSION.md
 ```
 
@@ -590,7 +590,6 @@ tests/release-info-test.sh
 .github/workflows/vale-linting.yml
 .github/dependabot.yml
 .pre-commit-config.yaml
-.vale.ini
 docker-compose.yml
 ANTORA.md
 MIGRATION.md
@@ -629,6 +628,7 @@ keeping your own values from this table.
 | `CHANGELOG.md` | Yours; see section 6 for how to log the upgrade itself |
 | `.gitignore` | Usually identical; the template adds entries as new generated artifacts appear |
 | `.gitmodules` | Usually identical — check rather than assume |
+| `.vale.ini` | `BasedOnStyles`, `Vocab`, and any rule you have switched off; `StylesPath` and `Packages` are template-owned |
 | `src/<your-spec>.adoc` | Your `include::` lines only; see below |
 
 #### The one file that is both
