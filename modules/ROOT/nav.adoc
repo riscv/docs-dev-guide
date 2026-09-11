@@ -1,22 +1,30 @@
-.Authoring and Editing RISC-V Specs
-* xref:intro.adoc[Introduction]
-* xref:authoring.adoc[AsciiDoc authoring for RISC-V contributors]
-* xref:install-tools.adoc[Installing Asciidoctor and using AsciiDoc]
-* xref:author-quickstart.adoc[Template Quickstart: Writing a Spec]
-* xref:antora-structure.adoc[Antora directory structure]
-* xref:a_few_basics.adoc[AsciiDoc basics]
-* xref:index_bib.adoc[Index and Bibliography]
-* xref:graphics.adoc[Graphics]
-* xref:vale.adoc[Vale at RISC-V]
-* xref:style-guidelines.adoc[RISC-V Style Guidelines]
-* xref:writing.adoc[Best Practice]
-* xref:word-usage.adoc[Word Usage Guide]
-* xref:linting.adoc[Linting]
-* xref:build-infrastructure.adoc[Build Infrastructure]
-* xref:bibliography.adoc[Bibliography]
-// Back matter. Appended rather than placed up front (where the template puts
-// them) so the chapter line numbers above do not shift: the central playbook's
-// numbering_rules entry for this component keys chapters off LINE NUMBERS in
-// this file. See MIGRATION.md Step 11.
-* xref:contributors.adoc[Contributors]
-* xref:copyright.adoc[Copyright and license information]
+// Navigation file for Antora
+// https://docs.antora.org/antora/latest/navigation/
+//
+// Update this file to reflect your specification's chapter structure.
+//
+// SECTION NUMBERING: the RISC-V central playbook assigns chapter numbers by the
+// LINE NUMBER of each xref entry below, via its numbering_rules (see ANTORA.md,
+// "Section numbering"). If you add, remove, or reorder entries here -- or edit
+// these header comments -- the line numbers shift, so the matching rule in the
+// central playbook (antora.riscv.org) MUST be updated, or site numbering drifts.
+// To update number, open an issue at https://github.com/riscv-admin/antora-dev.riscv.org
+
+* xref:index.adoc[RISC-V Authoring and Editing Guide]
+** xref:copyright.adoc[Copyright and license information]
+** xref:contributors.adoc[Contributors]
+** xref:intro.adoc[Introduction]
+** xref:authoring.adoc[AsciiDoc authoring for RISC-V contributors]
+** xref:install-tools.adoc[Installing Asciidoctor and using AsciiDoc]
+** xref:author-quickstart.adoc[Template Quickstart: Writing a Spec]
+** xref:antora-structure.adoc[Antora directory structure]
+** xref:a_few_basics.adoc[AsciiDoc basics]
+** xref:index_bib.adoc[Index and Bibliography]
+** xref:graphics.adoc[Graphics]
+** xref:vale.adoc[Vale at RISC-V]
+** xref:style-guidelines.adoc[RISC-V Style Guidelines]
+** xref:writing.adoc[Best Practice]
+** xref:word-usage.adoc[Word Usage Guide]
+** xref:linting.adoc[Linting]
+** xref:build-infrastructure.adoc[Build Infrastructure]
+** xref:bibliography.adoc[Bibliography]

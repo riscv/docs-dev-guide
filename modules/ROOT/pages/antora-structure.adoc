@@ -72,10 +72,11 @@ The `nav.adoc` file defines the navigation sidebar shown in the Antora site.
 
 [source,adoc]
 ----
-* xref:spec-sample.adoc[RISC-V Example Specification]
+* xref:index.adoc[RISC-V Example Specification]
+** xref:copyright.adoc[Copyright and license information]
+** xref:contributors.adoc[Contributors]
 ** xref:intro.adoc[Introduction]
 ** xref:chapter2.adoc[The Second Chapter]
-** xref:contributors.adoc[Contributors]
 ** xref:bibliography.adoc[Bibliography]
 ----
 
