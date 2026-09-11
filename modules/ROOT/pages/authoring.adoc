@@ -1,4 +1,4 @@
-== AsciiDoc authoring for RISC-V contributors
+= AsciiDoc authoring for RISC-V contributors
 
 AsciiDoc is the markup language and Asciidoctor is a set of toolchains that support publishing from AsciiDoc.
 
@@ -8,7 +8,7 @@ Asciidoctor toolchains:
 * https://gitlab.com/antora/antora[antora], which is newer and written in javascript.
 * Python-based, which is legacy and in maintenance mode.
 
-=== RISC-V AsciiDoc authoring assets
+== RISC-V AsciiDoc authoring assets
 
 Please view the https://github.com/riscv/docs-spec-template[readme] in the docs-spec-template repo for information about the automated build processes.
 
@@ -30,7 +30,7 @@ Or more simply, using the Makefile:
 make
 ----
 
-=== Writing
+== Writing
 
 To begin writing in AsciiDoc, select a text editor. Here's <<editors>>.
 
@@ -45,7 +45,7 @@ Here are a few additional, useful links:
 * https://docs.asciidoctor.org/asciidoc/latest/macros/link-macro-ref/[links]
 
 [[editors]]
-==== Text editors with AsciiDoc support
+=== Text editors with AsciiDoc support
 
 There isn't a true WYSIWYG editor for AsciiDoc. However, there are live preview options that are listed in the https://docs.asciidoctor.org/asciidoctor/latest/tooling/[Asciidoctor documentation] that can help you see what the output looks like. You can also use your favorite text editor, or perhaps switch to one that has good AsciiDoc linting.
 

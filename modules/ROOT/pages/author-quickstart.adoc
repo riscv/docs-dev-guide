@@ -1,13 +1,13 @@
 [[author-quickstart]]
-== Template Quickstart: Writing a Spec
+= Template Quickstart: Writing a Spec
 
 This guide is for a specification author who has a GitHub repository that was created from the `docs-spec-template` repository. By using this template, you can single source your content for both PDF and the HTML output. You can use the GitHub repository actions to create build versions, interim releases, and milestone releases. Finally, you can build both the PDF and Antora HTML output locally by running the `makefile` and `npm` commands.
 
-=== Before you begin
+== Before you begin
 
 When your GitHub repository was created, the "spec-sample" identity is still baked in. Rename the files and update the metadata to reflect your spec's identity.
 
-==== Rename your files
+=== Rename your files
 
 The following table shows the files that you need to edit.
 
@@ -72,7 +72,7 @@ As a reminder, be sure to update the `copyright.adoc` file and the `contributors
 // The admin normally sets this. If it is wrong, run `make set-mode MODE=doc` (or
 // `MODE=spec`) -- you do **not** need to re-create the repo.
 
-==== Initialize the docs-resources repo
+=== Initialize the docs-resources repo
 
 The docs-resources repo contains common utilities, graphics, and styling. Before you can use this repository, you must initialize it with the following command:
 
@@ -83,9 +83,9 @@ git submodule update --remote --init
 
 After your submodule populates locally, you can use the repo contents to build your content locally.
 
-=== Understand file structure
+== Understand file structure
 
-Create your chapter content `.adoc` files in the `modules/ROOT/pages/` location. Both the PDF and the HTML read these same files. The PDF is assembled by using the book header file (`src/<your-spec>.adoc`), which uses `include:` references to each chapter `.adoc` file. The HTML site navigation uses a navigation file (`modules/ROOT/nav.adoc`) to build HTML content. Update both of these files to keep the PDF and HTML content in synch. Otherwise, the source files remain the same for both PDF and HTML output. 
+Create your chapter content `.adoc` files in the `modules/ROOT/pages/` location. Both the PDF and the HTML read these same files. The PDF is assembled by using the book header file (`src/<your-spec>.adoc`), which uses `include::` references to each chapter `.adoc` file. Start each chapter file with a level-0 title (`= Chapter title`), and include it in the book header file with `leveloffset=+1` so that title becomes a chapter in the PDF. A chapter file without a level-0 title is listed as "Untitled" on the HTML site. The HTML site navigation uses a navigation file (`modules/ROOT/nav.adoc`) to build HTML content. Update both of these files to keep the PDF and HTML content in synch. Otherwise, the source files remain the same for both PDF and HTML output. 
 
 [source]
 ----
@@ -120,7 +120,7 @@ Miss an `xref:` entry in the nav.adoc file and the chapter appears in the PDF bu
 
 Do not add PDF-only constructs or styling to the content chapter files. These types of changes are included in only the book header file. HTML styling is included in the Antora playbook as well as the Antora UI repository. 
 
-=== Building your content locally
+== Building your content locally
 
 To build and view your content locally, run the following commands in your local repository. Start your docker instance before running these commands.
 
@@ -140,11 +140,11 @@ the `make` PDF or on the HTML development site.
 
 To open your website locally, go to the `build` folder in your local specification directory and open the `index.html` file.
 
-=== GitHub Action builds
+== GitHub Action builds
 
 When you build your spec on GitHub, whether you are creating a PR or merging directly to main, the Actions workflow runs several actions, including building a PDF. It will not, however, increment your PDF version.
 
-=== Understanding versioning
+== Understanding versioning
 
 Versions are updated by using the Version-bot action in GitHub. After you run the Version-bot, a PR is created to update the version in the `antora.yml` file. Do not update the version manually; always run the Version-bot to change the version. Merge the Stamp Antora site version PDF as soon as possible.
 
@@ -182,7 +182,7 @@ Versions are updated by using the Version-bot action in GitHub. After you run th
 ----
 
 
-=== Ratification ready
+== Ratification ready
 
 When your spec development is complete and ratified, the RISC-V team creates a ratified version and publishes the document in the https://docs.riscv.org/[Ratified Specifications library].
 
@@ -204,7 +204,7 @@ When your spec development is complete and ratified, the RISC-V team creates a r
 // make stamp-antora VERSION=vX.Y.Z   # then commit antora.yml
 // ----
 
-=== See also
+== See also
 
 * `ANTORA.md` -- how the dual build works and why, plus the section-numbering
   rule and site-registration details.

@@ -1,9 +1,9 @@
 [[antora-structure]]
-== Antora repository structure
+= Antora repository structure
 
 RISC-V specification repositories use an https://docs.antora.org[Antora]-compatible directory structure. This enables Antora to assemble individual specification repositories into the RISC-V documentation site while also supporting a standalone PDF and HTML build using `make`.
 
-=== Repository layout
+== Repository layout
 
 A specification repository has the following top-level files and directories:
 
@@ -32,7 +32,7 @@ modules/
 <7> Resources directory: resource files that are not asciidoc or images such as the bibliography file. Referenced by `spec-sample.adoc` via the `:bibtex-file:` attribute.
 <8> Partials directory: Optional directory for reusable AsciiDoc fragments (partials), such as Wavedrom diagram source files or content shared across chapters. Reference partials with `include::partial$filename.adoc[]`.
 
-=== antora.yml
+== antora.yml
 
 The `antora.yml` file at the repository root is the Antora https://docs.antora.org/antora/latest/component-version-descriptor/[component descriptor] and serves two purposes: it identifies the repository as an Antora content component, and it provides the component metadata and configuration (name, title, version, navigation, and AsciiDoc attributes) that Antora uses to assemble the documentation site.
 
@@ -54,7 +54,7 @@ When creating a new specification repository from the template, set the page-gro
 name: debug
 title: Debug Specification
 
-=== modules/ROOT/pages/
+== modules/ROOT/pages/
 
 All AsciiDoc source files live in `modules/ROOT/pages/`. This is the Antora convention for the default (ROOT) module's page content.
 
@@ -62,11 +62,11 @@ The entry point for the standalone PDF and HTML build is `spec-sample.adoc`, whi
 
 When adding a new chapter:
 
-. Create the `.adoc` file in `modules/ROOT/pages/`.
-. Add an `include::` directive for it in `spec-sample.adoc` (for the PDF build).
+. Create the `.adoc` file in `modules/ROOT/pages/`. Start it with a level-0 title, `= Chapter title`. Antora uses that line as the page title, so a page that starts with `==`, or has no title, is listed as "Untitled" on the site.
+. Add an `include::` directive for it in `spec-sample.adoc` (for the PDF build), with a level offset: `include::../modules/ROOT/pages/my-chapter.adoc[leveloffset=+1]`. The offset turns the page's level-0 title into a chapter in the PDF. Without it, the PDF gets a second document title.
 . Add an `xref:` entry for it in `modules/ROOT/nav.adoc` (for the Antora site build).
 
-=== modules/ROOT/nav.adoc
+== modules/ROOT/nav.adoc
 
 The `nav.adoc` file defines the navigation sidebar shown in the Antora site.
 
@@ -81,16 +81,16 @@ The `nav.adoc` file defines the navigation sidebar shown in the Antora site.
 
 Add a new entry here each time you add a chapter to `pages/`. The order of entries controls the left navigation order in the HTML version in the RISC-V Specifications Library.
 
-=== modules/ROOT/images/
+== modules/ROOT/images/
 
 Antora locates images in the module directory tree. Store images used in the specification in the images directory.
 
 [[dev-playbook]]
-=== Publishing to the RISC-V documentation site
+== Publishing to the RISC-V documentation site
 
 A central Antora playbook maintained at https://github.com/riscv-admin/antora-dev.riscv.org[riscv-admin/antora-dev.riscv.org] assembles the RISC-V documentation site from all specification repositories. Specification authors do not manage their own playbook. Instead, they submit a pull request to that repository to register their specification as a content source.
 
-==== Naming your branch
+=== Naming your branch
 
 By convention, name Antora-ready branches with the version and an `-antora` suffix:
 
@@ -101,7 +101,7 @@ v20250312-antora
 
 Create this branch from your specification's release tag or working branch after the Antora directory structure is in place.
 
-==== Adding a content source
+=== Adding a content source
 
 In the playbook at `antora/antora-playbook.yml`, add an entry to the `content.sources` list. Use an existing entry as a model and follow the comment convention used throughout the file:
 
@@ -118,7 +118,7 @@ In the playbook at `antora/antora-playbook.yml`, add an entry to the `content.so
 
 The `component` name in the comment must match the `name` field in your `antora.yml`. Set `submodules: true` if your repository uses git submodules (e.g., `docs-resources`). Set `worktrees: true` if your repository has symlinks.
 
-==== Adding numbering rules
+=== Adding numbering rules
 
 The playbook uses custom extensions to number chapters and appendixes in the site navigation. Add a corresponding entry for your specification to both the `nav_numbering_extension` and `section_numbering_extension` blocks. Both blocks share the same rules from a YAML anchor (`&numbering_rules` / `*numbering_rules`), so you only need to add a single entry in the 'nav_numbering_extension` block:
 
@@ -137,14 +137,14 @@ The playbook uses custom extensions to number chapters and appendixes in the sit
 <4> The range of nav entries (top-level `*` items in `nav.adoc`) to number as chapters. Count from the first entry in `nav.adoc` — entries before your first chapter (e.g., a preface or overview page) are typically at position 1 through 4.
 <5> Omit this line entirely if your specification has no appendixes.
 
-==== Submitting the pull request
+=== Submitting the pull request
 
 . Fork or branch https://github.com/riscv-admin/antora-dev.riscv.org[riscv-admin/antora-dev.riscv.org].
 . Add your content source and numbering rules to `antora/antora-playbook.yml` as described above.
 . Open a pull request against the `main` branch with a brief description of the specification added.
 
 [[install-antora]]
-=== Installing Antora
+== Installing Antora
 
 You need Antora to run a local site preview. It requires Node.js version 18 or later. Once you install Node.js, install Antora globally:
 

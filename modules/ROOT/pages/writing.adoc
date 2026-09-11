@@ -1,9 +1,9 @@
 [[writing-simple]]
-== Best practices
+= Best practices
 
 This section contains suggested best practices for clear, concise, and consistent content.
 
-=== Use present tense
+== Use present tense
 
 [cols="1,1"]
 |===
@@ -17,7 +17,7 @@ This section contains suggested best practices for clear, concise, and consisten
 Exception: Use future or past tense if it is required to convey the correct
 meaning.
 
-=== Use active voice
+== Use active voice
 
 [cols="1,1"]
 |===
@@ -33,7 +33,7 @@ meaning.
 
 Exception: Use passive voice if active voice leads to an awkward construction.
 
-=== Use simple and direct language
+== Use simple and direct language
 
 Use simple and direct language. Avoid using unnecessary phrases, such as saying "please." Direct language is easier to translate.
 
@@ -52,7 +52,7 @@ Use simple and direct language. Avoid using unnecessary phrases, such as saying 
 |With this next command, we'll view the register.
 |===
 
-=== Address the reader as "you"
+== Address the reader as "you"
 
 Using "we" in a sentence can be confusing, because the reader might not know whether they're part of the "we" that you're describing. Does it mean the RISC-V team, the RISC-V members, open source people, hardware people, or even everyone?
 
@@ -70,7 +70,7 @@ Using "we" in a sentence can be confusing, because the reader might not know whe
 
 An exception to this rule is the rationale sections.
 
-=== Avoid Latin phrases
+== Avoid Latin phrases
 
 Prefer English terms over Latin abbreviations. Latin terms can be difficult for translation because it adds an additional language to translate.
 
@@ -86,7 +86,7 @@ Prefer English terms over Latin abbreviations. Latin terms can be difficult for 
 |i.e.,
 |===
 
-=== Avoid jargon and idioms
+== Avoid jargon and idioms
 
 Some readers speak English as a second language. Avoid jargon and idioms to help them understand better.
 
@@ -102,7 +102,7 @@ Some readers speak English as a second language. Avoid jargon and idioms to help
 |Chutar o pau-da-barraca (which translates to "kicking away the tent pole")
 |===
 
-=== Avoid statements about the future
+== Avoid statements about the future
 
 Avoid making promises or giving hints about the future. If you need to talk about
 an alpha feature, put the text under a heading that identifies it as alpha
@@ -110,7 +110,7 @@ information.
 
 An exception to this rule is documentation about announced deprecations targeting removal in future versions.
 
-=== Avoid statements that will soon be out of date
+== Avoid statements that will soon be out of date
 
 Avoid words like "currently" and "new." A feature that is new today might not be
 considered new in a few months.
@@ -127,7 +127,7 @@ considered new in a few months.
 |The new pointer masking extension provides
 |===
 
-=== Avoid words that assume a specific level of understanding
+== Avoid words that assume a specific level of understanding
 
 Avoid words such as "just", "simply", "easy", "easily", or "simple". These words do not add value and can actually make a user feel not up to the task.
 
@@ -155,7 +155,7 @@ These guidelines were adapted from the https://kubernetes.io/docs/contribute/sty
 ====
 
 [[other-style-guidelines]]
-=== Other style guidelines
+== Other style guidelines
 
 Other style guidelines for reference:
 

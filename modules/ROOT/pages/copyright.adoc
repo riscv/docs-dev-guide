@@ -1,5 +1,4 @@
-[preface]
-== Copyright and license information
+= Copyright and license information
 
 This documentation is licensed under the Creative Commons
 Attribution 4.0 International License (CC-BY 4.0). The full

@@ -1,4 +1,4 @@
-== Word usage
+= Word usage
 
 
 Above:: Avoid using directional words. Above and below do not translate well to screen readers. Instead, use "previous" or "following".

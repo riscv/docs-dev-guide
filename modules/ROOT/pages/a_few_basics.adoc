@@ -1,5 +1,5 @@
 [[a_few_basics]]
-== AsciiDoc basics
+= AsciiDoc basics
 
 AsciiDoc is fully documented, and its documentation is actively maintained. This document has information about AsciiDoc markup to get you started.
 
@@ -18,13 +18,13 @@ Best practice is to test the PDF build often to ensure that you have not acciden
 Send questions to help@riscv.org.
 ====
 
-=== Paragraphs
+== Paragraphs
 
 In AsciiDoc, normal paragraphs do not require markup.
 
 To create a new paragraph, put a space after the earlier line of text and continue.
 
-==== Basics of blocks and indents
+=== Basics of blocks and indents
 
   If you add an indent, your indented text becomes a block like this.
 
@@ -57,7 +57,7 @@ add a1,a2,a3; # do an ADD
 
 See <<blocks_notes_markers>> for additional information about blocks.
 
-=== Headers
+== Headers
 
 When you author in AsciiDoc, you cannot jump directly from a Head 1 to a Head 3 or 4. Your headers must appear in sequence from Head 1 to Head 2, and onward. If you skip over a header in the sequence, Asciidoctor throws an error.
 
@@ -87,11 +87,11 @@ Index
 
 NOTE: Settings in the header file (`modules/ROOT/pages/spec-sample.adoc` in the docs-spec-template repository) trigger auto-generation of Appendix prefixes and of the Index (among other things).
 
-=== Lists
+== Lists
 
 Create unordered lists with the `*` before the list item. Ordered lists require a `.` Add a space between any supporting text at the beginning of a list.
 
-==== Unordered list
+=== Unordered list
 
 To create an unordered list, place a `*` and a space before an item. Put each new list item on a new line. Add a space between any supporting text at the beginning of a list.
 
@@ -110,7 +110,7 @@ Example output:
 * Unpriv
 * Debug
 
-==== Ordered list
+=== Ordered list
 
 To create an ordered (numbered) list, place a `.` and a space before an item. Put each new list item on a new line. Add a space between any supporting text at the beginning of a list.
 
@@ -127,7 +127,7 @@ Example output:
 . Unpriv
 . Debug
 
-==== Nested list
+=== Nested list
 
 To create a nested unordered list, use `** ` before the nested item.
 
@@ -181,7 +181,7 @@ Example output:
 .. second numbered item
 * another bullet
 
-==== Add a title to a list
+=== Add a title to a list
 
 Titles can help introduce your list content.
 
@@ -200,14 +200,14 @@ Example output:
 . Unpriv
 . Debug
 
-=== Hyperlinks and cross references
+== Hyperlinks and cross references
 
 Asciidoctor automates some linking as follows:
 
 * Recognizes hyperlinks to Web pages and shortens them for readability.
 * Automatically creates an anchor for every section and discrete heading.
 
-==== Hyperlinks
+=== Hyperlinks
 
 To create highlighted links, use the pattern in the following example:
 
@@ -219,7 +219,7 @@ https://asciidoctor.org[Asciidoctor]
 You can set https://docs.asciidoctor.org/asciidoc/latest/macros/link-macro-ref/[attributes for your external links]
 
 
-==== Cross references
+=== Cross references
 
 Use macros for cross references (links within a document) as in the following example:
 
@@ -236,12 +236,12 @@ For more information about options, see https://docs.asciidoctor.org/asciidoc/la
 
 
 [[tables_symbols_math]]
-=== Tables
+== Tables
 
 By using tables, you can group information into logical units, which can make the infromation presented easier to understand.
 
 [[tables-gen]]
-==== General rules for tables
+=== General rules for tables
 Follow these general rules when you create a table.
 
 * Avoid tables in the middle of lists.
@@ -256,7 +256,7 @@ Follow these general rules when you create a table.
 *Never* use automated wrapping for table titles, figure captions, and example captions. Asciidoctor reads a hard return as an indicator to start a new "Normal" paragraph.
 ====
 
-==== Simple table
+=== Simple table
 
 The following example shows a simple table with 2 rows and 2 columns. To indicate a new row, put a empty line between them.
 
@@ -283,7 +283,7 @@ Results in the following table.
 |Cell in column 2, row 2
 |===
 
-==== Adding table headers
+=== Adding table headers
 
 Headers can add additional information to your table, making them easier to understand.
 
@@ -326,7 +326,7 @@ Either table renders with table headers.
 |Cell in col 3, row 2
 |===
 
-==== Table captions
+=== Table captions
 
 The `modules/ROOT/pages/spec-sample.adoc` file in the docs-spec-template repository sets the `full` cross-reference attribute to enable captions to display from targets in the anchors. You can set captions for tables, blocks, and illustrations. If you do not offer a caption, Asciidoctor defaults to the _basic_ cross-reference style.
 
@@ -364,7 +364,7 @@ kind of trap.
 |===
 
 
-==== AsciiDoc tables from CSV data.
+=== AsciiDoc tables from CSV data.
 
 You can also create AsciiDoc tables directly from CSV data. Set the format block attribute to `csv` and insert the data inside the block delimiters directly:
 
@@ -446,7 +446,7 @@ The earlier example results in the following table.
 3+|100|1|1|1 8+|    field        2+| 00  | mnemonic4
 |===
 
-=== Unicode symbols
+== Unicode symbols
 
 For PDFs, five-digit unicode symbols generally do not work and some other unicode symbols are buggy. This failure happens because the Ruby asciidoctor-pdf toolchain makes use of Prawn to build PDFs and it is Prawn that has the problems.
 
@@ -505,12 +505,12 @@ sym,num,name
 |===
 
 
-=== Mathematical notations
+== Mathematical notations
 
 WARNING: Asciidoctor-mathematical has some limitations. For inline expressions, the graphical representations are displayed small and center vertically. In some cases where there is a single-character Asciidoctor-mathematical expression, it unintentionally is displayed as a superscript. For this reason, always use viable options such as _italics_ or unicode (see <<Unicode symbols>>).
 
 
-==== Superscripts and subscripts
+=== Superscripts and subscripts
 
 To indicate a superscript, enclose the string for the superscript in carets as in the following example:
 
@@ -555,7 +555,7 @@ Renders as:
 of a shopping list, but I don't think the local bodega sells
 E=mc^2^," Lazarus replied.
 
-==== Latexmath
+=== Latexmath
 
 You can make use of LaTeX notation as in the following:
 
@@ -572,7 +572,7 @@ latexmath:[$C = \alpha + \beta Y^{\gamma} + \epsilon$]
 Latexmath rendering has some limitations with respect to sizing and placement inline. This happens because of how the images for the mathematical renders symbols within the build process. For this reason, avoid using single character latexmath expressions inline and preferentially make use of unicode or superscripts and subscripts when possible.
 ====
 
-==== Stem content
+=== Stem content
 
 The `:stem: latexmath` setting makes use of asciidoctor-mathematical for asciidoctor-pdf output.
 
@@ -596,7 +596,7 @@ In some cases, you might want to make use of unicode characters. Remember that a
 For updates to asciidoctor-pdf, see https://github.com/asciidoctor/asciidoctor-pdf.
 
 [[blocks_notes_markers]]
-=== Admonition blocks
+== Admonition blocks
 
 Five types of standard link:https://docs.asciidoctor.org/asciidoc/latest/blocks/admonitions/[admonition blocks] are available in AsciiDoc. RISC-V uses these five types with the default icons.
 
@@ -630,7 +630,7 @@ As a general rule, follow these guidelines for admonitions:
 * Do not include results, steps, or prerequisites in admonitions.
 * Make your admonition clear and concise.
 
-==== Single paragraph admonition
+=== Single paragraph admonition
 
 For a single paragraph admonition, use a double colon:
 
@@ -643,7 +643,7 @@ that renders as:
 
 NOTE: Note content.
 
-==== Admonition blocks
+=== Admonition blocks
 
 An admonition block can contain any AsciiDoc content.
 
@@ -674,7 +674,7 @@ As a general rule, follow these guidelines for admonitions:
 * Make your admonition clear and concise.
 ====
 
-==== Admonition with a title
+=== Admonition with a title
 
 You can add a title to your admonition block.
 
@@ -695,7 +695,7 @@ Rendered:
 *Be aware that RLB introduces a security vulnerability if you set it after the boot process is over.* Use with caution, even when you use it temporarily. Editable PMP rules in M-mode gives a false sense of security since it only takes a few malicious instructions to lift any PMP restrictions this way. It does not make sense to have a security control in place and leave it unprotected. Rule Locking Bypass is only meant as a way to optimize the allocation of PMP rules, catch errors durring debugging, and allow the bootrom/firmware to register executable _Shared-Region_ rules. If developers / vendors have no use for such functionality, they should never set ``mseccfg.RLB`` and if possible hard-wire it to 0. In any case *RLB should be disabled and locked as soon as possible*.
 ====
 
-==== RISC-V admonition icon colors
+=== RISC-V admonition icon colors
 
 The admonition icons are set in `risc-v_spec-pdf.yml`. RISC-V uses custom colors, as indicated in the <<custom-color-icons>>.
 
@@ -722,7 +722,7 @@ IMPORTANT,bf0000,b58f5b
 |===
 
 
-=== Code blocks
+== Code blocks
 
 AsciiDoc enables code blocks that support syntax highlighting.
 
@@ -787,7 +787,7 @@ With the following result:
 ....
 
 
-=== Change bars
+== Change bars
 
 Change indicators within text files are exceedingly useful and also can be equally complex to implement. Please consider the fact that much of the software programming for Git revolves around handling various kinds of change indicators.
 
@@ -800,7 +800,7 @@ The suggested solution makes use of:
 - Git features.
 - a few procedures associated, specifically, with Git updates.
 
-==== Indicate changes
+=== Indicate changes
 
 Indicators for the changed lines must be inserted manually:
 
@@ -826,7 +826,7 @@ For change bars associated with headings, place the change indicator after the h
 == [.Changed]#SELECT clause#
 ----
 
-==== Check for changed lines before a `git commit`
+=== Check for changed lines before a `git commit`
 
 You can double check for all changed lines before committing by using this pattern:
 
@@ -846,7 +846,7 @@ This lists the line numbers of changes within the specified file like the follow
 ----
 
 
-=== Footnotes
+== Footnotes
 
 AsciiDoc has a limitation in that footnotes appear at the end of each chapter. Asciidoctor does not support footnotes appearing at the bottom of each page.
 
@@ -877,7 +877,7 @@ A bold statement!footnote:disclaimer[Opinions are my own.]
 
 Another outrageous statement.footnote:disclaimer[]
 
-=== Sidebars
+== Sidebars
 
 Sidebars provide for a form of commentary.
 

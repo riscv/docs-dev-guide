@@ -1,5 +1,5 @@
 [[vale-at-riscv]]
-== Vale at RISC-V
+= Vale at RISC-V
 
 Vale is an open source linting tool for prose. You can find more about Vale from the https://vale.sh/[Vale website].
 

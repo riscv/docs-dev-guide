@@ -1,8 +1,8 @@
-== Linting
+= Linting
 
 The linting of code/documentation can be categorized as dealing with formatting, syntax, or semantics.  Once the rules for a given project are defined, many of these rules can be checked automatically with tooling.
 
-=== Tooling
+== Tooling
 
 https://pre-commit.com/[pre-commit tool] is a very useful, open source, well maintained, and popular tool/framework to help automate linting checks in general.  It provides some of the following key features:
 
