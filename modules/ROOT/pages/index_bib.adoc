@@ -1,8 +1,8 @@
-== Index and bibliography
+= Index and bibliography
 
 An index and bibliography are included in the main priv and unpriv docs. You can develop your own index and bibliography for your stand alone document, but if it is to be merged into the main docs, you must merge the index and bibliography as well.
 
-=== Index markers
+== Index markers
 
 There are two types of index terms in AsciiDoc:
 
@@ -68,7 +68,7 @@ I, King Arthur.
 I, King Arthur.
 (((knight, "Arthur, King")))
 
-=== Bibliography and references
+== Bibliography and references
 
 There are two ways of handling bibliographies:
 
@@ -79,7 +79,7 @@ There are two ways of handling bibliographies:
 You can add bibliographic entries to the last appendix that you create in a book document.
 
 [[auto-bib]]
-==== Creating an automated bibliography with asciidoctor-bibtex
+=== Creating an automated bibliography with asciidoctor-bibtex
 
 Asciidoctor-bibtex enables options that allow for establishing a single source of bibliographic entries that we can use for RISC-V specifications. As an added benefit we can make use of existing bibtex files.
 
@@ -174,7 +174,7 @@ The following examples are json-formatted bibliographic entries:
 }
 ----
 
-==== Manual bibliography procedures (deprecated)
+=== Manual bibliography procedures (deprecated)
 
 While the automated procedure and use of the RISC-V bibtex file is preferred, it is also possible to manually create and reference a bibliography.
 

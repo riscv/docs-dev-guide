@@ -1,5 +1,5 @@
 [[graphics]]
-== Graphics
+= Graphics
 
 Graphics help people learn, break up text, and can overall improve your document content.
 
@@ -15,7 +15,7 @@ The https://docs.asciidoctor.org/diagram-extension/latest/[asciidoctor-diagram e
 You can certainly use one of the other supported types, but know that they might cause issues with the build. Please contact the RISC-V docs team before using them.
 
 [[GBP]]
-=== Graphics best practices
+== Graphics best practices
 
 Follow these guidelines for graphics.
 
@@ -27,7 +27,7 @@ Follow these guidelines for graphics.
 * Images should support your text. Do not put important information in only an image.
 
 [[wavedrom]]
-=== Wavedrom diagrams in specifications
+== Wavedrom diagrams in specifications
 
 Wavedrom diagrams are used mainly for registers. To specify a wavedrom file, create a `json` file and then call it from your text. For more information, see https://wavedrom.com/[WaveDrom sequence diagrams].
 
@@ -76,7 +76,7 @@ image::image_placeholder.png[]
 . "Invisible" placeholder needed for figure caption to display consistently and correctly.
 
 
-=== Explanation
+== Explanation
 
 For the previous example to build into a diagram that includes a figure title, and a figure title and a macro the specifies the diagram type before the code block. You can add a `target` filename and, in addition, specify the image output format to be `svg`.
 
@@ -147,7 +147,7 @@ include::../partials/wavedrom/filename.adoc
 ====
 
 [[graphviz]]
-=== Graphviz
+== Graphviz
 
 The Unpriv appendices contain Graphviz diagrams with associated keys that are arranged in tables. While in the LaTeX version, the diagrams and tables are arranged side-by-side, for the AsciiDoc version;
 
@@ -278,7 +278,7 @@ eiid4 -> eiid0 [label=<<font color="red">rf</font>>, color="red", fontsize=11, p
 ....
 
 [[ditaa]]
-=== Ditaa diagrams
+== Ditaa diagrams
 
 
 Following is source for simple ditaa diagram:
@@ -364,7 +364,7 @@ DiagramBlock <|-- PlantUmlBlock
 NOTE: Asciidoctor supports additional diagram types. For information on additional diagram types, see the https://docs.asciidoctor.org/diagram-extension/latest/[Asciidoctor-diagram documentation].
 
 [[bytefield]]
-=== Bytefield diagrams
+== Bytefield diagrams
 
 Bytefield diagrams are used for register graphics that cannot be rendered in wavedrom. For more information, see https://bytefield-svg.deepsymmetry.org/bytefield-svg/1.8.0/intro.html[Bytefield diagrams].
 
@@ -402,11 +402,11 @@ After the build, it looks like this example:
 include::../partials/bytefield/examplebyte.adoc[]
 
 
-=== Editing Wavedrom diagrams for Unpriv
+== Editing Wavedrom diagrams for Unpriv
 
 
 
-==== Relevant contextual information
+=== Relevant contextual information
 
 Wavedrom is a utility that is available at https://wavedrom.com/.
 
@@ -414,7 +414,7 @@ Wavedrom is a utility that is available at https://wavedrom.com/.
 
 
 
-==== Example Wavedrom code, before and after
+=== Example Wavedrom code, before and after
 
 Following is an example Wavedrom file that is typical of one the needs just a few edits, minus the `[]` brackets that indicate a macro (because using the macro even within a code block activates a process in the Asciidoctor build):
 
@@ -552,7 +552,7 @@ Now the diagram should contain all of the content that exists within the LaTeX v
 . Generate a PR to the convert2adoc branch and indicate whether you or a member of the team has tested your changes in a local build.
 . As always, thanks for your participation in the success of RISC-V.
 
-==== Caveats for editing wavedrom diagrams
+=== Caveats for editing wavedrom diagrams
 
 At the time of this writing, we have noticed the following unexpected results during diagram builds using the asciidoctor-pdf toolchain, as follows:
 

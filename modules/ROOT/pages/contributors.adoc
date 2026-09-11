@@ -1,4 +1,4 @@
-== Contributors
+= Contributors
 
 This guide has been contributed to directly or indirectly by:
 

@@ -1,10 +1,10 @@
 [[style-guidelines]]
-== RISC-V Style guidelines
+= RISC-V Style guidelines
 
 Whether you are creating a new extention or even a stand alone doc for RISC-V, follow these style guidelines to improve readability.
 
 [[basic-rules]]
-=== Basic formatting
+== Basic formatting
 
 Follow these basic formatting guidelines.
 
@@ -30,7 +30,7 @@ Do not use any special formatting for base 10.
 * All of these names are in monospace.
 
 [[csr-rules]]
-=== CSR formatting
+== CSR formatting
 
 Use the following guidelines when you document a CSR:
 
@@ -45,7 +45,7 @@ Use the following guidelines when you document a CSR:
 * Fields for registers are formatted in this style: `register`.FIELD. For example, `sstatus`.SPP.
 
 [[table-rules]]
-=== Table formatting
+== Table formatting
 
 Follow these formatting rules when you create a table.
 
@@ -56,7 +56,7 @@ Follow these formatting rules when you create a table.
 * Use table captions to describe your table contents. Captions appear after the table and are controlled by the theme.
 * If you use footnotes in your table, make sure they appear immediately after the table.
 
-==== Column header formatting
+=== Column header formatting
 
 Follow these column header rules.
 
@@ -65,7 +65,7 @@ Follow these column header rules.
 * Don't end with punctuation, including a period, an ellipsis, or a colon.
 * Use table headings for the first column and the first row only.
 
-==== Punctuation in tables
+=== Punctuation in tables
 
 Follow these punctuation rules for tables.
 

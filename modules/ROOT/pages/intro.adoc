@@ -1,5 +1,5 @@
 [[doc_intro]]
-== Contributing to the RISC-V documentation
+= Contributing to the RISC-V documentation
 
 Welcome to the RISC-V documentation guidelines. This document is maintained by the https://github.com/riscv-admin/docs-sig/blob/main/CHARTER.adoc[RISC-V Doc Sig].
 
@@ -13,13 +13,13 @@ RISC-V documentation contributors:
 - Translate the documentation (coming soon!)
 
 
-=== How to join RISC-V documentation
+== How to join RISC-V documentation
 
 - Create a Linux foundation ID with https://lfx.linuxfoundation.org/[LFX].
 - Become a https://riscv.org/membership/[member of the RISC-V International] organization.
 
 [[getting-help]]
-=== Getting help
+== Getting help
 
 If you have questions about authoring, the build toolchain, or the Antora documentation site, the following resources are available:
 

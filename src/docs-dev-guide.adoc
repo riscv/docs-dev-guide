@@ -78,36 +78,37 @@ list-of::table[hide_empty_section=true, enhanced_rendering=true]
 == List of listings
 list-of::listing[hide_empty_section=true, enhanced_rendering=true]
 
-include::../modules/ROOT/pages/copyright.adoc[]
+[preface]
+include::../modules/ROOT/pages/copyright.adoc[leveloffset=+1]
 
 [preface]
-include::../modules/ROOT/pages/contributors.adoc[]
+include::../modules/ROOT/pages/contributors.adoc[leveloffset=+1]
 
-include::../modules/ROOT/pages/intro.adoc[]
+include::../modules/ROOT/pages/intro.adoc[leveloffset=+1]
 
-include::../modules/ROOT/pages/author-quickstart.adoc[]
+include::../modules/ROOT/pages/author-quickstart.adoc[leveloffset=+1]
 
-include::../modules/ROOT/pages/authoring.adoc[]
+include::../modules/ROOT/pages/authoring.adoc[leveloffset=+1]
 
-include::../modules/ROOT/pages/antora-structure.adoc[]
+include::../modules/ROOT/pages/antora-structure.adoc[leveloffset=+1]
 
-include::../modules/ROOT/pages/a_few_basics.adoc[]
+include::../modules/ROOT/pages/a_few_basics.adoc[leveloffset=+1]
 
-include::../modules/ROOT/pages/index_bib.adoc[]
+include::../modules/ROOT/pages/index_bib.adoc[leveloffset=+1]
 
-include::../modules/ROOT/pages/graphics.adoc[]
+include::../modules/ROOT/pages/graphics.adoc[leveloffset=+1]
 
-include::../modules/ROOT/pages/vale.adoc[]
+include::../modules/ROOT/pages/vale.adoc[leveloffset=+1]
 
-include::../modules/ROOT/pages/style-guidelines.adoc[]
+include::../modules/ROOT/pages/style-guidelines.adoc[leveloffset=+1]
 
-include::../modules/ROOT/pages/writing.adoc[]
+include::../modules/ROOT/pages/writing.adoc[leveloffset=+1]
 
-include::../modules/ROOT/pages/word-usage.adoc[]
+include::../modules/ROOT/pages/word-usage.adoc[leveloffset=+1]
 
-include::../modules/ROOT/pages/linting.adoc[]
+include::../modules/ROOT/pages/linting.adoc[leveloffset=+1]
 
-include::../modules/ROOT/pages/build-infrastructure.adoc[]
+include::../modules/ROOT/pages/build-infrastructure.adoc[leveloffset=+1]
 
 // The index must precede the bibliography. The index macro is PDF-only (Antora
 // does not generate a back-of-book index), so it lives here in the assembler
@@ -115,4 +116,5 @@ include::../modules/ROOT/pages/build-infrastructure.adoc[]
 [index]
 == Index
 
-include::../modules/ROOT/pages/bibliography.adoc[]
+[bibliography]
+include::../modules/ROOT/pages/bibliography.adoc[leveloffset=+1]
