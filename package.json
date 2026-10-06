@@ -7,7 +7,7 @@
     "preview": "antora --fetch antora-playbook.yml"
   },
   "devDependencies": {
-    "@antora/cli": "3.2.0",
+    "@antora/cli": "3.2.1",
     "@antora/site-generator": "3.2.0",
     "@djencks/asciidoctor-mathjax": "0.0.9",
     "asciidoctor-kroki": "0.18.1"
