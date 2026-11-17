@@ -10,6 +10,6 @@
     "@antora/cli": "3.2.2",
     "@antora/site-generator": "3.2.2",
     "@djencks/asciidoctor-mathjax": "0.0.9",
-    "asciidoctor-kroki": "0.18.1"
+    "asciidoctor-kroki": "0.18.2"
   }
 }
