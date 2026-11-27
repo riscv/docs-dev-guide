@@ -66,7 +66,7 @@ cd ./docs-dev-guide && make build
 
 The link:Makefile[] script will check the availability of Docker on your system:
 
-* If Docker is available, the documentation will be built inside a Docker container using the image riscvintl/riscv-docs-base-container-image:latest. This ensures a consistent build environment across different systems.
+* If Docker is available, the documentation will be built inside a Docker container using the image ghcr.io/riscv/riscv-docs-base-container-image:latest. This ensures a consistent build environment across different systems.
 * If Docker is not available, the documentation will be built directly on your system using the installed tools.
 
 The documentation is generated from the AsciiDoctor source files in your project. The primary source file is specified by the `HEADER_SOURCE` variable in the Makefile.

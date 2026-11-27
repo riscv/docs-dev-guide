@@ -50,7 +50,7 @@ else
 	              -a milestone_id='${MILESTONE_ID}' \
 	              -a revremark='${REVMARK}'
 endif
-DOCKER_IMG := riscvintl/riscv-docs-base-container-image:latest
+DOCKER_IMG := ghcr.io/riscv/riscv-docs-base-container-image:latest
 DOCKER_BIN ?= docker
 ifneq ($(SKIP_DOCKER),true)
 	DOCKER_IS_PODMAN = \
